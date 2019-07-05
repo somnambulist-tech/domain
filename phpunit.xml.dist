@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Application Test Suite">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <var name="DOCTRINE_DRIVER" value="pdo_sqlite"/>
+        <var name="DOCTRINE_MEMORY" value="1"/>
+        <var name="DOCTRINE_DATABASE" value=""/>
+        <var name="DOCTRINE_USER" value=""/>
+        <var name="DOCTRINE_PASSWORD" value=""/>
+        <var name="DOCTRINE_HOST" value=""/>
+    </php>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+</phpunit>

@@ -1,0 +1,23 @@
+MyEntity:
+    type: entity
+
+    id:
+        id:
+            type: string
+            strategy: none
+
+    fields:
+        name:
+            type: string
+
+        another:
+            type: string
+
+        createdAt:
+            type: datetime
+
+    oneToMany:
+        related:
+            targetEntity: MyOtherEntity
+            mappedBy: myEntity
+            cascade: [ 'persist', 'remove' ]
