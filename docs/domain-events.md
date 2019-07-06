@@ -51,7 +51,6 @@ private function __construct($id, $name, $another, $createdAt)
     $this->name      = $name;
     $this->another   = $another;
     $this->createdAt = $createdAt;
-    $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
 }
 
 public static function create($id, $name, $another)
