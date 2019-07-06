@@ -35,6 +35,6 @@ class CurrencyEnumeration
             return $currency;
         }
 
-        throw new InvalidArgumentException(sprintf('"%s" is not a valid value for "%s"', $value, Currency::class));
+        throw new InvalidArgumentException(sprintf('"%s" is not a valid key for "%s"', $value, Currency::class));
     }
 }

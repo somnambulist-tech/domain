@@ -31,13 +31,17 @@ listener. This could be the old vs new or the entire entity reference, it is ent
 up to you.
 
 ```php
-public function __construct($id, $name, $another, $createdAt)
+class SomeObject extends AggregateRoot
 {
-    $this->id        = $id;
-    $this->name      = $name;
-    $this->another   = $another;
-    $this->createdAt = $createdAt;
-    $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+    public function __construct($id, $name, $another, $createdAt)
+    {
+        $this->id        = $id;
+        $this->name      = $name;
+        $this->another   = $another;
+        $this->createdAt = $createdAt;
+        
+        $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+    }
 }
 ```
 
@@ -45,20 +49,66 @@ Generally it is better to not raise events in the constructor but instead to use
 constructors for primary object creation:
 
 ```php
-private function __construct($id, $name, $another, $createdAt)
+class SomeObject extends AggregateRoot
 {
-    $this->id        = $id;
-    $this->name      = $name;
-    $this->another   = $another;
-    $this->createdAt = $createdAt;
-}
-
-public static function create($id, $name, $another)
-{
-    $entity = new static($id, $name, $another, new DateTime());
-    $entity->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+    private function __construct($id, $name, $another, $createdAt)
+    {
+        $this->id        = $id;
+        $this->name      = $name;
+        $this->another   = $another;
+        $this->createdAt = $createdAt;
+    }
     
-    return $entity;
+    public static function create($id, $name, $another)
+    {
+        $entity = new static($id, $name, $another, new DateTime());
+        $entity->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+        
+        return $entity;
+    }
+}
+```
+
+### Defining an Event
+
+To define your own event extend the AbstractDomainEvent object. That's basically it!
+
+```php
+class MyEntityCreatedEvent extends AbstractDomainEvent
+{
+
+}
+```
+
+You can create an intermediary to add base methods to your events e.g.: if you want
+to broadcast through a message queue you may want the event to name itself:
+
+```php
+abstract class AppDomainEvent extends AbstractDomainEvent
+{
+
+    public function notificationName()
+    {
+        return sprintf('%s.%s', $this->group(), strtolower($this->name()));
+    }
+
+    public function group()
+    {
+        return 'app';
+    }
+}
+```
+
+And then extend it with the overrides you need:
+
+```php
+class MyEntityCreatedEvent extends AppDomainEvent
+{
+
+    public function group()
+    {
+        return 'some_object';
+    }
 }
 ```
 

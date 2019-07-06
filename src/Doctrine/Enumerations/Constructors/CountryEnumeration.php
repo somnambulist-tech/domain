@@ -35,6 +35,6 @@ class CountryEnumeration
             return $country;
         }
 
-        throw new InvalidArgumentException(sprintf('"%s" is not a valid value for "%s"', $value, Country::class));
+        throw new InvalidArgumentException(sprintf('"%s" is not a valid key for "%s"', $value, Country::class));
     }
 }

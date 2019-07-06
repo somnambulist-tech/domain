@@ -54,10 +54,6 @@
         "symfony/var-dumper": "~4.0",
         "symfony/yaml": "4.0"
     },
-    "config": {
-        "preferred-install": "dist",
-        "bin-dir": "bin"
-    },
     "suggest": {
         "giggsey/libphonenumber-for-php": "*",
         "propaganistas/laravel-phone": "*",

@@ -31,15 +31,14 @@ code (e.g.: AppBundle::boot or AppServiceProvider::register|boot):
 
 This will pre-register the following enumerations:
 
- * Geography\CountryCode
+ * Geography\Country
  * Geography\Srid
  * Measure\AreaUnit
  * Measure\DistanceUnit
- * Money\CurrencyCode
+ * Money\Currency
  
 In addition extra helpers are registered to allow the Country and Currency value objects
-to be used as enumerations. These are stored using the CountryCode and CurrencyCode
-values and restored using the `::create()` method.
+to be used as enumerations. These are stored using the respective ISO 3-char codes.
 
 __Note:__ concrete enumerations cannot be extended. If the built in ones do not meet your
 needs, create your own.
@@ -141,12 +140,12 @@ doctrine:
         mappings:
             App\Entities:
                 mapping:   true
-                type:      yml
+                type:      xml
                 dir:       '%kernel.project_dir%/config/mappings/entities'
                 is_bundle: false
                 prefix:    App\Entities
 
-            Somnambulist\ValueObjects\Types:
+            Somnambulist\Domain\Entities\Types:
                 mapping:   true
                 type:      xml
                 dir:       '%kernel.project_dir%/config/mappings/somnambulist'

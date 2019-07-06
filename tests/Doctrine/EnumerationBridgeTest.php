@@ -58,11 +58,6 @@ class EnumerationBridgeTest extends TestCase
      */
     protected $platform;
 
-    /**
-     * @var array
-     */
-    private $oldTypes;
-
     public function setUp()
     {
         $this->platform = $this->prophesize(AbstractPlatform::class);

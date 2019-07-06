@@ -14,10 +14,15 @@ your system.
  
     Adds `activate()`/`deactivate()` methods to an entity controlling if it is active or not. The entity should
     implement activate/deactivate methods so that Events can be raised.
+    
+    Note: there is no trait as activate/deactivate are domain operations.
 
  1. Identifiable
  
     Adds an `id()` method that returns the primary identifier (int, string, object)
+    
+    Note: there is no trait as "id" may be a surrogate, it is up to the implementor to decide
+    which value to return for this method.
     
  1. IdentifiableWithTimestamps
  
@@ -34,7 +39,8 @@ your system.
  1. Publishable
  
     Adds `publishAt()`/`unpublish()` for controlling if an Entity is "published". Uses the DateTime value object.
-    publish/unpublish are not implemented as they should raise events when used.
+    
+    Note: there is no trait as publishAt/unpublish are domain operations.
     
  1. Stringable
  

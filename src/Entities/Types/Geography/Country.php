@@ -2,9 +2,7 @@
 
 namespace Somnambulist\Domain\Entities\Types\Geography;
 
-use Eloquent\Enumeration\AbstractMultiton;
-use Somnambulist\Domain\Entities\Contracts\HasEqualityInterface;
-use Somnambulist\Domain\Entities\Contracts\StringableInterface;
+use Somnambulist\Domain\Entities\AbstractMultiton;
 
 /**
  * Class Country
@@ -12,7 +10,7 @@ use Somnambulist\Domain\Entities\Contracts\StringableInterface;
  * @package    Somnambulist\Domain\Entities\Types\Geography
  * @subpackage Somnambulist\Domain\Entities\Types\Geography\Country
  */
-final class Country extends AbstractMultiton implements HasEqualityInterface, StringableInterface
+final class Country extends AbstractMultiton
 {
 
     /**
@@ -31,11 +29,6 @@ final class Country extends AbstractMultiton implements HasEqualityInterface, St
         $this->name = $name;
 
         parent::__construct($code);
-    }
-
-    public function __toString()
-    {
-        return $this->code();
     }
 
     protected static function initializeMembers()

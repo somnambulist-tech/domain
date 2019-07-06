@@ -44,15 +44,18 @@ listener. This could be the old vs new or the entire entity reference, it is ent
 up to you.
 
 ```php
-public function __construct($id, $name, $another)
+class MyAggregate extends AggregateRoot
 {
-    $this->id        = $id;
-    $this->name      = $name;
-    $this->another   = $another;
-    
-    $this->>initializeTimestamps();
-    
-    $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+    public function __construct($id, $name, $another)
+    {
+        $this->id        = $id;
+        $this->name      = $name;
+        $this->another   = $another;
+        
+        $this->>initializeTimestamps();
+        
+        $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+    }
 }
 ```
 
@@ -60,21 +63,24 @@ Generally it is better to not raise events in the constructor but instead to use
 constructors for primary object creation:
 
 ```php
-private function __construct($id, $name, $another)
+class MyAggregate extends AggregateRoot
 {
-    $this->id        = $id;
-    $this->name      = $name;
-    $this->another   = $another;
+    private function __construct($id, $name, $another)
+    {
+        $this->id        = $id;
+        $this->name      = $name;
+        $this->another   = $another;
+        
+        $this->>initializeTimestamps();
+    }
     
-    $this->>initializeTimestamps();
-}
-
-public static function create($id, $name, $another)
-{
-    $entity = new static($id, $name, $another, new DateTime());
-    $entity->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
-    
-    return $entity;
+    public static function create($id, $name, $another)
+    {
+        $entity = new static($id, $name, $another, new DateTime());
+        $entity->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+        
+        return $entity;
+    }
 }
 ```
 
@@ -149,7 +155,9 @@ class UserAddresses
      private $addresses;
 
      public function __construct(User $user, Collection $addresses)
-     {  // assign vars }
+     {
+         // assign vars
+     }
      
      public function for(AddressType $type)
      {

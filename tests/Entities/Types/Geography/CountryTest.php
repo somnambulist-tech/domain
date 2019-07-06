@@ -4,7 +4,6 @@ namespace Somnambulist\Domain\Tests\Entities\Types\Geography;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Domain\Entities\Types\Geography\Country;
-use Somnambulist\Domain\Entities\Types\Geography\CountryCode;
 
 /**
  * Class CountryTest
@@ -47,7 +46,7 @@ class CountryTest extends TestCase
     {
         $vo = Country::memberByKey('CAN');
 
-        $this->assertEquals('CAN', (string)$vo);
+        $this->assertEquals('Canada', (string)$vo);
         $this->assertEquals('CAN', (string)$vo->code());
     }
 

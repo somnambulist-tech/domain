@@ -31,11 +31,9 @@ class Bootstrapper
         $constructor = new GenericEloquentEnumeration();
 
         EnumerationBridge::registerEnumTypes([
-            Geography\CountryCode::class => $constructor,
-            Geography\Srid::class        => $constructor,
-            Measure\AreaUnit::class      => $constructor,
-            Measure\DistanceUnit::class  => $constructor,
-            Money\CurrencyCode::class    => $constructor,
+            Geography\Srid::class       => $constructor,
+            Measure\AreaUnit::class     => $constructor,
+            Measure\DistanceUnit::class => $constructor,
 
             Geography\Country::class => [new CountryEnumeration(), new CountrySerializer()],
             Money\Currency::class    => [new CurrencyEnumeration(), new CurrencySerializer()],

@@ -18,7 +18,7 @@ It consists of:
 
 ### Requirements
 
- * PHP 7+
+ * PHP 7.2+
  * mb_string
  * beberlei/assert
  * eloquent/enumeration
@@ -36,6 +36,7 @@ See the docs folder for more documentation on each component.
 
  * [Aggregate Root](docs/aggregate-root.md)
  * [Enumeration Bridge](docs/doctrine-enum-bridge.md)
+ * [Enumerations](docs/enumerations.md)
  * [Doctrine Mapping](docs/doctrine-mappings.md)
  * [Domain Events](docs/domain-events.md)
  * [Entity Behaviours](docs/entity-behaviours.md)

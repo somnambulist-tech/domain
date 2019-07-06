@@ -2,9 +2,7 @@
 
 namespace Somnambulist\Domain\Entities\Types\Money;
 
-use Eloquent\Enumeration\AbstractMultiton;
-use Somnambulist\Domain\Entities\Contracts\HasEqualityInterface;
-use Somnambulist\Domain\Entities\Contracts\StringableInterface;
+use Somnambulist\Domain\Entities\AbstractMultiton;
 
 /**
  * Class Currency
@@ -12,7 +10,7 @@ use Somnambulist\Domain\Entities\Contracts\StringableInterface;
  * @package    Somnambulist\Domain\Entities\Types\Money
  * @subpackage Somnambulist\Domain\Entities\Types\Money\Currency
  */
-final class Currency extends AbstractMultiton implements HasEqualityInterface, StringableInterface
+final class Currency extends AbstractMultiton
 {
 
     /**
@@ -31,11 +29,6 @@ final class Currency extends AbstractMultiton implements HasEqualityInterface, S
         $this->name = $name;
 
         parent::__construct($code);
-    }
-
-    public function __toString()
-    {
-        return $this->code();
     }
 
     protected static function initializeMembers()

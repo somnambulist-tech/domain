@@ -77,7 +77,7 @@ class CurrencyTest extends TestCase
     {
         $vo = Currency::memberByKey('CAD');
 
-        $this->assertEquals('CAD', (string)$vo);
+        $this->assertEquals('Canadian Dollar', (string)$vo);
         $this->assertEquals('CAD', (string)$vo->code());
     }
 
