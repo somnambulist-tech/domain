@@ -7,7 +7,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events;
-use Somnambulist\Collection\Collection;
+use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\AbstractDomainEvent;
 use Somnambulist\Domain\Events\Contracts\RaisesDomainEvents;

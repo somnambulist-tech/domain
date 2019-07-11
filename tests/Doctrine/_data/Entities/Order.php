@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Tests\Doctrine\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use Somnambulist\Collection\Collection;
+use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Domain\Entities\Types\Identity\Uuid;
 use Somnambulist\Domain\Entities\Types\Money\Money;

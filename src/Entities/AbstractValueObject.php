@@ -4,7 +4,7 @@ namespace Somnambulist\Domain\Entities;
 
 use ReflectionObject;
 use ReflectionProperty;
-use Somnambulist\Collection\Collection;
+use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Entities\Contracts\ValueObjectInterface;
 
 /**

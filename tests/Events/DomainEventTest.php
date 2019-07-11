@@ -4,7 +4,7 @@ namespace Somnambulist\Domain\Tests\Events;
 
 use Events\NamespacedEvent;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Collection\Immutable;
+use Somnambulist\Collection\FrozenCollection as Immutable;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\AbstractDomainEvent;
 use Somnambulist\Domain\Events\Exceptions\InvalidPropertyException;

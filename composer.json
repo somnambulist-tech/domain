@@ -41,7 +41,7 @@
         "ext-mbstring": "*",
         "beberlei/assert": "~3.0",
         "eloquent/enumeration": "~5.1",
-        "somnambulist/collection": "~2.2"
+        "somnambulist/collection": "~3.0"
     },
     "require-dev": {
         "doctrine/orm": "~2.6",

@@ -4,7 +4,7 @@ namespace Somnambulist\Domain\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
-use Somnambulist\Collection\Collection;
+use Somnambulist\Collection\MutableCollection as Collection;
 
 /**
  * Class JsonCollectionType

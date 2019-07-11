@@ -3,8 +3,8 @@
 namespace Somnambulist\Domain\Events;
 
 use ReflectionClass;
-use Somnambulist\Collection\Collection;
-use Somnambulist\Collection\Immutable;
+use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Collection\FrozenCollection as Immutable;
 use Somnambulist\Domain\Entities\Contracts\AggregateRoot;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\Exceptions\InvalidPropertyException;

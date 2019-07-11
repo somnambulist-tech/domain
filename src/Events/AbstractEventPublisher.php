@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Domain\Events;
 
-use Somnambulist\Collection\Collection;
+use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Events\Contracts\RaisesDomainEvents;
 
 /**
@@ -59,7 +59,7 @@ abstract class AbstractEventPublisher
      */
     public function stopPublishingEventsFrom(RaisesDomainEvents $entity): void
     {
-        $this->entities->removeElement($entity);
+        $this->entities->remove($entity);
     }
 
     /**
