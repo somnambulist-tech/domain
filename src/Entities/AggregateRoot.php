@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Entities;
 
 use Somnambulist\Domain\Entities\Contracts\AggregateRoot as AggregateRootContract;
-use Somnambulist\Domain\Entities\Traits\Timestampable;
+use Somnambulist\Domain\Entities\Behaviours\Timestampable;
 use Somnambulist\Domain\Events\Traits\RaisesDomainEvents;
 
 /**
