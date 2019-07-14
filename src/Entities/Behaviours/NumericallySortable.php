@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Traits;
+namespace Somnambulist\Domain\Entities\Behaviours;
 
 /**
  * Trait NumericallySortable
  *
- * @package    Somnambulist\Domain\Entities\Traits
- * @subpackage Somnambulist\Domain\Entities\Traits\NumericallySortable
+ * @package    Somnambulist\Domain\Entities\Behaviours
+ * @subpackage Somnambulist\Domain\Entities\Behaviours\NumericallySortable
  */
 trait NumericallySortable
 {

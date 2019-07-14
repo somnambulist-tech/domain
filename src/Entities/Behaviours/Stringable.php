@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Traits;
+namespace Somnambulist\Domain\Entities\Behaviours;
 
 use Somnambulist\Domain\Entities\Contracts\Nameable as NameableContract;
 
 /**
  * Trait Stringable
  *
- * @package    Somnambulist\Domain\Entities\Traits
- * @subpackage Somnambulist\Domain\Entities\Traits\Stringable
+ * @package    Somnambulist\Domain\Entities\Behaviours
+ * @subpackage Somnambulist\Domain\Entities\Behaviours\Stringable
  */
 trait Stringable
 {

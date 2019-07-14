@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Traits;
+namespace Somnambulist\Domain\Entities\Behaviours;
 
 /**
  * Trait Versionable
  *
- * @package    Somnambulist\Domain\Entities\Traits
- * @subpackage Somnambulist\Domain\Entities\Traits\Versionable
+ * @package    Somnambulist\Domain\Entities\Behaviours
+ * @subpackage Somnambulist\Domain\Entities\Behaviours\Versionable
  */
 trait Versionable
 {
