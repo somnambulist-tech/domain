@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2019-08-22
+----------
+
+ * Added some common types of exception for entity operations
+
 2019-07-02
 ----------
 
