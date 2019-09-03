@@ -21,7 +21,7 @@ class DomainEventPublisherTest extends TestCase
      */
     private $publisher;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $listener   = new \DomainEventListener();
         $dispatcher = new EventDispatcher();
@@ -31,7 +31,7 @@ class DomainEventPublisherTest extends TestCase
         $this->publisher = new DomainEventPublisher($dispatcher);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->publisher = null;
     }

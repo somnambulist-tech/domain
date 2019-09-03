@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+2019-09-03
+----------
+
+ * Added EntityLocator abstract class
+ * Added locator helper traits
+ * Added some useful Postgres DQL functions
+ * Added Pagerfanta paginator helper
+
 2019-08-22
 ----------
 

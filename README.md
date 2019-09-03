@@ -14,6 +14,9 @@ It consists of:
  * Doctrine
    * Enumeration factories + Type bindings
    * Additional types / type overrides for the Doctrine Type system
+   * Abstract EntityLocator that extends EntityRepository
+   * Custom Postgres DQL functions
+   * Custom traits for EntityRepository 
  * default XML mappings for embeddable objects in Doctrine .dcm.xml and Symfony .orm.xml conventions
 
 ### Requirements

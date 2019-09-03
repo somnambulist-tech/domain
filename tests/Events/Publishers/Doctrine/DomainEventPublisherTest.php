@@ -26,7 +26,7 @@ class DomainEventPublisherTest extends TestCase
      */
     protected $em;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $evm = new EventManager();
         $evm->addEventSubscriber(new DomainEventPublisher());
@@ -72,7 +72,7 @@ class DomainEventPublisherTest extends TestCase
         $this->em = $em;
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->em = null;
     }

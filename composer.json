@@ -41,6 +41,7 @@
         "ext-mbstring": "*",
         "beberlei/assert": "~3.0",
         "eloquent/enumeration": "~5.1",
+        "pragmarx/ia-str": "~5.8",
         "somnambulist/collection": "~3.0"
     },
     "require-dev": {
@@ -48,7 +49,8 @@
         "illuminate/events": "~5.4",
         "myclabs/php-enum": "~1.7",
         "nesbot/carbon": "~2.0",
-        "phpunit/phpunit": "~7.0",
+        "pagerfanta/pagerfanta": "~2.1",
+        "phpunit/phpunit": "~8.2",
         "ramsey/uuid": "~3.7",
         "symfony/event-dispatcher": "~4.0",
         "symfony/var-dumper": "~4.0",
@@ -58,6 +60,7 @@
         "giggsey/libphonenumber-for-php": "*",
         "propaganistas/laravel-phone": "*",
         "doctrine/orm": "*",
-        "laravel-doctrine/orm": "*"
+        "laravel-doctrine/orm": "*",
+        "pagerfanta/pagerfanta": "*"
     }
 }

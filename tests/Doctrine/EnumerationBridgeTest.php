@@ -1,8 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Doctrine\DoctrineEnumBridge;
 
-use Closure;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ArrayType;
 use Doctrine\DBAL\Types\BigIntType;
@@ -20,7 +19,6 @@ use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\DBAL\Types\FloatType;
 use Doctrine\DBAL\Types\GuidType;
 use Doctrine\DBAL\Types\IntegerType;
-use Doctrine\DBAL\Types\JsonArrayType;
 use Doctrine\DBAL\Types\JsonType;
 use Doctrine\DBAL\Types\ObjectType;
 use Doctrine\DBAL\Types\SimpleArrayType;
@@ -30,8 +28,8 @@ use Doctrine\DBAL\Types\TextType;
 use Doctrine\DBAL\Types\TimeImmutableType;
 use Doctrine\DBAL\Types\TimeType;
 use Doctrine\DBAL\Types\Type;
-use Prophecy\Argument;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Argument;
 use Somnambulist\Domain\Doctrine\EnumerationBridge;
 use Somnambulist\Domain\Tests\Doctrine\Enum\Action;
 use Somnambulist\Domain\Tests\Doctrine\Enum\Gender;
@@ -58,7 +56,7 @@ class EnumerationBridgeTest extends TestCase
      */
     protected $platform;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->platform = $this->prophesize(AbstractPlatform::class);
 
@@ -72,7 +70,7 @@ class EnumerationBridgeTest extends TestCase
         $refProp->setValue(null, []);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $refProp = new \ReflectionProperty(Type::class, '_typesMap');
         $refProp->setAccessible(true);

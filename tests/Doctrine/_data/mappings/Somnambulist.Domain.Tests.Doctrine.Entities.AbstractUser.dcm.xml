@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="Somnambulist\Domain\Tests\Doctrine\Entities\Order" table="orders">
+    <entity name="Somnambulist\Domain\Tests\Doctrine\Entities\AbstractUser" table="users" inheritance-type="SINGLE_TABLE">
+        <discriminator-column name="type" />
+        <discriminator-map>
+            <discriminator-mapping value="user" class="Somnambulist\Domain\Tests\Doctrine\Entities\User"/>
+        </discriminator-map>
+
         <id name="id" type="integer" column="id">
             <generator strategy="IDENTITY"/>
         </id>
 
-        <embedded name="orderRef" class="Somnambulist\Domain\Entities\Types\Identity\Uuid" use-column-prefix="false" />
-        <embedded name="purchaser" class="Somnambulist\Domain\Tests\Doctrine\Entities\ValueObjects\Purchaser" />
-        <embedded name="total" class="Somnambulist\Domain\Entities\Types\Money\Money" />
-
-        <field name="properties" type="json_collection" />
         <field name="name" type="string" nullable="true"/>
-        <field name="createdAt" type="datetime"/>
     </entity>
 </doctrine-mapping>

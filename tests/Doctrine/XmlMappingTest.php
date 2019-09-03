@@ -19,6 +19,7 @@ use Somnambulist\Domain\Entities\Types\Money\Currency;
 use Somnambulist\Domain\Entities\Types\Money\Money;
 use Somnambulist\Domain\Tests\Doctrine\Entities\Order;
 use Somnambulist\Domain\Tests\Doctrine\Entities\ValueObjects\Purchaser;
+use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
 
 /**
  * Class XmlMappingTest
@@ -30,62 +31,7 @@ use Somnambulist\Domain\Tests\Doctrine\Entities\ValueObjects\Purchaser;
 class XmlMappingTest extends TestCase
 {
 
-    /**
-     * @var EntityManager
-     */
-    protected $em;
-
-    protected function setUp()
-    {
-        $conn = [
-            'driver'   => $GLOBALS['DOCTRINE_DRIVER'],
-            'memory'   => $GLOBALS['DOCTRINE_MEMORY'],
-            'dbname'   => $GLOBALS['DOCTRINE_DATABASE'],
-            'user'     => $GLOBALS['DOCTRINE_USER'],
-            'password' => $GLOBALS['DOCTRINE_PASSWORD'],
-            'host'     => $GLOBALS['DOCTRINE_HOST'],
-        ];
-
-        $driver = new XmlDriver([
-            __DIR__ . '/_data/mappings',
-            __DIR__ . '/../../config/xml/doctrine',
-        ]);
-        $config = new Configuration();
-        $config->setMetadataCacheImpl(new ArrayCache());
-        $config->setQueryCacheImpl(new ArrayCache());
-        $config->setProxyDir(sys_get_temp_dir());
-        $config->setProxyNamespace('Somnambulist\Domain\Tests\Doctrine\Proxies');
-        $config->setMetadataDriverImpl($driver);
-
-        Bootstrapper::registerEnumerations();
-        Bootstrapper::registerTypes();
-
-        $em = EntityManager::create($conn, $config);
-
-        $schemaTool = new SchemaTool($em);
-
-        try {
-            $schemaTool->createSchema([
-                $em->getClassMetadata(Order::class),
-            ]);
-        } catch (\Exception $e) {
-            if (
-                $GLOBALS['DOCTRINE_DRIVER'] != 'pdo_mysql' ||
-                !($e instanceof \PDOException && strpos($e->getMessage(), 'Base table or view already exists') !== false)
-            ) {
-                throw $e;
-            }
-        }
-
-        $this->em = $em;
-    }
-
-    protected function tearDown()
-    {
-        $this->em = null;
-    }
-
-
+    use BuildDoctrineInstance;
 
     /**
      * @group doctrine

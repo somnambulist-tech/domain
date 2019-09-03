@@ -48,6 +48,11 @@ class Order
     protected $properties;
 
     /**
+     * @var string
+     */
+    protected $name;
+
+    /**
      * Constructor.
      *
      * @param Uuid      $orderRef

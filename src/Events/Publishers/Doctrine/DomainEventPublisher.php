@@ -72,6 +72,25 @@ class DomainEventPublisher implements EventSubscriber
     {
         $em     = $event->getEntityManager();
         $evm    = $em->getEventManager();
+        $events = $this->sortEventsForDispatch($event);
+
+        /*
+         * Events should now be in created order so they can be dispatched / published.
+         * If overriding this subscriber, fire messages to rabbitmq, beanstalk etc here
+         * or replace doctrine event manager with another event dispatcher.
+         */
+        $events->each(function ($event) use ($em, $evm) {
+            /** @var AbstractDomainEvent $event */
+            $evm->dispatchEvent('on' . $event->name(), EventProxy::createFrom($event));
+            return true;
+        });
+
+        $this->clear();
+    }
+
+    protected function sortEventsForDispatch(PostFlushEventArgs $event): Collection
+    {
+        $em     = $event->getEntityManager();
         $events = new Collection();
 
         /*
@@ -96,17 +115,11 @@ class DomainEventPublisher implements EventSubscriber
             return bccomp((string)$a->time(), (string)$b->time(), 6);
         });
 
-        /*
-         * Events should now be in created order so they can be dispatched / published.
-         * If overriding this subscriber, fire messages to rabbitmq, beanstalk etc here
-         * or replace doctrine event manager with another event dispatcher.
-         */
-        $events->each(function ($event) use ($em, $evm) {
-            /** @var AbstractDomainEvent $event */
-            $evm->dispatchEvent('on' . $event->name(), EventProxy::createFrom($event));
-            return true;
-        });
+        return $events;
+    }
 
-        $this->entities->reset();
+    protected function clear(): void
+    {
+        $this->entities->clear();
     }
 }

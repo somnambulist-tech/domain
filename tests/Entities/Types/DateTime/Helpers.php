@@ -13,7 +13,7 @@ use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
 trait Helpers
 {
 
-    protected function setUp()
+    protected function setUp(): void
     {
         date_default_timezone_set('America/Toronto');
     }

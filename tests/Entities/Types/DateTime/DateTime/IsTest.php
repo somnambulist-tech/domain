@@ -264,18 +264,6 @@ class IsTest extends TestCase
      * @group value-objects
      * @group value-objects-date-time
      */
-    public function testNowIsPastFalse()
-    {
-        if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
-            $this->markTestSkipped();
-        }
-        $this->assertFalse(DateTime::now()->isPast());
-    }
-
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testIsLeapYearTrue()
     {
         $this->assertTrue(DateTime::createFromDate(2016, 1, 1)->isLeapYear());
