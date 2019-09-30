@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Domain\Events;
 
+use IlluminateAgnostic\Str\Support\Str;
 use ReflectionClass;
 use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Collection\FrozenCollection as Immutable;
@@ -63,6 +64,16 @@ abstract class AbstractDomainEvent
         $this->context    = new Immutable($context);
         $this->time       = microtime(true);
         $this->version    = $version;
+    }
+
+    public function __set($name, $value)
+    {
+        // prevent arbitrary properties
+    }
+
+    public function __unset($name)
+    {
+        // prevent arbitrary properties
     }
 
     public function __toString()
@@ -128,6 +139,21 @@ abstract class AbstractDomainEvent
         }
 
         return $this->name;
+    }
+
+    /**
+     * Returns a suitable routing key for broadcasting this event in `group.event_name` format
+     *
+     * @return string
+     */
+    public function notificationName(): string
+    {
+        return sprintf('%s.%s', $this->notificationGroup(), Str::snake($this->name()));
+    }
+
+    private function notificationGroup(): string
+    {
+        return (isset($this->group) ? $this->group : (defined(static::class . '::NOTIFICATION_GROUP') ? static::NOTIFICATION_GROUP : 'app'));
     }
 
     private function parseName(): string

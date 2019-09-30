@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Events\Publishers\Doctrine;
 
 use Doctrine\Common\EventArgs;
-use Somnambulist\Collection\Immutable;
+use Somnambulist\Collection\FrozenCollection as Immutable;
 use Somnambulist\Domain\Events\Traits\ProxyableEvent;
 
 /**

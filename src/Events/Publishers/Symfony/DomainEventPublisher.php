@@ -21,7 +21,7 @@ class DomainEventPublisher extends AbstractEventPublisher
         $events->each(function ($event) {
             $proxy = EventProxy::createFrom($event);
 
-            $this->dispatcher()->dispatch($proxy->name(), $proxy);
+            $this->dispatcher()->dispatch($proxy, $proxy->name());
         });
     }
 

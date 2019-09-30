@@ -2,6 +2,8 @@
 
 namespace Somnambulist\Domain\Tests\Events;
 
+use Events\GroupDefinedEvent;
+use Events\GroupPropertyEvent;
 use Events\NamespacedEvent;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Collection\FrozenCollection as Immutable;
@@ -33,11 +35,41 @@ class DomainEventTest extends TestCase
     /**
      * @group domain-event
      */
-    public function testCanGetEvetName()
+    public function testCanGetEventName()
     {
         $event = new NamespacedEvent();
 
         $this->assertEquals('Namespaced', $event->name());
+    }
+
+    /**
+     * @group domain-event
+     */
+    public function testCanGetNotificationName()
+    {
+        $event = new NamespacedEvent();
+
+        $this->assertEquals('app.namespaced', $event->notificationName());
+    }
+
+    /**
+     * @group domain-event
+     */
+    public function testNotificationNameResolvesClassConstant()
+    {
+        $event = new GroupDefinedEvent();
+
+        $this->assertEquals('my_group.group_defined', $event->notificationName());
+    }
+
+    /**
+     * @group domain-event
+     */
+    public function testNotificationNameResolvesClassProperty()
+    {
+        $event = new GroupPropertyEvent();
+
+        $this->assertEquals('my_group.group_property', $event->notificationName());
     }
 
     /**

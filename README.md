@@ -4,19 +4,28 @@ Provides a core set of support classes for building domain oriented projects. Th
 previously separate domain and mapping libraries into a single project for easier maintenance.
 
 It consists of:
-
+ 
+ * Commands
+   * CommandBus interface / abstract command
+   * SF Messenger implementation
  * Entities
    * Behaviours - some default implementations for the interfaces
    * Contracts - some common interface definitions
    * Types - a collection of value-objects, enumerations and an aggregate root
  * Events
    * A domain events implementation including bindings for Doctrine, Symfony and Laravel
+   * EventBus interface
+   * SF Messenger EventBus implementation
+   * Doctrine subscriber can additionally broadcast domain events using EventBus
  * Doctrine
    * Enumeration factories + Type bindings
    * Additional types / type overrides for the Doctrine Type system
    * Abstract EntityLocator that extends EntityRepository
    * Custom Postgres DQL functions
-   * Custom traits for EntityRepository 
+   * Custom traits for EntityRepository
+ * Queries
+   * QueryBus interface / abstract query
+   * SF Messenger implementation 
  * default XML mappings for embeddable objects in Doctrine .dcm.xml and Symfony .orm.xml conventions
 
 ### Requirements
@@ -26,6 +35,7 @@ It consists of:
  * beberlei/assert
  * eloquent/enumeration
  * somnambulist/collection
+ * symfony/messenger is required for the Messenger bus implementations.
 
 ### Installation
 
@@ -43,6 +53,7 @@ See the docs folder for more documentation on each component.
  * [Doctrine Mapping](docs/doctrine-mappings.md)
  * [Domain Events](docs/domain-events.md)
  * [Entity Behaviours](docs/entity-behaviours.md)
+ * [Symfony Messenger Integration](docs/messenger.md)
  * [Value Objects](docs/value-objects.md)
 
 ### Links

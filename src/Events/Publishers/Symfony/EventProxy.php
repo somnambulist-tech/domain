@@ -2,9 +2,9 @@
 
 namespace Somnambulist\Domain\Events\Publishers\Symfony;
 
-use Somnambulist\Collection\Immutable;
+use Somnambulist\Collection\FrozenCollection as Immutable;
 use Somnambulist\Domain\Events\Traits\ProxyableEvent;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class EventProxy

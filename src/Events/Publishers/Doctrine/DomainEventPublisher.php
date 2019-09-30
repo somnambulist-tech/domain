@@ -11,6 +11,8 @@ use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\AbstractDomainEvent;
 use Somnambulist\Domain\Events\Contracts\RaisesDomainEvents;
+use Somnambulist\Domain\Events\EventBus;
+use Somnambulist\Domain\Events\Publishers\Behaviours\BroadcastsDomainEvents;
 
 /**
  * Class DomainEventListener
@@ -23,6 +25,8 @@ use Somnambulist\Domain\Events\Contracts\RaisesDomainEvents;
 class DomainEventPublisher implements EventSubscriber
 {
 
+    use BroadcastsDomainEvents;
+
     /**
      * @var Collection|RaisesDomainEvents[]
      */
@@ -30,10 +34,13 @@ class DomainEventPublisher implements EventSubscriber
 
     /**
      * Constructor.
+     *
+     * @param EventBus|null $eventBus
      */
-    public function __construct()
+    public function __construct(EventBus $eventBus = null)
     {
         $this->entities = new Collection();
+        $this->eventBus = $eventBus;
     }
 
     /**
@@ -82,6 +89,7 @@ class DomainEventPublisher implements EventSubscriber
         $events->each(function ($event) use ($em, $evm) {
             /** @var AbstractDomainEvent $event */
             $evm->dispatchEvent('on' . $event->name(), EventProxy::createFrom($event));
+            $this->notify($event);
             return true;
         });
 

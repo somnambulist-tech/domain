@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2019-09-30
+----------
+
+ * Added an SF Messenger based Command, Event and Query bus based on
+
 2019-09-03
 ----------
 

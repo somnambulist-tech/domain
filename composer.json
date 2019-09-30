@@ -52,15 +52,18 @@
         "pagerfanta/pagerfanta": "~2.1",
         "phpunit/phpunit": "~8.2",
         "ramsey/uuid": "~3.7",
+        "symfony/contracts": "~1.1",
         "symfony/event-dispatcher": "~4.0",
+        "symfony/messenger": "~4.0",
         "symfony/var-dumper": "~4.0",
         "symfony/yaml": "4.0"
     },
     "suggest": {
-        "giggsey/libphonenumber-for-php": "*",
-        "propaganistas/laravel-phone": "*",
-        "doctrine/orm": "*",
-        "laravel-doctrine/orm": "*",
-        "pagerfanta/pagerfanta": "*"
+        "giggsey/libphonenumber-for-php": "To validate phone numbers / convert to E164 from a local format",
+        "propaganistas/laravel-phone": "A Laravel mapping for the Giggsey",
+        "doctrine/orm": "To use the Doctrine components and have an entity mapper",
+        "laravel-doctrine/orm": "A Laravel mapping for Doctrine",
+        "pagerfanta/pagerfanta": "For Pagination of Doctrine results and other data",
+        "symfony/messenger": "(A)Sync Bus implementation for Symfony needed for query/command/event bus messenger implementations"
     }
 }
