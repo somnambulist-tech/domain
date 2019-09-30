@@ -14,6 +14,7 @@ so now what would have been a string can be type hinted with a specific type.
 Continuing with the above example of HTTP verb, we create an enumeration as follow:
 
 ```php
+<?php
 namespace App\Domain;
 
 final class HTTPMethod extends AbstractEnumeration
@@ -35,6 +36,7 @@ Each constant is converted to a method via __callStatic map throughs. It can be 
 a class e.g.:
 
 ```php
+<?php
 class RequestLog
 {
     public function __construct(string $resource, HTTPMethod $method)
@@ -55,6 +57,7 @@ pre-load any of the instances by overloading: `initializeMembers`. Then in that 
 our instances:
 
 ```php
+<?php
 final class Planet extends AbstractMultiton
 {
     protected function __construct($key, $name, $diameter, $mass, $distanceToSun)
@@ -79,6 +82,7 @@ Additionally: as a multiton can have many properties, we must define which one s
 when casting to string:
 
 ```php
+<?php
 final class Planet extends AbstractMultiton
 {
 

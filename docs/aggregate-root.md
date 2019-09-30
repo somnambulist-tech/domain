@@ -44,6 +44,7 @@ listener. This could be the old vs new or the entire entity reference, it is ent
 up to you.
 
 ```php
+<?php
 class MyAggregate extends AggregateRoot
 {
     public function __construct($id, $name, $another)
@@ -63,6 +64,7 @@ Generally it is better to not raise events in the constructor but instead to use
 constructors for primary object creation:
 
 ```php
+<?php
 class MyAggregate extends AggregateRoot
 {
     private function __construct($id, $name, $another)
@@ -113,6 +115,7 @@ $order->lineItem($ref)->changeQuantity(4);
 The OrderItem method might be something like:
 
 ```php
+<?php
 class OrderItem
 {
 
@@ -149,6 +152,7 @@ manipulations can be controlled.
 For example: a User can have several addresses of certain types:
 
 ```php
+<?php
 class UserAddresses
 {
      private $user;

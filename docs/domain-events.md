@@ -31,6 +31,7 @@ listener. This could be the old vs new or the entire entity reference, it is ent
 up to you.
 
 ```php
+<?php
 class SomeObject extends AggregateRoot
 {
     public function __construct($id, $name, $another, $createdAt)
@@ -49,6 +50,7 @@ Generally it is better to not raise events in the constructor but instead to use
 constructors for primary object creation:
 
 ```php
+<?php
 class SomeObject extends AggregateRoot
 {
     private function __construct($id, $name, $another, $createdAt)
@@ -74,6 +76,7 @@ class SomeObject extends AggregateRoot
 To define your own event extend the AbstractDomainEvent object. That's basically it!
 
 ```php
+<?php
 class MyEntityCreatedEvent extends AbstractDomainEvent
 {
 
@@ -84,6 +87,7 @@ You can create an intermediary to add base methods to your events e.g.: if you w
 to broadcast through a message queue you may want the event to name itself:
 
 ```php
+<?php
 abstract class AppDomainEvent extends AbstractDomainEvent
 {
 
@@ -102,6 +106,7 @@ abstract class AppDomainEvent extends AbstractDomainEvent
 And then extend it with the overrides you need:
 
 ```php
+<?php
 class MyEntityCreatedEvent extends AppDomainEvent
 {
 
@@ -163,6 +168,7 @@ translation of events. An integration is provided to make registering event emit
 objects, similar to the Symfony integration.
 
 ```php
+<?php
 class SomeServiceClass
 {
     protected $publisher;
@@ -215,6 +221,7 @@ The listener should add methods that are named:
 The example from the unit test:
 
 ```php
+<?php
 class EventListener
 {    
     public function onMyEntityCreated(MyEntityCreatedEvent $event)

@@ -28,6 +28,7 @@ The callbacks will receive:
 For example, in a Symfony project, in your AppBundle class:
 
 ```php
+<?php
 class AppBundle extends Bundle
 {
     public function boot()
@@ -51,6 +52,7 @@ class AppBundle extends Bundle
 In Laravel, add to your AppServiceProvider (`register` and `boot` should both work):
 
 ```php
+<?php
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
@@ -82,6 +84,7 @@ array of enum name and either an array of callables (constructor, serializer) or
 constructor:
 
 ```php
+<?php
 class AppBundle extends Bundle
 {
     public function boot()
@@ -135,6 +138,7 @@ To share a constructor callable, use the FQCN as the name of the enumerable or y
 map of aliases to Enumerables:
 
 ```php
+<?php
 class AppBundle extends Bundle
 {
     public function boot()

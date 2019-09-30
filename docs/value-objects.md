@@ -22,6 +22,7 @@ method (equals()) uses reflection on the VO properties and compares them directl
 For example:
 
 ```php
+<?php
 use Assert\Assert;
 use Somnambulist\Domain\Entities\AbstractValueObject;
 
