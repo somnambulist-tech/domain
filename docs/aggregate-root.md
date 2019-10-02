@@ -53,7 +53,7 @@ class MyAggregate extends AggregateRoot
         $this->name      = $name;
         $this->another   = $another;
         
-        $this->>initializeTimestamps();
+        $this->initializeTimestamps();
         
         $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
     }
@@ -73,7 +73,7 @@ class MyAggregate extends AggregateRoot
         $this->name      = $name;
         $this->another   = $another;
         
-        $this->>initializeTimestamps();
+        $this->initializeTimestamps();
     }
     
     public static function create($id, $name, $another)
