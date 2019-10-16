@@ -29,6 +29,8 @@ For example, in a Symfony project, in your AppBundle class:
 
 ```php
 <?php
+use Somnambulist\Domain\Doctrine\EnumerationBridge;
+
 class AppBundle extends Bundle
 {
     public function boot()
@@ -53,6 +55,8 @@ In Laravel, add to your AppServiceProvider (`register` and `boot` should both wo
 
 ```php
 <?php
+use Somnambulist\Domain\Doctrine\EnumerationBridge;
+
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
@@ -85,6 +89,8 @@ constructor:
 
 ```php
 <?php
+use Somnambulist\Domain\Doctrine\EnumerationBridge;
+
 class AppBundle extends Bundle
 {
     public function boot()
@@ -139,6 +145,8 @@ map of aliases to Enumerables:
 
 ```php
 <?php
+use Somnambulist\Domain\Doctrine\EnumerationBridge;
+
 class AppBundle extends Bundle
 {
     public function boot()
@@ -170,6 +178,48 @@ class AppBundle extends Bundle
 
 Because each enumerable can be mapped to its own construct / serializer handlers, complex multitions
 from the Eloquent\Enumerable library can be handled by this bridge.
+
+### Built-in Enumeration Constructors
+
+The following value-object constructors are provided in the library in the `Doctrine\Enumerations`
+namespace:
+
+ * CountryEnumeration
+ * CurrencyEnumeration
+ * GenericEloquentEnumeration
+ * GenericEloquentMultiton
+ * NullableGenericEloquentEnumeration
+ 
+When using Country or Currency the custom serializer should be registered to correctly convert the
+VO to the ISO code for storage. These would be setup as follows:
+
+```php
+<?php
+use Somnambulist\Domain\Doctrine\EnumerationBridge;
+use Somnambulist\Domain\Entities\Types\Geography\Country;
+use Somnambulist\Domain\Entities\Types\Money\Currency;
+use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CountryEnumeration;
+use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CurrencyEnumeration;
+use Somnambulist\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;
+use Somnambulist\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;
+
+class AppBundle extends Bundle
+{
+    public function boot()
+    {
+        EnumerationBridge::registerEnumType(Country::class, new CountryEnumeration(), new CountrySerializer());
+        EnumerationBridge::registerEnumType(Currency::class, new CurrencyEnumeration(), new CurrencySerializer());
+    }
+}
+```
+
+__Note:__ the first argument of `registerEnumType` is the alias/name for how to refer to this type.
+If you use the fully qualified class name via the `::class` constant, then the Doctrine mapping must
+reference this type:
+
+```xml
+<field name="currency" type="Somnambulist\Domain\Entities\Types\Money\Currency" length="3" nullable="false"/>
+```
 
 ### Links
 

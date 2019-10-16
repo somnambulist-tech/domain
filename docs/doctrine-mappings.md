@@ -43,6 +43,8 @@ to be used as enumerations. These are stored using the respective ISO 3-char cod
 __Note:__ concrete enumerations cannot be extended. If the built in ones do not meet your
 needs, create your own.
 
+See [Doctrine Enumeration Bridge](./doctrine-enum-bridge.md) for more on using the bridge.
+
 #### Register Custom Types
 
 Custom types are included for:
@@ -88,10 +90,10 @@ fields:
         type: json
 
     country:
-        type: Somnambulist\ValueObjects\Types\Geography\Country
+        type: Somnambulist\Domain\Entities\Types\Geography\Country
     
     currency:
-        type: Somnambulist\ValueObjects\Types\Money\Currency
+        type: Somnambulist\Domain\Entities\Types\Money\Currency
 ```
 
 To use the value-objects:
@@ -99,10 +101,10 @@ To use the value-objects:
 ```yaml
 embedded:
     contact:
-        class: Somnambulist\ValueObjects\Types\Identity\EmailAddress
+        class: Somnambulist\Domain\Entities\Types\Identity\EmailAddress
         
     homepage:
-        class: Somnambulist\ValueObjects\Types\Web\Url
+        class: Somnambulist\Domain\Entities\Types\Web\Url
 ```
 
 Or in XML format:
@@ -120,8 +122,8 @@ Alternatively if the extended types are registered you can instead use:
 
 ```xml
 <entity name="My\Entity">
-    <embedded name="email" class="email_address" length="200" />
-    <embedded name="phone" class="phone_number" length="16" />
+    <embedded name="email" class="email" length="200" />
+    <embedded name="phone" class="phone" length="20" />
     <embedded name="homepage" class="url" length="400" />
 </entity>
 ```
