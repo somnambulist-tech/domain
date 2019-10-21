@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2019-10-21
+----------
+
+ * Added ExternalIdentity value object
+
 2019-09-30
 ----------
 
