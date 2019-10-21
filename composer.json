@@ -40,7 +40,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "beberlei/assert": "~3.0",
-        "eloquent/enumeration": "~5.1",
+        "eloquent/enumeration": "~5.1|~6.0",
         "pragmarx/ia-str": "~5.8",
         "somnambulist/collection": "~3.0"
     },
