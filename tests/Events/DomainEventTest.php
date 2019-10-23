@@ -5,11 +5,15 @@ namespace Somnambulist\Domain\Tests\Events;
 use Events\GroupDefinedEvent;
 use Events\GroupPropertyEvent;
 use Events\NamespacedEvent;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Collection\FrozenCollection as Immutable;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\AbstractDomainEvent;
 use Somnambulist\Domain\Events\Exceptions\InvalidPropertyException;
+use stdClass;
+use function json_encode;
+use function microtime;
 
 /**
  * Class DomainEventTest
@@ -157,7 +161,7 @@ class DomainEventTest extends TestCase
         $event = $this->getMockForAbstractClass(AbstractDomainEvent::class, [
             [
                 'foo' => 'bar',
-            ]
+            ],
         ]);
 
         $this->assertEquals('bar', $event->property('foo'));
@@ -171,10 +175,120 @@ class DomainEventTest extends TestCase
         $event = $this->getMockForAbstractClass(AbstractDomainEvent::class, [
             [
                 'foo' => 'bar',
-            ]
+            ],
         ]);
 
         $this->expectException(InvalidPropertyException::class);
         $event->property('baz');
+    }
+
+    /**
+     * @group domain-event
+     * @group domain-event-to-array
+     */
+    public function testToArray()
+    {
+        $event = NamespacedEvent::create(['foo' => 'bar'], ['context' => 'value', 'user' => 'user@example.example'], 2);
+
+        $expected = [
+            'aggregate' => [
+                'class' => null,
+                'id'    => null,
+            ],
+            'event'     => [
+                'class'   => 'Events\NamespacedEvent',
+                'name'    => 'app.namespaced',
+                'version' => 2,
+                'time'    => $event->time(),
+            ],
+            'context'   => [
+                'context' => 'value',
+                'user'    => 'user@example.example',
+            ],
+            'payload'   => [
+                'foo' => 'bar',
+            ],
+        ];
+
+        $this->assertEquals($expected, $event->toArray());
+    }
+
+    /**
+     * @group domain-event
+     * @group domain-event-to-json
+     */
+    public function testToJson()
+    {
+        $event = NamespacedEvent::create(['foo' => 'bar'], ['context' => 'value', 'user' => 'user@example.example'], 2);
+
+        $this->assertEquals(json_encode($event->toArray()), $event->toJson());
+    }
+
+    /**
+     * @group domain-event
+     * @group domain-event-from-array
+     */
+    public function testFromArray()
+    {
+        $data = [
+            'aggregate' => [
+                'class' => null,
+                'id'    => null,
+            ],
+            'event'     => [
+                'class'   => 'Events\NamespacedEvent',
+                'name'    => 'app.namespaced',
+                'version' => 2,
+                'time'    => $ts = microtime(true),
+            ],
+            'context'   => [
+                'context' => 'value',
+                'user'    => 'user@example.example',
+            ],
+            'payload'   => [
+                'foo' => 'bar',
+            ],
+        ];
+
+        $event = AbstractDomainEvent::fromArray(NamespacedEvent::class, $data);
+
+        $this->assertInstanceOf(NamespacedEvent::class, $event);
+        $this->assertEquals($ts, $event->time());
+        $this->assertEquals(2, $event->version());
+        $this->assertNull($event->aggregate());
+        $this->assertEquals('bar', $event->property('foo'));
+        $this->assertEquals('value', $event->context()->get('context'));
+        $this->assertEquals('user@example.example', $event->context()->get('user'));
+    }
+
+    /**
+     * @group domain-event
+     * @group domain-event-from-array
+     */
+    public function testFromArrayOnlyWorksWithDomainEvents()
+    {
+        $data = [
+            'aggregate' => [
+                'class' => null,
+                'id'    => null,
+            ],
+            'event'     => [
+                'class'   => 'Events\NamespacedEvent',
+                'name'    => 'app.namespaced',
+                'version' => 2,
+                'time'    => $ts = microtime(true),
+            ],
+            'context'   => [
+                'context' => 'value',
+                'user'    => 'user@example.example',
+            ],
+            'payload'   => [
+                'foo' => 'bar',
+            ],
+        ];
+
+        $this->expectException(InvalidArgumentException::class);
+
+        AbstractDomainEvent::fromArray(stdClass::class, $data);
     }
 }

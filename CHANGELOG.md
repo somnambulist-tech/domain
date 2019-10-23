@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+2019-10-22
+----------
+
+ * Added toArray / toJson to domain event
+ * Added fromArray to re-generate a domain event from an event payload
+ * Added better documentation for using Doctrine event broadcaster
+ * Added custom Messenger serializer for sending domain event objects
+ * Changed doctrine publisher to use aggregate id if the entity is an AggregateRoot
+
 2019-10-21
 ----------
 

@@ -8,6 +8,7 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events;
 use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Domain\Entities\Contracts\AggregateRoot;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\AbstractDomainEvent;
 use Somnambulist\Domain\Events\Contracts\RaisesDomainEvents;
@@ -106,12 +107,11 @@ class DomainEventPublisher implements EventSubscriber
          */
         foreach ($this->entities as $entity) {
             $class = $em->getClassMetadata(get_class($entity));
+            $id    = $entity instanceof AggregateRoot ? $entity->id() : $class->getSingleIdReflectionProperty()->getValue($entity);
 
             foreach ($entity->releaseAndResetEvents() as $domainEvent) {
                 /** @var AbstractDomainEvent $domainEvent */
-                $domainEvent->setAggregate(
-                    new Aggregate($class->name, $class->getSingleIdReflectionProperty()->getValue($entity))
-                );
+                $domainEvent->setAggregate(new Aggregate($class->name, $id));
 
                 $events->add($domainEvent);
             }

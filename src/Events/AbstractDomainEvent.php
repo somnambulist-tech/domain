@@ -3,12 +3,15 @@
 namespace Somnambulist\Domain\Events;
 
 use IlluminateAgnostic\Str\Support\Str;
+use InvalidArgumentException;
 use ReflectionClass;
-use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Collection\FrozenCollection as Immutable;
+use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Entities\Contracts\AggregateRoot;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\Exceptions\InvalidPropertyException;
+use function class_implements;
+use function is_a;
 
 /**
  * Class DomainEvent
@@ -215,5 +218,52 @@ abstract class AbstractDomainEvent
         if (is_null($this->aggregate)) {
             $this->aggregate = $aggregate;
         }
+    }
+
+    /**
+     * @param string $type
+     * @param array  $array
+     *
+     * @return static
+     * @internal
+     */
+    public static function fromArray(string $type, array $array = []): self
+    {
+        if (!is_a($type, AbstractDomainEvent::class, $allowString = true)) {
+            throw new InvalidArgumentException(sprintf('Type "%s" is not a "%s" class', $type, self::class));
+        }
+
+        /** @var AbstractDomainEvent $event */
+        $event = new $type($array['payload'] ?? [], $array['context'] ?? [], $array['event']['version'] ?? 1);
+        $event->time = $array['event']['time'];
+
+        if ($array['aggregate']['class'] && $array['aggregate']['id']) {
+            $event->aggregate = new Aggregate($array['aggregate']['class'], $array['aggregate']['id']);
+        }
+
+        return $event;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'aggregate' => [
+                'class' => $this->aggregate ? $this->aggregate()->class() : null,
+                'id'    => $this->aggregate ? $this->aggregate()->identity() : null,
+            ],
+            'event'     => [
+                'class'   => static::class,
+                'name'    => $this->notificationName(),
+                'version' => $this->version(),
+                'time'    => $this->time(),
+            ],
+            'context'   => $this->context()->toArray(),
+            'payload'   => $this->properties()->toArray(),
+        ];
+    }
+
+    public function toJson(): string
+    {
+        return json_encode($this->toArray());
     }
 }

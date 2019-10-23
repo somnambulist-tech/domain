@@ -16,12 +16,22 @@ use Symfony\Component\Messenger\Transport\AmqpExt\AmqpStamp;
 class DomainEventPublisher extends AbstractEventPublisher
 {
 
+    /**
+     * Constructor.
+     *
+     * @param MessageBusInterface $eventBus
+     */
+    public function __construct(MessageBusInterface $eventBus)
+    {
+        parent::__construct($eventBus);
+    }
+
     public function dispatch(): void
     {
         $events = $this->orderDomainEvents($this->gatherPublishedDomainEvents($this->entities()));
 
         $events->each(function (AbstractDomainEvent $event) {
-            $this->dispatcher()->dispatch($event, [new AmqpStamp($event->notificationName(), AMQP_NOPARAM)]);
+            $this->dispatcher()->dispatch($event, [new AmqpStamp($event->notificationName())]);
         });
     }
 

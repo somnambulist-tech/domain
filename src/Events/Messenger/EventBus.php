@@ -35,6 +35,6 @@ final class EventBus implements \Somnambulist\Domain\Events\EventBus
      */
     public function dispatch(AbstractDomainEvent $event): void
     {
-        $this->eventBus->dispatch($event, [new AmqpStamp($event->notificationName(), AMQP_NOPARAM)]);
+        $this->eventBus->dispatch($event, [new AmqpStamp($event->notificationName())]);
     }
 }
