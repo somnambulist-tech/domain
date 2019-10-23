@@ -154,7 +154,7 @@ You will need to require the Symfony serializer component for this to work. See:
 https://symfony.com/doc/current/messenger.html#serializing-messages for further
 documentation.
 
-To use the Symfony Serializer by default for all serialize (except domain events):
+To use the Symfony Serializer by default for all serialization (except domain events):
 
 ```yaml
 framework:
