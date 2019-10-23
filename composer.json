@@ -66,6 +66,7 @@
         "doctrine/orm": "To use the Doctrine components and have an entity mapper",
         "laravel-doctrine/orm": "A Laravel mapping for Doctrine",
         "pagerfanta/pagerfanta": "For Pagination of Doctrine results and other data",
-        "symfony/messenger": "(A)Sync Bus implementation for Symfony needed for query/command/event bus messenger implementations"
+        "symfony/messenger": "(A)Sync Bus implementation for Symfony needed for query/command/event bus messenger implementations",
+        "symfony/serializer": "Send domain events as JSON strings via messenger"
     }
 }
