@@ -32,11 +32,16 @@ class Bootstrapper
 
         EnumerationBridge::registerEnumTypes([
             Geography\Srid::class       => $constructor,
+            'srid'                      => $constructor,
             Measure\AreaUnit::class     => $constructor,
+            'area_unit'                 => $constructor,
             Measure\DistanceUnit::class => $constructor,
+            'distance_unit'             => $constructor,
 
             Geography\Country::class => [new CountryEnumeration(), new CountrySerializer()],
+            'country'                => [new CountryEnumeration(), new CountrySerializer()],
             Money\Currency::class    => [new CurrencyEnumeration(), new CurrencySerializer()],
+            'currency'               => [new CurrencyEnumeration(), new CurrencySerializer()],
         ]);
     }
 
