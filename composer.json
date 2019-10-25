@@ -42,6 +42,7 @@
         "beberlei/assert": "~3.0",
         "eloquent/enumeration": "~5.1|~6.0",
         "pragmarx/ia-str": "~5.8",
+        "ramsey/uuid": "~3.8",
         "somnambulist/collection": "~3.0"
     },
     "require-dev": {
@@ -51,14 +52,13 @@
         "nesbot/carbon": "~2.0",
         "pagerfanta/pagerfanta": "~2.1",
         "phpunit/phpunit": "~8.2",
-        "ramsey/uuid": "~3.7",
         "symfony/contracts": "~1.1",
         "symfony/event-dispatcher": "~4.0",
         "symfony/messenger": "~4.0",
         "symfony/property-access": "~4.0",
         "symfony/serializer": "~4.0",
         "symfony/var-dumper": "~4.0",
-        "symfony/yaml": "4.0"
+        "symfony/yaml": "~4.0"
     },
     "suggest": {
         "giggsey/libphonenumber-for-php": "To validate phone numbers / convert to E164 from a local format",

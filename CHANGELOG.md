@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2019-10-25 - 2.2.3
+------------------
+
+ * Added IdentityGenerator for making Uuid objects from Ramsey UUID
+
 2019-10-24 - 2.2.2
 ------------------
 
