@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+2019-10-28 - 2.2.4
+------------------
+
+ * Added some common query behaviours
+ * Added a paginatable query
+ 
 2019-10-25 - 2.2.3
 ------------------
 
