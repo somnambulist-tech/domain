@@ -1,8 +1,8 @@
 Change Log
 ==========
 
-2019-10-29 - 2.2.5
-------------------
+2019-10-29 - 2.2.5 / 2.2.6
+--------------------------
 
  * Added test behaviour helpers for asserting on raised domain events
 

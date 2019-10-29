@@ -3,6 +3,7 @@
 namespace Somnambulist\Domain\Utils;
 
 use Closure;
+use function property_exists;
 
 /**
  * Class EntityAccessor
@@ -29,6 +30,22 @@ final class EntityAccessor
     {
         return Closure::bind(function () use ($method, $args) {
             return $this->{$method}(...$args);
+        }, $object, !is_null($scope) ? $scope : 'static')();
+    }
+
+    /**
+     * Helper to check if the object has a property with the name
+     *
+     * @param object             $object
+     * @param string             $property
+     * @param null|string|object $scope
+     *
+     * @return bool
+     */
+    public static function has(object $object, string $property, $scope = null): bool
+    {
+        return Closure::bind(function () use ($property) {
+            return property_exists($this, $property);
         }, $object, !is_null($scope) ? $scope : 'static')();
     }
 

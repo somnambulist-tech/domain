@@ -35,12 +35,12 @@ trait AssertHasDomainEventOfType
         })->count();
 
         $this->assertGreaterThan(
-            0, $matched, sprintf('Expected at least one event of type %s from %s to be raised, none were', $event, get_class($entity))
+            0, $matched, sprintf('Expected at least one event of type "%s" from "%s" to be raised, none were', $event, get_class($entity))
         );
 
         if (!is_null($count) && $count > 0) {
             $this->assertEquals(
-                $count, $matched, sprintf('Expected %s events to be raised from %s, only %s were', $count, get_class($entity), $matched)
+                $count, $matched, sprintf('Expected "%s" events to be raised from "%s", only "%s" were', $count, get_class($entity), $matched)
             );
         }
     }

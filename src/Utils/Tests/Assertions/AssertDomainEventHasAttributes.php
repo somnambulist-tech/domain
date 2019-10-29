@@ -35,10 +35,10 @@ trait AssertDomainEventHasAttributes
         $this->assertInstanceOf($event, $matched);
 
         foreach ($attributes as $key => $value) {
-            $this->assertTrue($matched->properties()->has($key), sprintf('Event %s was expected to have property %s', $event, $key));
+            $this->assertTrue($matched->properties()->has($key), sprintf('Event "%s" was expected to have property "%s"', $event, $key));
             $this->assertEquals(
                 $value, $matched->properties()->get($key),
-                sprintf('Event %s property %s was expected to be %s, but %s received', $event, $key, $value, $matched->property($key))
+                sprintf('Event "%s" property "%s" was expected to be "%s", but "%s" received', $event, $key, $value, $matched->property($key))
             );
         }
     }

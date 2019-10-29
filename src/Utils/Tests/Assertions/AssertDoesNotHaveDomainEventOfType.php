@@ -30,6 +30,6 @@ trait AssertDoesNotHaveDomainEventOfType
             return $evt instanceof $event;
         })->count();
 
-        $this->assertEquals(0, $matched, sprintf('%s raised %s events when none were expected', get_class($entity), $matched));
+        $this->assertEquals(0, $matched, sprintf('"%s" raised "%s" events when none were expected', get_class($entity), $matched));
     }
 }
