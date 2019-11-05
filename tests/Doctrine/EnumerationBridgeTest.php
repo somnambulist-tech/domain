@@ -28,6 +28,7 @@ use Doctrine\DBAL\Types\TextType;
 use Doctrine\DBAL\Types\TimeImmutableType;
 use Doctrine\DBAL\Types\TimeType;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\Types;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Somnambulist\Domain\Doctrine\EnumerationBridge;
@@ -61,45 +62,17 @@ class EnumerationBridgeTest extends TestCase
         $this->platform = $this->prophesize(AbstractPlatform::class);
 
         // Before every test, clean registered types
-        $refProp = new \ReflectionProperty(Type::class, '_typeObjects');
+        $registry = new \ReflectionObject(Type::getTypeRegistry());
+        $refProp = $registry->getProperty('instances');
         $refProp->setAccessible(true);
-        $refProp->setValue(null, []);
-
-        $refProp = new \ReflectionProperty(Type::class, '_typesMap');
-        $refProp->setAccessible(true);
-        $refProp->setValue(null, []);
+        $refProp->setValue($registry, []);
     }
 
     public function tearDown(): void
     {
-        $refProp = new \ReflectionProperty(Type::class, '_typesMap');
+        $refProp = new \ReflectionProperty(Type::class, 'typeRegistry');
         $refProp->setAccessible(true);
-        $refProp->setValue(null, [
-            Type::TARRAY => ArrayType::class,
-            Type::SIMPLE_ARRAY => SimpleArrayType::class,
-            Type::JSON => JsonType::class,
-            Type::OBJECT => ObjectType::class,
-            Type::BOOLEAN => BooleanType::class,
-            Type::INTEGER => IntegerType::class,
-            Type::SMALLINT => SmallIntType::class,
-            Type::BIGINT => BigIntType::class,
-            Type::STRING => StringType::class,
-            Type::TEXT => TextType::class,
-            Type::DATETIME => DateTimeType::class,
-            Type::DATETIME_IMMUTABLE => DateTimeImmutableType::class,
-            Type::DATETIMETZ => DateTimeTzType::class,
-            Type::DATETIMETZ_IMMUTABLE => DateTimeTzImmutableType::class,
-            Type::DATE => DateType::class,
-            Type::DATE_IMMUTABLE => DateImmutableType::class,
-            Type::TIME => TimeType::class,
-            Type::TIME_IMMUTABLE => TimeImmutableType::class,
-            Type::DECIMAL => DecimalType::class,
-            Type::FLOAT => FloatType::class,
-            Type::BINARY => BinaryType::class,
-            Type::BLOB => BlobType::class,
-            Type::GUID => GuidType::class,
-            Type::DATEINTERVAL => DateIntervalType::class,
-        ]);
+        $refProp->setValue(null);
     }
 
     /**
