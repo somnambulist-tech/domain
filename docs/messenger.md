@@ -127,14 +127,16 @@ __Note:__ by default Messenger 4.3+ defaults to PHP native serializer. This will
 message payload contains PHP serialized objects. To send JSON payloads, a custom serializer is
 needed. This must be configured as follows:
 
-Install Symfony Serializer if not already installed: `composer req serializer`
+Install Symfony Serializer if not already installed: `composer req symfony/serializer symfony/property-access`.
+
+__Note:__ `property-access` is required to enable the `ObjectNormalizer` that is used to
+serialize the envelope stamp objects.
 
 Add the following service definition and optional alias if desired:
 ```yaml
 services:
     Somnambulist\Domain\Events\Messenger\Serializer:
-        arguments:
-            - '@serializer'
+        
     somnambulist.domain.event_serializer:
         alias: Somnambulist\Domain\Events\Messenger\Serializer
 ```
