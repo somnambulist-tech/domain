@@ -17,7 +17,7 @@ trait CanIncludeRelatedData
     /**
      * @var array
      */
-    private $includes;
+    private $includes = [];
 
     /**
      * Add related data to be loaded with the query request
