@@ -10,8 +10,19 @@ use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Domain\Entities\Contracts\AggregateRoot;
 use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Domain\Events\Exceptions\InvalidPropertyException;
-use function class_implements;
+use function array_pop;
+use function class_exists;
+use function explode;
+use function get_class;
+use function implode;
 use function is_a;
+use function is_null;
+use function last;
+use function microtime;
+use function sprintf;
+use function strpos;
+use function strrpos;
+use function substr;
 
 /**
  * Class DomainEvent
@@ -20,6 +31,8 @@ use function is_a;
  *
  * @package    Somnambulist\Domain\Events\Events
  * @subpackage Somnambulist\Domain\Events\Events\DomainEvent
+ *
+ * @property string $group Define to set the group name for the event
  */
 abstract class AbstractDomainEvent
 {
@@ -55,6 +68,11 @@ abstract class AbstractDomainEvent
     private $time;
 
     /**
+     * @var string
+     */
+    private $type;
+
+    /**
      * Constructor.
      *
      * @param array $payload Array of specific state change data
@@ -67,6 +85,7 @@ abstract class AbstractDomainEvent
         $this->context    = new Immutable($context);
         $this->time       = microtime(true);
         $this->version    = $version;
+        $this->type       = static::class;
     }
 
     public function __set($name, $value)
@@ -161,7 +180,8 @@ abstract class AbstractDomainEvent
 
     private function parseName(): string
     {
-        $class = (new ReflectionClass($this))->getShortName();
+        $a     = explode('\\', $this->type);
+        $class = end($a);
 
         if (substr($class, -5) === "Event") {
             $class = substr($class, 0, -5);
@@ -183,6 +203,11 @@ abstract class AbstractDomainEvent
     public function version(): int
     {
         return $this->version;
+    }
+
+    public function type(): string
+    {
+        return $this->type;
     }
 
     public function aggregate(): ?Aggregate
@@ -229,12 +254,28 @@ abstract class AbstractDomainEvent
      */
     public static function fromArray(string $type, array $array = []): self
     {
-        if (!is_a($type, AbstractDomainEvent::class, $allowString = true)) {
-            throw new InvalidArgumentException(sprintf('Type "%s" is not a "%s" class', $type, self::class));
+        if (class_exists($type)) {
+            if (!is_a($type, AbstractDomainEvent::class, $allowString = true)) {
+                throw new InvalidArgumentException(sprintf('Type "%s" is not a "%s" class', $type, self::class));
+            }
+
+            $event = new $type($array['payload'] ?? [], $array['context'] ?? [], $array['event']['version'] ?? 1);
+        } else {
+            $event = new class($array['payload'] ?? [], $array['context'] ?? [], $array['event']['version'] ?? 1) extends AbstractDomainEvent
+            {
+                protected $group;
+            };
+            $event->type = $type;
+
+            if (false !== strpos($array['event']['name'], '.')) {
+                $pieces = explode('.', $array['event']['name']);
+                array_pop($pieces);
+
+                $event->group = implode('.', $pieces);
+            }
         }
 
         /** @var AbstractDomainEvent $event */
-        $event = new $type($array['payload'] ?? [], $array['context'] ?? [], $array['event']['version'] ?? 1);
         $event->time = $array['event']['time'];
 
         if ($array['aggregate']['class'] && $array['aggregate']['id']) {

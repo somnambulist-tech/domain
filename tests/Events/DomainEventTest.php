@@ -265,7 +265,7 @@ class DomainEventTest extends TestCase
      * @group domain-event
      * @group domain-event-from-array
      */
-    public function testFromArrayOnlyWorksWithDomainEvents()
+    public function testFromArrayOnlyWorksWithClassesThatExistThatAreDomainEvent()
     {
         $data = [
             'aggregate' => [
@@ -290,5 +290,39 @@ class DomainEventTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         AbstractDomainEvent::fromArray(stdClass::class, $data);
+    }
+
+    /**
+     * @group domain-event
+     * @group domain-event-from-array
+     */
+    public function testFromArrayReturnsAnonymousClassIfEventDoesNotExist()
+    {
+        $data = [
+            'aggregate' => [
+                'class' => null,
+                'id'    => null,
+            ],
+            'event'     => [
+                'class'   => 'Events\NamespacedEvent',
+                'name'    => 'app.namespaced',
+                'version' => 2,
+                'time'    => $ts = microtime(true),
+            ],
+            'context'   => [
+                'context' => 'value',
+                'user'    => 'user@example.example',
+            ],
+            'payload'   => [
+                'foo' => 'bar',
+            ],
+        ];
+
+        $event = AbstractDomainEvent::fromArray($t = 'Some\Class\ThatDoesNotExist', $data);
+
+        $this->assertInstanceOf(AbstractDomainEvent::class, $event);
+        $this->assertEquals($t, $event->type());
+        $this->assertEquals('ThatDoesNotExist', $event->name());
+        $this->assertEquals('app.that_does_not_exist', $event->notificationName());
     }
 }

@@ -1,6 +1,18 @@
 Change Log
 ==========
 
+2019-11-19 - 2.2.8
+------------------
+
+ * Changed `AbstractDomainEvent::fromArray` to be able to create abstract events when
+   the event class does not exist. For example: a queue consumer in a separate project.
+   If the event class does exist it must still extend `AbstractDomainEvent`.
+
+2019-11-19 - 2.2.7
+------------------
+
+ * Fix array not initialised in CanIncludeRelatedData trait
+
 2019-10-29 - 2.2.5 / 2.2.6
 --------------------------
 
