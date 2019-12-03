@@ -26,7 +26,7 @@ For example:
 use Assert\Assert;
 use Somnambulist\Domain\Entities\AbstractValueObject;
 
-class Uuid extends AbstractValueObject
+final class Uuid extends AbstractValueObject
 {
 
     /**
@@ -46,9 +46,6 @@ class Uuid extends AbstractValueObject
         $this->uuid = $uuid;
     }
 
-    /**
-     * @return string
-     */
     public function toString(): string
     {
         return $this->uuid;

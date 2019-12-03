@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+2019-11-19 - 2.3.0
+------------------
+
+ * Added `AbstractFindByIdQuery` to queries
+ * Added `AbstractIdentity` to entities
+ * Added `AbstractType` to entities
+ * Made `Uuid` final and extend `AbstractIdentity`
+ * Fixed bugs in `AbstractPaginatableQuery` and added test case
+
 2019-11-19 - 2.2.8
 ------------------
 

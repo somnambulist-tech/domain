@@ -57,7 +57,7 @@ abstract class AbstractPaginatableQuery extends AbstractQuery
         if (Str::startsWith($name, 'get')) {
             $name = Str::replaceFirst('get', '', $name);
 
-            return $this->criteria->only([Str::snake($name), Str::ucfirst($name), $name])->first() ?? null;
+            return $this->criteria->only(Str::snake($name), Str::ucfirst($name), $name)->first() ?? null;
         }
 
         throw new BadMethodCallException(sprintf('Method not found for "%s"', $name));
