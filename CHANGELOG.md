@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-01-10 - 2.4.0
+------------------
+
+ * Added `Auth\Password` value object to entities
+
 2019-11-19 - 2.3.0
 ------------------
 
