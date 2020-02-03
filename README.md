@@ -1,5 +1,7 @@
 # Somnambulist Domain Package
 
+[![GitHub Actions Build Status](https://github.com/somnambulist-tech/domain/workflows/tests/badge.svg)](https://github.com/somnambulist-tech/domain/actions?query=workflow%3Atests)
+
 Provides a core set of support classes for building domain oriented projects. This library compiles the
 previously separate domain and mapping libraries into a single project for easier maintenance.
 

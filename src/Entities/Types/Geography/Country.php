@@ -252,7 +252,7 @@ final class Country extends AbstractMultiton
         'PYF' => 'French Polynesia',
         'QAT' => 'Qatar',
         'REU' => 'Reunion',
-        'ROM' => 'Romania',
+        'ROU' => 'Romania',
         'RUS' => 'Russian Federation',
         'RWA' => 'Rwanda',
         'SAU' => 'Saudi Arabia',

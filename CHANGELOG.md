@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-02-03 - 2.4.1
+------------------
+
+ * Fixed incorrect country code for Romania
+
 2020-01-10 - 2.4.0
 ------------------
 
