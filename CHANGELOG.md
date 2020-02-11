@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-02-11 - 2.4.2
+------------------
+
+ * Fixed `AbstractIdentity` can sometimes hydrate with a UUID object causing type error when using `toUuid()`
+
 2020-02-03 - 2.4.1
 ------------------
 

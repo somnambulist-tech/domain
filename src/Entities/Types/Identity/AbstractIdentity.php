@@ -41,6 +41,6 @@ abstract class AbstractIdentity extends AbstractValueObject
 
     public function toUuid(): Uuid
     {
-        return new Uuid($this->value);
+        return new Uuid($this->toString());
     }
 }
