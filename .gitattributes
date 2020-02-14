@@ -2,6 +2,7 @@
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /.github export-ignore
+/.idea export-ignore
 /phpunit.xml.dist export-ignore
 /docs
 /CHANGELOG.md
