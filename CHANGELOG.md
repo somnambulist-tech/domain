@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-03-19 - 2.4.4
+------------------
+
+ * Deprecated `QueryBus::query()` to `QueryBus::execute()`, query will be removed in 3.0
+ 
 2020-03-19 - 2.4.3
 ------------------
 

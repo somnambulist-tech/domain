@@ -32,8 +32,18 @@ final class QueryBus implements \Somnambulist\Domain\Queries\QueryBus
      *
      * @return mixed
      */
-    public function query(AbstractQuery $query)
+    public function execute(AbstractQuery $query)
     {
         return $this->handle($query);
+    }
+
+    /**
+     * @param AbstractQuery $query
+     *
+     * @return mixed
+     */
+    public function query(AbstractQuery $query)
+    {
+        return $this->execute($query);
     }
 }
