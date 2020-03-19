@@ -314,5 +314,8 @@ final class Country extends AbstractMultiton
         'ZAF' => 'South Africa',
         'ZMB' => 'Zambia',
         'ZWE' => 'Zimbabwe',
+        // the ranges AAA to AAZ, QMA to QZZ, XAA to XZZ, and ZZA to ZZZ are reserved for user use
+        // see: https://www.iso.org/glossary-for-iso-3166.html
+        'ZZZ' => 'Worldwide',
     ];
 }

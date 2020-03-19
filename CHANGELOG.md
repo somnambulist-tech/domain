@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-03-19 - 2.4.3
+------------------
+
+ * Added ZZZ - Worldwide to the Country entity
+
 2020-02-11 - 2.4.2
 ------------------
 
