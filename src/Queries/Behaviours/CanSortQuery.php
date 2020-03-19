@@ -7,18 +7,13 @@ use Somnambulist\Collection\FrozenCollection;
 /**
  * Trait CanSortQuery
  *
- * @package Somnambulist\Domain\Queries\Behaviours
+ * @package    Somnambulist\Domain\Queries\Behaviours
  * @subpackage Somnambulist\Domain\Queries\Behaviours\CanSortQuery
  */
 trait CanSortQuery
 {
 
-    /**
-     * An array of field -> direction pairs
-     *
-     * @var FrozenCollection
-     */
-    private $orderBy;
+    private FrozenCollection $orderBy;
 
     public function getOrderBy(): FrozenCollection
     {

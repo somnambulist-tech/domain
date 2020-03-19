@@ -29,16 +29,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 final class Uuid extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $uuid;
+    private string $uuid;
 
-    /**
-     * Constructor.
-     *
-     * @param string $uuid
-     */
     public function __construct(string $uuid)
     {
         Assert::that($uuid, null, 'uuid')->notEmpty()->uuid();
@@ -63,3 +55,7 @@ be instantiated empty so your methods / toString() should handle that case e.g.:
 A User has a nullable Profile VO, when Doctrine hydrates the User, the Profile VO will also be hydrated but
 empty, so if the Profile has a nickname() or avatar() method, these must support returning null and your
 toString() method must cast null to a string to avoid type errors.
+
+__Note:__ when referencing UUIDs if the UUID type is registered and your field type is set to `uuid` Doctrine
+will hydrate a Uuid object - not a string. Be sure to use `guid` as the type in these cases; or do not register
+the UUID type mapping, or map that to something else.

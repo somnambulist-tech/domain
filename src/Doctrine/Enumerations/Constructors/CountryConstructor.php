@@ -1,0 +1,37 @@
+<?php declare(strict_types=1);
+
+namespace Somnambulist\Domain\Doctrine\Enumerations\Constructors;
+
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use InvalidArgumentException;
+use Somnambulist\Domain\Entities\Types\Geography\Country;
+
+/**
+ * Class CountryConstructor
+ *
+ * @package    Somnambulist\Domain\Doctrine\Enumerations\Constructors
+ * @subpackage Somnambulist\Domain\Doctrine\Enumerations\Constructors\CountryConstructor
+ */
+class CountryConstructor
+{
+
+    /**
+     * @param string           $value
+     * @param AbstractPlatform $platform
+     *
+     * @return Country
+     * @throws InvalidArgumentException
+     */
+    public function __invoke($value, $platform)
+    {
+        if (is_null($value)) {
+            return null;
+        }
+
+        if (null !== $country = Country::memberOrNullByKey($value)) {
+            return $country;
+        }
+
+        throw new InvalidArgumentException(sprintf('"%s" is not a valid key for "%s"', $value, Country::class));
+    }
+}

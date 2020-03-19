@@ -3,6 +3,6 @@
     <embeddable name="Somnambulist\Domain\Entities\Types\Geography\Coordinate">
         <field name="latitude" type="float" />
         <field name="longitude" type="float" />
-        <field name="srid" type="Somnambulist\Domain\Entities\Types\Geography\Srid" />
+        <field name="srid" type="srid" length="10" />
     </embeddable>
 </doctrine-mapping>

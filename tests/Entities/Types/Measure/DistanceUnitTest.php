@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Measure;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Measure\DistanceUnit;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Measure
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Measure\DistanceUnitTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-distance
  */
 class DistanceUnitTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-distance-unit
-     */
     public function testCanCompare()
     {
         $vo1 = DistanceUnit::FEET();
@@ -28,10 +28,6 @@ class DistanceUnitTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-distance-unit
-     */
     public function testCanCompareOtherObjects()
     {
         $vo1 = AreaUnit::SQ_FT();
@@ -40,10 +36,6 @@ class DistanceUnitTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-distance-unit
-     */
     public function testCantSetArbitraryProperties()
     {
         $vo = DistanceUnit::FEET();

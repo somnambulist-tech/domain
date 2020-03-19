@@ -3,6 +3,7 @@
 namespace Somnambulist\Domain\Entities\Types\Measure;
 
 use Somnambulist\Domain\Entities\AbstractValueObject;
+use function sprintf;
 
 /**
  * Class Area
@@ -10,25 +11,12 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Measure
  * @subpackage Somnambulist\Domain\Entities\Types\Measure\Area
  */
-class Area extends AbstractValueObject
+final class Area extends AbstractValueObject
 {
 
-    /**
-     * @var float
-     */
-    private $value;
+    private float $value;
+    private AreaUnit $unit;
 
-    /**
-     * @var AreaUnit
-     */
-    private $unit;
-
-    /**
-     * Constructor.
-     *
-     * @param float    $value
-     * @param AreaUnit $unit
-     */
     public function __construct(float $value, AreaUnit $unit)
     {
         $this->value = $value;
@@ -37,7 +25,7 @@ class Area extends AbstractValueObject
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return sprintf('%s %s', $this->value, $this->unit);
     }
 
     public function value(): float

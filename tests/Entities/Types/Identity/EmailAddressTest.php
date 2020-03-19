@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Identity;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Identity
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Identity\EmailAddressTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-email
  */
 class EmailAddressTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCreate()
     {
         $vo = new EmailAddress('foo@example.com');
@@ -26,10 +26,6 @@ class EmailAddressTest extends TestCase
         $this->assertEquals('foo@example.com', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCreateRaisesExceptionForInvalidArguments()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -37,10 +33,6 @@ class EmailAddressTest extends TestCase
         new EmailAddress('foo');
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCanCastToString()
     {
         $vo = new EmailAddress('foo@example.com');
@@ -48,10 +40,6 @@ class EmailAddressTest extends TestCase
         $this->assertEquals('foo@example.com', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCanGetAccountComponent()
     {
         $vo = new EmailAddress('foo@example.com');
@@ -59,10 +47,6 @@ class EmailAddressTest extends TestCase
         $this->assertEquals('foo', $vo->account());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCanGetDomainComponent()
     {
         $vo = new EmailAddress('foo@example.com');
@@ -70,10 +54,6 @@ class EmailAddressTest extends TestCase
         $this->assertEquals('example.com', $vo->domain());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCanCompareInstances()
     {
         $vo1 = new EmailAddress('foo@example.com');
@@ -86,10 +66,6 @@ class EmailAddressTest extends TestCase
         $this->assertTrue($vo1->equals($vo1));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-email-address
-     */
     public function testCantSetArbitraryProperties()
     {
         $vo = new EmailAddress('foo@example.com');

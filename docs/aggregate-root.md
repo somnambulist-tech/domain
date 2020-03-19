@@ -6,6 +6,22 @@ Implements a generalised Aggregate Root for raising domain events in an entity.
  * [Decoupling applications with Domain Events](http://www.whitewashing.de/2012/08/25/decoupling_applications_with_domain_events.html)
  * [Gist for Doctrine Implementation](https://gist.github.com/beberlei/53cd6580d87b1f5cd9ca)
 
+### BC Breaks v3
+
+v3 of the Domain library radically overhauls how the base AggregateRoot is implemented
+and removes all the previous interfaces and traits in-favour of a more tightly defined
+root class.
+
+Now the primary id is always a UUID but is now of type `AbstractIdentity` so that you
+can use a class specific UUID identity e.g. UserId, or the general Uuid/Id if per 
+aggregate identities are undesirable.
+
+`createdAt` and `updatedAt` are now defined along with the methods to initialise
+and update the updatedAt.
+
+`raise()` now expects the event class name first and the aggregate identity will be
+automatically inserted immediately on event creation.
+
 ### Using
 
 An Aggregate is a Domain Driven Design concept that encapsulates a set of related
@@ -13,12 +29,13 @@ domain concepts that should be managed together. See [Fowler: Aggregate Root](ht
 Examples include: Order, User, Customer. In your domain code, only the aggregate
 should be loaded.
 
-First identify what you aggregate roots are within your domain objects. Then extend
+First identify what your aggregate roots are within your domain objects. Then extend
 the abstract AggregateRoot into your root entity. This is the entry point for changes
 to that tree of objects.
 
 Next: implement your domain logic and raise appropriate events for each of the changes
-that your aggregate should allow / manage.
+that your aggregate should allow / manage. Your events should mirror business process
+and ideally all your methods and objects should follow the businesses terminology.
 
 ### Raising Events
 
@@ -34,11 +51,11 @@ in that you should remove setters and nullable constructor arguments. Instead yo
 need to manage changes to your entity through specific methods, for example:
 
  * completeOrder()
- * updatePermissions()
+ * grantPermissions()
  * revokePermissions()
  * publishStory()
 
-Internally, after updating the entity state, call: `$this->raise(new NameOfEvent([]))`
+Internally, after updating the entity state, call: `$this->raise(NameOfEvent::class, [])`
 and pass any specific parameters into the event that you want to make available to the
 listener. This could be the old vs new or the entire entity reference, it is entirely
 up to you.
@@ -55,7 +72,7 @@ class MyAggregate extends AggregateRoot
         
         $this->initializeTimestamps();
         
-        $this->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+        $this->raise(MyEntityCreatedEvent::class, ['id' => $id, 'name' => $name, 'another' => $another]);
     }
 }
 ```
@@ -79,7 +96,7 @@ class MyAggregate extends AggregateRoot
     public static function create($id, $name, $another)
     {
         $entity = new static($id, $name, $another, new DateTime());
-        $entity->raise(new MyEntityCreatedEvent(['id' => $id, 'name' => $name, 'another' => $another]));
+        $entity->raise(MyEntityCreatedEvent::class, ['id' => $id, 'name' => $name, 'another' => $another]);
         
         return $entity;
     }
@@ -93,9 +110,8 @@ timestamps. If these are deferred to the database or ORM layer, then your Aggreg
 changed outside separately to when the state was changed.
 
 Instead of relying on the ORM or database, you should use the `initializeTimestamps()` and
-`updateTimestamps()` methods from the `Timestampable` trait, or implement similar logic yourself.
-Then in your aggregate (and other entities), be sure to call `updatedTimestamps()` whenever a
-change is made
+`updateTimestamps()` methods that are part of the AggregateRoot class. The `updatedAt` property
+is automatically updated when you raise an event (just before adding the event to the stack).
 
 ### Dealing with Sub-Objects
 
@@ -126,7 +142,7 @@ class OrderItem
         $previousQuantity = $this->quantity;
         $this->quantity = $quantity;
         
-        $this->order->raise(new OrderItemQuantityChanged([
+        $this->order->raise(OrderItemQuantityChanged::class, [
             'id' => $this->order->id(),
             'item_id' => $this->id(),
             'quantity' => $this->quantity,
@@ -134,7 +150,7 @@ class OrderItem
             'previous' => [
                 'quantity' => $previousQuantity,
             ]
-        ]));
+        ]);
     }
 }
 ```
@@ -175,7 +191,7 @@ class UserAddresses
 ```
 Now to update the address it would be something like:
 ```php
-$user->addresses()->for(AddressType::DELIVERY())->updateAddressTo(Address $address);
+$user->addresses()->for(AddressType::DELIVERY())->updateAddressTo($address);
 ```
 If the User does not have a delivery address, an exception would be raised. In this example
 an Enumeration is used for the type to provide type safety and the Address is passed as a

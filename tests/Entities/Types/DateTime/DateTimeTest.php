@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\DateTime;
 
@@ -11,16 +11,16 @@ use Somnambulist\Domain\Entities\Types\Measure\AreaUnit;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTimeTest
+ *
+ * @group      entities
+ * @group      entities-types
+ * @group      entities-types-datetime
  */
 class DateTimeTest extends TestCase
 {
 
     use Helpers;
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCanCastToString()
     {
         $vo = new DateTime('2017-06-17 12:00:00', new \DateTimeZone('UTC'));
@@ -28,10 +28,6 @@ class DateTimeTest extends TestCase
         $this->assertEquals('2017-06-17 12:00:00', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCanTestEquality()
     {
         $vo1 = new DateTime();
@@ -42,10 +38,6 @@ class DateTimeTest extends TestCase
         $this->assertFalse($vo1->equals($vo3));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCanCompareOtherObjects()
     {
         $vo1 = new DateTime();
@@ -54,13 +46,9 @@ class DateTimeTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCantSetArbitraryProperties()
     {
-        $vo = new DateTime();
+        $vo      = new DateTime();
         $vo->foo = 'bar';
 
         $this->assertObjectNotHasAttribute('foo', $vo);

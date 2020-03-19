@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Geography;
 
@@ -10,50 +10,39 @@ use Somnambulist\Domain\Entities\Types\Geography\Country;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Geography
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Geography\CountryTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-country
  */
 class CountryTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCreate()
     {
         $vo = Country::memberByKey('CAN');
 
-        $this->assertEquals('Canada', $vo->toString());
+        $this->assertEquals('Canada', $vo->name());
         $this->assertEquals('CAN', $vo->code());
+        $this->assertEquals('CAN', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCreateStatically()
     {
         $vo = Country::memberByKey('USA');
 
-        $this->assertEquals('United States of America', $vo->toString());
+        $this->assertEquals('United States of America', $vo->name());
         $this->assertEquals('USA', $vo->code());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCanCastToString()
     {
         $vo = Country::memberByKey('CAN');
 
-        $this->assertEquals('Canada', (string)$vo);
+        $this->assertEquals('CAN', (string)$vo);
         $this->assertEquals('CAN', (string)$vo->code());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCanCompare()
     {
         $vo1 = Country::memberByKey('CAN');

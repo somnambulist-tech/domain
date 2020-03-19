@@ -20,17 +20,11 @@ class JsonCollectionType extends Type
 
     const TYPE_NAME = 'json_collection';
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getJsonTypeDeclarationSQL($fieldDeclaration);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (null === $value) {
@@ -43,9 +37,6 @@ class JsonCollectionType extends Type
         return json_encode($value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if ($value === null || $value === '') {
@@ -57,17 +48,11 @@ class JsonCollectionType extends Type
         return new Collection(json_decode($value, true));
     }
 
-    /**
-     * @return string
-     */
     public function getName()
     {
         return static::TYPE_NAME;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return !$platform->hasNativeJsonType();

@@ -13,24 +13,13 @@ use Somnambulist\Domain\Entities\Types\Identity\Uuid;
 abstract class AbstractFindByIdQuery extends AbstractQuery
 {
 
-    /**
-     * @var Uuid
-     */
-    private $id;
+    private Uuid $id;
 
-    /**
-     * Constructor.
-     *
-     * @param Uuid $id
-     */
     public function __construct(Uuid $id)
     {
         $this->id = $id;
     }
 
-    /**
-     * @return Uuid
-     */
     public function getId(): Uuid
     {
         return $this->id;

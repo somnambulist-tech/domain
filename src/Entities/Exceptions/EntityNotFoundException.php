@@ -3,6 +3,7 @@
 namespace Somnambulist\Domain\Entities\Exceptions;
 
 use Exception;
+use function implode;
 use function sprintf;
 
 /**
@@ -15,24 +16,19 @@ use function sprintf;
 class EntityNotFoundException extends Exception
 {
 
-    /**
-     * @var string
-     */
-    private $type;
+    private string $type;
+    private string $id;
 
     /**
-     * @var string
-     */
-    private $id;
-
-    /**
-     * @param string          $type
-     * @param null|int|string $id
+     * @param string     $type
+     * @param ...int|string $identities
      *
      * @return EntityNotFoundException
      */
-    public static function entityNotFound($type, $id = null): self
+    public static function entityNotFound(string $type, ...$identities): self
     {
+        $id = implode(':', $identities);
+
         $err       = new static(sprintf('Entity "%s" with identifier "%s" not found', $type, $id), 404);
         $err->type = $type;
         $err->id   = $id;
@@ -40,17 +36,11 @@ class EntityNotFoundException extends Exception
         return $err;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;

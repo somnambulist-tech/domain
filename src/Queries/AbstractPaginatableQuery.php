@@ -8,7 +8,6 @@ use Somnambulist\Collection\FrozenCollection;
 use Somnambulist\Domain\Queries\Behaviours\CanIncludeRelatedData;
 use Somnambulist\Domain\Queries\Behaviours\CanPaginateQuery;
 use Somnambulist\Domain\Queries\Behaviours\CanSortQuery;
-use function lcfirst;
 
 /**
  * Class AbstractPaginatableQuery
@@ -21,7 +20,7 @@ use function lcfirst;
  * If the attribute is not found, null will be returned. Invalid method calls will
  * raise an exception.
  *
- * @package Somnambulist\Domain\Queries
+ * @package    Somnambulist\Domain\Queries
  * @subpackage Somnambulist\Domain\Queries\AbstractPaginatableQuery
  */
 abstract class AbstractPaginatableQuery extends AbstractQuery
@@ -31,19 +30,8 @@ abstract class AbstractPaginatableQuery extends AbstractQuery
     use CanPaginateQuery;
     use CanSortQuery;
 
-    /**
-     * @var FrozenCollection
-     */
-    private $criteria;
+    private FrozenCollection $criteria;
 
-    /**
-     * Constructor.
-     *
-     * @param array $criteria Array of data to filter by
-     * @param array $orderBy  Array of fields -> directions to sort / order by
-     * @param int   $page     The page of the results to fetch
-     * @param int   $perPage  The number of results on each page
-     */
     public function __construct(array $criteria = [], array $orderBy = [], int $page = 1, int $perPage = 30)
     {
         $this->criteria = new FrozenCollection($criteria);

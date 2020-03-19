@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Geography;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Geography\Srid;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Geography
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Geography\CoordinateTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-coord
  */
 class CoordinateTest extends TestCase
 {
-    
-    /**
-     * @group value-objects
-     * @group value-objects-coord
-     */
+
     public function testCreate()
     {
         $vo = new Coordinate(4, 7, Srid::WGS84());
@@ -28,10 +28,6 @@ class CoordinateTest extends TestCase
         $this->assertEquals('4326', $vo->srid()->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-coord
-     */
     public function testCanCastToString()
     {
         $vo = new Coordinate(4, 7, Srid::WGS84());
@@ -39,10 +35,6 @@ class CoordinateTest extends TestCase
         $this->assertEquals('[7, 4]', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-coord
-     */
     public function testCanCastToGeoJson()
     {
         $vo = new Coordinate(4, 7, Srid::WGS84());

@@ -11,13 +11,14 @@ use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindOrFailTest
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-locator
  */
 class FindOrFailTest extends TestCase
 {
 
-    /**
-     * @group traits
-     */
     public function testFindOrFailCallsFind()
     {
         $this->expectException(EntityNotFoundException::class);
@@ -39,9 +40,6 @@ class FindOrFailTest extends TestCase
         $mock->findOrFail(1234);
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOrFailReturnsEntity()
     {
         $mock = $this->getMockForTrait(FindOrFail::class);
@@ -57,9 +55,6 @@ class FindOrFailTest extends TestCase
         $this->assertInstanceOf(\stdClass::class, $entity);
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOneByOrFailCallsFindOneBy()
     {
         $this->expectException(EntityNotFoundException::class);
@@ -81,9 +76,6 @@ class FindOrFailTest extends TestCase
         $mock->findOneByOrFail(['name' => 'some name']);
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOneByOrFailReturnsEntity()
     {
         $mock = $this->getMockForTrait(FindOrFail::class);

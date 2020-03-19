@@ -11,8 +11,10 @@ use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Functions\Postgres
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Functions\Postgres\ReplaceFunctionTest
- * @group functions
- * @group functions-replace
+ *
+ * @group doctrine
+ * @group doctrine-functions
+ * @group doctrine-functions-replace
  */
 class ReplaceFunctionTest extends TestCase
 {
@@ -24,7 +26,7 @@ class ReplaceFunctionTest extends TestCase
         $this->em->getConfiguration()->addCustomStringFunction('REPLACE', ReplaceFunction::class);
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Doctrine\Entities\Order a WHERE REPLACE(a.name, \'bob\', \'sally\') = true')
+            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order a WHERE REPLACE(a.name, \'bob\', \'sally\') = true')
         ;
         $sql = $query->getSQL();
 

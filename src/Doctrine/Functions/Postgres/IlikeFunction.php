@@ -29,9 +29,6 @@ class IlikeFunction extends FunctionNode
      */
     protected $value;
 
-    /**
-     * @param Parser $parser
-     */
     public function parse(Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -46,11 +43,6 @@ class IlikeFunction extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker)
     {
         return $this->field->dispatch($sqlWalker) . ' ILIKE ' . $this->value->dispatch($sqlWalker);

@@ -3,6 +3,7 @@
 namespace Somnambulist\Domain\Utils;
 
 use Closure;
+use function is_null;
 use function property_exists;
 
 /**
@@ -28,9 +29,7 @@ final class EntityAccessor
      */
     public static function call(object $object, string $method, $scope = null, ...$args)
     {
-        return Closure::bind(function () use ($method, $args) {
-            return $this->{$method}(...$args);
-        }, $object, !is_null($scope) ? $scope : 'static')();
+        return Closure::bind(fn () => $this->{$method}(...$args), $object, !is_null($scope) ? $scope : $object)();
     }
 
     /**
@@ -44,9 +43,7 @@ final class EntityAccessor
      */
     public static function has(object $object, string $property, $scope = null): bool
     {
-        return Closure::bind(function () use ($property) {
-            return property_exists($this, $property);
-        }, $object, !is_null($scope) ? $scope : 'static')();
+        return Closure::bind(fn () => property_exists($this, $property), $object, !is_null($scope) ? $scope : $object)();
     }
 
     /**
@@ -60,9 +57,7 @@ final class EntityAccessor
      */
     public static function get(object $object, string $property, $scope = null)
     {
-        return Closure::bind(function () use ($property) {
-            return $this->{$property};
-        }, $object, !is_null($scope) ? $scope : 'static')();
+        return Closure::bind(fn () => $this->{$property}, $object, !is_null($scope) ? $scope : $object)();
     }
 
     /**
@@ -77,9 +72,7 @@ final class EntityAccessor
      */
     public static function set(object $object, string $property, $value, $scope = null): object
     {
-        Closure::bind(function () use ($property, $value) {
-            $this->{$property} = $value;
-        }, $object, !is_null($scope) ? $scope : 'static')();
+        Closure::bind(fn () => $this->{$property} = $value, $object, !is_null($scope) ? $scope : $object)();
 
         return $object;
     }

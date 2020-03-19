@@ -25,33 +25,26 @@
     "autoload-dev": {
         "psr-4": {
             "Somnambulist\\Domain\\Tests\\": "tests/"
-        },
-        "classmap": [
-            "tests/Doctrine/_data/",
-            "tests/Events/_data/"
-        ],
-        "files": [
-            "tests/Events/_data/helpers.php"
-        ]
+        }
     },
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.4",
         "ext-bcmath": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "beberlei/assert": "^3.0",
         "eloquent/enumeration": "^6.0",
-        "pragmarx/ia-str": "^6.0|^7.0",
-        "ramsey/uuid": "^3.8|^4.0",
-        "somnambulist/collection": "^3.0|^4.0"
+        "pragmarx/ia-str": "^7.0",
+        "ramsey/uuid": "^4.0",
+        "somnambulist/collection": "^4.0"
     },
     "require-dev": {
+        "ext-pdo": "*",
         "doctrine/orm": "~2.7",
-        "illuminate/events": "~7.0",
-        "myclabs/php-enum": "~1.7",
         "pagerfanta/pagerfanta": "~2.1",
-        "phpunit/phpunit": "~8.5",
-        "symfony/contracts": "~1.1",
+        "phpunit/phpunit": "~9.3",
+        "phpspec/prophecy-phpunit": "~2.0",
+        "symfony/amqp-messenger": "~5.0",
         "symfony/event-dispatcher": "~5.0",
         "symfony/messenger": "~5.0",
         "symfony/property-access": "~5.0",
@@ -61,7 +54,6 @@
     },
     "suggest": {
         "giggsey/libphonenumber-for-php": "To validate phone numbers / convert to E164 from a local format",
-        "propaganistas/laravel-phone": "A Laravel mapping for the Giggsey",
         "doctrine/orm": "To use the Doctrine components and have an entity mapper",
         "laravel-doctrine/orm": "A Laravel mapping for Doctrine",
         "pagerfanta/pagerfanta": "For Pagination of Doctrine results and other data",

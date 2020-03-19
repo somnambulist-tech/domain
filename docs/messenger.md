@@ -5,6 +5,7 @@ Symfony Messenger can be used to implement:
  * CommandBus
  * QueryBus
  * EventBus
+ * JobQueue
 
 These implementations are based on the Symfony documentation:
 
@@ -34,6 +35,10 @@ framework:
                 middleware:
                     - validation
 
+            job.queue:
+                middleware:
+                    - validation
+
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             domain_events:
@@ -43,6 +48,15 @@ framework:
                         name: domain_events
                         type: fanout
                         durable: true
+
+            job_queue:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%/jobs'
+                options:
+                    exchange:
+                        name: jobs
+                        type: direct
+                        durable: true
+
             # optional to capture failures
             failed: 'doctrine://default?queue_name=failed'
             # synchronous transport
@@ -50,34 +64,42 @@ framework:
 
         routing:
             # Route your messages to the transports
-            Somnambulist\Domain\Events\AbstractDomainEvent: domain_events
+            Somnambulist\Domain\Events\AbstractEvent: domain_events
+            Somnambulist\Domain\Jobs\AbstractJob: job_queue
             Somnambulist\Domain\Commands\AbstractCommand: sync
             Somnambulist\Domain\Queries\AbstractQuery: sync
 ```
 
 The above configuration will automatically route all extended Commands and Queries to the sync
-transport and the DomainEvent instances to the event bus named `domain_events`.
+transport and the DomainEvent instances to the event bus named `domain_events`. Jobs will go to
+the `job_queue`.
 
 Then the following services should be defined in `services.yaml`:
 
 ```yaml
 services:
-    Somnambulist\Domain\Events\Messenger\EventBus:
+    Somnambulist\Domain\Events\Adapters\MessengerEventBus:
     
     Somnambulist\Domain\Events\EventBus:
-        alias: Somnambulist\Domain\Events\Messenger\EventBus
+        alias: Somnambulist\Domain\Events\Adapters\MessengerEventBus
+        public: true
+
+    Somnambulist\Domain\Jobs\Adapters\MessengerJobQueue:
+    
+    Somnambulist\Domain\Jos\JobQueue:
+        alias: Somnambulist\Domain\Jobs\Adapters\MessengerJobQueue
         public: true
     
-    Somnambulist\Domain\Commands\Messenger\CommandBus:
+    Somnambulist\Domain\Commands\Adapters\MessengerCommandBus:
     
     Somnambulist\Domain\Commands\CommandBus:
-        alias: Somnambulist\Domain\Commands\Messenger\CommandBus
+        alias: Somnambulist\Domain\Commands\Adapters\MessengerCommandBus
         public: true
     
-    Somnambulist\Domain\Queries\Messenger\QueryBus:
+    Somnambulist\Domain\Queries\Adapters\MessengerQueryBus:
     
     Somnambulist\Domain\Queries\QueryBus:
-        alias: Somnambulist\Domain\Queries\Messenger\QueryBus
+        alias: Somnambulist\Domain\Queries\Adapters\MessengerQueryBus
         public: true
 ```
 
@@ -110,7 +132,7 @@ To enable the event subscriber add the following to your `services.yaml`:
 
 ```yaml
 services:
-    Somnambulist\Domain\Events\Publishers\Doctrine\DomainEventPublisher:
+    Somnambulist\Domain\Events\Publishers\DoctrineEventPublisher:
         tags: ['doctrine.event_subscriber']
 ```
 
@@ -121,7 +143,6 @@ This will register a Doctrine event subscriber that listens to:
  * postFlush
  
 Events are queued, sorted by the timestamp to ensure the correct order and sent postFlush.
-Events are still broadcast through Doctrine Event Manager.
 
 __Note:__ by default Messenger 4.3+ defaults to PHP native serializer. This will mean that the
 message payload contains PHP serialized objects. To send JSON payloads, a custom serializer is
@@ -135,10 +156,10 @@ serialize the envelope stamp objects.
 Add the following service definition and optional alias if desired:
 ```yaml
 services:
-    Somnambulist\Domain\Events\Messenger\Serializer:
+    Somnambulist\Domain\Events\Adapters\MessengerSerializer:
         
     somnambulist.domain.event_serializer:
-        alias: Somnambulist\Domain\Events\Messenger\Serializer
+        alias: Somnambulist\Domain\Events\Adapters\MessengerSerializer
 ```
 
 Set the serializer on the domain_events transport:
@@ -170,3 +191,6 @@ framework:
 
 __Note:__ the `EventBus` provided here is specifically for domain events. For general events
 consider adding a separate bus.
+
+__Note:__ since v3 the EventBus can handle generic events - they will not have an aggregate
+associated with them.

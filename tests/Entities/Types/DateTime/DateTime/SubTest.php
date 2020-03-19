@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime;
 
@@ -12,8 +12,9 @@ use Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers;
  * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime\ModifiersTest
  *
- * @group value-objects
- * @group value-objects-date-time
+ * @group entities
+ * @group entities-types
+ * @group entities-types-datetime
  */
 class SubTest extends TestCase
 {
@@ -22,17 +23,17 @@ class SubTest extends TestCase
 
     public function testSubYearsPositive()
     {
-        $this->assertSame(1974, DateTime::createFromDate(1975)->subYears(1)->year());
+        $this->assertSame(1974, DateTime::createFromDate(1975, 1, 1)->subYears(1)->year());
     }
 
     public function testSubYearsZero()
     {
-        $this->assertSame(1975, DateTime::createFromDate(1975)->subYears(0)->year());
+        $this->assertSame(1975, DateTime::createFromDate(1975, 1, 1)->subYears(0)->year());
     }
 
     public function testSubYearsNegative()
     {
-        $this->assertSame(1976, DateTime::createFromDate(1975)->subYears(-1)->year());
+        $this->assertSame(1976, DateTime::createFromDate(1975, 1, 1)->subYears(-1)->year());
     }
 
     public function testSubMonthsPositive()
@@ -82,32 +83,32 @@ class SubTest extends TestCase
 
     public function testSubHoursPositive()
     {
-        $this->assertSame(23, DateTime::createFromTime(0)->subHours(1)->hour());
+        $this->assertSame(23, DateTime::createFromTime(0, 0, 0)->subHours(1)->hour());
     }
 
     public function testSubHoursZero()
     {
-        $this->assertSame(0, DateTime::createFromTime(0)->subHours(0)->hour());
+        $this->assertSame(0, DateTime::createFromTime(0, 0, 0)->subHours(0)->hour());
     }
 
     public function testSubHoursNegative()
     {
-        $this->assertSame(1, DateTime::createFromTime(0)->subHours(-1)->hour());
+        $this->assertSame(1, DateTime::createFromTime(0, 0, 0)->subHours(-1)->hour());
     }
 
     public function testSubMinutesPositive()
     {
-        $this->assertSame(59, DateTime::createFromTime(0, 0)->subMinutes(1)->minute());
+        $this->assertSame(59, DateTime::createFromTime(0, 0, 0)->subMinutes(1)->minute());
     }
 
     public function testSubMinutesZero()
     {
-        $this->assertSame(0, DateTime::createFromTime(0, 0)->subMinutes(0)->minute());
+        $this->assertSame(0, DateTime::createFromTime(0, 0, 0)->subMinutes(0)->minute());
     }
 
     public function testSubMinutesNegative()
     {
-        $this->assertSame(1, DateTime::createFromTime(0, 0)->subMinutes(-1)->minute());
+        $this->assertSame(1, DateTime::createFromTime(0, 0, 0)->subMinutes(-1)->minute());
     }
 
     public function testSubSecondsPositive()

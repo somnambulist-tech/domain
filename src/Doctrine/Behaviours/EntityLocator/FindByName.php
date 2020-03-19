@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Domain\Doctrine\Behaviours\EntityLocator;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Somnambulist\Collection\MutableCollection;
 
 /**
  * Trait FindByName
@@ -13,39 +13,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 trait FindByName
 {
 
-    /**
-     * @param array      $criteria
-     * @param array|null $orderBy
-     * @param null|int   $limit
-     * @param null|int   $offset
-     *
-     * @return mixed
-     */
     abstract public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
 
-    /**
-     * @param array      $criteria
-     * @param array|null $orderBy
-     *
-     * @return null|object
-     */
     abstract public function findOneBy(array $criteria, array $orderBy = null);
 
-    /**
-     * @param string $name
-     *
-     * @return ArrayCollection
-     */
-    public function findByName(string $name): ArrayCollection
+    public function findByName(string $name): MutableCollection
     {
         return $this->findBy(['name' => $name], ['name' => 'ASC']);
     }
 
-    /**
-     * @param string $name
-     *
-     * @return null|object
-     */
     public function findOneByName(string $name): ?object
     {
         return $this->findOneBy(['name' => $name]);

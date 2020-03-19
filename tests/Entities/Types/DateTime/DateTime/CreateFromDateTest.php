@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime;
 
@@ -12,66 +12,46 @@ use Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime\CreateFromDateTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-datetime
  */
 class CreateFromDateTest extends TestCase
 {
 
     use Helpers;
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDateWithDefaults()
     {
-        $d = DateTime::createFromDate();
+        $d = DateTime::now();
         $this->assertSame($d->timestamp(), DateTime::create(null, null, null, null, null, null)->timestamp());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDate()
     {
         $d = DateTime::createFromDate(1975, 5, 21);
         $this->assertDateTime($d, 1975, 5, 21);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDateWithYear()
     {
-        $d = DateTime::createFromDate(1975);
+        $d = DateTime::createFromDate(1975, 1, 1);
         $this->assertSame(1975, $d->year());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDateWithMonth()
     {
-        $d = DateTime::createFromDate(null, 5);
+        $d = DateTime::createFromDate(2020, 5, 1);
         $this->assertSame(5, $d->month());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDateWithDay()
     {
-        $d = DateTime::createFromDate(null, null, 21);
+        $d = DateTime::createFromDate(2020, 5, 21);
         $this->assertSame(21, $d->day());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDateWithTimezone()
     {
         $d = DateTime::createFromDate(1975, 5, 21, new TimeZone('Europe/London'));
@@ -79,10 +59,6 @@ class CreateFromDateTest extends TestCase
         $this->assertSame('Europe/London', (string)$d->timezone());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromDateWithDateTimeZone()
     {
         $d = DateTime::createFromDate(1975, 5, 21, new TimeZone('Europe/London'));

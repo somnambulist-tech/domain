@@ -18,29 +18,13 @@ use Somnambulist\Domain\Entities\Types\Web\IPV4Address;
 class IPV4AddressType extends Type
 {
 
-    /**
-     * @var string
-     */
-    const NAME = 'ip_v4_address';
+    public const NAME = 'ip_v4_address';
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param array            $fieldDeclaration
-     * @param AbstractPlatform $platform
-     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|IPV4Address|null
-     * @throws ConversionException
-     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -52,21 +36,14 @@ class IPV4AddressType extends Type
         }
 
         try {
-            $uuid = new IPV4Address($value);
+            $ipv4 = new IPV4Address($value);
         } catch (InvalidArgumentException $e) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
-        return $uuid;
+        return $ipv4;
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|string|null
-     * @throws ConversionException
-     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -84,23 +61,11 @@ class IPV4AddressType extends Type
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return string
-     */
     public function getName()
     {
         return static::NAME;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param AbstractPlatform $platform
-     *
-     * @return boolean
-     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;

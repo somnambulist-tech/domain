@@ -1,13 +1,13 @@
 ## Enumerations
 
 Enumerations are provided via the eloquent/enumeration library (not be confused with Laravel Eloquent).
-An enumeration is essentially a typed constant where there is only every one instance of that value.
+An enumeration is essentially a typed constant where there is only ever one instance of that value.
 
 For example: HTTP verbs could be represented as an enumeration because there is never more than one
 instance of GET, POST, PUT, PATCH, DELETE, HEAD etc.
 
-The most useful feature of an enumeration is that it can only be one of the values that are defined
-so now what would have been a string can be type hinted with a specific type.
+The most useful feature of an enumeration is that it can only be one of the defined values so it can
+be safely type-hinted using the enumeration class name.
 
 ### Usage
 
@@ -16,6 +16,8 @@ Continuing with the above example of HTTP verb, we create an enumeration as foll
 ```php
 <?php
 namespace App\Domain;
+
+use Somnambulist\Domain\Entities\AbstractEnumeration;
 
 final class HTTPMethod extends AbstractEnumeration
 {
@@ -32,8 +34,7 @@ And then to use it:
 ```php
 $verb = HTTPMethod::GET();
 ```
-Each constant is converted to a method via __callStatic map throughs. It can be type-hinted on
-a class e.g.:
+Each constant is converted to a method via `__callStatic`. It can be type-hinted on a class e.g.:
 
 ```php
 <?php

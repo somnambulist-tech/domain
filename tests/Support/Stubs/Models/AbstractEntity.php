@@ -1,0 +1,14 @@
+<?php declare(strict_types=1);
+
+namespace Somnambulist\Domain\Tests\Support\Stubs\Models;
+
+abstract class AbstractEntity
+{
+
+    private string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+}

@@ -21,29 +21,13 @@ use Somnambulist\Domain\Entities\Types\Web\Url;
 class UrlType extends Type
 {
 
-    /**
-     * @var string
-     */
-    const NAME = 'url';
+    public const NAME = 'url';
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param array            $fieldDeclaration
-     * @param AbstractPlatform $platform
-     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|Url|null
-     * @throws ConversionException
-     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -55,21 +39,14 @@ class UrlType extends Type
         }
 
         try {
-            $uuid = new Url($value);
+            $url = new Url($value);
         } catch (InvalidArgumentException $e) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
-        return $uuid;
+        return $url;
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|string|null
-     * @throws ConversionException
-     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -87,23 +64,11 @@ class UrlType extends Type
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return string
-     */
     public function getName()
     {
         return static::NAME;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param AbstractPlatform $platform
-     *
-     * @return boolean
-     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;

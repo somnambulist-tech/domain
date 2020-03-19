@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types;
 
@@ -10,13 +10,14 @@ use Somnambulist\Domain\Entities\Types\Geography\Srid;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\EnumerationTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-enumeration
  */
 class EnumerationTest extends TestCase
 {
 
-    /**
-     * @group enumeration
-     */
     public function testValues()
     {
         $values = Srid::values();
@@ -30,18 +31,12 @@ class EnumerationTest extends TestCase
         $this->assertEquals($expected, $values);
     }
 
-    /**
-     * @group enumeration
-     */
     public function testHasKey()
     {
         $this->assertTrue(Srid::hasKey('WGS84'));
         $this->assertFalse(Srid::hasKey('bob'));
     }
 
-    /**
-     * @group enumeration
-     */
     public function testHasValue()
     {
         $this->assertTrue(Srid::hasValue(4326));

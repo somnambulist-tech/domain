@@ -11,13 +11,14 @@ use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindBySlugTest
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-locator
  */
 class FindBySlugTest extends TestCase
 {
 
-    /**
-     * @group traits
-     */
     public function testFindBySlugCallsFindOneBy()
     {
         $mock = $this->getMockForTrait(FindBySlug::class);
@@ -30,9 +31,6 @@ class FindBySlugTest extends TestCase
         $mock->findBySlug('bob');
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOrFailBySlugCallsFindOneBy()
     {
         $mock = $this->getMockForTrait(FindBySlug::class);
@@ -46,9 +44,6 @@ class FindBySlugTest extends TestCase
         $mock->findOrFailBySlug('bob');
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOrFailBySlugCallsRaisesExceptionIfNotFound()
     {
         $mock = $this->getMockForTrait(FindBySlug::class, [], '', true, true, true, ['findBySlug']);

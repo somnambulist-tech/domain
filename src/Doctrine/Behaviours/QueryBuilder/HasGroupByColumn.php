@@ -13,14 +13,6 @@ use Doctrine\DBAL\Query\QueryBuilder;
 trait HasGroupByColumn
 {
 
-    /**
-     * Returns true if the column is already defined in the query builder
-     *
-     * @param QueryBuilder $qb
-     * @param string       $column
-     *
-     * @return bool
-     */
     public function hasColumnInGroupBy(QueryBuilder $qb, string $column): bool
     {
         return in_array($column, $qb->getQueryPart('groupBy'));

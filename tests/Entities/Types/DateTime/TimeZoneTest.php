@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\DateTime;
 
@@ -10,14 +10,15 @@ use Somnambulist\Domain\Entities\Types\DateTime\TimeZone;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\TimeZoneTest
+ *
+ * @group      entities
+ * @group      entities-types
+ * @group      entities-types-datetime
  */
 class TimeZoneTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
+
     public function testCreate()
     {
         $vo = new TimeZone('America/Toronto');
@@ -25,10 +26,6 @@ class TimeZoneTest extends TestCase
         $this->assertEquals('America/Toronto', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
     public function testCreateFromFactory()
     {
         $vo = TimeZone::create('America/Toronto');
@@ -36,10 +33,6 @@ class TimeZoneTest extends TestCase
         $this->assertEquals('America/Toronto', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
     public function testCreateFromFactoryUsesSystemDefault()
     {
         $vo = TimeZone::create();
@@ -47,10 +40,6 @@ class TimeZoneTest extends TestCase
         $this->assertEquals(date_default_timezone_get(), $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
     public function testCanCastToString()
     {
         $vo = new TimeZone('America/Toronto');
@@ -58,10 +47,6 @@ class TimeZoneTest extends TestCase
         $this->assertEquals('America/Toronto', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
     public function testCanGetNative()
     {
         $vo = new TimeZone('America/Toronto');
@@ -69,10 +54,6 @@ class TimeZoneTest extends TestCase
         $this->assertInstanceOf(\DateTimeZone::class, $vo->toNative());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
     public function testCanCompareOtherObjects()
     {
         $vo1 = new TimeZone('America/Toronto');
@@ -82,13 +63,9 @@ class TimeZoneTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-time-zone
-     */
     public function testCantSetArbitraryProperties()
     {
-        $vo = new TimeZone('America/Toronto');
+        $vo      = new TimeZone('America/Toronto');
         $vo->foo = 'bar';
 
         $this->assertObjectNotHasAttribute('foo', $vo);

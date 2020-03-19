@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Web;
 
@@ -10,14 +10,14 @@ use Somnambulist\Domain\Entities\Types\Web\IPv4Address;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Web
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Web\IPv4AddressTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-ipv4
  */
 class IPv4AddressTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-ipv4
-     */
     public function testCreate()
     {
         $vo = new IPv4Address('192.168.0.1');
@@ -25,10 +25,6 @@ class IPv4AddressTest extends TestCase
         $this->assertEquals('192.168.0.1', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-ipv4
-     */
     public function testCanCastToString()
     {
         $vo = new IPv4Address('192.168.0.1');
@@ -36,10 +32,6 @@ class IPv4AddressTest extends TestCase
         $this->assertEquals('192.168.0.1', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-ipv4
-     */
     public function testCanCompare()
     {
         $vo1 = new IPv4Address('192.168.0.1');

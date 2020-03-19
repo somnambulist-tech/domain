@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Money;
 
@@ -10,27 +10,24 @@ use Somnambulist\Domain\Entities\Types\Money\Currency;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Money
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Money\CurrencyTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-currency
  */
 class CurrencyTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCreate()
     {
         $vo = Currency::memberByKey('CAD');
 
-        $this->assertEquals('Canadian Dollar', $vo->toString());
+        $this->assertEquals('Canadian Dollar', $vo->name());
         $this->assertEquals('CAD', $vo->code());
+        $this->assertEquals('CAD', $vo->toString());
         $this->assertEquals(2, $vo->precision());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCreateGetsDefaultPrecision()
     {
         $vo = Currency::memberByKey('USD');
@@ -38,10 +35,6 @@ class CurrencyTest extends TestCase
         $this->assertEquals(2, $vo->precision());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCreateGetsSpecificPrecision()
     {
         $vo = Currency::memberByKey('BHD');
@@ -57,34 +50,22 @@ class CurrencyTest extends TestCase
         $this->assertEquals(0, $vo->precision());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCreateStatically()
     {
         $vo = Currency::memberByKey('GBP');
 
-        $this->assertEquals('Pound Sterling', $vo->toString());
+        $this->assertEquals('Pound Sterling', $vo->name());
         $this->assertEquals('GBP', $vo->code());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCanCastToString()
     {
         $vo = Currency::memberByKey('CAD');
 
-        $this->assertEquals('Canadian Dollar', (string)$vo);
+        $this->assertEquals('CAD', (string)$vo);
         $this->assertEquals('CAD', (string)$vo->code());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-country
-     */
     public function testCanCompare()
     {
         $vo1 = Currency::memberByKey('CAD');

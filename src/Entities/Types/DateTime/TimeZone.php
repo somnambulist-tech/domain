@@ -15,51 +15,33 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 class TimeZone extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
-    /**
-     * Constructor.
-     *
-     * @param string $tz
-     */
     public function __construct(string $tz)
     {
         Assert::that($tz, null, 'value')
             ->notEmpty()
-            ->satisfy(function ($value) {
-                return false !== @timezone_open($value);
-            })
+            ->satisfy(fn ($value) => false !== @timezone_open($value))
         ;
 
         $this->value = $tz;
     }
 
-    /**
-     * Creates a TimeZone instance using either the system default or supplied timezone
-     *
-     * @param null|string $tz
-     *
-     * @return static
-     */
-    public static function create($tz = null): self
+    public static function create(string $tz = null): self
     {
         return new static($tz ?? date_default_timezone_get());
     }
 
-    /**
-     * @return string
-     */
+    public static function utc(): self
+    {
+        return new static('UTC');
+    }
+
     public function toString(): string
     {
         return (string)$this->value;
     }
 
-    /**
-     * @return DateTimeZone
-     */
     public function toNative(): DateTimeZone
     {
         return new DateTimeZone($this->value);

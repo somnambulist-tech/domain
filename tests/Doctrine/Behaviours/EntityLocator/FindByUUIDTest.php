@@ -5,19 +5,21 @@ namespace Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
 use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Domain\Entities\Types\Identity\Uuid;
 
 /**
  * Class FindByUUIDTest
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByUUIDTest
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-locator
  */
 class FindByUUIDTest extends TestCase
 {
 
-    /**
-     * @group traits
-     */
     public function testFindByUUIDCallsFindOneBy()
     {
         $mock = $this->getMockForTrait(FindByUUID::class);
@@ -27,12 +29,9 @@ class FindByUUIDTest extends TestCase
         ;
 
         /** @var FindByUUID $mock */
-        $mock->findByUUID('bob');
+        $mock->findByUUID(new Uuid('86cc267d-428c-4107-9abc-4b7e20e551bb'));
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOrFailByUUIDCallsFindOneBy()
     {
         $mock = $this->getMockForTrait(FindByUUID::class);
@@ -43,12 +42,9 @@ class FindByUUIDTest extends TestCase
         ;
 
         /** @var FindByUUID $mock */
-        $mock->findOrFailByUUID('bob');
+        $mock->findOrFailByUUID(new Uuid('8c21dae8-47b1-40b0-8ea4-478e181aff63'));
     }
 
-    /**
-     * @group traits
-     */
     public function testFindOrFailByUUIDCallsRaisesExceptionIfNotFound()
     {
         $mock = $this->getMockForTrait(FindByUUID::class, [], '', true, true, true, ['findByUUID']);
@@ -65,6 +61,6 @@ class FindByUUIDTest extends TestCase
 
         $this->expectException(EntityNotFoundException::class);
         /** @var FindByUUID $mock */
-        $mock->findOrFailByUUID('bob');
+        $mock->findOrFailByUUID(new Uuid('e02acdf9-697e-4166-baa7-52e342e2b4a6'));
     }
 }

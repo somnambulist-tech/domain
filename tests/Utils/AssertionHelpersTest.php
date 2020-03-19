@@ -2,14 +2,15 @@
 
 namespace Somnambulist\Domain\Tests\Utils;
 
-use MyEntity;
-use MyEntityCreatedEvent;
-use MyEntityNameUpdatedEvent;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Tests\Events\_data\Entities\AbstractEntity;
-use Somnambulist\Domain\Tests\Events\_data\Entities\MyInheritedEntity;
+use Somnambulist\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
+use Somnambulist\Domain\Tests\Support\Stubs\Events\MyEntityNameUpdatedEvent;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\AbstractEntity;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\MyInheritedEntity;
 use Somnambulist\Domain\Utils\Tests\Assertions\AssertDoesNotHaveDomainEventOfType;
 use Somnambulist\Domain\Utils\Tests\Assertions\AssertDomainEventHasAttributes;
 use Somnambulist\Domain\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue;
@@ -31,48 +32,48 @@ class AssertionHelpersTest extends TestCase
 
     public function testHasDomainEvent()
     {
-        $entity = new MyEntity('id', 'test', 'test 2', DateTime::now());
+        $entity = new MyEntity(new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
 
         $this->assertHasDomainEventOfType($entity, MyEntityCreatedEvent::class);
     }
 
     public function testHasDomainEventWithCount()
     {
-        $entity = new MyEntity('id', 'test', 'test 2', DateTime::now());
+        $entity = new MyEntity(new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
 
         $this->assertHasDomainEventOfType($entity, MyEntityCreatedEvent::class, 1);
     }
 
     public function testDoesNotHaveDomainEvent()
     {
-        $entity = new MyEntity('id', 'test', 'test 2', DateTime::now());
+        $entity = new MyEntity(new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
 
         $this->assertDoesNotHaveDomainEventOfType($entity, MyEntityNameUpdatedEvent::class);
     }
 
     public function testEventHasAttributes()
     {
-        $entity = new MyEntity('id', 'test', 'test 2', DateTime::now());
+        $entity = new MyEntity(new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
 
         $this->assertDomainEventHasAttributes($entity, MyEntityCreatedEvent::class, [
-            'id' => 'id',
+            'id' => 'e9177266-5a64-420d-afda-04feb7edf14d',
             'name' => 'test',
-            'another' => 'test 2',
+            'another' => 'bob',
         ]);
     }
 
     public function testEntityHasPropertyValue()
     {
-        $entity = new MyEntity('id', 'test', 'test 2', DateTime::now());
+        $entity = new MyEntity($u = new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');;
 
-        $this->assertEntityHasPropertyWithValue($entity, 'id', 'id');
+        $this->assertEntityHasPropertyWithValue($entity, 'id', $u);
     }
 
     public function testEntityHasPropertyValueWorksWithObjects()
     {
-        $entity = new MyEntity('id', 'test', 'test 2', $dt = DateTime::now());
+        $entity = new MyEntity(new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
 
-        $this->assertEntityHasPropertyWithValue($entity, 'createdAt', $dt);
+        $this->assertEntityHasPropertyWithValue($entity, 'createdAt', $entity->getCreatedAt());
     }
 
     public function testEntityHasPropertyValueWorksWithInheritedPrivateProperties()
@@ -87,7 +88,7 @@ class AssertionHelpersTest extends TestCase
         $entity = new MyInheritedEntity('id', 'test');
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Object of type "Somnambulist\Domain\Tests\Events\_data\Entities\MyInheritedEntity" does not have a property "name"; do you need a custom scope?');
+        $this->expectExceptionMessage('Object of type "Somnambulist\Domain\Tests\Support\Stubs\Models\MyInheritedEntity" does not have a property "name"; do you need a custom scope?');
 
         $this->assertEntityHasPropertyWithValue($entity, 'name', 'test');
     }

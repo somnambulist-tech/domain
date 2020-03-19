@@ -1,6 +1,29 @@
 Change Log
 ==========
 
+2020-08-28
+----------
+
+ * Require PHP 7.4
+ * Refactor Doctrine types
+ * Refactor Events; removed AbstractDomainEvent in favour of AbstractEvent
+ * Refactor AggregateRoot and event raising behaviour
+ * Refactor Doctrine type UuidType to allow extending for other types easily
+ * Remove all entity behaviours as aggregate roots should be focused on the business language
+ * Remove additional event publishers; now only has messenger and doctrine
+ * Remove `jsonb` and `json_collection` type aliases, use `json`
+ * Remove class name aliases on enumerables; only short aliases are available by default
+ * Added `JobQueue` and `AbstractJob`
+ * Added `Id` value-object and mapping files / type
+ * Added `AbstractEntity` a child entity implementation
+ * Added `AbstractEntityCollection` for managing child entities within the scope of an aggregate
+ * Rename EventBus `dispatch` to `notify`
+ * Rename bus implementations to `Adapters` namespace and include `Messenger` in the class name
+ * Rename enumerable constructors
+ * `Country` and `Currency` now cast to ISO code not name
+ * `Area` and `Distance` now cast with unit name as part of the string
+ * `EntityAccessor` defaults the scope to the passed object, instead of `null`
+
 2020-08-28 - 2.5.1
 ------------------
 

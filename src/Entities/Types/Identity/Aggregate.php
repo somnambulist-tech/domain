@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Domain\Entities\Types\Identity;
 
+use Assert\Assert;
 use Somnambulist\Domain\Entities\AbstractValueObject;
 
 /**
@@ -10,27 +11,20 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Identity
  * @subpackage Somnambulist\Domain\Entities\Types\Identity\Aggregate
  */
-class Aggregate extends AbstractValueObject
+final class Aggregate extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $class;
-
-    /**
-     * @var string
-     */
-    private $identity;
-
-    /**
-     * Constructor.
-     *
-     * @param string $class
-     * @param string $identity A type supporting casting to a string
-     */
-    public function __construct(string $class, $identity)
+    private string $class;
+    private string $identity;
+    
+    public function __construct(string $class, string $identity)
     {
+        Assert::lazy()->tryAll()
+            ->that($class, 'class')->notEmpty()->maxLength(255)
+            ->that($identity, 'identity')->notEmpty()->uuid()
+            ->verifyNow()
+        ;
+
         $this->class    = $class;
         $this->identity = $identity;
     }

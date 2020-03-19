@@ -43,17 +43,8 @@ use Doctrine\ORM\Query\SqlWalker;
 class TypeFunction extends FunctionNode
 {
 
-    /**
-     * @var string
-     */
-    public $dqlAlias;
+    public string $dqlAlias = '';
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @return string
-     * @throws QueryException
-     */
     public function getSql(SqlWalker $sqlWalker)
     {
         $qComp      = $sqlWalker->getQueryComponent($this->dqlAlias);
@@ -70,9 +61,6 @@ class TypeFunction extends FunctionNode
         return $tableAlias . '.' . $class->discriminatorColumn['name'];
     }
 
-    /**
-     * @param Parser $parser
-     */
     public function parse(Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);

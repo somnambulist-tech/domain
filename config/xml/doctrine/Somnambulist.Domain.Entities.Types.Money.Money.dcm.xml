@@ -6,6 +6,6 @@
                 <option name="default">0.0</option>
             </options>
         </field>
-        <field name="currency" type="Somnambulist\Domain\Entities\Types\Money\Currency" />
+        <field name="currency" type="currency" length="3" />
     </embeddable>
 </doctrine-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Somnambulist\Domain\Tests\Support\Stubs\Models\UserGroup" table="user_groups">
+        <id name="root" association-key="true" />
+        <id name="id" type="integer" />
+
+        <embedded name="group" class="Somnambulist\Domain\Tests\Support\Stubs\Models\Group" use-column-prefix="false"/>
+
+        <field name="role" type="group_role"/>
+
+        <many-to-one field="root" target-entity="Somnambulist\Domain\Tests\Support\Stubs\Models\User" inversed-by="groups">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <join-column name="user_id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

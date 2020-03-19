@@ -21,29 +21,13 @@ use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
 class EmailAddressType extends Type
 {
 
-    /**
-     * @var string
-     */
-    const NAME = 'email_address';
+    public const NAME = 'email_address';
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param array            $fieldDeclaration
-     * @param AbstractPlatform $platform
-     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|EmailAddress|null
-     * @throws ConversionException
-     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -63,13 +47,6 @@ class EmailAddressType extends Type
         return $uuid;
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|string|null
-     * @throws ConversionException
-     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -87,23 +64,11 @@ class EmailAddressType extends Type
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return string
-     */
     public function getName()
     {
         return static::NAME;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param AbstractPlatform $platform
-     *
-     * @return boolean
-     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;

@@ -4,13 +4,13 @@ Provides a basic set of mapping information for the somnambulist/value-objects l
 use with Doctrine. Mappings are available for Doctrine (.dcm.yml) and Symfony (.orm.yml).
 The mappings are symlinked from symfony to doctrine.
 
-A `Bootstrapper` is included for automatically registering the value-object enumerations
+A `TypeBootstrapper` is included for automatically registering the value-object enumerations
 as Doctrine types.
 
 ### Requirements
 
- * PHP 7+
- * Doctrine ORM 2.5+
+ * PHP 7.4+
+ * Doctrine ORM 2.7+
 
 ### Usage
 
@@ -27,15 +27,15 @@ __Note:__ enumerations are used in these mappings.
 To register the enumeration handlers add the following to your applications bootstrap
 code (e.g.: AppBundle::boot or AppServiceProvider::register|boot):
 
-    Somnambulist\Domain\Doctrine\Bootstrapper::registerEnumerations();
+    Somnambulist\Domain\Doctrine\TypeBootstrapper::registerEnumerations();
 
 This will pre-register the following enumerations:
 
- * Geography\Country
- * Geography\Srid
- * Measure\AreaUnit
- * Measure\DistanceUnit
- * Money\Currency
+ * Geography\Country as country
+ * Money\Currency as currency
+ * Measure\AreaUnit as area_unit
+ * Measure\DistanceUnit as distance_unit
+ * Geography\Srid as srid
  
 In addition extra helpers are registered to allow the Country and Currency value objects
 to be used as enumerations. These are stored using the respective ISO 3-char codes.
@@ -54,12 +54,10 @@ Custom types are included for:
  * date
  * time
  * json
- * jsonb
- * json_collection
- * email_address
  * ip_v4_address
  * ip_v6_address
- * phone_number
+ * email
+ * phone
  * url
  * uuid
 
@@ -69,13 +67,13 @@ extended DateTimeImmutable object.
 json, jsonb and json_collection are equivalent and allow JSON data to be converted to and
 from a Collection object instead of a plain array.
 
-To register the standard types add the following to your application bootstrap:
+To register all the standard types add the following to your application bootstrap:
 
-    Somnambulist\Doctrine\Bootstrapper::registerTypes();
+    Somnambulist\Domain\Doctrine\TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
 
-To register the extra types (email, url, uuid, etc):
-
-    Somnambulist\Doctrine\Bootstrapper::registerExtendedTypes();
+__Note:__ if you register `uuid` as a type, and then use it in e.g.: an embeddable your
+embeddable with receive a Uuid object, not a Uuid string. Ensure the type is set to `guid`
+to get just the string value.
 
 #### Mapping Files
 
@@ -90,13 +88,13 @@ fields:
         type: json
 
     country:
-        type: Somnambulist\Domain\Entities\Types\Geography\Country
+        type: country
     
     currency:
-        type: Somnambulist\Domain\Entities\Types\Money\Currency
+        type: currency
 ```
 
-To use the value-objects:
+To embedded the value-objects instead of using type casting:
 
 ```yaml
 embedded:
@@ -122,9 +120,9 @@ Alternatively if the extended types are registered you can instead use:
 
 ```xml
 <entity name="My\Entity">
-    <embedded name="email" class="email" length="200" />
-    <embedded name="phone" class="phone" length="20" />
-    <embedded name="homepage" class="url" length="400" />
+    <field name="email" class="email" length="200" />
+    <field name="phone" class="phone" length="20" />
+    <field name="homepage" class="url" length="400" />
 </entity>
 ```
 

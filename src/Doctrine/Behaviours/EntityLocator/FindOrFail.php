@@ -13,32 +13,10 @@ use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
 trait FindOrFail
 {
 
-    /**
-     * @return string
-     */
     abstract protected function getEntityName();
 
-    /**
-     * Finds an entity by its primary key / identifier.
-     *
-     * @param mixed    $id          The identifier.
-     * @param int|null $lockMode    One of the \Doctrine\DBAL\LockMode::* constants
-     *                              or NULL if no specific lock mode should be used
-     *                              during the search.
-     * @param int|null $lockVersion The lock version.
-     *
-     * @return object|null The entity instance or NULL if the entity can not be found.
-     */
     abstract public function find($id, $lockMode = null, $lockVersion = null);
 
-    /**
-     * Finds a single entity by a set of criteria.
-     *
-     * @param array      $criteria
-     * @param array|null $orderBy
-     *
-     * @return object|null The entity instance or NULL if the entity can not be found.
-     */
     abstract public function findOneBy(array $criteria, array $orderBy = null);
 
     /**
@@ -49,8 +27,8 @@ trait FindOrFail
      */
     public function findOrFail($id): object
     {
-        if (null === $entity = $this->find($id)) {
-            throw EntityNotFoundException::entityNotFound($this->getEntityName(), $id);
+        if (null === $entity = $this->find((string)$id)) {
+            throw EntityNotFoundException::entityNotFound($this->getEntityName(), (string)$id);
         }
 
         return $entity;
@@ -59,8 +37,8 @@ trait FindOrFail
     /**
      * Finds the first single entity matching the criteria or fails with Exception
      *
-     * @param array $criteria Fields to limit selection by as key -> value pairs
-     * @param array $orderBy  Fields to order by as field -> [ASC|DESC] pairs
+     * @param array      $criteria Fields to limit selection by as key -> value pairs
+     * @param array|null $orderBy  Fields to order by as field -> [ASC|DESC] pairs
      *
      * @return object
      * @throws EntityNotFoundException

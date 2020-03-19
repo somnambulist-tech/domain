@@ -10,19 +10,27 @@ use Somnambulist\Domain\Entities\AbstractEnumeration;
  * @package    Somnambulist\Domain\Entities\Types\Measure
  * @subpackage Somnambulist\Domain\Entities\Types\Measure\DistanceUnit
  *
- * @method static DistanceUnit FEET()
- * @method static DistanceUnit KM()
+ * @method static DistanceUnit MILLIMETRE()
+ * @method static DistanceUnit CENTIMETRE()
  * @method static DistanceUnit METRE()
- * @method static DistanceUnit MILE()
+ * @method static DistanceUnit KM()
+ *
+ * @method static DistanceUnit INCH()
+ * @method static DistanceUnit FEET()
  * @method static DistanceUnit YARD()
+ * @method static DistanceUnit MILE()
  */
 final class DistanceUnit extends AbstractEnumeration
 {
 
-    const FEET  = 'ft';
-    const KM    = 'km';
-    const METRE = 'm';
-    const MILE  = 'mi';
-    const YARD  = 'yd';
+    const MILLIMETRE = 'mm';
+    const CENTIMETRE = 'cm';
+    const METRE      = 'm';
+    const KM         = 'km';
+
+    const INCH       = 'in';
+    const FEET       = 'ft';
+    const YARD       = 'yd';
+    const MILE       = 'mi';
 
 }

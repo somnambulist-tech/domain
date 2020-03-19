@@ -11,8 +11,10 @@ use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Functions\Postgres
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Functions\Postgres\ILikeFunctionTest
- * @group functions
- * @group functions-ilike
+ *
+ * @group doctrine
+ * @group doctrine-functions
+ * @group doctrine-functions-ilike
  */
 class ILikeFunctionTest extends TestCase
 {
@@ -24,7 +26,7 @@ class ILikeFunctionTest extends TestCase
         $this->em->getConfiguration()->addCustomStringFunction('ILIKE', IlikeFunction::class);
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Doctrine\Entities\Order a WHERE ILIKE(a.name, :name) = true')
+            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(a.name, :name) = true')
         ;
         $sql = $query->getSQL();
 

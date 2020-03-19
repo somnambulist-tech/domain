@@ -8,10 +8,10 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use PDOException;
-use Somnambulist\Domain\Doctrine\Bootstrapper;
-use Somnambulist\Domain\Tests\Doctrine\Entities\AbstractUser;
-use Somnambulist\Domain\Tests\Doctrine\Entities\User;
-use Somnambulist\Domain\Tests\Doctrine\Entities\Order;
+use Somnambulist\Domain\Doctrine\TypeBootstrapper;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\AbstractUser;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\Customer;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\Order;
 
 /**
  * Trait BuildDoctrineInstance
@@ -39,7 +39,7 @@ trait BuildDoctrineInstance
         ];
 
         $driver = new XmlDriver([
-            __DIR__ . '/../../Doctrine/_data/mappings',
+            __DIR__ . '/../Stubs/config/xml',
             __DIR__ . '/../../../config/xml/doctrine',
         ]);
         $config = new Configuration();
@@ -49,8 +49,8 @@ trait BuildDoctrineInstance
         $config->setProxyNamespace('Somnambulist\Domain\Tests\Doctrine\Proxies');
         $config->setMetadataDriverImpl($driver);
 
-        Bootstrapper::registerEnumerations();
-        Bootstrapper::registerTypes();
+        TypeBootstrapper::registerEnumerations();
+        TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
 
         $em = EntityManager::create($conn, $config);
 
@@ -60,7 +60,7 @@ trait BuildDoctrineInstance
             $schemaTool->createSchema([
                 $em->getClassMetadata(Order::class),
                 $em->getClassMetadata(AbstractUser::class),
-                $em->getClassMetadata(User::class),
+                $em->getClassMetadata(Customer::class),
             ]);
         } catch (\Exception $e) {
             if (

@@ -2,9 +2,15 @@
 
 namespace Somnambulist\Domain\Utils;
 
+use Assert\Assertion;
+use Assert\InvalidArgumentException;
 use Ramsey\Uuid\Uuid as UuidFactory;
+use Ramsey\Uuid\UuidInterface;
+use Somnambulist\Domain\Entities\Types\Identity\AbstractIdentity;
 use Somnambulist\Domain\Entities\Types\Identity\Uuid;
 use function implode;
+use function is_a;
+use function sprintf;
 
 /**
  * Class IdentityGenerator
@@ -15,14 +21,14 @@ use function implode;
 final class IdentityGenerator
 {
 
-    /**
-     * Creates a new UUID v4 identity
-     *
-     * @return Uuid
-     */
-    public static function new(): Uuid
+    public static function random(): Uuid
     {
-        return new Uuid(UuidFactory::uuid4()->toString());
+        return static::randomOfType(Uuid::class);
+    }
+
+    public static function randomOfType(string $type = Uuid::class): AbstractIdentity
+    {
+        return static::make($type, UuidFactory::uuid4());
     }
 
     /**
@@ -43,6 +49,24 @@ final class IdentityGenerator
      */
     public static function hashed(Uuid $namespace, ...$values): Uuid
     {
-        return new Uuid(UuidFactory::uuid5((string)$namespace, implode('.', $values))->toString());
+        return static::hashedOfType($namespace, Uuid::class, ...$values);
+    }
+
+    public static function hashedOfType(Uuid $namespace, string $type = Uuid::class, ...$values): AbstractIdentity
+    {
+        return static::make($type, UuidFactory::uuid5((string)$namespace, implode('.', $values)));
+    }
+
+    private static function make(string $type, UuidInterface $id): AbstractIdentity
+    {
+        if (!is_a($type, AbstractIdentity::class, $string = true)) {
+            throw new InvalidArgumentException(
+                sprintf('Identity type "%s" does not extend "%s"', $type, AbstractIdentity::class),
+                Assertion::INVALID_CLASS,
+                'type'
+            );
+        }
+
+        return new $type($id->toString());
     }
 }

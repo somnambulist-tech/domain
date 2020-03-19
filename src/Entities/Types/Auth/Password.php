@@ -16,16 +16,8 @@ use function strtolower;
 class Password extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
-    /**
-     * Constructor
-     *
-     * @param string $value
-     */
     public function __construct(string $value)
     {
         Assert::that($value, null, 'password')->notEmpty()->notBlank()->maxLength(255)->satisfy(function ($string) {

@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Identity;
+namespace Somnambulist\Domain\Tests\Entities\Types;
 
 use Assert\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -11,14 +11,15 @@ use Somnambulist\Domain\Entities\Types\PhoneNumber;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\PhoneNumberTest
+ *
+ * @group      entities
+ * @group      entities-types
+ * @group      entities-types-phone
  */
 class PhoneNumberTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-phone-number
-     */
+
     public function testCreate()
     {
         $vo = new PhoneNumber('+12345678901');
@@ -26,10 +27,6 @@ class PhoneNumberTest extends TestCase
         $this->assertEquals('+12345678901', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-phone-number
-     */
     public function testCreateRequiresE164FormatNumber()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -37,10 +34,6 @@ class PhoneNumberTest extends TestCase
         new PhoneNumber('01234567890');
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-phone-number
-     */
     public function testCanCastToString()
     {
         $vo = new PhoneNumber('+12345678901');
@@ -48,10 +41,6 @@ class PhoneNumberTest extends TestCase
         $this->assertEquals('+12345678901', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-phone-number
-     */
     public function testCanCompareInstances()
     {
         $vo1 = new PhoneNumber('+12345678901');
@@ -64,13 +53,9 @@ class PhoneNumberTest extends TestCase
         $this->assertTrue($vo1->equals($vo1));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-phone-number
-     */
     public function testCantSetArbitraryProperties()
     {
-        $vo = new PhoneNumber('+12345678901');
+        $vo      = new PhoneNumber('+12345678901');
         $vo->foo = 'bar';
 
         $this->assertObjectNotHasAttribute('foo', $vo);

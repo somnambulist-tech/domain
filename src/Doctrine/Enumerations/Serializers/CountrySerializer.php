@@ -17,13 +17,12 @@ class CountrySerializer
 
     /**
      * @param object           $value
-     * @param string           $class
      * @param AbstractPlatform $platform
      *
      * @return string
      * @throws InvalidArgumentException
      */
-    public function __invoke($value, string $class, AbstractPlatform $platform)
+    public function __invoke($value, AbstractPlatform $platform)
     {
         if (!$value instanceof Country) {
             throw new InvalidArgumentException(sprintf(

@@ -13,10 +13,7 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 abstract class IpAddress extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    protected $value;
+    protected string $value;
 
     public function toString(): string
     {

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Measure;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Measure\AreaUnit;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Measure
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Measure\AreaTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-area
  */
 class AreaTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-area
-     */
     public function testCreate()
     {
         $vo = new Area(23.4, AreaUnit::SQ_FT());
@@ -27,21 +27,13 @@ class AreaTest extends TestCase
         $this->assertEquals(AreaUnit::SQ_FT(), $vo->unit());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-area
-     */
     public function testCanCastToString()
     {
         $vo = new Area(23.4, AreaUnit::SQ_FT());
 
-        $this->assertEquals('23.4', (string)$vo);
+        $this->assertEquals('23.4 sq_ft', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-area
-     */
     public function testCanCompareEquality()
     {
         $vo1 = new Area(23.4, AreaUnit::SQ_FT());

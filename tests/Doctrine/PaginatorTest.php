@@ -12,7 +12,9 @@ use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine
  * @subpackage Somnambulist\Domain\Tests\Doctrine\PaginatorTest
- * @group paginator
+ *
+ * @group doctrine
+ * @group doctrine-paginator
  */
 class PaginatorTest extends TestCase
 {

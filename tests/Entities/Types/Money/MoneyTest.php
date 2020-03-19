@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Money;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Money\Money;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Money
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Money\MoneyTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-money
  */
 class MoneyTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-money
-     */
     public function testCreate()
     {
         $vo = new Money(23.458, Currency::memberByKey('CAD'));
@@ -28,10 +28,6 @@ class MoneyTest extends TestCase
         $this->assertEquals('23.46', $vo->rounded());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-money
-     */
     public function testCreateStatically()
     {
         $vo = Money::create(23.458, 'CAD');
@@ -41,22 +37,14 @@ class MoneyTest extends TestCase
         $this->assertEquals('23.46', $vo->rounded());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-money
-     */
     public function testCanCastToString()
     {
         $vo = new Money(23.458, Currency::memberByKey('CAD'));
 
         $this->assertEquals('CAD 23.46', (string)$vo);
-        $this->assertEquals('Canadian Dollar', (string)$vo->currency());
+        $this->assertEquals('CAD', (string)$vo->currency());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-money
-     */
     public function testCanCompare()
     {
         $vo1 = new Money(23.458, Currency::memberByKey('CAD'));

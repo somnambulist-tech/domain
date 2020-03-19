@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine;
+namespace Somnambulist\Domain\Tests\Doctrine\Functions;
 
 use Doctrine\ORM\Query;
 use PHPUnit\Framework\TestCase;
@@ -10,10 +10,12 @@ use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
 /**
  * Class TypeFunctionTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine
- * @subpackage Somnambulist\Domain\Tests\Doctrine\TypeFunctionTest
- * @group functions
- * @group functions-type
+ * @package    Somnambulist\Domain\Tests\Doctrine\Functions
+ * @subpackage Somnambulist\Domain\Tests\Doctrine\Functions\TypeFunctionTest
+ *
+ * @group doctrine
+ * @group doctrine-functions
+ * @group doctrine-functions-type
  */
 class TypeFunctionTest extends TestCase
 {
@@ -27,7 +29,7 @@ class TypeFunctionTest extends TestCase
         $this->expectException(Query\QueryException::class);
         $this->expectExceptionMessage('TYPE() only supports entities with a discriminator column.');
 
-        $query = $this->em->createQuery('SELECT TYPE(l) FROM Somnambulist\Domain\Tests\Doctrine\Entities\Order l');
+        $query = $this->em->createQuery('SELECT TYPE(l) FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order l');
         $query->getSQL();
     }
 
@@ -35,9 +37,9 @@ class TypeFunctionTest extends TestCase
     {
         $this->em->getConfiguration()->addCustomStringFunction('TYPE', TypeFunction::class);
 
-        $query = $this->em->createQuery('SELECT TYPE(a) FROM Somnambulist\Domain\Tests\Doctrine\Entities\User a');
+        $query = $this->em->createQuery('SELECT TYPE(a) FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Customer a');
         $sql = $query->getSQL();
 
-        $this->assertEquals("SELECT u0_.type AS sclr_0 FROM users u0_ WHERE u0_.type IN ('user')", $sql);
+        $this->assertEquals("SELECT u0_.type AS sclr_0 FROM users u0_ WHERE u0_.type IN ('customer')", $sql);
     }
 }

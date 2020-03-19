@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Geography;
 
@@ -10,14 +10,14 @@ use Somnambulist\Domain\Entities\Types\Geography\Srid;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Geography
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Geography\SridTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-srid
  */
 class SridTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-srid
-     */
     public function testCreate()
     {
         $vo = Srid::WGS84();
@@ -25,10 +25,6 @@ class SridTest extends TestCase
         $this->assertEquals('4326', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-srid
-     */
     public function testCanCastToString()
     {
         $vo = Srid::WGS84();

@@ -2,8 +2,8 @@
 
 namespace Somnambulist\Domain\Doctrine;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+use Somnambulist\Collection\MutableCollection;
 use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
 use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
 use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\Paginate;
@@ -27,7 +27,7 @@ abstract class AbstractEntityLocator extends EntityRepository
     /**
      * Finds all entities in the repository.
      *
-     * @return ArrayCollection|object[]
+     * @return MutableCollection|object[]
      */
     public function findAll()
     {
@@ -42,10 +42,10 @@ abstract class AbstractEntityLocator extends EntityRepository
      * @param int|null   $limit
      * @param int|null   $offset
      *
-     * @return ArrayCollection|object[]
+     * @return MutableCollection|object[]
      */
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
     {
-        return new ArrayCollection(parent::findBy($criteria, $orderBy, $limit, $offset));
+        return new MutableCollection(parent::findBy($criteria, $orderBy, $limit, $offset));
     }
 }

@@ -5,10 +5,11 @@ namespace Somnambulist\Domain\Doctrine\Types\DateTime;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\Types;
 use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
 
 /**
- * Type that maps an SQL TIME to a Carbon object.
+ * Type that maps an SQL TIME to a DateTime object.
  *
  * Based on: Doctrine\DBAL\Types\TimeType
  */
@@ -19,7 +20,7 @@ class TimeType extends Type
      */
     public function getName()
     {
-        return Type::TIME;
+        return Types::TIME_MUTABLE;
     }
 
     /**

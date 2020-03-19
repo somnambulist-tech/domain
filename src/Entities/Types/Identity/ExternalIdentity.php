@@ -11,25 +11,12 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Identity
  * @subpackage Somnambulist\Domain\Entities\Types\Identity\ExternalIdentity
  */
-class ExternalIdentity extends AbstractValueObject
+final class ExternalIdentity extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $provider;
+    private string $provider;
+    private string $identity;
 
-    /**
-     * @var string
-     */
-    private $identity;
-
-    /**
-     * Constructor.
-     *
-     * @param string $provider The provider of the identity string
-     * @param string $identity The identity string for the provider
-     */
     public function __construct(string $provider, string $identity)
     {
         Assert::lazy()->tryAll()

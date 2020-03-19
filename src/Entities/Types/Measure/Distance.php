@@ -3,6 +3,7 @@
 namespace Somnambulist\Domain\Entities\Types\Measure;
 
 use Somnambulist\Domain\Entities\AbstractValueObject;
+use function sprintf;
 
 /**
  * Class Distance
@@ -10,25 +11,12 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Measure
  * @subpackage Somnambulist\Domain\Entities\Types\Measure\Distance
  */
-class Distance extends AbstractValueObject
+final class Distance extends AbstractValueObject
 {
 
-    /**
-     * @var float
-     */
-    private $value;
+    private float $value;
+    private DistanceUnit $unit;
 
-    /**
-     * @var DistanceUnit
-     */
-    private $unit;
-
-    /**
-     * Constructor.
-     *
-     * @param float    $value
-     * @param DistanceUnit $unit
-     */
     public function __construct(float $value, DistanceUnit $unit)
     {
         $this->value = $value;
@@ -37,7 +25,7 @@ class Distance extends AbstractValueObject
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return sprintf('%s %s', $this->value, $this->unit);
     }
 
     public function value(): float

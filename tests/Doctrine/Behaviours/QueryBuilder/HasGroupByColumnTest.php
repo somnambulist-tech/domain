@@ -12,13 +12,14 @@ use Somnambulist\Domain\Doctrine\Behaviours\QueryBuilder\HasGroupByColumn;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder\HasGroupByColumnTest
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-dbal
  */
 class HasGroupByColumnTest extends TestCase
 {
 
-    /**
-     * @group traits
-     */
     public function testCanCheckForGroupByColumn()
     {
         $test = $this->getMockForTrait(HasGroupByColumn::class);

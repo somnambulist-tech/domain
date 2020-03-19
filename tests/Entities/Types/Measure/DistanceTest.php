@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Measure;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Measure\DistanceUnit;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Measure
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Measure\DistanceTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-distance
  */
 class DistanceTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-distance
-     */
     public function testCreate()
     {
         $vo = new Distance(23.4, DistanceUnit::MILE());
@@ -27,21 +27,13 @@ class DistanceTest extends TestCase
         $this->assertEquals(DistanceUnit::MILE(), $vo->unit());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-distance
-     */
     public function testCanCastToString()
     {
         $vo = new Distance(23.4, DistanceUnit::MILE());
 
-        $this->assertEquals('23.4', (string)$vo);
+        $this->assertEquals('23.4 mi', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-distance
-     */
     public function testCanTestEquality()
     {
         $vo = new Distance(23.4, DistanceUnit::MILE());

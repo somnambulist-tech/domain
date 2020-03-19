@@ -13,17 +13,8 @@ use Somnambulist\Domain\Entities\AbstractMultiton;
 final class Country extends AbstractMultiton
 {
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * Constructor.
-     *
-     * @param string $code
-     * @param string $name
-     */
     protected function __construct(string $code, string $name)
     {
         $this->name = $name;
@@ -40,7 +31,7 @@ final class Country extends AbstractMultiton
 
     public function toString(): string
     {
-        return (string)$this->name();
+        return (string)$this->code();
     }
 
     public function equals(object $object): bool
@@ -62,7 +53,7 @@ final class Country extends AbstractMultiton
         return $this->name;
     }
 
-    private static $mappings = [
+    private static array $mappings = [
         'ABW' => 'Aruba',
         'AFG' => 'Afghanistan',
         'AGO' => 'Angola',

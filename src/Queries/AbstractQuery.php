@@ -11,13 +11,7 @@ namespace Somnambulist\Domain\Queries;
 abstract class AbstractQuery
 {
 
-    public function __set($name, $value)
-    {
-        // prevent arbitrary properties
-    }
+    public function __set($name, $value) {}
 
-    public function __unset($name)
-    {
-        // prevent arbitrary properties
-    }
+    public function __unset($name) {}
 }

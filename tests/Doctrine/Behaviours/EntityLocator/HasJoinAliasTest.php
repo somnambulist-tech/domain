@@ -12,13 +12,14 @@ use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\HasJoinAlias;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\HasJoinAliasTest
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-locator
  */
 class HasJoinAliasTest extends TestCase
 {
 
-    /**
-     * @group traits
-     */
     public function testCanCheckForJoinAlias()
     {
         $test = $this->getMockForTrait(HasJoinAlias::class);

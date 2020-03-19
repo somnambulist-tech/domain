@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Web;
 
@@ -10,14 +10,14 @@ use Somnambulist\Domain\Entities\Types\Web\Url;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\UrlTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-url
  */
 class UrlTest extends TestCase
 {
     
-    /**
-     * @group value-objects
-     * @group value-objects-url
-     */
     public function testCreate()
     {
         $vo = new Url('https://user:pass@www.example.com:8080/this/path?foo=bar&bar=baz&baz[]=45&baz=67#fragment');
@@ -33,10 +33,6 @@ class UrlTest extends TestCase
         $this->assertEquals('fragment', $vo->fragment());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-url
-     */
     public function testCanCastToString()
     {
         $vo = new Url('https://user:pass@www.example.com:8080/this/path?foo=bar&bar=baz&baz[]=45&baz=67#fragment');
@@ -44,10 +40,6 @@ class UrlTest extends TestCase
         $this->assertEquals('https://user:pass@www.example.com:8080/this/path?foo=bar&bar=baz&baz[]=45&baz=67#fragment', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-url
-     */
     public function testCanCompare()
     {
         $vo1 = new Url('https://user:pass@www.example.com:8080/this/path?foo=bar&bar=baz&baz[]=45&baz=67#fragment');

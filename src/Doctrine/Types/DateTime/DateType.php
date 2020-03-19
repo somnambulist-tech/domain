@@ -5,6 +5,7 @@ namespace Somnambulist\Domain\Doctrine\Types\DateTime;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\Types;
 use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
 
 /**
@@ -19,7 +20,7 @@ class DateType extends Type
      */
     public function getName()
     {
-        return Type::DATE;
+        return Types::DATE_MUTABLE;
     }
 
     /**

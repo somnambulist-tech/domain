@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Identity;
 
@@ -11,14 +11,14 @@ use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
  *
  * @package Somnambulist\Domain\Tests\Entities\Types\Identity
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Identity\ExternalIdentityTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-external
  */
 class ExternalIdentityTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-external-id
-     */
     public function testCreate()
     {
         $vo = new ExternalIdentity('Provider', 'ExternalIdentity');
@@ -27,10 +27,6 @@ class ExternalIdentityTest extends TestCase
         $this->assertEquals('ExternalIdentity', $vo->identity());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-external-id
-     */
     public function testCanCastToString()
     {
         $vo = new ExternalIdentity('Provider', 'ExternalIdentity');
@@ -38,10 +34,6 @@ class ExternalIdentityTest extends TestCase
         $this->assertEquals('Provider' . ':ExternalIdentity', (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-external-id
-     */
     public function testCanCompareInstances()
     {
         $vo1 = new ExternalIdentity('Provider', 'ExternalIdentity');
@@ -53,10 +45,6 @@ class ExternalIdentityTest extends TestCase
         $this->assertTrue($vo1->equals($vo1));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-external-id
-     */
     public function testCanCompareOtherInstances()
     {
         $vo1 = new ExternalIdentity('Provider', 'ExternalIdentity');
@@ -65,10 +53,6 @@ class ExternalIdentityTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-external-id
-     */
     public function testCantSetArbitraryProperties()
     {
         $vo = new ExternalIdentity('Provider', 'ExternalIdentity');

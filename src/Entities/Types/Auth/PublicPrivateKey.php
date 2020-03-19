@@ -14,22 +14,9 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 class PublicPrivateKey extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $publicKey;
+    private string $publicKey;
+    private string $privateKey;
 
-    /**
-     * @var string
-     */
-    private $privateKey;
-
-    /**
-     * Constructor.
-     *
-     * @param string $publicKey
-     * @param string $privateKey
-     */
     public function __construct(string $publicKey, string $privateKey)
     {
         Assert::lazy()->tryAll()

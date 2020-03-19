@@ -16,28 +16,10 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 class Coordinate extends AbstractValueObject
 {
 
-    /**
-     * @var float
-     */
-    private $latitude;
+    private float $latitude;
+    private float $longitude;
+    private Srid $srid;
 
-    /**
-     * @var float
-     */
-    private $longitude;
-
-    /**
-     * @var Srid
-     */
-    private $srid;
-
-    /**
-     * Constructor.
-     *
-     * @param float $latitude
-     * @param float $longitude
-     * @param Srid  $srid
-     */
     public function __construct(float $latitude, float $longitude, Srid $srid)
     {
         Assert::lazy()->tryAll()

@@ -6,6 +6,6 @@
                 <option name="default">0.0</option>
             </options>
         </field>
-        <field name="unit" type="Somnambulist\Domain\Entities\Types\Measure\AreaUnit" />
+        <field name="unit" type="area_unit" length="10" />
     </embeddable>
 </doctrine-mapping>

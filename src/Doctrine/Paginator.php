@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Doctrine;
 
 use Doctrine\ORM\Query;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
 
 /**
@@ -15,24 +15,21 @@ use Pagerfanta\Pagerfanta;
 class Paginator
 {
 
-    /**
-     * @var Query
-     */
-    private $query;
+    private Query $query;
 
-    /**
-     * Constructor.
-     *
-     * @param Query $query
-     */
     public function __construct(Query $query)
     {
         $this->query = $query;
     }
 
+    public static function for(Query $query): self
+    {
+        return new self($query);
+    }
+
     public function paginate(int $perPage = 20, int $page = 1, bool $fetchJoinCollection = true): Pagerfanta
     {
-        return (new Pagerfanta(new DoctrineORMAdapter($this->query, $fetchJoinCollection)))
+        return (new Pagerfanta(new QueryAdapter($this->query, $fetchJoinCollection)))
             ->setCurrentPage($page)
             ->setMaxPerPage($perPage)
         ;

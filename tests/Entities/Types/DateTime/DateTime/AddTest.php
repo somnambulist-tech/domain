@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime;
 
@@ -12,28 +12,28 @@ use Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers;
  * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime\ModifiersTest
  *
- * @group value-objects
- * @group value-objects-date-time
+ * @group entities
+ * @group entities-types
+ * @group entities-types-datetime
  */
 class AddTest extends TestCase
 {
 
     use Helpers;
 
-
     public function testAddYearsPositive()
     {
-        $this->assertSame(1976, DateTime::createFromDate(1975)->addYears(1)->year());
+        $this->assertSame(1976, DateTime::createFromDate(1975, 1, 1)->addYears(1)->year());
     }
 
     public function testAddYearsZero()
     {
-        $this->assertSame(1975, DateTime::createFromDate(1975)->addYears(0)->year());
+        $this->assertSame(1975, DateTime::createFromDate(1975, 1, 1)->addYears(0)->year());
     }
 
     public function testAddYearsNegative()
     {
-        $this->assertSame(1974, DateTime::createFromDate(1975)->addYears(-1)->year());
+        $this->assertSame(1974, DateTime::createFromDate(1975, 1, 1)->addYears(-1)->year());
     }
 
     public function testAddDaysPositive()
@@ -68,32 +68,32 @@ class AddTest extends TestCase
 
     public function testAddHoursPositive()
     {
-        $this->assertSame(1, DateTime::createFromTime(0)->addHours(1)->hour());
+        $this->assertSame(1, DateTime::createFromTime(0, 0, 0)->addHours(1)->hour());
     }
 
     public function testAddHoursZero()
     {
-        $this->assertSame(0, DateTime::createFromTime(0)->addHours(0)->hour());
+        $this->assertSame(0, DateTime::createFromTime(0, 0, 0)->addHours(0)->hour());
     }
 
     public function testAddHoursNegative()
     {
-        $this->assertSame(23, DateTime::createFromTime(0)->addHours(-1)->hour());
+        $this->assertSame(23, DateTime::createFromTime(0, 0, 0)->addHours(-1)->hour());
     }
 
     public function testAddMinutesPositive()
     {
-        $this->assertSame(1, DateTime::createFromTime(0, 0)->addMinutes(1)->minute());
+        $this->assertSame(1, DateTime::createFromTime(0, 0, 0)->addMinutes(1)->minute());
     }
 
     public function testAddMinutesZero()
     {
-        $this->assertSame(0, DateTime::createFromTime(0, 0)->addMinutes(0)->minute());
+        $this->assertSame(0, DateTime::createFromTime(0, 0, 0)->addMinutes(0)->minute());
     }
 
     public function testAddMinutesNegative()
     {
-        $this->assertSame(59, DateTime::createFromTime(0, 0)->addMinutes(-1)->minute());
+        $this->assertSame(59, DateTime::createFromTime(0, 0, 0)->addMinutes(-1)->minute());
     }
 
     public function testAddSecondsPositive()

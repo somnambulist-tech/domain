@@ -10,37 +10,18 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Money
  * @subpackage Somnambulist\Domain\Entities\Types\Money\Money
  */
-class Money extends AbstractValueObject
+final class Money extends AbstractValueObject
 {
 
-    /**
-     * @var float
-     */
-    private $amount;
+    private float $amount;
+    private Currency $currency;
 
-    /**
-     * @var Currency
-     */
-    private $currency;
-
-    /**
-     * Constructor.
-     *
-     * @param float    $amount
-     * @param Currency $currency
-     */
     public function __construct(float $amount, Currency $currency)
     {
         $this->amount   = $amount;
         $this->currency = $currency;
     }
 
-    /**
-     * @param float  $amount
-     * @param string $code
-     *
-     * @return static
-     */
     public static function create(float $amount, $code): self
     {
         return new static($amount, ($code instanceof Currency ? $code : Currency::memberByKey($code)));
@@ -56,12 +37,7 @@ class Money extends AbstractValueObject
         return $this->amount;
     }
 
-    /**
-     * Returns the float amount to the currencies precision value
-     *
-     * @return string
-     */
-    public function rounded()
+    public function rounded(): string
     {
         return number_format($this->amount, $this->currency->precision());
     }

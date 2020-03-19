@@ -21,16 +21,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 class PhoneNumber extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
-    /**
-     * Constructor.
-     *
-     * @param string $number
-     */
     public function __construct($number)
     {
         Assert::that($number, null, 'number')->notEmpty()->e164();

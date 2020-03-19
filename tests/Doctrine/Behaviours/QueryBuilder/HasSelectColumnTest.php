@@ -12,13 +12,14 @@ use Somnambulist\Domain\Doctrine\Behaviours\QueryBuilder\HasSelectColumn;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder\HasSelectColumnTest
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-dbal
  */
 class HasSelectColumnTest extends TestCase
 {
 
-    /**
-     * @group traits
-     */
     public function testCanCheckForColumnInSelect()
     {
         $test = $this->getMockForTrait(HasSelectColumn::class);

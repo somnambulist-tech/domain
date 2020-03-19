@@ -17,16 +17,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 abstract class AbstractIdentity extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    protected $value;
+    protected string $value;
 
-    /**
-     * Constructor.
-     *
-     * @param string $uuid
-     */
     public function __construct(string $uuid)
     {
         Assert::that($uuid, null, 'uuid')->notEmpty()->uuid();

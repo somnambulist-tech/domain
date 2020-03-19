@@ -1,57 +1,36 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\DoctrineEnumBridge;
+namespace Somnambulist\Domain\Tests\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ArrayType;
-use Doctrine\DBAL\Types\BigIntType;
-use Doctrine\DBAL\Types\BinaryType;
-use Doctrine\DBAL\Types\BlobType;
-use Doctrine\DBAL\Types\BooleanType;
-use Doctrine\DBAL\Types\DateImmutableType;
-use Doctrine\DBAL\Types\DateIntervalType;
-use Doctrine\DBAL\Types\DateTimeImmutableType;
-use Doctrine\DBAL\Types\DateTimeType;
-use Doctrine\DBAL\Types\DateTimeTzImmutableType;
-use Doctrine\DBAL\Types\DateTimeTzType;
-use Doctrine\DBAL\Types\DateType;
-use Doctrine\DBAL\Types\DecimalType;
-use Doctrine\DBAL\Types\FloatType;
-use Doctrine\DBAL\Types\GuidType;
-use Doctrine\DBAL\Types\IntegerType;
-use Doctrine\DBAL\Types\JsonType;
-use Doctrine\DBAL\Types\ObjectType;
-use Doctrine\DBAL\Types\SimpleArrayType;
-use Doctrine\DBAL\Types\SmallIntType;
-use Doctrine\DBAL\Types\StringType;
-use Doctrine\DBAL\Types\TextType;
-use Doctrine\DBAL\Types\TimeImmutableType;
-use Doctrine\DBAL\Types\TimeType;
 use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Types\Types;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
-use Somnambulist\Domain\Doctrine\EnumerationBridge;
-use Somnambulist\Domain\Tests\Doctrine\Enum\Action;
-use Somnambulist\Domain\Tests\Doctrine\Enum\Gender;
-use Somnambulist\Domain\Tests\Doctrine\Enum\NullableType;
-use Somnambulist\Domain\Tests\Doctrine\Helpers\Constructor;
-use Somnambulist\Domain\Tests\Doctrine\Helpers\NullableConstructor;
-use Somnambulist\Domain\Tests\Doctrine\Helpers\Serializer;
-use Somnambulist\Domain\Tests\Doctrine\MyType;
+use Prophecy\PhpUnit\ProphecyTrait;
+use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Domain\Tests\Support\Stubs\Enum\Action;
+use Somnambulist\Domain\Tests\Support\Stubs\Enum\Gender;
+use Somnambulist\Domain\Tests\Support\Stubs\Enum\NullableType;
+use Somnambulist\Domain\Tests\Support\Stubs\Helpers\Constructor;
+use Somnambulist\Domain\Tests\Support\Stubs\Helpers\NullableConstructor;
+use Somnambulist\Domain\Tests\Support\Stubs\Helpers\Serializer;
+use Somnambulist\Domain\Tests\Support\Stubs\Types\MyType;
 
 /**
  * Class EnumerationBridgeTest
  *
- * Tests adapted from:
- * https://github.com/acelaya/doctrine-enum-type/blob/master/tests/Type/PhpEnumTypeTest.php
- *
  * @package    Somnambulist\Domain\Tests\Doctrine
  * @subpackage Somnambulist\Domain\Tests\Doctrine\EnumerationBridgeTest
- * @group enum-bridge
+ *
+ * @group doctrine
+ * @group doctrine-behaviours
+ * @group doctrine-behaviours-enum
  */
 class EnumerationBridgeTest extends TestCase
 {
+
+    use ProphecyTrait;
+
     /**
      * @var AbstractPlatform
      */
@@ -75,17 +54,14 @@ class EnumerationBridgeTest extends TestCase
         $refProp->setValue(null);
     }
 
-    /**
-     * @test
-     */
-    public function enumTypesAreProperlyRegistered()
+    public function testEnumTypesAreProperlyRegistered()
     {
         $this->assertFalse(Type::hasType(Action::class));
         $this->assertFalse(Type::hasType('gender'));
 
         EnumerationBridge::registerEnumType(Action::class, function ($value) {
-            if (Action::isValid($value)) {
-                return new Action($value);
+            if (Action::hasValue($value)) {
+                return Action::memberByValue($value);
             }
 
             throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
@@ -104,18 +80,15 @@ class EnumerationBridgeTest extends TestCase
         $this->assertTrue(Type::hasType('gender'));
     }
 
-    /**
-     * @test
-     */
-    public function enumTypesAreProperlyCustomizedWhenRegistered()
+    public function testEnumTypesAreProperlyCustomizedWhenRegistered()
     {
         $this->assertFalse(Type::hasType(Action::class));
         $this->assertFalse(Type::hasType(Gender::class));
 
         EnumerationBridge::registerEnumTypes([
             Action::class => function ($value) {
-                if (Action::isValid($value)) {
-                    return new Action($value);
+                if (Action::hasValue($value)) {
+                    return Action::memberByValue($value);
                 }
 
                 throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
@@ -140,18 +113,15 @@ class EnumerationBridgeTest extends TestCase
         $this->assertEquals('gender', $genderType->getName());
     }
 
-    /**
-     * @test
-     */
-    public function canAssignInvokableObjectInstances()
+    public function testCanAssignInvokableObjectInstances()
     {
         $this->assertFalse(Type::hasType(Action::class));
         $this->assertFalse(Type::hasType(Gender::class));
 
         EnumerationBridge::registerEnumTypes([
             Action::class => function ($value) {
-                if (Action::isValid($value)) {
-                    return new Action($value);
+                if (Action::hasValue($value)) {
+                    return Action::memberByValue($value);
                 }
 
                 throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
@@ -171,10 +141,7 @@ class EnumerationBridgeTest extends TestCase
         $this->assertEquals('gender', $genderType->getName());
     }
 
-    /**
-     * @test
-     */
-    public function getSQLDeclarationReturnsValueFromPlatform()
+    public function testGetSQLDeclarationReturnsValueFromPlatform()
     {
         $this->platform->getVarcharTypeDeclarationSQL(Argument::cetera())->willReturn('declaration');
 
@@ -190,14 +157,11 @@ class EnumerationBridgeTest extends TestCase
         $this->assertEquals('declaration', $type->getSQLDeclaration([], $this->platform->reveal()));
     }
 
-    /**
-     * @test
-     */
-    public function convertToDatabaseValueParsesEnum()
+    public function testConvertToDatabaseValueParsesEnum()
     {
         EnumerationBridge::registerEnumType(Action::class, function ($value) {
-            if (Action::isValid($value)) {
-                return new Action($value);
+            if (Action::hasValue($value)) {
+                return Action::memberByValue($value);
             }
 
             throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
@@ -218,14 +182,11 @@ class EnumerationBridgeTest extends TestCase
         $this->assertEquals(Action::DELETE, $type->convertToDatabaseValue($value, $this->platform->reveal()));
     }
 
-    /**
-     * @test
-     */
-    public function convertToPHPValueWithValidValueReturnsParsedData()
+    public function testConvertToPHPValueWithValidValueReturnsParsedData()
     {
         EnumerationBridge::registerEnumType(Action::class, function ($value) {
-            if (Action::isValid($value)) {
-                return new Action($value);
+            if (Action::hasValue($value)) {
+                return Action::memberByValue($value);
             }
 
             throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
@@ -236,17 +197,14 @@ class EnumerationBridgeTest extends TestCase
         /** @var Action $value */
         $value = $type->convertToPHPValue(Action::CREATE, $this->platform->reveal());
         $this->assertInstanceOf(Action::class, $value);
-        $this->assertEquals(Action::CREATE, $value->getValue());
+        $this->assertEquals(Action::CREATE, $value->value());
 
         $value = $type->convertToPHPValue(Action::DELETE, $this->platform->reveal());
         $this->assertInstanceOf(Action::class, $value);
-        $this->assertEquals(Action::DELETE, $value->getValue());
+        $this->assertEquals(Action::DELETE, $value->value());
     }
 
-    /**
-     * @test
-     */
-    public function convertToPHPValueWithNullReturnsNull()
+    public function testConvertToPHPValueWithNullReturnsNull()
     {
         EnumerationBridge::registerEnumType(Action::class, new Constructor());
 
@@ -255,10 +213,7 @@ class EnumerationBridgeTest extends TestCase
         $this->assertNull($value);
     }
 
-    /**
-     * @test
-     */
-    public function convertToPHPValueWithNullValuesSupported()
+    public function testConvertToPHPValueWithNullValuesSupported()
     {
         EnumerationBridge::registerEnumType(NullableType::class, new NullableConstructor());
 
@@ -271,14 +226,11 @@ class EnumerationBridgeTest extends TestCase
         $this->assertNull($value->value());
     }
 
-    /**
-     * @test
-     */
-    public function convertToPHPValueWithInvalidValueThrowsException()
+    public function testConvertToPHPValueWithInvalidValueThrowsException()
     {
         EnumerationBridge::registerEnumType(Action::class, function ($value) {
-            if (Action::isValid($value)) {
-                return new Action($value);
+            if (Action::hasValue($value)) {
+                return Action::memberByValue($value);
             }
 
             throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
@@ -290,14 +242,11 @@ class EnumerationBridgeTest extends TestCase
         $type->convertToPHPValue('invalid', $this->platform->reveal());
     }
 
-    /**
-     * @test
-     */
-    public function usingChildEnumTypeRegisteredValueIsCorrect()
+    public function testUsingChildEnumTypeRegisteredValueIsCorrect()
     {
         MyType::registerEnumType(Action::class, function ($value) {
-            if (Action::isValid($value)) {
-                return new Action($value);
+            if (Action::hasValue($value)) {
+                return Action::memberByValue($value);
             }
 
             throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));

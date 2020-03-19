@@ -10,7 +10,7 @@ DB type, extend and re-implement the `getSQLDeclaration()` method.
 
 ### Requirements
 
- * PHP 7+
+ * PHP 7.4+
  * Doctrine 2.5+
 
 ### Usage
@@ -22,14 +22,13 @@ enumerable to a string will be used if none is provided.
 The callbacks will receive:
 
  * value    - the current value either a PHP type, or the database type (for constructor)
- * name     - the bound name given to the enumeration this could be the FQCN
  * platform - the Doctrine AbstractPlatform instance
 
 For example, in a Symfony project, in your AppBundle class:
 
 ```php
 <?php
-use Somnambulist\Domain\Doctrine\EnumerationBridge;
+use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
 
 class AppBundle extends Bundle
 {
@@ -55,7 +54,7 @@ In Laravel, add to your AppServiceProvider (`register` and `boot` should both wo
 
 ```php
 <?php
-use Somnambulist\Domain\Doctrine\EnumerationBridge;
+use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -77,9 +76,16 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
+When registering the type, you can either use the fully qualified class name, or an alias / short
+string. The only limitation is that it should be unique for each enumeration. In the above example
+we could register the enumeration as `http_action` instead.
+
 __Note:__ the bridge will check if the type has already been registered and skip it if that is
 the case. If you wish to replace an existing type then you should use `Type::overrideType()`,
 however that will only work if the type has already been registered.
+
+__Note:__ when using short aliases you **MUST** explicitly set the class in the constructor for
+hydrating the object. This means that constructors cannot be shared with other types.
 
 #### Register Multiple Types
 
@@ -89,7 +95,7 @@ constructor:
 
 ```php
 <?php
-use Somnambulist\Domain\Doctrine\EnumerationBridge;
+use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
 
 class AppBundle extends Bundle
 {
@@ -134,50 +140,11 @@ fields:
         type: AppBundle\Enumerable\Action
 ```
 
+The type should be set to whatever you used when registering. If this is the class name, use that;
+if you used a short name - use that instead. It is recommended to use short names as it is easier
+to manage them than figuring out the full class name (that does not usually auto-complete).
+
 __Note__: Doctrine has deprecated Yaml config, use XML instead.
-
-#### Share a Constructor
-
-For enumerables that have the same signature / method names, a constructor callable can be shared.
-
-To share a constructor callable, use the FQCN as the name of the enumerable or you could use a hash
-map of aliases to Enumerables:
-
-```php
-<?php
-use Somnambulist\Domain\Doctrine\EnumerationBridge;
-
-class AppBundle extends Bundle
-{
-    public function boot()
-    {
-        $constructor = function ($value, $class) {
-            // constructor method should handle nulls
-            if (is_null($value)) {
-                return null;
-            }
-        
-            if ($class::isValid($value)) {
-                return new $class($value);
-            }
-        
-            throw new InvalidArgumentException(sprintf(
-                'The value "%s" is not valid for the enum "%s". Expected one of ["%s"]',
-                $value,
-                $class,
-                implode('", "', $class::toArray())
-           ));
-        }
-    
-        EnumerationBridge::registerEnumType(Action::class, $constructor);
-        EnumerationBridge::registerEnumType(Country::class, $constructor);
-        EnumerationBridge::registerEnumType(Currency::class, $constructor);
-    }
-}
-```
-
-Because each enumerable can be mapped to its own construct / serializer handlers, complex multitions
-from the Eloquent\Enumerable library can be handled by this bridge.
 
 ### Built-in Enumeration Constructors
 
@@ -195,20 +162,18 @@ VO to the ISO code for storage. These would be setup as follows:
 
 ```php
 <?php
-use Somnambulist\Domain\Doctrine\EnumerationBridge;
-use Somnambulist\Domain\Entities\Types\Geography\Country;
-use Somnambulist\Domain\Entities\Types\Money\Currency;
-use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CountryEnumeration;
-use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CurrencyEnumeration;
+use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CountryConstructor;
+use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor;
 use Somnambulist\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;
 use Somnambulist\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;
+use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
 
 class AppBundle extends Bundle
 {
     public function boot()
     {
-        EnumerationBridge::registerEnumType(Country::class, new CountryEnumeration(), new CountrySerializer());
-        EnumerationBridge::registerEnumType(Currency::class, new CurrencyEnumeration(), new CurrencySerializer());
+        EnumerationBridge::registerEnumType('country', new CountryConstructor(), new CountrySerializer());
+        EnumerationBridge::registerEnumType('currency', new CurrencyConstructor(), new CurrencySerializer());
     }
 }
 ```
@@ -219,6 +184,10 @@ reference this type:
 
 ```xml
 <field name="currency" type="Somnambulist\Domain\Entities\Types\Money\Currency" length="3" nullable="false"/>
+```
+vs:
+```xml
+<field name="currency" type="currency" length="3" nullable="false"/>
 ```
 
 ### Links

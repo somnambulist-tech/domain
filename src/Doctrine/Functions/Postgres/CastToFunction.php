@@ -31,11 +31,6 @@ class CastToFunction extends FunctionNode
      */
     protected $value;
 
-    /**
-     * @param Parser $parser
-     *
-     * @throws QueryException
-     */
     public function parse(Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -58,11 +53,6 @@ class CastToFunction extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker)
     {
         return $this->field->dispatch($sqlWalker) . '::' . $this->value;

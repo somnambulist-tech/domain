@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Entities;
 
 use Eloquent\Enumeration\AbstractMultiton as BaseMultiton;
-use Somnambulist\Domain\Entities\Contracts\ValueObjectInterface;
+use Somnambulist\Domain\Entities\Contracts\ValueObject;
 
 /**
  * Class AbstractMultiton
@@ -11,20 +11,12 @@ use Somnambulist\Domain\Entities\Contracts\ValueObjectInterface;
  * @package    Somnambulist\Domain\Entities
  * @subpackage Somnambulist\Domain\Entities\AbstractMultiton
  */
-abstract class AbstractMultiton extends BaseMultiton implements ValueObjectInterface
+abstract class AbstractMultiton extends BaseMultiton implements ValueObject
 {
 
-    /**
-     * Cache of pre-built member data indexed by key
-     *
-     * @var array
-     */
-    protected static $cache = [];
+    protected static array $cache = [];
 
-    /**
-     * @return array
-     */
-    public static function keys()
+    public static function keys(): array
     {
         $class = get_called_class();
 
@@ -50,12 +42,7 @@ abstract class AbstractMultiton extends BaseMultiton implements ValueObjectInter
         return $this->toString();
     }
 
-    /**
-     * @param string $name
-     * @param mixed  $value
-     */
-    public function __set($name, $value)
-    {
-        // prevent arbitrary properties
-    }
+    public function __set($name, $value) {}
+
+    public function __unset($name) {}
 }

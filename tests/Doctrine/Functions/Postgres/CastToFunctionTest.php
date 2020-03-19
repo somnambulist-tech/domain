@@ -13,8 +13,10 @@ use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
  *
  * @package    Somnambulist\Domain\Tests\Doctrine\Functions\Postgres
  * @subpackage Somnambulist\Domain\Tests\Doctrine\Functions\Postgres\CastToFunctionTest
- * @group functions
- * @group functions-cast
+ *
+ * @group doctrine
+ * @group doctrine-functions
+ * @group doctrine-functions-cast
  */
 class CastToFunctionTest extends TestCase
 {
@@ -27,7 +29,7 @@ class CastToFunctionTest extends TestCase
         $this->em->getConfiguration()->addCustomStringFunction('ILIKE', IlikeFunction::class);
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Doctrine\Entities\Order a WHERE ILIKE(CAST(a.name, \'text\'), :name) = true')
+            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(CAST(a.name, \'text\'), :name) = true')
         ;
         $sql = $query->getSQL();
 
@@ -43,7 +45,7 @@ class CastToFunctionTest extends TestCase
         $this->expectExceptionMessage('[Syntax Error] CAST() requires one of "bool, date, float, int, text, time", received "json"');
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Doctrine\Entities\Order a WHERE ILIKE(CAST(a.name, \'json\'), :name) = true')
+            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(CAST(a.name, \'json\'), :name) = true')
         ;
         $query->getSQL();
     }

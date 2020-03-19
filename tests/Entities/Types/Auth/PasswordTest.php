@@ -13,14 +13,14 @@ use const PASSWORD_DEFAULT;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Auth
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Auth\PasswordTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-password
  */
 class PasswordTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-password
-     */
     public function testCreate()
     {
         $pass = new Password($h = password_hash('password', PASSWORD_DEFAULT));
@@ -28,10 +28,6 @@ class PasswordTest extends TestCase
         $this->assertEquals($h, $pass->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-password
-     */
     public function testPasswordMustBeHashed()
     {
         $this->expectException(InvalidArgumentException::class);

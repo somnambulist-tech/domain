@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime;
 
@@ -12,17 +12,16 @@ use Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime\FactoryTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-datetime
  */
 class FactoryTest extends TestCase
 {
 
     use Helpers;
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     * @group current
-     */
     public function testCreate()
     {
         $vo = new DateTime('2017-06-17 12:00:00');
@@ -41,10 +40,6 @@ class FactoryTest extends TestCase
         $this->assertEquals('30', $vo->daysInMonth());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateViaFactory()
     {
         $vo = DateTime::parse('2017-06-17 12:00:00', new TimeZone('UTC'));
@@ -52,10 +47,6 @@ class FactoryTest extends TestCase
         $this->assertEquals('2017-06-17 12:00:00', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testNow()
     {
         $vo = DateTime::now();
@@ -64,10 +55,6 @@ class FactoryTest extends TestCase
         $this->assertEquals('America/Toronto', (string)$vo->timezone());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromFormat()
     {
         $vo = DateTime::createFromFormat('Y-m-d H:i:s', '2017-06-17 12:00:00');
@@ -75,20 +62,12 @@ class FactoryTest extends TestCase
         $this->assertEquals('2017-06-17 12:00:00', $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateFromFormatRaisesExceptionIfInvalid()
     {
         $this->expectException(\InvalidArgumentException::class);
         DateTime::createFromFormat('bob', '2017-06-17 12:00:00');
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-date-time
-     */
     public function testCreateViaFactoryWithTimeZone()
     {
         $vo = DateTime::parse('2017-06-17 12:00:00', new TimeZone('UTC'));

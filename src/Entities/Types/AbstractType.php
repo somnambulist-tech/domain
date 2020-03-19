@@ -22,16 +22,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
 abstract class AbstractType extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    protected $value;
+    protected string $value;
 
-    /**
-     * Constructor.
-     *
-     * @param string $type
-     */
     public function __construct(string $type)
     {
         Assert::that($type, null, 'type')->notEmpty()->maxLength(50);
@@ -39,9 +31,6 @@ abstract class AbstractType extends AbstractValueObject
         $this->value = $type;
     }
 
-    /**
-     * @return static
-     */
     public static function default(): self
     {
         return new static('default');

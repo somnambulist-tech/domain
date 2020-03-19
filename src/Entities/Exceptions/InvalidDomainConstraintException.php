@@ -16,11 +16,6 @@ use function sprintf;
 class InvalidDomainConstraintException extends InvalidDomainStateException
 {
 
-    /**
-     * @param string ...$args
-     *
-     * @return InvalidDomainConstraintException
-     */
     public static function mustHaveOneOf(string ...$args): self
     {
         return new static(

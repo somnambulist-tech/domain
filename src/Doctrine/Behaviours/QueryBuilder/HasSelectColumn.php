@@ -13,14 +13,6 @@ use Doctrine\DBAL\Query\QueryBuilder;
 trait HasSelectColumn
 {
 
-    /**
-     * Returns true if the column is already defined in the query builder
-     *
-     * @param QueryBuilder $qb
-     * @param string       $column
-     *
-     * @return bool
-     */
     public function hasColumnInSelect(QueryBuilder $qb, string $column): bool
     {
         return in_array($column, $qb->getQueryPart('select'));

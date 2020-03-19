@@ -24,7 +24,7 @@ class InvalidDomainStateException extends Exception
      *
      * @return InvalidDomainStateException
      */
-    public static function entityWithIdentifierAlreadyExists(string $field, string $identifier): self
+    public static function entityWithIdentifierAlreadyExists(string $field, $identifier): self
     {
         return new static(sprintf('Entity with identifier "%s" with value "%s" already exists', $field, $identifier), 422);
     }

@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Entities;
 
 use Eloquent\Enumeration\AbstractEnumeration as BaseEnumeration;
-use Somnambulist\Domain\Entities\Contracts\ValueObjectInterface;
+use Somnambulist\Domain\Entities\Contracts\ValueObject;
 
 /**
  * Class AbstractEnumeration
@@ -11,19 +11,12 @@ use Somnambulist\Domain\Entities\Contracts\ValueObjectInterface;
  * @package    Somnambulist\Domain\Entities
  * @subpackage Somnambulist\Domain\Entities\AbstractEnumeration
  */
-abstract class AbstractEnumeration extends BaseEnumeration implements ValueObjectInterface
+abstract class AbstractEnumeration extends BaseEnumeration implements ValueObject
 {
-    /**
-     * Cache of pre-built member data indexed by key
-     *
-     * @var array
-     */
-    protected static $cache = [];
 
-    /**
-     * @return array
-     */
-    public static function values()
+    protected static array $cache = [];
+
+    public static function values(): array
     {
         $class = get_called_class();
 
@@ -54,14 +47,9 @@ abstract class AbstractEnumeration extends BaseEnumeration implements ValueObjec
         return $this->toString();
     }
 
-    /**
-     * @param string $name
-     * @param mixed  $value
-     */
-    public function __set($name, $value)
-    {
-        // prevent arbitrary properties
-    }
+    public function __set($name, $value) {}
+
+    public function __unset($name) {}
 
     public function toString(): string
     {

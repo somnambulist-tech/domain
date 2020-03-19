@@ -2,6 +2,6 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <embeddable name="Somnambulist\Domain\Entities\Types\Identity\Aggregate">
         <field name="class" type="string" length="255"/>
-        <field name="identity" type="string" length="100"/>
+        <field name="identity" type="guid" length="36"/>
     </embeddable>
 </doctrine-mapping>

@@ -14,17 +14,14 @@ use function is_array;
 trait CanIncludeRelatedData
 {
 
-    /**
-     * @var array
-     */
-    private $includes = [];
+    private array $includes = [];
 
     /**
      * Add related data to be loaded with the query request
      *
      * @param string ...$includes Either an array of includes or multiple single string arguments
      *
-     * @return CanIncludeRelatedData
+     * @return static
      */
     public function with(...$includes): self
     {

@@ -11,15 +11,8 @@ namespace Somnambulist\Domain\Queries\Behaviours;
 trait CanPaginateQuery
 {
 
-    /**
-     * @var int
-     */
-    private $page = 1;
-
-    /**
-     * @var int
-     */
-    private $perPage = 30;
+    private int $page = 1;
+    private int $perPage = 30;
 
     public function getPage(): int
     {

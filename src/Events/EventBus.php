@@ -11,14 +11,5 @@ namespace Somnambulist\Domain\Events;
 interface EventBus
 {
 
-    /**
-     * @param AbstractDomainEvent $event
-     * @deprecated {@see notify()} will be removed in 3.0
-     */
-    public function dispatch(AbstractDomainEvent $event): void;
-
-    /**
-     * @param AbstractDomainEvent $event
-     */
-    public function notify(AbstractDomainEvent $event): void;
+    public function notify(AbstractEvent $event): void;
 }

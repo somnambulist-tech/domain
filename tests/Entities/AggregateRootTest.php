@@ -1,30 +1,101 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\AggregateRoot;
+use Somnambulist\Domain\Entities\Types\Auth\Password;
+use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Domain\Tests\Support\Stubs\Events\UserCreated;
+use Somnambulist\Domain\Tests\Support\Stubs\Events\UserRegistrationComplete;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\Name;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\User;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\UserId;
+use Somnambulist\Domain\Utils\IdentityGenerator;
+use Somnambulist\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
+use function password_hash;
+use const PASSWORD_DEFAULT;
 
 /**
  * Class AggregateRootTest
  *
  * @package    Somnambulist\Domain\Tests\Entities
  * @subpackage Somnambulist\Domain\Tests\Entities\AggregateRootTest
+ *
+ * @group entities
+ * @group entities-aggregate
  */
 class AggregateRootTest extends TestCase
 {
 
-    public function testResolves()
+    use AssertHasDomainEventOfType;
+
+    public function testAssigningIdentity()
     {
-        $ent = new class extends AggregateRoot {
-            public function id()
-            {
+        $user = User::create(
+            $id = IdentityGenerator::randomOfType(UserId::class),
+            new Name('bob'),
+            new EmailAddress('bob@example.com'),
+            new Password(password_hash('password', PASSWORD_DEFAULT))
+        );
 
-            }
-        };
+        $this->assertSame($id, $user->id());
+        $this->assertHasDomainEventOfType($user, UserCreated::class);
+    }
 
-        $this->assertTrue(true);
+    public function testRaisingEvents()
+    {
+        $user = User::create(
+            $id = IdentityGenerator::randomOfType(UserId::class),
+            new Name('bob'),
+            new EmailAddress('bob@example.com'),
+            new Password(password_hash('password', PASSWORD_DEFAULT))
+        );
+        $user->completeRegistration();
+
+        $events = $user->releaseAndResetEvents();
+
+        $this->assertInstanceOf(UserCreated::class, $events[0]);
+        $this->assertInstanceOf(UserRegistrationComplete::class, $events[1]);
+    }
+
+    public function testRaisingEventsSetsAggregateRoot()
+    {
+        $user = User::create(
+            $id = IdentityGenerator::randomOfType(UserId::class),
+            new Name('bob'),
+            new EmailAddress('bob@example.com'),
+            new Password(password_hash('password', PASSWORD_DEFAULT))
+        );
+
+        $event = $user->releaseAndResetEvents()[0];
+
+        $this->assertNotNull($event->getAggregate());
+        $this->assertEquals(User::class, $event->getAggregate()->class());
+        $this->assertEquals((string)$id, $event->getAggregate()->identity());
+    }
+
+    public function testEqualityIsByIdentity()
+    {
+        $user = User::create(
+            $id = IdentityGenerator::randomOfType(UserId::class),
+            new Name('bob'),
+            new EmailAddress('bob@example.com'),
+            new Password(password_hash('password', PASSWORD_DEFAULT))
+        );
+        $user2 = User::create(
+            IdentityGenerator::randomOfType(UserId::class),
+            new Name('bob'),
+            new EmailAddress('bob@example.com'),
+            new Password(password_hash('password', PASSWORD_DEFAULT))
+        );
+        $user3 = User::create(
+            $id,
+            new Name('bob'),
+            new EmailAddress('bob@example.com'),
+            new Password(password_hash('password', PASSWORD_DEFAULT))
+        );
+
+        $this->assertFalse($user->equals($user2));
+        $this->assertTrue($user->equals($user3));
     }
 }

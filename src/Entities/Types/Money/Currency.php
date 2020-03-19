@@ -13,17 +13,8 @@ use Somnambulist\Domain\Entities\AbstractMultiton;
 final class Currency extends AbstractMultiton
 {
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * Constructor.
-     *
-     * @param string $code
-     * @param string $name
-     */
     protected function __construct(string $code, string $name)
     {
         $this->name = $name;
@@ -38,12 +29,9 @@ final class Currency extends AbstractMultiton
         }
     }
 
-    /**
-     * @return string
-     */
     public function toString(): string
     {
-        return (string)$this->name;
+        return (string)$this->code();
     }
 
     public function equals(object $object): bool
@@ -74,7 +62,7 @@ final class Currency extends AbstractMultiton
         return 2;
     }
 
-    private static $mappings = [
+    private static array $mappings = [
         'AED' => 'UAE Dirham',
         'AFN' => 'Afghani',
         'ALL' => 'Lek',
@@ -232,7 +220,7 @@ final class Currency extends AbstractMultiton
         'ZWL' => 'Zimbabwe Dollar',
     ];
 
-    private static $precision = [
+    private static array $precision = [
         'BHD' => 3,
         'BIF' => 0,
         'CLF' => 4,

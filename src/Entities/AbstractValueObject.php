@@ -3,27 +3,19 @@
 namespace Somnambulist\Domain\Entities;
 
 use ReflectionObject;
-use ReflectionProperty;
 use Somnambulist\Collection\MutableCollection as Collection;
-use Somnambulist\Domain\Entities\Contracts\ValueObjectInterface;
+use Somnambulist\Domain\Entities\Contracts\ValueObject;
 
 /**
  * Class AbstractValueObject
  *
- * @package    AppBundle\ValueObjects
- * @subpackage AppBundle\ValueObjects\AbstractValueObject
+ * @package    Somnambulist\Domain\Entities
+ * @subpackage Somnambulist\Domain\Entities\AbstractValueObject
  */
-abstract class AbstractValueObject implements ValueObjectInterface
+abstract class AbstractValueObject implements ValueObject
 {
 
-    /**
-     * @param string $name
-     * @param mixed  $value
-     */
-    public function __set($name, $value)
-    {
-        // prevent arbitrary properties
-    }
+    public function __set($name, $value) {}
 
     public function __toString()
     {
@@ -32,20 +24,16 @@ abstract class AbstractValueObject implements ValueObjectInterface
 
     public function equals(object $object): bool
     {
-        if (get_class($this) === get_class($object)) {
-            $props = Collection::collect((new ReflectionObject($this))->getProperties());
-
-            return $props
-                ->filter(function ($prop) use ($object) {
-                    /** @var ReflectionProperty $prop */
-                    $prop->setAccessible(true);
-
-                    return (string)$prop->getValue($object) === (string)$prop->getValue($this);
-                })
-                ->count() === $props->count()
-            ;
+        if (get_class($this) !== get_class($object)) {
+            return false;
         }
 
-        return false;
+        $props = Collection::collect((new ReflectionObject($this))->getProperties());
+        $props->run->setAccessible(true);
+
+        return $props
+            ->filter(fn ($prop) => (string)$prop->getValue($object) === (string)$prop->getValue($this))
+            ->count() === $props->count()
+        ;
     }
 }

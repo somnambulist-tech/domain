@@ -17,28 +17,18 @@ use Doctrine\DBAL\Query\QueryBuilder;
 trait HasJoinAlias
 {
 
-    /**
-     * Returns true if the join alias is already defined in the query builder
-     *
-     * @param QueryBuilder $qb
-     * @param string       $alias
-     *
-     * @return bool
-     */
     public function hasJoinAlias(QueryBuilder $qb, string $alias): bool
     {
-        $parts  = $qb->getQueryPart('join');
-        $exists = false;
+        $parts = $qb->getQueryPart('join');
 
         foreach ($parts as $joins) {
             foreach ($joins as $join) {
                 if ($join['joinAlias'] === $alias) {
-                    $exists = true;
-                    break 2;
+                    return true;
                 }
             }
         }
 
-        return $exists;
+        return false;
     }
 }

@@ -10,14 +10,9 @@ use Assert\Assert;
  * @package    Somnambulist\Domain\Entities\Types\Web
  * @subpackage Somnambulist\Domain\Entities\Types\Web\IPv4Address
  */
-class IPv4Address extends IpAddress
+final class IPv4Address extends IpAddress
 {
 
-    /**
-     * Constructor.
-     *
-     * @param string $ip
-     */
     public function __construct(string $ip)
     {
         Assert::that($ip, null, 'ip')->notEmpty()->ipv4();

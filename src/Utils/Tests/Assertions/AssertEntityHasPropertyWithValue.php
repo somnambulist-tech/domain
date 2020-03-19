@@ -11,7 +11,7 @@ use function get_class;
  * Assert that an entity has a given property with value. Needed to test entities without
  * public getters.
  *
- * @package Somnambulist\Domain\Utils\Tests\Assertions
+ * @package    Somnambulist\Domain\Utils\Tests\Assertions
  * @subpackage Somnambulist\Domain\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue
  */
 trait AssertEntityHasPropertyWithValue

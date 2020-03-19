@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Somnambulist\Domain\Tests\Support\Stubs\Models\MyOtherEntity">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" type="string"/>
+        <field name="another" type="string"/>
+        <field name="createdAt" type="datetime"/>
+
+        <many-to-one field="myEntity" target-entity="Somnambulist\Domain\Tests\Support\Stubs\Models\MyEntity" inversed-by="myEntity">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </many-to-one>∑
+    </entity>
+</doctrine-mapping>

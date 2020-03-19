@@ -11,19 +11,11 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Web
  * @subpackage Somnambulist\Domain\Entities\Types\Web\Url
  */
-class Url extends AbstractValueObject
+final class Url extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
-    /**
-     * Constructor.
-     *
-     * @param string $url
-     */
     public function __construct($url)
     {
         Assert::that($url, null, 'url')->notEmpty()->url();
@@ -76,12 +68,7 @@ class Url extends AbstractValueObject
         return $this->parseString(PHP_URL_FRAGMENT);
     }
 
-    /**
-     * @param int $component PHP_URL_* constant
-     *
-     * @return string
-     */
-    private function parseString($component): string
+    private function parseString(int $component): string
     {
         return (string)parse_url($this->value, $component);
     }

@@ -7,7 +7,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Web\IPV4Address;
+use Somnambulist\Domain\Entities\Types\Web\IPV6Address;
 
 /**
  * Class IPV6AddressType
@@ -18,41 +18,25 @@ use Somnambulist\Domain\Entities\Types\Web\IPV4Address;
 class IPV6AddressType extends Type
 {
 
-    /**
-     * @var string
-     */
-    const NAME = 'ip_v6_address';
+    public const NAME = 'ip_v6_address';
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param array            $fieldDeclaration
-     * @param AbstractPlatform $platform
-     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|IPV4Address|null
-     * @throws ConversionException
-     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
             return null;
         }
 
-        if ($value instanceof IPV4Address) {
+        if ($value instanceof IPV6Address) {
             return $value;
         }
 
         try {
-            $uuid = new IPV4Address($value);
+            $uuid = new IPV6Address($value);
         } catch (InvalidArgumentException $e) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
@@ -60,13 +44,6 @@ class IPV6AddressType extends Type
         return $uuid;
     }
 
-    /**
-     * @param mixed            $value
-     * @param AbstractPlatform $platform
-     *
-     * @return mixed|string|null
-     * @throws ConversionException
-     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -74,7 +51,7 @@ class IPV6AddressType extends Type
         }
 
         try {
-            if ($value instanceof IPV4Address || Assert::that($value)->ipv4()) {
+            if ($value instanceof IPV6Address || Assert::that($value)->ipv6()) {
                 return (string)$value;
             }
         } catch (InvalidArgumentException $e) {
@@ -84,23 +61,11 @@ class IPV6AddressType extends Type
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return string
-     */
     public function getName()
     {
         return static::NAME;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param AbstractPlatform $platform
-     *
-     * @return boolean
-     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;

@@ -11,22 +11,14 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * @package    Somnambulist\Domain\Entities\Types\Identity
  * @subpackage Somnambulist\Domain\Entities\Types\Identity\EmailAddress
  */
-class EmailAddress extends AbstractValueObject
+final class EmailAddress extends AbstractValueObject
 {
 
-    /**
-     * @var string
-     */
-    private $value;
+    private string $value;
 
-    /**
-     * Constructor.
-     *
-     * @param string $email
-     */
     public function __construct(string $email)
     {
-        Assert::that($email, null, 'email')->notEmpty()->email()->maxLength(60);
+        Assert::that($email, null, 'email')->notEmpty()->email()->maxLength(100);
 
         $this->value = $email;
     }

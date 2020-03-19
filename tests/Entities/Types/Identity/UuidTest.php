@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Domain\Tests\Entities\Types\Identity;
 
@@ -11,66 +11,50 @@ use Somnambulist\Domain\Entities\Types\Identity\Uuid;
  *
  * @package    Somnambulist\Domain\Tests\Entities\Types\Identity
  * @subpackage Somnambulist\Domain\Tests\Entities\Types\Identity\UuidTest
+ *
+ * @group entities
+ * @group entities-types
+ * @group entities-types-uuid
  */
 class UuidTest extends TestCase
 {
 
-    /**
-     * @group value-objects
-     * @group value-objects-uuid
-     */
     public function testCreate()
     {
-        $vo = new Uuid($uuid = \Ramsey\Uuid\Uuid::uuid4());
+        $vo = new Uuid($uuid = \Ramsey\Uuid\Uuid::uuid4()->toString());
 
-        $this->assertEquals($uuid->toString(), $vo->toString());
+        $this->assertEquals($uuid, $vo->toString());
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-uuid
-     */
     public function testCanCastToString()
     {
-        $vo = new Uuid($uuid = \Ramsey\Uuid\Uuid::uuid4());
+        $vo = new Uuid($uuid = \Ramsey\Uuid\Uuid::uuid4()->toString());
 
-        $this->assertEquals($uuid->toString(), (string)$vo);
+        $this->assertEquals($uuid, (string)$vo);
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-uuid
-     */
     public function testCanCompareInstances()
     {
-        $vo1 = new Uuid(\Ramsey\Uuid\Uuid::uuid4());
-        $vo2 = new Uuid(\Ramsey\Uuid\Uuid::uuid4());
-        $vo3 = new Uuid(\Ramsey\Uuid\Uuid::uuid4());
+        $vo1 = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
+        $vo2 = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
+        $vo3 = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
 
         $this->assertFalse($vo1->equals($vo2));
         $this->assertFalse($vo2->equals($vo3));
         $this->assertTrue($vo1->equals($vo1));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-uuid
-     */
     public function testCanCompareOtherInstances()
     {
-        $vo1 = new Uuid(\Ramsey\Uuid\Uuid::uuid4());
+        $vo1 = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
         $vo2 = new EmailAddress('bob@example.com');
 
         $this->assertFalse($vo1->equals($vo2));
     }
 
-    /**
-     * @group value-objects
-     * @group value-objects-uuid
-     */
     public function testCantSetArbitraryProperties()
     {
-        $vo = new Uuid(\Ramsey\Uuid\Uuid::uuid4());
+        $vo = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
         $vo->foo = 'bar';
 
         $this->assertObjectNotHasAttribute('foo', $vo);

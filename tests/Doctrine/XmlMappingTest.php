@@ -2,14 +2,9 @@
 
 namespace Somnambulist\Domain\Tests\Doctrine;
 
-use Doctrine\Common\Cache\ArrayCache;
-use Doctrine\ORM\Configuration;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\Driver\XmlDriver;
-use Doctrine\ORM\Tools\SchemaTool;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Collection\MutableCollection as Collection;
-use Somnambulist\Domain\Doctrine\Bootstrapper;
+use Somnambulist\Domain\Doctrine\TypeBootstrapper;
 use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Domain\Entities\Types\DateTime\TimeZone;
 use Somnambulist\Domain\Entities\Types\Geography\Country;
@@ -17,25 +12,24 @@ use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
 use Somnambulist\Domain\Entities\Types\Identity\Uuid;
 use Somnambulist\Domain\Entities\Types\Money\Currency;
 use Somnambulist\Domain\Entities\Types\Money\Money;
-use Somnambulist\Domain\Tests\Doctrine\Entities\Order;
-use Somnambulist\Domain\Tests\Doctrine\Entities\ValueObjects\Purchaser;
 use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\Order;
+use Somnambulist\Domain\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
 
 /**
  * Class XmlMappingTest
  *
- * @package    Somnambulist\Tests\Doctrine
- * @subpackage Somnambulist\Tests\Doctrine\XmlMappingTest
- * @group xml-mappings
+ * @package    Somnambulist\Domain\Tests\Doctrine
+ * @subpackage Somnambulist\Domain\Tests\Doctrine\XmlMappingTest
+ *
+ * @group doctrine
+ * @group doctrine-mapping-xml
  */
 class XmlMappingTest extends TestCase
 {
 
     use BuildDoctrineInstance;
 
-    /**
-     * @group doctrine
-     */
     public function testCanPersistAndRestoreValueObjectsAndEnumerations()
     {
         $entity = new Order(
@@ -48,8 +42,7 @@ class XmlMappingTest extends TestCase
             ['name' => 'test one',],
             ['name' => 'test two',],
             ['name' => 'test three',],
-        ])
-        ;
+        ]);
 
         $this->em->persist($entity);
         $this->em->flush();

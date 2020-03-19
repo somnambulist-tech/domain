@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Domain\Entities\Exceptions;
 
-use Exception;
 use function sprintf;
 
 /**
@@ -17,41 +16,21 @@ use function sprintf;
 class InvalidDomainRelationshipException extends InvalidDomainStateException
 {
 
-    /**
-     * @param string $type
-     *
-     * @return InvalidDomainRelationshipException
-     */
     public static function cannotAddChildToEntity(string $type): self
     {
         return new static(sprintf('Entity "%s" does not support children', $type));
     }
 
-    /**
-     * @param string $type
-     *
-     * @return InvalidDomainRelationshipException
-     */
     public static function cannotRemoveChildFromEntity(string $type): self
     {
         return new static(sprintf('Entity "%s" does not support children', $type));
     }
 
-    /**
-     * @param string $type
-     *
-     * @return InvalidDomainRelationshipException
-     */
     public static function cannotAddParentToEntity(string $type): self
     {
         return new static(sprintf('Entity "%s" does not support a parent', $type));
     }
 
-    /**
-     * @param string $type
-     *
-     * @return InvalidDomainRelationshipException
-     */
     public static function cannotRemoveParentFromEntity(string $type): self
     {
         return new static(sprintf('Entity "%s" does not support removing a parent', $type));
