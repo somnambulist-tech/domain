@@ -20,20 +20,17 @@ final class EventBus implements \Somnambulist\Domain\Events\EventBus
      */
     private $eventBus;
 
-    /**
-     * Constructor.
-     *
-     * @param MessageBusInterface $eventBus
-     */
     public function __construct(MessageBusInterface $eventBus)
     {
         $this->eventBus = $eventBus;
     }
 
-    /**
-     * @param AbstractDomainEvent $event
-     */
     public function dispatch(AbstractDomainEvent $event): void
+    {
+        $this->notify($event);
+    }
+
+    public function notify(AbstractDomainEvent $event): void
     {
         $this->eventBus->dispatch($event, [new AmqpStamp($event->notificationName())]);
     }

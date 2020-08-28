@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-08-28 - 2.5.1
+------------------
+
+ * Deprecate EventBus::dispatch for notify
+
 2020-08-28 - 2.5.0
 ------------------
 
