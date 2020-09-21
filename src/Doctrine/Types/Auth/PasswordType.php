@@ -1,27 +1,23 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Domain\Doctrine\Types\Auth;
 
-use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Domain\Entities\Types\Auth\Password;
 
 /**
- * Class EmailAddressType
+ * Class PasswordType
  *
- * Store email address ValueObjects as strings and re-hydrate, without needing to use an
- * embeddable.
- *
- * @package    Somnambulist\Domain\Doctrine\Types
- * @subpackage Somnambulist\Domain\Doctrine\Types\Identity\EmailAddressType
+ * @package    Somnambulist\Domain\Doctrine\Types\Auth
+ * @subpackage Somnambulist\Domain\Doctrine\Types\Auth\PasswordType
  */
-class EmailAddressType extends Type
+class PasswordType extends Type
 {
 
-    public const NAME = 'email_address';
+    public const NAME = 'password';
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -34,12 +30,12 @@ class EmailAddressType extends Type
             return null;
         }
 
-        if ($value instanceof EmailAddress) {
+        if ($value instanceof Password) {
             return $value;
         }
 
         try {
-            $vo = new EmailAddress($value);
+            $vo = new Password($value);
         } catch (InvalidArgumentException $e) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
@@ -54,7 +50,7 @@ class EmailAddressType extends Type
         }
 
         try {
-            if ($value instanceof EmailAddress || Assert::that($value)->email()) {
+            if ($value instanceof Password) {
                 return (string)$value;
             }
         } catch (InvalidArgumentException $e) {
@@ -67,10 +63,5 @@ class EmailAddressType extends Type
     public function getName()
     {
         return static::NAME;
-    }
-
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
-    {
-        return true;
     }
 }

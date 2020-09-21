@@ -23,16 +23,17 @@ class TypeBootstrapper
 {
 
     public static array $types = [
-        'json'       => Types\JsonCollectionType::class,
         'date'       => Types\DateTime\DateType::class,
         'datetime'   => Types\DateTime\DateTimeType::class,
         'datetimetz' => Types\DateTime\DateTimeTzType::class,
         'time'       => Types\DateTime\TimeType::class,
+        'password'   => Types\Auth\PasswordType::class,
         'email'      => Types\Identity\EmailAddressType::class,
+        'identity'   => Types\Identity\IdType::class,
+        'uuid'       => Types\Identity\UuidType::class,
+        'json'       => Types\JsonCollectionType::class,
         'phone'      => Types\PhoneNumberType::class,
         'url'        => Types\Web\UrlType::class,
-        'uuid'       => Types\Identity\UuidType::class,
-        'identity'   => Types\Identity\IdType::class,
     ];
 
     private function __construct() {}

@@ -1,8 +1,13 @@
 Change Log
 ==========
 
-2020-08-28
-----------
+2020-09-21 - 3.1.0
+------------------
+
+ * Add `PasswordType` to Doctrine types and make default type
+
+2020-08-28 - 3.0.0
+------------------
 
  * Require PHP 7.4
  * Refactor Doctrine types
