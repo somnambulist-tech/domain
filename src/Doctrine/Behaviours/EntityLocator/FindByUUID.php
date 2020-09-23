@@ -3,7 +3,7 @@
 namespace Somnambulist\Domain\Doctrine\Behaviours\EntityLocator;
 
 use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Domain\Entities\Types\Identity\AbstractIdentity;
 
 /**
  * Trait FindByUUID
@@ -25,12 +25,12 @@ trait FindByUUID
         return 'uuid';
     }
 
-    public function findByUUID(Uuid $uuid): ?object
+    public function findByUUID(AbstractIdentity $uuid): ?object
     {
         return $this->findOneBy([$this->getEntityUuidFieldName() => (string)$uuid]);
     }
 
-    public function findOrFailByUUID(Uuid $uuid): object
+    public function findOrFailByUUID(AbstractIdentity $uuid): object
     {
         if (null === $entity = $this->findByUUID($uuid)) {
             throw EntityNotFoundException::entityNotFound($this->getEntityName(), (string)$uuid);

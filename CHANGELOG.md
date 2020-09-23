@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-09-23 - 3.1.2
+------------------
+
+ * Relax type hint on `findByUuid()` to `AbstractIdentity` to allow other UUID classes
+
 2020-09-22 - 3.1.1
 ------------------
 
