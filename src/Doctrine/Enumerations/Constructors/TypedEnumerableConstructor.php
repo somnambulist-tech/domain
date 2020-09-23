@@ -5,6 +5,7 @@ namespace Somnambulist\Domain\Doctrine\Enumerations\Constructors;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Eloquent\Enumeration\AbstractEnumeration;
 use InvalidArgumentException;
+use function in_array;
 
 /**
  * Class TypedEnumerableConstructor
@@ -16,10 +17,16 @@ class TypedEnumerableConstructor
 {
 
     private string $class;
+    private string $preCastAs;
 
-    public function __construct(string $class)
+    public function __construct(string $class, string $preCastAs = 'string')
     {
-        $this->class = $class;
+        if (!in_array($preCastAs, ['string', 'int'])) {
+            throw new InvalidArgumentException(sprintf('preCastAs must be one of string or int, "%s" is not supported', $preCastAs));
+        }
+
+        $this->class     = $class;
+        $this->preCastAs = $preCastAs;
     }
 
     /**
@@ -33,6 +40,9 @@ class TypedEnumerableConstructor
     {
         if (is_null($value)) {
             return null;
+        }
+        if ('int' === $this->preCastAs) {
+            $value = (int)$value;
         }
 
         $class = $this->class;

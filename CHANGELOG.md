@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-09-22 - 3.1.1
+------------------
+
+ * Fix `TypedEnumerableConstructor` only working with strings, prevents int values
+
 2020-09-21 - 3.1.0
 ------------------
 

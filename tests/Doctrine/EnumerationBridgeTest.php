@@ -4,6 +4,7 @@ namespace Somnambulist\Domain\Tests\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
@@ -64,7 +65,7 @@ class EnumerationBridgeTest extends TestCase
                 return Action::memberByValue($value);
             }
 
-            throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+            throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
         });
         EnumerationBridge::registerEnumTypes([
             'gender' => function ($value) {
@@ -72,7 +73,7 @@ class EnumerationBridgeTest extends TestCase
                     return $gender;
                 }
 
-                throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
+                throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
             },
         ]);
 
@@ -91,14 +92,14 @@ class EnumerationBridgeTest extends TestCase
                     return Action::memberByValue($value);
                 }
 
-                throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+                throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
             },
             'gender' => function ($value) {
                 if (null !== $gender = Gender::memberOrNullByValue($value)) {
                     return $gender;
                 }
 
-                throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
+                throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
             },
         ]);
 
@@ -124,7 +125,7 @@ class EnumerationBridgeTest extends TestCase
                     return Action::memberByValue($value);
                 }
 
-                throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+                throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
             },
             'gender' => [new Constructor(), new Serializer()],
             'gender2' => new Constructor(),
@@ -150,7 +151,7 @@ class EnumerationBridgeTest extends TestCase
                 return $gender;
             }
 
-            throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
+            throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
         });
 
         $type = Type::getType(Gender::class);
@@ -164,7 +165,7 @@ class EnumerationBridgeTest extends TestCase
                 return Action::memberByValue($value);
             }
 
-            throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+            throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
         });
 
         $type  = Type::getType(Action::class);
@@ -189,7 +190,7 @@ class EnumerationBridgeTest extends TestCase
                 return Action::memberByValue($value);
             }
 
-            throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+            throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
         });
 
         $type = Type::getType(Action::class);
@@ -233,11 +234,11 @@ class EnumerationBridgeTest extends TestCase
                 return Action::memberByValue($value);
             }
 
-            throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+            throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
         });
 
         $type = Type::getType(Action::class);
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('"%s" not valid for "%s"', 'invalid', Action::class));
         $type->convertToPHPValue('invalid', $this->platform->reveal());
     }
@@ -249,7 +250,7 @@ class EnumerationBridgeTest extends TestCase
                 return Action::memberByValue($value);
             }
 
-            throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
+            throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Action::class));
         });
 
         $type = Type::getType(Action::class);
