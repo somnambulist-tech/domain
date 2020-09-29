@@ -1,16 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Exceptions;
+namespace Somnambulist\Components\Domain\Entities\Exceptions;
 
-use Exception;
 use function implode;
 use function sprintf;
 
 /**
  * Class InvalidDomainConstraintException
  *
- * @package    Somnambulist\Domain\Entities\Exceptions
- * @subpackage Somnambulist\Domain\Entities\Exceptions\InvalidDomainConstraintException
+ * @package    Somnambulist\Components\Domain\Entities\Exceptions
+ * @subpackage Somnambulist\Components\Domain\Entities\Exceptions\InvalidDomainConstraintException
  * @codeCoverageIgnore
  */
 class InvalidDomainConstraintException extends InvalidDomainStateException

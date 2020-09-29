@@ -17,7 +17,7 @@ Continuing with the above example of HTTP verb, we create an enumeration as foll
 <?php
 namespace App\Domain;
 
-use Somnambulist\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
 
 final class HTTPMethod extends AbstractEnumeration
 {

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\DateTime\Behaviours;
+namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
 /**
  * Trait Modifiers
  *
- * @package    Somnambulist\Domain\Entities\Types\DateTime\Behaviours
- * @subpackage Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Modifiers
+ * @package    Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Modifiers
  */
 trait Modifiers
 {

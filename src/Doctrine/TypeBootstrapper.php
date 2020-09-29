@@ -1,23 +1,23 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine;
+namespace Somnambulist\Components\Domain\Doctrine;
 
 use Doctrine\DBAL\Types\Type;
-use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CountryConstructor;
-use Somnambulist\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor;
-use Somnambulist\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor;
-use Somnambulist\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;
-use Somnambulist\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;
-use Somnambulist\Domain\Doctrine\Types;
-use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
-use Somnambulist\Domain\Entities\Types\Geography;
-use Somnambulist\Domain\Entities\Types\Measure;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CountryConstructor;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;
+use Somnambulist\Components\Domain\Doctrine\Types;
+use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Domain\Entities\Types\Geography;
+use Somnambulist\Components\Domain\Entities\Types\Measure;
 
 /**
  * Class TypeBootstrapper
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\TypeBootstrapper
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\TypeBootstrapper
  */
 class TypeBootstrapper
 {

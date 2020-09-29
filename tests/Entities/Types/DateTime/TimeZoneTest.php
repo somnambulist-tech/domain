@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\DateTime;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\DateTime\TimeZone;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
 
 /**
  * Class TimeZoneTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\TimeZoneTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\DateTime
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\TimeZoneTest
  *
  * @group      entities
  * @group      entities-types

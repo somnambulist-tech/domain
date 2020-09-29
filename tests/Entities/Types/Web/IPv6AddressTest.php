@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Web;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Web;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Web\IPv4Address;
-use Somnambulist\Domain\Entities\Types\Web\IPV6Address;
+use Somnambulist\Components\Domain\Entities\Types\Web\IPv4Address;
+use Somnambulist\Components\Domain\Entities\Types\Web\IPV6Address;
 
 /**
  * Class IPv6AddressTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Web
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Web\IPv6AddressTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Web
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Web\IPv6AddressTest
  *
  * @group entities
  * @group entities-types

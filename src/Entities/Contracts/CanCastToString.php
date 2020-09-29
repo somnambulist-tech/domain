@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Contracts;
+namespace Somnambulist\Components\Domain\Entities\Contracts;
 
 /**
  * Interface CanCastToString
  *
- * @package    Somnambulist\Domain\Entities\Contracts
- * @subpackage Somnambulist\Domain\Entities\Contracts\CanCastToString
+ * @package    Somnambulist\Components\Domain\Entities\Contracts
+ * @subpackage Somnambulist\Components\Domain\Entities\Contracts\CanCastToString
  */
 interface CanCastToString
 {

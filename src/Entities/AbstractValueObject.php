@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities;
+namespace Somnambulist\Components\Domain\Entities;
 
 use ReflectionObject;
 use Somnambulist\Collection\MutableCollection as Collection;
-use Somnambulist\Domain\Entities\Contracts\ValueObject;
+use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
 
 /**
  * Class AbstractValueObject
  *
- * @package    Somnambulist\Domain\Entities
- * @subpackage Somnambulist\Domain\Entities\AbstractValueObject
+ * @package    Somnambulist\Components\Domain\Entities
+ * @subpackage Somnambulist\Components\Domain\Entities\AbstractValueObject
  */
 abstract class AbstractValueObject implements ValueObject
 {

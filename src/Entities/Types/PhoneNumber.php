@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types;
+namespace Somnambulist\Components\Domain\Entities\Types;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class PhoneNumber
@@ -15,8 +15,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * Note: allow sufficient storage space for the number, and always store the number
  * as a string and never an integer.
  *
- * @package    Somnambulist\Domain\Entities\Types
- * @subpackage Somnambulist\Domain\Entities\Types\PhoneNumber
+ * @package    Somnambulist\Components\Domain\Entities\Types
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\PhoneNumber
  */
 class PhoneNumber extends AbstractValueObject
 {

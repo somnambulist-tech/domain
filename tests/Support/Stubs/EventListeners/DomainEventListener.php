@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\EventListeners;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners;
 
-use Somnambulist\Domain\Events\AbstractEvent;
-use Somnambulist\Domain\Events\EventBus;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\EventBus;
 
 class DomainEventListener implements EventBus
 {

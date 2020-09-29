@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Domain\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
@@ -15,8 +15,8 @@ use IlluminateAgnostic\Str\Support\Str;
  *
  * Postgres simple casting: CAST(<field>, '<type>') ::= <field>::<type>
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\Functions\Postgres
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Functions\Postgres
  */
 class CastToFunction extends FunctionNode
 {

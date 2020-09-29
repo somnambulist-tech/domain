@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries;
+namespace Somnambulist\Components\Domain\Queries;
 
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
 
 /**
  * Class AbstractFindByIdQuery
  *
- * @package Somnambulist\Domain\Queries
- * @subpackage Somnambulist\Domain\Queries\AbstractFindByIdQuery
+ * @package Somnambulist\Components\Domain\Queries
+ * @subpackage Somnambulist\Components\Domain\Queries\AbstractFindByIdQuery
  */
 abstract class AbstractFindByIdQuery extends AbstractQuery
 {

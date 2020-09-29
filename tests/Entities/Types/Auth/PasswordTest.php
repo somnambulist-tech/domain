@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Auth;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Auth;
 
 use Assert\InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Auth\Password;
 use PHPUnit\Framework\TestCase;
+use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
 use function password_hash;
 use const PASSWORD_DEFAULT;
 
 /**
  * Class PasswordTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Auth
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Auth\PasswordTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Auth
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Auth\PasswordTest
  *
  * @group entities
  * @group entities-types

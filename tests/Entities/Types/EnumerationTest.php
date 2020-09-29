@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Geography\Srid;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Srid;
 
 /**
  * Class EnumerationTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\EnumerationTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\EnumerationTest
  *
  * @group entities
  * @group entities-types

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries\Behaviours;
+namespace Somnambulist\Components\Domain\Queries\Behaviours;
 
 /**
  * Trait CanPaginateQuery
  *
- * @package Somnambulist\Domain\Queries\Behaviours
- * @subpackage Somnambulist\Domain\Queries\Behaviours\CanPaginateQuery
+ * @package Somnambulist\Components\Domain\Queries\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Queries\Behaviours\CanPaginateQuery
  */
 trait CanPaginateQuery
 {

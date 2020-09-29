@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Events;
+namespace Somnambulist\Components\Domain\Tests\Events;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Collection\FrozenCollection as Immutable;
-use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
-use Somnambulist\Domain\Events\AbstractEvent;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\GroupPropertyEvent;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\NamespacedEvent;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\GroupPropertyEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
 use stdClass;
 use function json_encode;
 use function microtime;
@@ -102,7 +102,7 @@ class DomainEventTest extends TestCase
                 'id'    => null,
             ],
             'event'     => [
-                'class' => 'Somnambulist\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
+                'class' => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
                 'group' => 'app',
                 'name'  => 'Namespaced',
                 'time'  => $event->getTime(),
@@ -134,7 +134,7 @@ class DomainEventTest extends TestCase
                 'id'    => null,
             ],
             'event'     => [
-                'class'   => 'Somnambulist\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
+                'class'   => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
                 'name'    => 'app.namespaced',
                 'time'    => $ts = microtime(true),
             ],

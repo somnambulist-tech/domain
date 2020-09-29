@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
 
-use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
 
 /**
  * Trait FindOrFail
  *
- * @package    Somnambulist\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail
+ * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail
  */
 trait FindOrFail
 {

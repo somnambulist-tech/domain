@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries;
+namespace Somnambulist\Components\Domain\Queries;
 
 /**
  * Class AbstractQuery
  *
- * @package    Somnambulist\Domain\Queries
- * @subpackage Somnambulist\Domain\Queries\AbstractQuery
+ * @package    Somnambulist\Components\Domain\Queries
+ * @subpackage Somnambulist\Components\Domain\Queries\AbstractQuery
  */
 abstract class AbstractQuery
 {

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\DateTime;
+namespace Somnambulist\Components\Domain\Entities\Types\DateTime;
 
 use Assert\Assert;
 use DateTimeZone;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class TimeZone
  *
- * @package    Somnambulist\Domain\Entities\Types\DateTime
- * @subpackage Somnambulist\Domain\Entities\Types\DateTime\TimeZone
+ * @package    Somnambulist\Components\Domain\Entities\Types\DateTime
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone
  */
 class TimeZone extends AbstractValueObject
 {

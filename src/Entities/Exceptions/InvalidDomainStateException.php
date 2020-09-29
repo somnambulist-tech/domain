@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Exceptions;
+namespace Somnambulist\Components\Domain\Entities\Exceptions;
 
 use Exception;
 use function sprintf;
@@ -11,8 +11,8 @@ use function sprintf;
  * Exception for when a domain state transition is invalid. Can be extended to provide
  * specific contextual information.
  *
- * @package    Somnambulist\Domain\Entities\Exceptions
- * @subpackage Somnambulist\Domain\Entities\Exceptions\InvalidDomainStateException
+ * @package    Somnambulist\Components\Domain\Entities\Exceptions
+ * @subpackage Somnambulist\Components\Domain\Entities\Exceptions\InvalidDomainStateException
  * @codeCoverageIgnore
  */
 class InvalidDomainStateException extends Exception

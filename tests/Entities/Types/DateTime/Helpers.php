@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\DateTime;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime;
 
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 
 /**
  * Trait Helpers
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\DateTime
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\Helpers
  */
 trait Helpers
 {

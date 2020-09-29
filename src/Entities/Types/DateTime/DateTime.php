@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\DateTime;
+namespace Somnambulist\Components\Domain\Entities\Types\DateTime;
 
 use DateTimeImmutable;
-use Somnambulist\Domain\Entities\Contracts\ValueObject;
-use Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Comparable;
-use Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Factory;
-use Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Modifiers;
-use Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Stringable;
+use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Comparable;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Factory;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Modifiers;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Stringable;
 
 /**
  * Class DateTime
  *
- * @package    Somnambulist\Domain\Entities\Types\DateTime
- * @subpackage Somnambulist\Domain\Entities\Types\DateTime\DateTime
+ * @package    Somnambulist\Components\Domain\Entities\Types\DateTime
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime
  */
 class DateTime extends DateTimeImmutable implements ValueObject
 {

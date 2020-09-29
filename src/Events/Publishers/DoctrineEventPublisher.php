@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Events\Publishers;
+namespace Somnambulist\Components\Domain\Events\Publishers;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -8,17 +8,17 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events;
 use Somnambulist\Collection\MutableCollection;
-use Somnambulist\Domain\Entities\AggregateRoot;
-use Somnambulist\Domain\Events\AbstractEvent;
-use Somnambulist\Domain\Events\EventBus;
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\EventBus;
 
 /**
  * Class DomainEventListener
  *
  * Based on the Gist by B. Eberlei https://gist.github.com/beberlei/53cd6580d87b1f5cd9ca
  *
- * @package    Somnambulist\Domain\Events\Publishers\Doctrine\Subscribers
- * @subpackage Somnambulist\Domain\Events\Publishers\Doctrine\Subscribers\DomainEventPublisher
+ * @package    Somnambulist\Components\Domain\Events\Publishers\Doctrine\Subscribers
+ * @subpackage Somnambulist\Components\Domain\Events\Publishers\Doctrine\Subscribers\DomainEventPublisher
  */
 class DoctrineEventPublisher implements EventSubscriber
 {

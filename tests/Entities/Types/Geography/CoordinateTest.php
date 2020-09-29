@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Geography;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Geography;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Geography\Coordinate;
-use Somnambulist\Domain\Entities\Types\Geography\Srid;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Coordinate;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Srid;
 
 /**
  * Class CoordinateTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Geography
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Geography\CoordinateTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Geography
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Geography\CoordinateTest
  *
  * @group entities
  * @group entities-types

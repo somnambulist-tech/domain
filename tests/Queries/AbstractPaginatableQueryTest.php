@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Queries;
+namespace Somnambulist\Components\Domain\Tests\Queries;
 
 use BadMethodCallException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Collection\FrozenCollection;
-use Somnambulist\Domain\Queries\AbstractPaginatableQuery;
+use Somnambulist\Components\Domain\Queries\AbstractPaginatableQuery;
 
 /**
  * Class AbstractPaginatableQueryTest
  *
- * @package Somnambulist\Domain\Tests\Queries
- * @subpackage Somnambulist\Domain\Tests\Queries\AbstractPaginatableQueryTest
+ * @package Somnambulist\Components\Domain\Tests\Queries
+ * @subpackage Somnambulist\Components\Domain\Tests\Queries\AbstractPaginatableQueryTest
  *
  * @group queries
  * @group queries-paginatable-query

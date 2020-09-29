@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities;
+namespace Somnambulist\Components\Domain\Entities;
 
 use Countable;
 use Doctrine\Common\Collections\Collection;
@@ -16,8 +16,8 @@ use IteratorAggregate;
  * When implementing be sure to add additional methods as necessary to provide the domain
  * implementations that are needed.
  *
- * @package    Somnambulist\Domain\Entities
- * @subpackage Somnambulist\Domain\Entities\AbstractEntityCollection
+ * @package    Somnambulist\Components\Domain\Entities
+ * @subpackage Somnambulist\Components\Domain\Entities\AbstractEntityCollection
  */
 abstract class AbstractEntityCollection implements Countable, IteratorAggregate
 {

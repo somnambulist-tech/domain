@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Web;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Web;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Web\Url;
+use Somnambulist\Components\Domain\Entities\Types\Web\Url;
 
 /**
  * Class UrlTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\UrlTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\UrlTest
  *
  * @group entities
  * @group entities-types

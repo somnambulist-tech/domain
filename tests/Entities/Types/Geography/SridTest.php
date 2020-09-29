@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Geography;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Geography;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Geography\Srid;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Srid;
 
 /**
  * Class SridTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Geography
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Geography\SridTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Geography
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Geography\SridTest
  *
  * @group entities
  * @group entities-types

@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class Name
  *
- * @package    Somnambulist\Domain\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Domain\Tests\Support\Stubs\Models\Name
+ * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Models
+ * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Name
  */
 final class Name extends AbstractValueObject
 {

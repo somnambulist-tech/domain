@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities;
+namespace Somnambulist\Components\Domain\Entities;
 
 use Assert\Assertion;
 use Assert\InvalidArgumentException;
-use Somnambulist\Domain\Entities\Contracts\CanTestEquality;
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Entities\Types\Identity\AbstractIdentity as Identity;
-use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
-use Somnambulist\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Entities\Contracts\CanTestEquality;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Entities\Types\Identity\AbstractIdentity as Identity;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
 use function is_a;
 use function sprintf;
 
 /**
  * Class AggregateRoot
  *
- * @package    Somnambulist\Domain\Entities
- * @subpackage Somnambulist\Domain\Entities\AggregateRoot
+ * @package    Somnambulist\Components\Domain\Entities
+ * @subpackage Somnambulist\Components\Domain\Entities\AggregateRoot
  */
 abstract class AggregateRoot implements CanTestEquality
 {

@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
 
 use Somnambulist\Collection\MutableCollection;
 
 /**
  * Trait FindByName
  *
- * @package    Somnambulist\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByName
+ * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByName
  */
 trait FindByName
 {

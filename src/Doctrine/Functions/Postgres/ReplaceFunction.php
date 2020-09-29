@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Domain\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
@@ -18,8 +18,8 @@ use Doctrine\ORM\Query\SqlWalker;
  *
  * Adapted for Postgres.
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\Functions\Postgres
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Functions\Postgres
  */
 class ReplaceFunction extends FunctionNode
 {

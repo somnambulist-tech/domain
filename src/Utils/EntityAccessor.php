@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Utils;
+namespace Somnambulist\Components\Domain\Utils;
 
 use Closure;
 use function is_null;
@@ -9,8 +9,8 @@ use function property_exists;
 /**
  * Class EntityAccessor
  *
- * @package    Somnambulist\Domain\Utils
- * @subpackage Somnambulist\Domain\Utils\EntityAccessor
+ * @package    Somnambulist\Components\Domain\Utils
+ * @subpackage Somnambulist\Components\Domain\Utils\EntityAccessor
  */
 final class EntityAccessor
 {

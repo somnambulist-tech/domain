@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\DateTime\Behaviours;
+namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
 use DateTimeInterface;
 use DateTimeZone;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Entities\Types\DateTime\TimeZone;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
 
 /**
  * Trait Factory
  *
- * @package    Somnambulist\Domain\Entities\Types\DateTime\Behaviours
- * @subpackage Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Factory
+ * @package    Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Factory
  */
 trait Factory
 {

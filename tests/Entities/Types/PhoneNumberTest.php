@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types;
 
 use Assert\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\PhoneNumber;
+use Somnambulist\Components\Domain\Entities\Types\PhoneNumber;
 
 /**
  * Class PhoneNumberTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\PhoneNumberTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\PhoneNumberTest
  *
  * @group      entities
  * @group      entities-types

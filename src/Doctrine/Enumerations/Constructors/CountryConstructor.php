@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Enumerations\Constructors;
+namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Geography\Country;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
 
 /**
  * Class CountryConstructor
  *
- * @package    Somnambulist\Domain\Doctrine\Enumerations\Constructors
- * @subpackage Somnambulist\Domain\Doctrine\Enumerations\Constructors\CountryConstructor
+ * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CountryConstructor
  */
 class CountryConstructor
 {

@@ -19,12 +19,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Somnambulist\\Domain\\": "src/"
+            "Somnambulist\\Components\\Domain\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Somnambulist\\Domain\\Tests\\": "tests/"
+            "Somnambulist\\Components\\Domain\\Tests\\": "tests/"
         }
     },
     "require": {

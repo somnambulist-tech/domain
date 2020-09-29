@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Identity;
+namespace Somnambulist\Components\Domain\Entities\Types\Identity;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class EmailAddress
  *
- * @package    Somnambulist\Domain\Entities\Types\Identity
- * @subpackage Somnambulist\Domain\Entities\Types\Identity\EmailAddress
+ * @package    Somnambulist\Components\Domain\Entities\Types\Identity
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress
  */
 final class EmailAddress extends AbstractValueObject
 {

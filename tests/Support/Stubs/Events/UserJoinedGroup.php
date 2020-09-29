@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\Events;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Events;
 
-use Somnambulist\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
 
 /**
  * Class UserJoinedGroup
  *
- * @package    Somnambulist\Domain\Tests\Support\Stubs\Events
- * @subpackage Somnambulist\Domain\Tests\Support\Stubs\Events\UserJoinedGroup
+ * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Events
+ * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserJoinedGroup
  */
 class UserJoinedGroup extends AbstractEvent
 {

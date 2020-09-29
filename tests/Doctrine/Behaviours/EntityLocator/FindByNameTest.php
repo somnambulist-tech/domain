@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Collection\MutableCollection;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByName;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByName;
 
 /**
  * Class FindByNameTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByNameTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByNameTest
  *
  * @group doctrine
  * @group doctrine-behaviours

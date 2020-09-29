@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\QueryException;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Functions\Postgres\CastToFunction;
-use Somnambulist\Domain\Doctrine\Functions\Postgres\IlikeFunction;
-use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
+use Somnambulist\Components\Domain\Doctrine\Functions\Postgres\CastToFunction;
+use Somnambulist\Components\Domain\Doctrine\Functions\Postgres\IlikeFunction;
+use Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
 
 /**
  * Class CastToFunctionTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine\Functions\Postgres
- * @subpackage Somnambulist\Domain\Tests\Doctrine\Functions\Postgres\CastToFunctionTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres\CastToFunctionTest
  *
  * @group doctrine
  * @group doctrine-functions
@@ -29,7 +29,7 @@ class CastToFunctionTest extends TestCase
         $this->em->getConfiguration()->addCustomStringFunction('ILIKE', IlikeFunction::class);
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(CAST(a.name, \'text\'), :name) = true')
+            ->createQuery('SELECT a FROM Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(CAST(a.name, \'text\'), :name) = true')
         ;
         $sql = $query->getSQL();
 
@@ -45,7 +45,7 @@ class CastToFunctionTest extends TestCase
         $this->expectExceptionMessage('[Syntax Error] CAST() requires one of "bool, date, float, int, text, time", received "json"');
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(CAST(a.name, \'json\'), :name) = true')
+            ->createQuery('SELECT a FROM Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(CAST(a.name, \'json\'), :name) = true')
         ;
         $query->getSQL();
     }

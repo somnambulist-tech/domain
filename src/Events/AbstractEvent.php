@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Events;
+namespace Somnambulist\Components\Domain\Events;
 
 use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Collection\FrozenCollection;
-use Somnambulist\Domain\Entities\Types\Identity\Aggregate;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
 use function array_merge;
 use function explode;
 use function is_null;
@@ -16,8 +16,8 @@ use function substr;
 /**
  * Class AbstractEvent
  *
- * @package    Somnambulist\Domain\Events
- * @subpackage Somnambulist\Domain\Events\AbstractEvent
+ * @package    Somnambulist\Components\Domain\Events
+ * @subpackage Somnambulist\Components\Domain\Events\AbstractEvent
  */
 abstract class AbstractEvent
 {

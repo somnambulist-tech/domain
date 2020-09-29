@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Behaviours\QueryBuilder;
+namespace Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
  * Trait HasSelectColumn
  *
- * @package    Somnambulist\Domain\Doctrine\Behaviours\QueryBuilder
- * @subpackage Somnambulist\Domain\Doctrine\Behaviours\QueryBuilder\HasSelectColumn
+ * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder\HasSelectColumn
  */
 trait HasSelectColumn
 {

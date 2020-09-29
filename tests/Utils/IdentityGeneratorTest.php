@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Utils;
+namespace Somnambulist\Components\Domain\Tests\Utils;
 
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\UserId;
-use Somnambulist\Domain\Utils\IdentityGenerator;
 use PHPUnit\Framework\TestCase;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId;
+use Somnambulist\Components\Domain\Utils\IdentityGenerator;
 
 /**
  * Class IdentityGeneratorTest
  *
- * @package Somnambulist\Domain\Tests\Utils
- * @subpackage Somnambulist\Domain\Tests\Utils\IdentityGeneratorTest
+ * @package Somnambulist\Components\Domain\Tests\Utils
+ * @subpackage Somnambulist\Components\Domain\Tests\Utils\IdentityGeneratorTest
  *
  * @group utils
  * @group utils-identity-generator

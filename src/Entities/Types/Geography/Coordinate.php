@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Geography;
+namespace Somnambulist\Components\Domain\Entities\Types\Geography;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class Coordinate
  *
  * Represents a latitude and longitude within a geo-spatial system.
  *
- * @package    Somnambulist\Domain\Entities\Types\Geography
- * @subpackage Somnambulist\Domain\Entities\Types\Geography\Coordinate
+ * @package    Somnambulist\Components\Domain\Entities\Types\Geography
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Geography\Coordinate
  */
 class Coordinate extends AbstractValueObject
 {

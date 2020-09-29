@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Commands\Adapters;
+namespace Somnambulist\Components\Domain\Commands\Adapters;
 
-use Somnambulist\Domain\Commands\AbstractCommand;
-use Somnambulist\Domain\Commands\CommandBus;
+use Somnambulist\Components\Domain\Commands\AbstractCommand;
+use Somnambulist\Components\Domain\Commands\CommandBus;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * Class MessengerCommandBus
  *
- * @package    Somnambulist\Domain\Commands\Adapters
- * @subpackage Somnambulist\Domain\Commands\Adapters\MessengerCommandBus
+ * @package    Somnambulist\Components\Domain\Commands\Adapters
+ * @subpackage Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus
  */
 final class MessengerCommandBus implements CommandBus
 {

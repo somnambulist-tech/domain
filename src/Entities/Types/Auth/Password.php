@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Auth;
+namespace Somnambulist\Components\Domain\Entities\Types\Auth;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 use function password_get_info;
 use function strtolower;
 
 /**
  * Class Password
  *
- * @package    Somnambulist\Domain\Entities\Types\Auth
- * @subpackage Somnambulist\Domain\Entities\Types\Auth\Password
+ * @package    Somnambulist\Components\Domain\Entities\Types\Auth
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Auth\Password
  */
 class Password extends AbstractValueObject
 {

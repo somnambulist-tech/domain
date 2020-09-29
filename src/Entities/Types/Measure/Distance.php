@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Measure;
+namespace Somnambulist\Components\Domain\Entities\Types\Measure;
 
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 use function sprintf;
 
 /**
  * Class Distance
  *
- * @package    Somnambulist\Domain\Entities\Types\Measure
- * @subpackage Somnambulist\Domain\Entities\Types\Measure\Distance
+ * @package    Somnambulist\Components\Domain\Entities\Types\Measure
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Measure\Distance
  */
 final class Distance extends AbstractValueObject
 {

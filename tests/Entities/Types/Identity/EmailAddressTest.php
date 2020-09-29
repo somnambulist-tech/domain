@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Identity;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Identity;
 
 use Assert\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
 
 /**
  * Class EmailAddressTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Identity
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Identity\EmailAddressTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Identity
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Identity\EmailAddressTest
  *
  * @group entities
  * @group entities-types

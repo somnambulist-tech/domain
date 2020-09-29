@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types;
+namespace Somnambulist\Components\Domain\Entities\Types;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class AbstractType
@@ -16,8 +16,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * To use, extend this class and then create either a Type mapping via an embeddable
  * Doctrine configuration, or use the EnumerationBridge to map a custom type.
  *
- * @package Somnambulist\Domain\Entities\Types
- * @subpackage Somnambulist\Domain\Entities\Types\AbstractType
+ * @package Somnambulist\Components\Domain\Entities\Types
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\AbstractType
  */
 abstract class AbstractType extends AbstractValueObject
 {

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Identity;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Identity;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Identity\ExternalIdentity;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Entities\Types\Identity\ExternalIdentity;
 
 /**
  * Class ExternalIdentityTest
  *
- * @package Somnambulist\Domain\Tests\Entities\Types\Identity
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Identity\ExternalIdentityTest
+ * @package Somnambulist\Components\Domain\Tests\Entities\Types\Identity
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Identity\ExternalIdentityTest
  *
  * @group entities
  * @group entities-types

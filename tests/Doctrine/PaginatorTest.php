@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine;
+namespace Somnambulist\Components\Domain\Tests\Doctrine;
 
 use Pagerfanta\Pagerfanta;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Paginator;
-use Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
+use Somnambulist\Components\Domain\Doctrine\Paginator;
+use Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
 
 /**
  * Class PaginatorTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine
- * @subpackage Somnambulist\Domain\Tests\Doctrine\PaginatorTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\PaginatorTest
  *
  * @group doctrine
  * @group doctrine-paginator

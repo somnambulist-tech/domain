@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries;
+namespace Somnambulist\Components\Domain\Queries;
 
 /**
  * Interface QueryBus
  *
- * @package    Somnambulist\Domain\Queries
- * @subpackage Somnambulist\Domain\Queries\QueryBus
+ * @package    Somnambulist\Components\Domain\Queries
+ * @subpackage Somnambulist\Components\Domain\Queries\QueryBus
  */
 interface QueryBus
 {

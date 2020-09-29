@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
 
-use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
-use Somnambulist\Domain\Entities\Types\Identity\AbstractIdentity;
+use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Domain\Entities\Types\Identity\AbstractIdentity;
 
 /**
  * Trait FindByUUID
  *
- * @package    Somnambulist\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID
+ * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID
  */
 trait FindByUUID
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine;
+namespace Somnambulist\Components\Domain\Tests\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -8,20 +8,20 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
-use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
-use Somnambulist\Domain\Tests\Support\Stubs\Enum\Action;
-use Somnambulist\Domain\Tests\Support\Stubs\Enum\Gender;
-use Somnambulist\Domain\Tests\Support\Stubs\Enum\NullableType;
-use Somnambulist\Domain\Tests\Support\Stubs\Helpers\Constructor;
-use Somnambulist\Domain\Tests\Support\Stubs\Helpers\NullableConstructor;
-use Somnambulist\Domain\Tests\Support\Stubs\Helpers\Serializer;
-use Somnambulist\Domain\Tests\Support\Stubs\Types\MyType;
+use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Action;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Gender;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\NullableType;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers\Constructor;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers\NullableConstructor;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers\Serializer;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Types\MyType;
 
 /**
  * Class EnumerationBridgeTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine
- * @subpackage Somnambulist\Domain\Tests\Doctrine\EnumerationBridgeTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\EnumerationBridgeTest
  *
  * @group doctrine
  * @group doctrine-behaviours

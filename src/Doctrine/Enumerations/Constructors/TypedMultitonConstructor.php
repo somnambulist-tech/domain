@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Enumerations\Constructors;
+namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\AbstractMultiton;
+use Somnambulist\Components\Domain\Entities\AbstractMultiton;
 
 /**
  * Class TypedMultitonConstructor
  *
- * @package    Somnambulist\Domain\Doctrine\Enumerations\Constructors
- * @subpackage Somnambulist\Domain\Doctrine\Enumerations\Constructors\TypedMultitonConstructor
+ * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\TypedMultitonConstructor
  */
 class TypedMultitonConstructor
 {

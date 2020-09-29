@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
 
-use Somnambulist\Domain\Entities\Types\Identity\Id;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Id;
 
 /**
  * Class IdType
  *
- * @package    Somnambulist\Domain\Doctrine\Types\Identity
- * @subpackage Somnambulist\Domain\Doctrine\Types\Identity\IdType
+ * @package    Somnambulist\Components\Domain\Doctrine\Types\Identity
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\IdType
  */
 class IdType extends AbstractIdentityType
 {

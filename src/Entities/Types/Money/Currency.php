@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Money;
+namespace Somnambulist\Components\Domain\Entities\Types\Money;
 
-use Somnambulist\Domain\Entities\AbstractMultiton;
+use Somnambulist\Components\Domain\Entities\AbstractMultiton;
 
 /**
  * Class Currency
  *
- * @package    Somnambulist\Domain\Entities\Types\Money
- * @subpackage Somnambulist\Domain\Entities\Types\Money\Currency
+ * @package    Somnambulist\Components\Domain\Entities\Types\Money
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Money\Currency
  */
 final class Currency extends AbstractMultiton
 {

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Measure;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Measure;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Measure\AreaUnit;
-use Somnambulist\Domain\Entities\Types\Measure\DistanceUnit;
+use Somnambulist\Components\Domain\Entities\Types\Measure\AreaUnit;
+use Somnambulist\Components\Domain\Entities\Types\Measure\DistanceUnit;
 
 /**
  * Class DistanceUnitTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Measure
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Measure\DistanceUnitTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Measure
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Measure\DistanceUnitTest
  *
  * @group entities
  * @group entities-types

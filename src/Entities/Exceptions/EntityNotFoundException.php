@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Exceptions;
+namespace Somnambulist\Components\Domain\Entities\Exceptions;
 
 use Exception;
 use function implode;
@@ -9,8 +9,8 @@ use function sprintf;
 /**
  * Class EntityNotFoundException
  *
- * @package    Somnambulist\Domain\Entities\Exceptions
- * @subpackage Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException
+ * @package    Somnambulist\Components\Domain\Entities\Exceptions
+ * @subpackage Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException
  * @codeCoverageIgnore
  */
 class EntityNotFoundException extends Exception

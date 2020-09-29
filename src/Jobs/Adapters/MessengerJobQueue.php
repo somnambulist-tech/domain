@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Jobs\Adapters;
+namespace Somnambulist\Components\Domain\Jobs\Adapters;
 
-use Somnambulist\Domain\Jobs\AbstractJob;
-use Somnambulist\Domain\Jobs\JobQueue;
+use Somnambulist\Components\Domain\Jobs\AbstractJob;
+use Somnambulist\Components\Domain\Jobs\JobQueue;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * Class MessengerJobQueue
  *
- * @package    Somnambulist\Domain\Jobs\Adapters
- * @subpackage Somnambulist\Domain\Jobs\Adapters\MessengerJobQueue
+ * @package    Somnambulist\Components\Domain\Jobs\Adapters
+ * @subpackage Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue
  */
 final class MessengerJobQueue implements JobQueue
 {

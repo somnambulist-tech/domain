@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Enumerations\Serializers;
+namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Geography\Country;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
 
 /**
  * Class CountrySerializer
  *
- * @package    Somnambulist\Domain\Doctrine\Enumerations\Serializers
- * @subpackage Somnambulist\Domain\Doctrine\Enumerations\Serializers\CountrySerializer
+ * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer
  */
 class CountrySerializer
 {

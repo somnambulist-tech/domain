@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Geography;
+namespace Somnambulist\Components\Domain\Entities\Types\Geography;
 
-use Somnambulist\Domain\Entities\AbstractMultiton;
+use Somnambulist\Components\Domain\Entities\AbstractMultiton;
 
 /**
  * Class Country
  *
- * @package    Somnambulist\Domain\Entities\Types\Geography
- * @subpackage Somnambulist\Domain\Entities\Types\Geography\Country
+ * @package    Somnambulist\Components\Domain\Entities\Types\Geography
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Geography\Country
  */
 final class Country extends AbstractMultiton
 {

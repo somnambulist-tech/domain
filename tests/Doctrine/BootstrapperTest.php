@@ -1,15 +1,15 @@
 <?php
 
-namespace Somnambulist\Domain\Tests\Doctrine;
+namespace Somnambulist\Components\Domain\Tests\Doctrine;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
 
 /**
  * Class BootstrapperTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine
- * @subpackage Somnambulist\Domain\Tests\Doctrine\BootstrapperTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\BootstrapperTest
  *
  * @group doctrine
  * @group doctrine-bootstrapper

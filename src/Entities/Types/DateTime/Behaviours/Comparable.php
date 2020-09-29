@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\DateTime\Behaviours;
+namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 
 /**
  * Trait Comparable
  *
  * Based on Carbon\Carbon test setup methods.
  *
- * @package    Somnambulist\Domain\Entities\Types\DateTime\Behaviours
- * @subpackage Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Comparable
+ * @package    Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Comparable
  */
 trait Comparable
 {

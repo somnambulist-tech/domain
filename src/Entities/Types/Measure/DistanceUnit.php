@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Measure;
+namespace Somnambulist\Components\Domain\Entities\Types\Measure;
 
-use Somnambulist\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
 
 /**
  * Class DistanceUnit
  *
- * @package    Somnambulist\Domain\Entities\Types\Measure
- * @subpackage Somnambulist\Domain\Entities\Types\Measure\DistanceUnit
+ * @package    Somnambulist\Components\Domain\Entities\Types\Measure
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Measure\DistanceUnit
  *
  * @method static DistanceUnit MILLIMETRE()
  * @method static DistanceUnit CENTIMETRE()

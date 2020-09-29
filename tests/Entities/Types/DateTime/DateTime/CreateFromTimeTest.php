@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Entities\Types\DateTime\TimeZone;
-use Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
+use Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\Helpers;
 
 /**
  * Class CreateFromTimeTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime\CreateFromTimeTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime\CreateFromTimeTest
  *
  * @group entities
  * @group entities-types

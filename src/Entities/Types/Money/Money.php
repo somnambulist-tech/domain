@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Money;
+namespace Somnambulist\Components\Domain\Entities\Types\Money;
 
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class Money
  *
- * @package    Somnambulist\Domain\Entities\Types\Money
- * @subpackage Somnambulist\Domain\Entities\Types\Money\Money
+ * @package    Somnambulist\Components\Domain\Entities\Types\Money
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Money\Money
  */
 final class Money extends AbstractValueObject
 {

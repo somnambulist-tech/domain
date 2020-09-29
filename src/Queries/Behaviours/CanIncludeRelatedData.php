@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries\Behaviours;
+namespace Somnambulist\Components\Domain\Queries\Behaviours;
 
 use function count;
 use function is_array;
@@ -8,8 +8,8 @@ use function is_array;
 /**
  * Trait CanIncludeRelatedData
  *
- * @package Somnambulist\Domain\Queries\Behaviours
- * @subpackage Somnambulist\Domain\Queries\Behaviours\CanIncludeRelatedData
+ * @package Somnambulist\Components\Domain\Queries\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Queries\Behaviours\CanIncludeRelatedData
  */
 trait CanIncludeRelatedData
 {

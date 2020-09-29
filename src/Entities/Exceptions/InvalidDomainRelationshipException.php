@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Exceptions;
+namespace Somnambulist\Components\Domain\Entities\Exceptions;
 
 use function sprintf;
 
@@ -9,8 +9,8 @@ use function sprintf;
  *
  * Exception for when operating on entity relationships is invalid.
  *
- * @package    Somnambulist\Domain\Entities\Exceptions
- * @subpackage Somnambulist\Domain\Entities\Exceptions\InvalidDomainRelationshipException
+ * @package    Somnambulist\Components\Domain\Entities\Exceptions
+ * @subpackage Somnambulist\Components\Domain\Entities\Exceptions\InvalidDomainRelationshipException
  * @codeCoverageIgnore
  */
 class InvalidDomainRelationshipException extends InvalidDomainStateException

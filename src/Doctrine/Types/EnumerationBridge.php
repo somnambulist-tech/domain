@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types;
+namespace Somnambulist\Components\Domain\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -13,8 +13,8 @@ use InvalidArgumentException;
  *
  * @link       https://github.com/acelaya/doctrine-enum-type/blob/master/src/Type/PhpEnumType.php
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\Types\EnumerationBridge
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge
  */
 class EnumerationBridge extends Type
 {

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Money;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Money;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Money\Currency;
-use Somnambulist\Domain\Entities\Types\Money\Money;
+use Somnambulist\Components\Domain\Entities\Types\Money\Currency;
+use Somnambulist\Components\Domain\Entities\Types\Money\Money;
 
 /**
  * Class MoneyTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Money
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Money\MoneyTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Money
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Money\MoneyTest
  *
  * @group entities
  * @group entities-types

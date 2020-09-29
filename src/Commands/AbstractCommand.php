@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Commands;
+namespace Somnambulist\Components\Domain\Commands;
 
 /**
  * Class AbstractCommand
  *
- * @package    Somnambulist\Domain\Commands
- * @subpackage Somnambulist\Domain\Commands\AbstractCommand
+ * @package    Somnambulist\Components\Domain\Commands
+ * @subpackage Somnambulist\Components\Domain\Commands\AbstractCommand
  */
 abstract class AbstractCommand
 {

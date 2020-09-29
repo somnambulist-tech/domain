@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder;
+namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Behaviours\QueryBuilder\HasJoinAlias;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder\HasJoinAlias;
 
 /**
  * Class HasJoinAliasTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder
- * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\QueryBuilder\HasJoinAliasTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder\HasJoinAliasTest
  *
  * @group doctrine
  * @group doctrine-behaviours

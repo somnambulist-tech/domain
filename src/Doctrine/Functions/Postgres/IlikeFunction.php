@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Domain\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
@@ -13,8 +13,8 @@ use Doctrine\ORM\Query\SqlWalker;
  *
  * @link https://github.com/fabiofumarola/edb/blob/master/src/Kdde/EdbBundle/DQL/ILIKE.php
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\Functions\Postgres
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Functions\Postgres
  */
 class IlikeFunction extends FunctionNode
 {

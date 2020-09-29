@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
 
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
 
 /**
  * Class UuidType
@@ -10,8 +10,8 @@ use Somnambulist\Domain\Entities\Types\Identity\Uuid;
  * UUID fields will be stored as a string in the database and converted back to
  * the Uuid value object when querying.
  *
- * @package    Somnambulist\Domain\Doctrine\Types
- * @subpackage Somnambulist\Domain\Doctrine\Types\Identity\UuidType
+ * @package    Somnambulist\Components\Domain\Doctrine\Types
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\UuidType
  */
 class UuidType extends AbstractIdentityType
 {

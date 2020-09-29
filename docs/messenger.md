@@ -64,10 +64,10 @@ framework:
 
         routing:
             # Route your messages to the transports
-            Somnambulist\Domain\Events\AbstractEvent: domain_events
-            Somnambulist\Domain\Jobs\AbstractJob: job_queue
-            Somnambulist\Domain\Commands\AbstractCommand: sync
-            Somnambulist\Domain\Queries\AbstractQuery: sync
+            Somnambulist\Components\Domain\Events\AbstractEvent: domain_events
+            Somnambulist\Components\Domain\Jobs\AbstractJob: job_queue
+            Somnambulist\Components\Domain\Commands\AbstractCommand: sync
+            Somnambulist\Components\Domain\Queries\AbstractQuery: sync
 ```
 
 The above configuration will automatically route all extended Commands and Queries to the sync
@@ -78,28 +78,28 @@ Then the following services should be defined in `services.yaml`:
 
 ```yaml
 services:
-    Somnambulist\Domain\Events\Adapters\MessengerEventBus:
+    Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus:
     
-    Somnambulist\Domain\Events\EventBus:
-        alias: Somnambulist\Domain\Events\Adapters\MessengerEventBus
+    Somnambulist\Components\Domain\Events\EventBus:
+        alias: Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus
         public: true
 
-    Somnambulist\Domain\Jobs\Adapters\MessengerJobQueue:
+    Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue:
     
-    Somnambulist\Domain\Jos\JobQueue:
-        alias: Somnambulist\Domain\Jobs\Adapters\MessengerJobQueue
+    Somnambulist\Components\Domain\Jos\JobQueue:
+        alias: Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue
         public: true
     
-    Somnambulist\Domain\Commands\Adapters\MessengerCommandBus:
+    Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus:
     
-    Somnambulist\Domain\Commands\CommandBus:
-        alias: Somnambulist\Domain\Commands\Adapters\MessengerCommandBus
+    Somnambulist\Components\Domain\Commands\CommandBus:
+        alias: Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus
         public: true
     
-    Somnambulist\Domain\Queries\Adapters\MessengerQueryBus:
+    Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus:
     
-    Somnambulist\Domain\Queries\QueryBus:
-        alias: Somnambulist\Domain\Queries\Adapters\MessengerQueryBus
+    Somnambulist\Components\Domain\Queries\QueryBus:
+        alias: Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus
         public: true
 ```
 
@@ -132,7 +132,7 @@ To enable the event subscriber add the following to your `services.yaml`:
 
 ```yaml
 services:
-    Somnambulist\Domain\Events\Publishers\DoctrineEventPublisher:
+    Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher:
         tags: ['doctrine.event_subscriber']
 ```
 
@@ -156,10 +156,10 @@ serialize the envelope stamp objects.
 Add the following service definition and optional alias if desired:
 ```yaml
 services:
-    Somnambulist\Domain\Events\Adapters\MessengerSerializer:
+    Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer:
         
     somnambulist.domain.event_serializer:
-        alias: Somnambulist\Domain\Events\Adapters\MessengerSerializer
+        alias: Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer
 ```
 
 Set the serializer on the domain_events transport:

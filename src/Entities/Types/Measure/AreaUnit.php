@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Measure;
+namespace Somnambulist\Components\Domain\Entities\Types\Measure;
 
-use Somnambulist\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
 
 /**
  * Class AreaUnit
  *
- * @package    Somnambulist\Domain\Entities\Types\Measure
- * @subpackage Somnambulist\Domain\Entities\Types\Measure\AreaUnit
+ * @package    Somnambulist\Components\Domain\Entities\Types\Measure
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Measure\AreaUnit
  *
  * @method static AreaUnit ACRE()
  * @method static AreaUnit HECTARE()

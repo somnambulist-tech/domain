@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries;
+namespace Somnambulist\Components\Domain\Queries;
 
 use BadMethodCallException;
 use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Collection\FrozenCollection;
-use Somnambulist\Domain\Queries\Behaviours\CanIncludeRelatedData;
-use Somnambulist\Domain\Queries\Behaviours\CanPaginateQuery;
-use Somnambulist\Domain\Queries\Behaviours\CanSortQuery;
+use Somnambulist\Components\Domain\Queries\Behaviours\CanIncludeRelatedData;
+use Somnambulist\Components\Domain\Queries\Behaviours\CanPaginateQuery;
+use Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery;
 
 /**
  * Class AbstractPaginatableQuery
@@ -20,8 +20,8 @@ use Somnambulist\Domain\Queries\Behaviours\CanSortQuery;
  * If the attribute is not found, null will be returned. Invalid method calls will
  * raise an exception.
  *
- * @package    Somnambulist\Domain\Queries
- * @subpackage Somnambulist\Domain\Queries\AbstractPaginatableQuery
+ * @package    Somnambulist\Components\Domain\Queries
+ * @subpackage Somnambulist\Components\Domain\Queries\AbstractPaginatableQuery
  */
 abstract class AbstractPaginatableQuery extends AbstractQuery
 {

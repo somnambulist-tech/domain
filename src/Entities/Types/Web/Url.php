@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Web;
+namespace Somnambulist\Components\Domain\Entities\Types\Web;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class Url
  *
- * @package    Somnambulist\Domain\Entities\Types\Web
- * @subpackage Somnambulist\Domain\Entities\Types\Web\Url
+ * @package    Somnambulist\Components\Domain\Entities\Types\Web
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Web\Url
  */
 final class Url extends AbstractValueObject
 {

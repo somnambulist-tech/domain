@@ -1,25 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities;
+namespace Somnambulist\Components\Domain\Tests\Entities;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Auth\Password;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\UserCreated;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\UserRegistrationComplete;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\Name;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\User;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\UserId;
-use Somnambulist\Domain\Utils\IdentityGenerator;
-use Somnambulist\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
+use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserCreated;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserRegistrationComplete;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Name;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\User;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId;
+use Somnambulist\Components\Domain\Utils\IdentityGenerator;
+use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
 use function password_hash;
 use const PASSWORD_DEFAULT;
 
 /**
  * Class AggregateRootTest
  *
- * @package    Somnambulist\Domain\Tests\Entities
- * @subpackage Somnambulist\Domain\Tests\Entities\AggregateRootTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\AggregateRootTest
  *
  * @group entities
  * @group entities-aggregate

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Events;
+namespace Somnambulist\Components\Domain\Events;
 
 /**
  * Interface EventBus
  *
- * @package    Somnambulist\Domain\Events
- * @subpackage Somnambulist\Domain\Events\EventBus
+ * @package    Somnambulist\Components\Domain\Events
+ * @subpackage Somnambulist\Components\Domain\Events\EventBus
  */
 interface EventBus
 {

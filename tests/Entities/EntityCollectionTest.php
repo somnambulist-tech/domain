@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities;
+namespace Somnambulist\Components\Domain\Tests\Entities;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
@@ -8,22 +8,22 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor;
-use Somnambulist\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Domain\Doctrine\Types\EnumerationBridge;
-use Somnambulist\Domain\Entities\AbstractEntityCollection;
-use Somnambulist\Domain\Entities\Types\Auth\Password;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\UserJoinedGroup;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\Group;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\Name;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\Role;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\User;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\UserGroup;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\UserId;
-use Somnambulist\Domain\Tests\Support\Stubs\Types\UserIdType;
-use Somnambulist\Domain\Utils\IdentityGenerator;
-use Somnambulist\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor;
+use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Domain\Entities\AbstractEntityCollection;
+use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserJoinedGroup;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Group;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Name;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Role;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\User;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserGroup;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Types\UserIdType;
+use Somnambulist\Components\Domain\Utils\IdentityGenerator;
+use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
 use function password_hash;
 use function realpath;
 use function strpos;
@@ -33,8 +33,8 @@ use const PASSWORD_DEFAULT;
 /**
  * Class EntityCollectionTest
  *
- * @package    Somnambulist\Domain\Tests\Entities
- * @subpackage Somnambulist\Domain\Tests\Entities\EntityCollectionTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\EntityCollectionTest
  *
  * @group entities
  * @group entities-collection
@@ -144,8 +144,8 @@ class EntityCollectionTest extends TestCase
         ];
 
         $driver = new SimplifiedXmlDriver([
-            realpath(__DIR__ . '/../Support/Stubs/config/ddd') => 'Somnambulist\Domain\Tests\Support\Stubs\Models',
-            realpath(__DIR__ . '/../../config/xml/symfony') => 'Somnambulist\Domain\Entities\Types',
+            realpath(__DIR__ . '/../Support/Stubs/config/ddd') => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Models',
+            realpath(__DIR__ . '/../../config/xml/symfony') => 'Somnambulist\Components\Domain\Entities\Types',
         ]);
         $config = new Configuration();
         $config->setMetadataCacheImpl(new ArrayCache());

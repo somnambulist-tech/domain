@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Utils\Tests\Assertions;
+namespace Somnambulist\Components\Domain\Utils\Tests\Assertions;
 
 use Somnambulist\Collection\MutableCollection;
-use Somnambulist\Domain\Entities\AggregateRoot;
-use Somnambulist\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
 use function get_class;
 
 /**
@@ -12,8 +12,8 @@ use function get_class;
  *
  * Asserts that an entity did NOT raise an event of the type specified.
  *
- * @package    Somnambulist\Domain\Utils\Tests\Assertions
- * @subpackage Somnambulist\Domain\Utils\Tests\Assertions\AssertDoesNotHaveDomainEventOfType
+ * @package    Somnambulist\Components\Domain\Utils\Tests\Assertions
+ * @subpackage Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertDoesNotHaveDomainEventOfType
  */
 trait AssertDoesNotHaveDomainEventOfType
 {

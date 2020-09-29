@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Tests\Entities\Types\DateTime\Helpers;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\Helpers;
 
 /**
  * Class ModifiersTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\DateTime\DateTime\ModifiersTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime\ModifiersTest
  *
  * @group entities
  * @group entities-types

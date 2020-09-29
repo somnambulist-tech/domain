@@ -1,26 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Utils;
+namespace Somnambulist\Components\Domain\Tests\Utils;
 
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
-use Somnambulist\Domain\Tests\Support\Stubs\Events\MyEntityNameUpdatedEvent;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\AbstractEntity;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\MyEntity;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\MyInheritedEntity;
-use Somnambulist\Domain\Utils\Tests\Assertions\AssertDoesNotHaveDomainEventOfType;
-use Somnambulist\Domain\Utils\Tests\Assertions\AssertDomainEventHasAttributes;
-use Somnambulist\Domain\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue;
-use Somnambulist\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityNameUpdatedEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\AbstractEntity;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyInheritedEntity;
+use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertDoesNotHaveDomainEventOfType;
+use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertDomainEventHasAttributes;
+use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue;
+use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
 
 /**
  * Class AssertionHelpersTest
  *
- * @package Somnambulist\Domain\Tests\Utils
- * @subpackage Somnambulist\Domain\Tests\Utils\AssertionHelpersTest
+ * @package Somnambulist\Components\Domain\Tests\Utils
+ * @subpackage Somnambulist\Components\Domain\Tests\Utils\AssertionHelpersTest
  */
 class AssertionHelpersTest extends TestCase
 {
@@ -88,7 +87,7 @@ class AssertionHelpersTest extends TestCase
         $entity = new MyInheritedEntity('id', 'test');
 
         $this->expectException(ExpectationFailedException::class);
-        $this->expectExceptionMessage('Object of type "Somnambulist\Domain\Tests\Support\Stubs\Models\MyInheritedEntity" does not have a property "name"; do you need a custom scope?');
+        $this->expectExceptionMessage('Object of type "Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyInheritedEntity" does not have a property "name"; do you need a custom scope?');
 
         $this->assertEntityHasPropertyWithValue($entity, 'name', 'test');
     }

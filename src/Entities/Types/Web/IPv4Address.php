@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Web;
+namespace Somnambulist\Components\Domain\Entities\Types\Web;
 
 use Assert\Assert;
 
 /**
  * Class IPv4Address
  *
- * @package    Somnambulist\Domain\Entities\Types\Web
- * @subpackage Somnambulist\Domain\Entities\Types\Web\IPv4Address
+ * @package    Somnambulist\Components\Domain\Entities\Types\Web
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Web\IPv4Address
  */
 final class IPv4Address extends IpAddress
 {

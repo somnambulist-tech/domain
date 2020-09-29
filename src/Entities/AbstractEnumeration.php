@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities;
+namespace Somnambulist\Components\Domain\Entities;
 
 use Eloquent\Enumeration\AbstractEnumeration as BaseEnumeration;
-use Somnambulist\Domain\Entities\Contracts\ValueObject;
+use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
 
 /**
  * Class AbstractEnumeration
  *
- * @package    Somnambulist\Domain\Entities
- * @subpackage Somnambulist\Domain\Entities\AbstractEnumeration
+ * @package    Somnambulist\Components\Domain\Entities
+ * @subpackage Somnambulist\Components\Domain\Entities\AbstractEnumeration
  */
 abstract class AbstractEnumeration extends BaseEnumeration implements ValueObject
 {

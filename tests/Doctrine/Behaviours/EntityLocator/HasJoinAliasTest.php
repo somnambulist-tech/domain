@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\HasJoinAlias;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\HasJoinAlias;
 
 /**
  * Class HasJoinAliasTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\HasJoinAliasTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\HasJoinAliasTest
  *
  * @group doctrine
  * @group doctrine-behaviours

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
-use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
+use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
 
 /**
  * Class FindOrFailTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindOrFailTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindOrFailTest
  *
  * @group doctrine
  * @group doctrine-behaviours

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="Somnambulist\Domain\Tests\Support\Stubs\Models\User" table="users">
+    <entity name="Somnambulist\Components\Domain\Tests\Support\Stubs\Models\User" table="users">
         <id name="id" type="user_id">
             <generator strategy="NONE"/>
         </id>
 
-        <embedded name="name" class="Somnambulist\Domain\Tests\Support\Stubs\Models\Name" use-column-prefix="false"/>
-        <embedded name="email" class="Somnambulist\Domain\Entities\Types\Identity\EmailAddress" use-column-prefix="false"/>
-        <embedded name="password" class="Somnambulist\Domain\Entities\Types\Auth\Password" use-column-prefix="false"/>
+        <embedded name="name" class="Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Name" use-column-prefix="false"/>
+        <embedded name="email" class="Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress" use-column-prefix="false"/>
+        <embedded name="password" class="Somnambulist\Components\Domain\Entities\Types\Auth\Password" use-column-prefix="false"/>
 
         <field name="createdAt" column="created_at" type="datetime"/>
         <field name="updatedAt" column="updated_at" type="datetime"/>

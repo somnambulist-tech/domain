@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities;
+namespace Somnambulist\Components\Domain\Entities;
 
-use Somnambulist\Domain\Entities\Contracts\CanTestEquality;
+use Somnambulist\Components\Domain\Entities\Contracts\CanTestEquality;
 use function get_class;
 
 /**
@@ -13,8 +13,8 @@ use function get_class;
  * accessed separately from the aggregate root, then it is not a child entity, but
  * instead a standalone entity and potentially another aggregate root.
  *
- * @package    Somnambulist\Domain\Entities
- * @subpackage Somnambulist\Domain\Entities\AbstractEntity
+ * @package    Somnambulist\Components\Domain\Entities
+ * @subpackage Somnambulist\Components\Domain\Entities\AbstractEntity
  */
 abstract class AbstractEntity implements CanTestEquality
 {

@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Queries\Behaviours;
+namespace Somnambulist\Components\Domain\Queries\Behaviours;
 
 use Somnambulist\Collection\FrozenCollection;
 
 /**
  * Trait CanSortQuery
  *
- * @package    Somnambulist\Domain\Queries\Behaviours
- * @subpackage Somnambulist\Domain\Queries\Behaviours\CanSortQuery
+ * @package    Somnambulist\Components\Domain\Queries\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery
  */
 trait CanSortQuery
 {

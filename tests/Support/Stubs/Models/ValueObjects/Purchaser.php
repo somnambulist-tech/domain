@@ -1,10 +1,10 @@
 <?php
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\Models\ValueObjects;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models\ValueObjects;
 
-use Somnambulist\Domain\Entities\AbstractValueObject;
-use Somnambulist\Domain\Entities\Types\Geography\Country;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
 
 class Purchaser extends AbstractValueObject
 {

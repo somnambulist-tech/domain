@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types\Web;
+namespace Somnambulist\Components\Domain\Doctrine\Types\Web;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Web\IPV6Address;
+use Somnambulist\Components\Domain\Entities\Types\Web\IPV6Address;
 
 /**
  * Class IPV6AddressType
  *
- * @package    Somnambulist\Domain\Doctrine\Types\Web
- * @subpackage Somnambulist\Domain\Doctrine\Types\Web\IPV6AddressType
+ * @package    Somnambulist\Components\Domain\Doctrine\Types\Web
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Web\IPV6AddressType
  */
 class IPV6AddressType extends Type
 {

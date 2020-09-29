@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Jobs;
+namespace Somnambulist\Components\Domain\Jobs;
 
 /**
  * Class AbstractJob
  *
- * @package    Somnambulist\Domain\Jobs
- * @subpackage Somnambulist\Domain\Jobs\AbstractJob
+ * @package    Somnambulist\Components\Domain\Jobs
+ * @subpackage Somnambulist\Components\Domain\Jobs\AbstractJob
  */
 abstract class AbstractJob
 {

@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
 
 /**
  * Class EmailAddressType
@@ -15,8 +15,8 @@ use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
  * Store email address ValueObjects as strings and re-hydrate, without needing to use an
  * embeddable.
  *
- * @package    Somnambulist\Domain\Doctrine\Types
- * @subpackage Somnambulist\Domain\Doctrine\Types\Identity\EmailAddressType
+ * @package    Somnambulist\Components\Domain\Doctrine\Types
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\EmailAddressType
  */
 class EmailAddressType extends Type
 {

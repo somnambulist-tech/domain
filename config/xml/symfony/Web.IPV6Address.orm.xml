@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <embeddable name="Somnambulist\Domain\Entities\Types\Web\IPV6Address">
+    <embeddable name="Somnambulist\Components\Domain\Entities\Types\Web\IPV6Address">
         <field name="value" type="string" column="ip_address" length="45"/>
     </embeddable>
 </doctrine-mapping>

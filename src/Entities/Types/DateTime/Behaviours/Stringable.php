@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\DateTime\Behaviours;
+namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
 use DateTime;
 
@@ -9,8 +9,8 @@ use DateTime;
  *
  * Based on Carbon\Carbon test setup methods.
  *
- * @package    Somnambulist\Domain\Entities\Types\DateTime\Behaviours
- * @subpackage Somnambulist\Domain\Entities\Types\DateTime\Behaviours\Stringable
+ * @package    Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Stringable
  */
 trait Stringable
 {

@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Events\Publishers;
+namespace Somnambulist\Components\Domain\Events\Publishers;
 
 use Somnambulist\Collection\MutableCollection as Collection;
-use Somnambulist\Domain\Entities\AggregateRoot;
-use Somnambulist\Domain\Events\AbstractEvent;
-use Somnambulist\Domain\Events\EventBus;
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\EventBus;
 
 /**
  * Class AbstractEventPublisher
  *
- * @package    Somnambulist\Domain\Events\Publishers
- * @subpackage Somnambulist\Domain\Events\Publishers\AbstractEventPublisher
+ * @package    Somnambulist\Components\Domain\Events\Publishers
+ * @subpackage Somnambulist\Components\Domain\Events\Publishers\AbstractEventPublisher
  */
 abstract class AbstractEventPublisher
 {

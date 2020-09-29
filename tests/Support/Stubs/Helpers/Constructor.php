@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\Helpers;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers;
 
-use Somnambulist\Domain\Tests\Support\Stubs\Enum\Gender;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Gender;
 
 class Constructor
 {

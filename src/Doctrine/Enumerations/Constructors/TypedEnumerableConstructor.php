@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Enumerations\Constructors;
+namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Eloquent\Enumeration\AbstractEnumeration;
@@ -10,8 +10,8 @@ use function in_array;
 /**
  * Class TypedEnumerableConstructor
  *
- * @package    Somnambulist\Domain\Doctrine\Enumerations\Constructors
- * @subpackage Somnambulist\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor
+ * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor
  */
 class TypedEnumerableConstructor
 {

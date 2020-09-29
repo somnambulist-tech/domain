@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine;
+namespace Somnambulist\Components\Domain\Doctrine;
 
 use Doctrine\ORM\Query;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
@@ -9,8 +9,8 @@ use Pagerfanta\Pagerfanta;
 /**
  * Class Paginator
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\Paginator
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Paginator
  */
 class Paginator
 {

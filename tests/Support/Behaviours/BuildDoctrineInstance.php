@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Behaviours;
+namespace Somnambulist\Components\Domain\Tests\Support\Behaviours;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
@@ -8,16 +8,16 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use PDOException;
-use Somnambulist\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\AbstractUser;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\Customer;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\Order;
+use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\AbstractUser;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Customer;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order;
 
 /**
  * Trait BuildDoctrineInstance
  *
- * @package    Somnambulist\Domain\Tests\Support\Behaviours
- * @subpackage Somnambulist\Domain\Tests\Support\Behaviours\BuildDoctrineInstance
+ * @package    Somnambulist\Components\Domain\Tests\Support\Behaviours
+ * @subpackage Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance
  */
 trait BuildDoctrineInstance
 {
@@ -46,7 +46,7 @@ trait BuildDoctrineInstance
         $config->setMetadataCacheImpl(new ArrayCache());
         $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(sys_get_temp_dir());
-        $config->setProxyNamespace('Somnambulist\Domain\Tests\Doctrine\Proxies');
+        $config->setProxyNamespace('Somnambulist\Components\Domain\Tests\Doctrine\Proxies');
         $config->setMetadataDriverImpl($driver);
 
         TypeBootstrapper::registerEnumerations();

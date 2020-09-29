@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine;
+namespace Somnambulist\Components\Domain\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 use Somnambulist\Collection\MutableCollection;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\Paginate;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\Paginate;
 
 /**
  * Class AbstractEntityLocator
@@ -14,8 +14,8 @@ use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\Paginate;
  * Extends the standard Doctrine EntityRepository to a Locator while adding wrappers
  * to return ArrayCollection's and assorted helper methods for loading entities.
  *
- * @package    Somnambulist\Domain\Doctrine
- * @subpackage Somnambulist\Domain\Doctrine\AbstractEntityLocator
+ * @package    Somnambulist\Components\Domain\Doctrine
+ * @subpackage Somnambulist\Components\Domain\Doctrine\AbstractEntityLocator
  */
 abstract class AbstractEntityLocator extends EntityRepository
 {

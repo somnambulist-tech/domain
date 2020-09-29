@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types;
+namespace Somnambulist\Components\Domain\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -12,8 +12,8 @@ use Somnambulist\Collection\MutableCollection as Collection;
  * Variation of the JSON type that instead expands to an ArrayCollection instead
  * of an array. This allows all the ArrayCollection methods to be used internally.
  *
- * @package    Somnambulist\Domain\Doctrine\Types
- * @subpackage Somnambulist\Domain\Doctrine\Types\JsonCollectionType
+ * @package    Somnambulist\Components\Domain\Doctrine\Types
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\JsonCollectionType
  */
 class JsonCollectionType extends Type
 {

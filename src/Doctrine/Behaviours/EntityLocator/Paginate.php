@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
 
 use Doctrine\ORM\Query;
 use Pagerfanta\Pagerfanta;
-use Somnambulist\Domain\Doctrine\Paginator;
+use Somnambulist\Components\Domain\Doctrine\Paginator;
 
 /**
  * Trait Paginate
  *
- * @package    Somnambulist\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\Paginate
+ * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\Paginate
  */
 trait Paginate
 {

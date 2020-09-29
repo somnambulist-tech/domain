@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Events\Adapters;
+namespace Somnambulist\Components\Domain\Events\Adapters;
 
-use Somnambulist\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\InvalidArgumentException;
 use Symfony\Component\Messenger\Exception\LogicException;
@@ -28,8 +28,8 @@ use function substr;
 /**
  * Class MessengerSerializer
  *
- * @package    Somnambulist\Domain\Events\Adapters
- * @subpackage Somnambulist\Domain\Events\Adapters\MessengerSerializer
+ * @package    Somnambulist\Components\Domain\Events\Adapters
+ * @subpackage Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer
  */
 class MessengerSerializer implements SerializerInterface
 {

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Entities\Types\Auth;
+namespace Somnambulist\Components\Domain\Tests\Entities\Types\Auth;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Entities\Types\Auth\PublicPrivateKey;
-use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
+use Somnambulist\Components\Domain\Entities\Types\Auth\PublicPrivateKey;
+use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
 
 /**
  * Class PublicPrivateKeyTest
  *
- * @package    Somnambulist\Domain\Tests\Entities\Types\Auth
- * @subpackage Somnambulist\Domain\Tests\Entities\Types\Auth\PublicPrivateKeyTest
+ * @package    Somnambulist\Components\Domain\Tests\Entities\Types\Auth
+ * @subpackage Somnambulist\Components\Domain\Tests\Entities\Types\Auth\PublicPrivateKeyTest
  *
  * @group entities
  * @group entities-types
@@ -19,7 +19,7 @@ use Somnambulist\Domain\Entities\Types\Identity\EmailAddress;
 class PublicPrivateKeyTest extends TestCase
 {
     
-    const TEST_STRING = 'Somnambulist\Domain\Entities\Types';
+    const TEST_STRING = 'Somnambulist\Components\Domain\Entities\Types';
 
     public function testCreate()
     {

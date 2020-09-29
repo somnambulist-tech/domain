@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
-use Somnambulist\Domain\Entities\Exceptions\EntityNotFoundException;
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
+use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
 
 /**
  * Class FindByUUIDTest
  *
- * @package    Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByUUIDTest
+ * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
+ * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByUUIDTest
  *
  * @group doctrine
  * @group doctrine-behaviours

@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2020-09-29
+----------
+
+ * Re-namespace to `Somnambulist\Components`
+
 2020-09-23 - 3.1.2
 ------------------
 

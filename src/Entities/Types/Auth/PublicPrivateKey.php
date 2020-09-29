@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Auth;
+namespace Somnambulist\Components\Domain\Entities\Types\Auth;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class PublicPrivateKey
  *
- * @package    Somnambulist\Domain\Entities\Types\Auth
- * @subpackage Somnambulist\Domain\Entities\Types\Auth\PublicPrivateKey
+ * @package    Somnambulist\Components\Domain\Entities\Types\Auth
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Auth\PublicPrivateKey
  */
 class PublicPrivateKey extends AbstractValueObject
 {

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\Events;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Events;
 
-use Somnambulist\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
 
 class NamespacedEvent extends AbstractEvent
 {

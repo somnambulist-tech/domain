@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Web;
+namespace Somnambulist\Components\Domain\Entities\Types\Web;
 
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class IpAddress
  *
- * @package    Somnambulist\Domain\Entities\Types\Web
- * @subpackage Somnambulist\Domain\Entities\Types\Web\IpAddress
+ * @package    Somnambulist\Components\Domain\Entities\Types\Web
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Web\IpAddress
  */
 abstract class IpAddress extends AbstractValueObject
 {

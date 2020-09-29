@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
 
 /**
  * Class AbstractIdentityType
@@ -18,8 +18,8 @@ use Somnambulist\Domain\Entities\Types\Identity\Uuid;
  * with the values you need, then register the type either directly in the Doctrine
  * config or via the {@see TypeBootstrapper}
  *
- * @package    Somnambulist\Domain\Doctrine\Types\Identity
- * @subpackage Somnambulist\Domain\Doctrine\Types\Identity\AbstractIdentityType
+ * @package    Somnambulist\Components\Domain\Doctrine\Types\Identity
+ * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\AbstractIdentityType
  */
 abstract class AbstractIdentityType extends Type
 {

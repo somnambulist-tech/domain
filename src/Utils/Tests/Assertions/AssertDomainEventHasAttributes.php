@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Utils\Tests\Assertions;
+namespace Somnambulist\Components\Domain\Utils\Tests\Assertions;
 
 use Somnambulist\Collection\MutableCollection;
-use Somnambulist\Domain\Entities\AggregateRoot;
-use Somnambulist\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Domain\Events\AbstractEvent;
 
 /**
  * Trait AssertDomainEventHasAttributes
@@ -12,8 +12,8 @@ use Somnambulist\Domain\Events\AbstractEvent;
  * Test a given Aggregate Root (or entity implementing RaisesDomainEvents) that it has
  * an event of type AND that the event has specific attributes and values.
  *
- * @package    Somnambulist\Domain\Utils\Tests\Assertions
- * @subpackage Somnambulist\Domain\Utils\Tests\Assertions\AssertDomainEventHasAttributes
+ * @package    Somnambulist\Components\Domain\Utils\Tests\Assertions
+ * @subpackage Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertDomainEventHasAttributes
  */
 trait AssertDomainEventHasAttributes
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Events\Publishers;
+namespace Somnambulist\Components\Domain\Tests\Events\Publishers;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\EventManager;
@@ -9,20 +9,20 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Domain\Events\Publishers\DoctrineEventPublisher;
-use Somnambulist\Domain\Tests\Support\Stubs\EventListeners\DomainEventListener;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\MyEntity;
-use Somnambulist\Domain\Tests\Support\Stubs\Models\MyOtherEntity;
+use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners\DomainEventListener;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyOtherEntity;
 use function realpath;
 
 /**
  * Class DoctrineEventPublisherTest
  *
- * @package    Somnambulist\Domain\Tests\Events\Publishers
- * @subpackage Somnambulist\Domain\Tests\Events\Publishers\DoctrineEventPublisherTest
+ * @package    Somnambulist\Components\Domain\Tests\Events\Publishers
+ * @subpackage Somnambulist\Components\Domain\Tests\Events\Publishers\DoctrineEventPublisherTest
  *
  * @group events
  * @group events-publishers
@@ -51,7 +51,7 @@ class DoctrineEventPublisherTest extends TestCase
         ];
 
         $driver = new SimplifiedXmlDriver([
-            realpath(__DIR__ . '/../../Support/Stubs/config/sf') => 'Somnambulist\Domain\Tests\Support\Stubs\Models',
+            realpath(__DIR__ . '/../../Support/Stubs/config/sf') => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Models',
         ]);
         $config = new Configuration();
         $config->setMetadataCacheImpl(new ArrayCache());

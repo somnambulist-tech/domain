@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Identity;
+namespace Somnambulist\Components\Domain\Entities\Types\Identity;
 
 use Assert\Assert;
-use Somnambulist\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 /**
  * Class AbstractIdentity
@@ -11,8 +11,8 @@ use Somnambulist\Domain\Entities\AbstractValueObject;
  * Base class that allows extension to provide a typed "identity" in an aggregate / entity.
  * The UUID type extends this to provide a concrete identity that is a typed UUID.
  *
- * @package Somnambulist\Domain\Entities\Types\Identity
- * @subpackage Somnambulist\Domain\Entities\Types\Identity\AbstractIdentity
+ * @package Somnambulist\Components\Domain\Entities\Types\Identity
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Identity\AbstractIdentity
  */
 abstract class AbstractIdentity extends AbstractValueObject
 {

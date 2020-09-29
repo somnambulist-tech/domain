@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
 
-use Somnambulist\Domain\Entities\Types\Identity\AbstractIdentity;
+use Somnambulist\Components\Domain\Entities\Types\Identity\AbstractIdentity;
 
 /**
  * Class UserId
  *
- * @package    Somnambulist\Domain\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Domain\Tests\Support\Stubs\Models\UserId
+ * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Models
+ * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId
  */
 final class UserId extends AbstractIdentity
 {

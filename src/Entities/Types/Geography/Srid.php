@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Domain\Entities\Types\Geography;
+namespace Somnambulist\Components\Domain\Entities\Types\Geography;
 
-use Somnambulist\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
 
 /**
  * Class Srid
@@ -10,8 +10,8 @@ use Somnambulist\Domain\Entities\AbstractEnumeration;
  * Represents a Spatial Reference System Identifier - a unique value for a spatial reference system.
  * For example: WGS84 has a SRID of 4326; BNG has a SRID of 27700.
  *
- * @package    Somnambulist\Domain\Entities\Types\Geography
- * @subpackage Somnambulist\Domain\Entities\Types\Geography\Srid
+ * @package    Somnambulist\Components\Domain\Entities\Types\Geography
+ * @subpackage Somnambulist\Components\Domain\Entities\Types\Geography\Srid
  *
  * @method static Srid BRITISH_NATIONAL_GRID()
  * @method static Srid OSGB1936()
