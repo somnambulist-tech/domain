@@ -36,7 +36,7 @@
         "eloquent/enumeration": "^6.0",
         "pragmarx/ia-str": "^7.0",
         "ramsey/uuid": "^4.0",
-        "somnambulist/collection": "^4.0"
+        "somnambulist/collection": ">=4.0.1"
     },
     "require-dev": {
         "ext-pdo": "*",
@@ -46,8 +46,10 @@
         "phpspec/prophecy-phpunit": "~2.0",
         "symfony/amqp-messenger": "~5.0",
         "symfony/event-dispatcher": "~5.0",
+        "symfony/http-foundation": "~5.0",
         "symfony/messenger": "~5.0",
         "symfony/property-access": "~5.0",
+        "symfony/security-bundle": "~5.0",
         "symfony/serializer": "~5.0",
         "symfony/var-dumper": "~5.0",
         "symfony/yaml": "~5.0"
@@ -57,8 +59,10 @@
         "doctrine/orm": "To use the Doctrine components and have an entity mapper",
         "laravel-doctrine/orm": "A Laravel mapping for Doctrine",
         "pagerfanta/pagerfanta": "For Pagination of Doctrine results and other data",
+        "symfony/http-foundation": "For request id injection into event context",
         "symfony/messenger": "(A)Sync Bus implementation for Symfony needed for query/command/event bus messenger implementations",
         "symfony/property-access": "Needed for serializing JSON payloads",
+        "symfony/security-core": "For injecting the user information into event context",
         "symfony/serializer": "Send domain events as JSON strings via messenger"
     }
 }

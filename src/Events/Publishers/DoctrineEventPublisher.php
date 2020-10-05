@@ -7,9 +7,12 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events;
-use Somnambulist\Collection\MutableCollection;
+use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Entities\AggregateRoot;
 use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents;
+use Somnambulist\Components\Domain\Events\Behaviours\CanGatherEventsForDispatch;
+use Somnambulist\Components\Domain\Events\Behaviours\CanSortEvents;
 use Somnambulist\Components\Domain\Events\EventBus;
 
 /**
@@ -23,13 +26,22 @@ use Somnambulist\Components\Domain\Events\EventBus;
 class DoctrineEventPublisher implements EventSubscriber
 {
 
-    private EventBus $eventBus;
-    private MutableCollection $entities;
+    use CanDecorateEvents;
+    use CanGatherEventsForDispatch;
+    use CanSortEvents;
 
-    public function __construct(EventBus $eventBus)
+    private EventBus $eventBus;
+    private Collection $entities;
+
+    public function __construct(EventBus $eventBus, iterable $decorators = [])
     {
-        $this->entities = new MutableCollection();
-        $this->eventBus = $eventBus;
+        $this->entities   = new Collection();
+        $this->eventBus   = $eventBus;
+        $this->decorators = new Collection();
+
+        foreach ($decorators as $decorator) {
+            $this->addDecorator($decorator);
+        }
     }
 
     public function getSubscribedEvents()
@@ -64,27 +76,15 @@ class DoctrineEventPublisher implements EventSubscriber
     public function postFlush(PostFlushEventArgs $event): void
     {
         $this
-            ->sortEventsForDispatch()
+            ->applyDecoratorsToEvents($this->sortEventsForDispatch($this->gatherPublishedDomainEvents($this->entities)))
             ->each(fn (AbstractEvent $event) => $this->eventBus->notify($event))
         ;
 
         $this->clear();
     }
 
-    protected function sortEventsForDispatch(): MutableCollection
-    {
-        $events = new MutableCollection();
-
-        $this
-            ->entities
-            ->each(fn (AggregateRoot $entity) => $events->append(...$entity->releaseAndResetEvents()))
-        ;
-
-        return $events->sort(fn (AbstractEvent $a, AbstractEvent $b) => bccomp((string)$a->getTime(), (string)$b->getTime(), 6));
-    }
-
     protected function clear(): void
     {
-        $this->entities = new MutableCollection();
+        $this->entities = new Collection();
     }
 }

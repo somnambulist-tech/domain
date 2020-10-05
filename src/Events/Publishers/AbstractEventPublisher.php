@@ -4,7 +4,9 @@ namespace Somnambulist\Components\Domain\Events\Publishers;
 
 use Somnambulist\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents;
+use Somnambulist\Components\Domain\Events\Behaviours\CanGatherEventsForDispatch;
+use Somnambulist\Components\Domain\Events\Behaviours\CanSortEvents;
 use Somnambulist\Components\Domain\Events\EventBus;
 
 /**
@@ -16,13 +18,22 @@ use Somnambulist\Components\Domain\Events\EventBus;
 abstract class AbstractEventPublisher
 {
 
+    use CanDecorateEvents;
+    use CanGatherEventsForDispatch;
+    use CanSortEvents;
+
     protected EventBus $eventBus;
     protected Collection $entities;
 
-    public function __construct(EventBus $eventBus)
+    public function __construct(EventBus $eventBus, iterable $decorators = [])
     {
-        $this->entities = new Collection();
-        $this->eventBus = $eventBus;
+        $this->entities   = new Collection();
+        $this->eventBus   = $eventBus;
+        $this->decorators = new Collection();
+
+        foreach ($decorators as $decorator) {
+            $this->addDecorator($decorator);
+        }
     }
 
     abstract public function dispatch(): void;
@@ -45,20 +56,6 @@ abstract class AbstractEventPublisher
     protected function entities(): Collection
     {
         return $this->entities;
-    }
-
-    protected function gatherPublishedDomainEvents(Collection $entities): Collection
-    {
-        $events = new Collection();
-
-        $entities->each(fn (AggregateRoot $entity) => $events->append(...$entity->releaseAndResetEvents()));
-
-        return $events;
-    }
-
-    protected function orderDomainEvents(Collection $events): Collection
-    {
-       return $events->sort(fn (AbstractEvent $a, AbstractEvent $b) => bccomp((string)$a->getTime(), (string)$b->getTime(), 6));
     }
 
     protected function clear(): void

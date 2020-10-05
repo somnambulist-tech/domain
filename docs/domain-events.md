@@ -17,8 +17,8 @@ For example: you may want to raise an event when a new User entity is created or
 a role was added to the user.
 
 This does necessitate some changes to how you typically work with entities and Doctrine
-in that you should remove setters and nullable constructor arguments. Instead you will
-need to manage changes to you entity through specific methods, for example:
+in that you should remove setters and nullable constructor arguments; instead you will
+need to manage changes to your entity through specific methods, for example:
 
  * completeOrder()
  * updatePermissions()
@@ -142,10 +142,13 @@ event bus (default Messenger).
 This dispatcher uses an abstract base that includes methods for sorting and collecting
 the events. It can be extended to perform other tasks.
 
-This dispatcher can be regsitered with the kernel.terminate events so that any collected
+This dispatcher can be registered with the kernel.terminate events so that any collected
 events are fired at the end of the current request.
 
 Remember that you will need to register the objects that will raise events before hand.
+
+__Note:__ the Messenger dispatcher does not release monitored aggregates after event
+dispatch. You will need to specifically stop listening for events to clear the listener.
 
 Be sure to read the posts by Benjamin Eberlei mentioned earlier and check out his
 [Assertion library](https://github.com/beberlei/assert) for low dependency entity

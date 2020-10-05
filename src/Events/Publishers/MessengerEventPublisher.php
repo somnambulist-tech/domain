@@ -16,7 +16,7 @@ class MessengerEventPublisher extends AbstractEventPublisher
     public function dispatch(): void
     {
         $this
-            ->orderDomainEvents($this->gatherPublishedDomainEvents($this->entities()))
+            ->applyDecoratorsToEvents($this->sortEventsForDispatch($this->gatherPublishedDomainEvents($this->entities())))
             ->each(fn (AbstractEvent $event) => $this->eventBus->notify($event))
         ;
     }

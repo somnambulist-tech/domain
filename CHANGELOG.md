@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+2020-10-05
+----------
+
+ * Add ability to decorate events with contextual data via an `EventDecoratorInterface`
+ * Add `DecorateWithRequestId` decorator to inject a request id into the event context
+ * Add `DecorateWithUserData` decorator to add currently authenticated user data to the event context
+ * Refactor internals of event publishers to make code re-usable
+
 2020-10-03
 ----------
 
