@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+2020-10-03
+----------
+
+ * Add `AbstractValueObjectType` for making single value ValueObject types for Doctrine
+ * Moved `AbstractIdentityType` out of `Identity` namespace to `Types` namespace
+
 2020-09-29
 ----------
 

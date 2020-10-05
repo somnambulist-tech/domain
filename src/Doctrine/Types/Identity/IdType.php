@@ -2,12 +2,13 @@
 
 namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
 
+use Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType;
 use Somnambulist\Components\Domain\Entities\Types\Identity\Id;
 
 /**
  * Class IdType
  *
- * @package    Somnambulist\Components\Domain\Doctrine\Types\Identity
+ * @package    Somnambulist\Components\Domain\Doctrine\Types
  * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\IdType
  */
 class IdType extends AbstractIdentityType

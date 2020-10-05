@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Types;
 
-use Somnambulist\Components\Domain\Doctrine\Types\Identity\AbstractIdentityType;
+use Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId;
 
 /**

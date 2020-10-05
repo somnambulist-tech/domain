@@ -2,10 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Doctrine\Types\Auth;
 
-use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
-use Doctrine\DBAL\Types\Type;
-use InvalidArgumentException;
+use Somnambulist\Components\Domain\Doctrine\Types\AbstractValueObjectType;
 use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
 
 /**
@@ -14,54 +11,9 @@ use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
  * @package    Somnambulist\Components\Domain\Doctrine\Types\Auth
  * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Auth\PasswordType
  */
-class PasswordType extends Type
+class PasswordType extends AbstractValueObjectType
 {
 
-    public const NAME = 'password';
-
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
-    }
-
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        if (empty($value)) {
-            return null;
-        }
-
-        if ($value instanceof Password) {
-            return $value;
-        }
-
-        try {
-            $vo = new Password($value);
-        } catch (InvalidArgumentException $e) {
-            throw ConversionException::conversionFailed($value, static::NAME);
-        }
-
-        return $vo;
-    }
-
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
-        if (empty($value)) {
-            return null;
-        }
-
-        try {
-            if ($value instanceof Password) {
-                return (string)$value;
-            }
-        } catch (InvalidArgumentException $e) {
-
-        }
-
-        throw ConversionException::conversionFailed($value, static::NAME);
-    }
-
-    public function getName()
-    {
-        return static::NAME;
-    }
+    protected string $name = 'password';
+    protected string $class = Password::class;
 }
