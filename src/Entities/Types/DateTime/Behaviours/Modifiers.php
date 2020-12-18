@@ -2,6 +2,8 @@
 
 namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+
 /**
  * Trait Modifiers
  *
@@ -11,72 +13,72 @@ namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 trait Modifiers
 {
 
-    public function addDays(int $num): self
+    public function addDays(int $num): DateTime
     {
         return $this->modify(sprintf('%d day', $num));
     }
 
-    public function subDays(int $num): self
+    public function subDays(int $num): DateTime
     {
         return $this->addDays(-1 * $num);
     }
 
-    public function addWeeks(int $num): self
+    public function addWeeks(int $num): DateTime
     {
         return $this->modify(sprintf('%d week', $num));
     }
 
-    public function subWeeks(int $num): self
+    public function subWeeks(int $num): DateTime
     {
         return $this->addWeeks(-1 * $num);
     }
 
-    public function addMonths(int $num): self
+    public function addMonths(int $num): DateTime
     {
         return $this->modify(sprintf('%d month', $num));
     }
 
-    public function subMonths(int $num): self
+    public function subMonths(int $num): DateTime
     {
         return $this->addMonths(-1 * $num);
     }
 
-    public function addYears(int $num): self
+    public function addYears(int $num): DateTime
     {
         return $this->modify(sprintf('%d year', $num));
     }
 
-    public function subYears(int $num): self
+    public function subYears(int $num): DateTime
     {
         return $this->addYears(-1 * $num);
     }
 
-    public function addSeconds(int $num): self
+    public function addSeconds(int $num): DateTime
     {
         return $this->modify(sprintf('%d second', $num));
     }
 
-    public function subSeconds(int $num): self
+    public function subSeconds(int $num): DateTime
     {
         return $this->addSeconds(-1 * $num);
     }
 
-    public function addMinutes(int $num): self
+    public function addMinutes(int $num): DateTime
     {
         return $this->modify(sprintf('%d minute', $num));
     }
 
-    public function subMinutes(int $num): self
+    public function subMinutes(int $num): DateTime
     {
         return $this->addMinutes(-1 * $num);
     }
 
-    public function addHours(int $num): self
+    public function addHours(int $num): DateTime
     {
         return $this->modify(sprintf('%d hour', $num));
     }
 
-    public function subHours(int $num): self
+    public function subHours(int $num): DateTime
     {
         return $this->addHours(-1 * $num);
     }

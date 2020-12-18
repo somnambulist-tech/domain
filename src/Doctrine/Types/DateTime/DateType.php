@@ -26,9 +26,9 @@ class DateType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getDateTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getDateTypeDeclarationSQL($column);
     }
 
     /**

@@ -29,12 +29,12 @@ class PhoneNumberType extends Type
     /**
      * {@inheritdoc}
      *
-     * @param array            $fieldDeclaration
+     * @param array            $column
      * @param AbstractPlatform $platform
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
     /**

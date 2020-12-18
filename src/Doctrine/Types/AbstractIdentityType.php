@@ -27,9 +27,9 @@ abstract class AbstractIdentityType extends Type
     protected string $name = 'identity';
     protected string $class = Uuid::class;
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getGuidTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getGuidTypeDeclarationSQL($column);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)

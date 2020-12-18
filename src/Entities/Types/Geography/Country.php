@@ -24,8 +24,8 @@ final class Country extends AbstractMultiton
 
     protected static function initializeMembers()
     {
-        foreach (static::$mappings as $code => $name) {
-            new static($code, $name);
+        foreach (self::$mappings as $code => $name) {
+            new self($code, $name);
         }
     }
 

@@ -23,17 +23,17 @@ final class IdentityGenerator
 
     public static function new(): Uuid
     {
-        return static::random(Uuid::class);
+        return self::randomOfType();
     }
 
     public static function random(): Uuid
     {
-        return static::randomOfType(Uuid::class);
+        return self::randomOfType();
     }
 
     public static function randomOfType(string $type = Uuid::class): AbstractIdentity
     {
-        return static::make($type, UuidFactory::uuid4());
+        return self::make($type, UuidFactory::uuid4());
     }
 
     /**
@@ -54,12 +54,12 @@ final class IdentityGenerator
      */
     public static function hashed(Uuid $namespace, ...$values): Uuid
     {
-        return static::hashedOfType($namespace, Uuid::class, ...$values);
+        return self::hashedOfType($namespace, Uuid::class, ...$values);
     }
 
     public static function hashedOfType(Uuid $namespace, string $type = Uuid::class, ...$values): AbstractIdentity
     {
-        return static::make($type, UuidFactory::uuid5((string)$namespace, implode('.', $values)));
+        return self::make($type, UuidFactory::uuid5((string)$namespace, implode('.', $values)));
     }
 
     private static function make(string $type, UuidInterface $id): AbstractIdentity

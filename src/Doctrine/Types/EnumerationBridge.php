@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Doctrine\Types;
 
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
@@ -40,7 +41,7 @@ class EnumerationBridge extends Type
      *
      * @param array $types An Array of name => constructor or alias => [ constructor, serializer ]
      *
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|Exception
      */
     public static function registerEnumTypes(array $types = []): void
     {
@@ -58,7 +59,7 @@ class EnumerationBridge extends Type
      * @param callable      $constructor Receives: value, platform
      * @param callable|null $serializer  Receives: value, platform
      *
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|Exception
      */
     public static function registerEnumType(string $name, callable $constructor, callable $serializer = null): void
     {
@@ -85,9 +86,9 @@ class EnumerationBridge extends Type
         return $this->name ?: 'enum';
     }
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)

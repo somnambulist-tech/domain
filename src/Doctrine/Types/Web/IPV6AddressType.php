@@ -20,9 +20,9 @@ class IPV6AddressType extends Type
 
     public const NAME = 'ip_v6_address';
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)

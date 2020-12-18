@@ -24,7 +24,7 @@ final class Money extends AbstractValueObject
 
     public static function create(float $amount, $code): self
     {
-        return new static($amount, ($code instanceof Currency ? $code : Currency::memberByKey($code)));
+        return new self($amount, ($code instanceof Currency ? $code : Currency::memberByKey($code)));
     }
 
     public function toString(): string

@@ -23,7 +23,6 @@ abstract class AbstractMultiton extends BaseMultiton implements ValueObject
         if (!isset(static::$cache[$class])) {
             static::$cache[$class] = [];
 
-            /** @var static $member */
             foreach (static::members() as $member) {
                 static::$cache[$class][$member->key()] = $member->key();
             }

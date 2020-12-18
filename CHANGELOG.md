@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+2020-12-18
+----------
+
+ * Fix DateTime factory `parse` method with optional arg before required
+ * Clean up return types and method signatures based on code inspection results
+
 2020-10-05
 ----------
 

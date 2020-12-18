@@ -2,7 +2,8 @@
 
 namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
-use DateTime;
+use DateTime as PhpDateTime;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 
 /**
  * Trait Stringable
@@ -27,7 +28,7 @@ trait Stringable
         return $this->format($this->defaultFormat);
     }
 
-    public function setDefaultFormat(string $format): self
+    public function setDefaultFormat(string $format): DateTime
     {
         $this->defaultFormat = $format;
 
@@ -63,12 +64,12 @@ trait Stringable
 
     public function toAtomString(): string
     {
-        return $this->format(DateTime::ATOM);
+        return $this->format(PhpDateTime::ATOM);
     }
 
     public function toCookieString(): string
     {
-        return $this->format(DateTime::COOKIE);
+        return $this->format(PhpDateTime::COOKIE);
     }
 
     public function toIso8601String(): string
@@ -78,21 +79,21 @@ trait Stringable
 
     public function toRfc822String(): string
     {
-        return $this->format(DateTime::RFC822);
+        return $this->format(PhpDateTime::RFC822);
     }
 
     public function toRfc2822String(): string
     {
-        return $this->format(DateTime::RFC2822);
+        return $this->format(PhpDateTime::RFC2822);
     }
 
     public function toRssString(): string
     {
-        return $this->format(DateTime::RSS);
+        return $this->format(PhpDateTime::RSS);
     }
 
     public function toW3cString(): string
     {
-        return $this->format(DateTime::W3C);
+        return $this->format(PhpDateTime::W3C);
     }
 }

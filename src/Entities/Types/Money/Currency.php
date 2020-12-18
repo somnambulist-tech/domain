@@ -24,8 +24,8 @@ final class Currency extends AbstractMultiton
 
     protected static function initializeMembers()
     {
-        foreach (static::$mappings as $code => $name) {
-            new static($code, $name);
+        foreach (self::$mappings as $code => $name) {
+            new self($code, $name);
         }
     }
 
@@ -55,8 +55,8 @@ final class Currency extends AbstractMultiton
 
     public function precision(): int
     {
-        if (array_key_exists($this->code(), static::$precision)) {
-            return static::$precision[$this->code()];
+        if (array_key_exists($this->code(), self::$precision)) {
+            return self::$precision[$this->code()];
         }
 
         return 2;

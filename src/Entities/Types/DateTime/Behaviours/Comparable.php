@@ -108,9 +108,9 @@ trait Comparable
      *
      * @param DateTime|null $dt
      *
-     * @return static
+     * @return DateTime
      */
-    public function min(DateTime $dt = null): self
+    public function min(DateTime $dt = null): DateTime
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -122,9 +122,9 @@ trait Comparable
      *
      * @see min()
      *
-     * @return static
+     * @return DateTime
      */
-    public function minimum(DateTime $dt = null): self
+    public function minimum(DateTime $dt = null): DateTime
     {
         return $this->min($dt);
     }
@@ -134,9 +134,9 @@ trait Comparable
      *
      * @param DateTime|null $dt
      *
-     * @return static
+     * @return DateTime
      */
-    public function max(DateTime $dt = null): self
+    public function max(DateTime $dt = null): DateTime
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -148,9 +148,9 @@ trait Comparable
      *
      * @see max()
      *
-     * @return static
+     * @return DateTime
      */
-    public function maximum(DateTime $dt = null): self
+    public function maximum(DateTime $dt = null): DateTime
     {
         return $this->max($dt);
     }
