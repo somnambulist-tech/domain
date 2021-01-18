@@ -19,7 +19,7 @@ trait Factory
 
     public static function now($tz = null): DateTime
     {
-        return static::parse('now', TimeZone::create(($tz instanceof TimeZone ? (string)$tz : $tz)));
+        return static::parse('now', $tz instanceof TimeZone ? $tz : TimeZone::create($tz));
     }
 
     public static function parse(string $time, TimeZone $tz): DateTime

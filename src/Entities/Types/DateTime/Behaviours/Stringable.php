@@ -35,8 +35,6 @@ trait Stringable
         return $this;
     }
 
-    abstract public function format($format);
-
     public function toDateString(): string
     {
         return $this->format('Y-m-d');
