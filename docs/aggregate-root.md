@@ -62,6 +62,8 @@ up to you.
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+
 class MyAggregate extends AggregateRoot
 {
     public function __construct($id, $name, $another)
@@ -82,6 +84,8 @@ constructors for primary object creation:
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+
 class MyAggregate extends AggregateRoot
 {
     private function __construct($id, $name, $another)

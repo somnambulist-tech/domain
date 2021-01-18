@@ -186,6 +186,8 @@ vs:
 <field name="currency" type="currency" length="3" nullable="false"/>
 ```
 
+By default short aliases are registered by this library.
+
 ### Links
 
  * [Doctrine](http://doctrine-project.org)

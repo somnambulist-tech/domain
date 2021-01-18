@@ -26,6 +26,8 @@ class DecorateWithUserData implements EventDecoratorInterface
     {
         if (null === $user = $this->security->getUser()) {
             $event->appendContext(['user' => ['id' => null, 'name' => 'unauthenticated', 'roles' => []]]);
+
+            return $event;
         }
 
         $event->appendContext([
