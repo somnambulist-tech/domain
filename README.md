@@ -49,6 +49,13 @@ Install using composer, or checkout / pull the files from github.com.
 
  * composer require somnambulist/domain
 
+### Upgrading from 3.X to 4.X
+
+From 4.X this projects was re-namespaced to `Somnambulist\Components\Domain`. Update all references to
+reflect this change this includes any Doctrine mapping files / annotations.
+
+The Doctrine `AbstractIdentityType` was moved out of the `Identity` namespace to the main `Types`.
+
 ### Usage
 
 See the docs folder for more documentation on each component.

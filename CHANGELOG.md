@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+2021-01-18 - 4.0.0
+------------------
+
+ * Fix PHP8 issues
+ * Fix additional bugs
+ * Update docs for release
+
 2020-12-18
 ----------
 
