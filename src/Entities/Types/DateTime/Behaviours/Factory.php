@@ -19,10 +19,10 @@ trait Factory
 
     public static function now($tz = null): self
     {
-        return static::parse('now', TimeZone::create(($tz instanceof TimeZone ? (string)$tz : $tz)));
+        return static::parse('now', $tz instanceof TimeZone ? $tz : TimeZone::create($tz));
     }
 
-    public static function parse(string $time = 'now', TimeZone $tz): self
+    public static function parse(string $time, TimeZone $tz): self
     {
         return new static($time, $tz->toNative());
     }
