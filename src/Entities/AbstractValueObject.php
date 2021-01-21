@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Domain\Entities;
 
 use ReflectionObject;
-use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Components\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
 
 /**
@@ -17,7 +17,7 @@ abstract class AbstractValueObject implements ValueObject
 
     public function __set($name, $value) {}
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->toString();
     }

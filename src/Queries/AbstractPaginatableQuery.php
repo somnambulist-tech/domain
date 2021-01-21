@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Domain\Queries;
 
 use BadMethodCallException;
 use IlluminateAgnostic\Str\Support\Str;
-use Somnambulist\Collection\FrozenCollection;
+use Somnambulist\Components\Collection\FrozenCollection;
 use Somnambulist\Components\Domain\Queries\Behaviours\CanIncludeRelatedData;
 use Somnambulist\Components\Domain\Queries\Behaviours\CanPaginateQuery;
 use Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery;

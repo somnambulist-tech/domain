@@ -110,7 +110,7 @@ trait Factory
      *
      * @return DateTime
      */
-    public static function createFromFormat($format, $time, ?DateTimeZone $object = null)
+    public static function createFromFormat(string $format, string $time, ?DateTimeZone $object = null)
     {
         if ($object !== null) {
             $dt = parent::createFromFormat($format, $time, $object);

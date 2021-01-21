@@ -5,6 +5,7 @@ namespace Somnambulist\Components\Domain\Entities;
 use Countable;
 use Doctrine\Common\Collections\Collection;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Class AbstractEntityCollection
@@ -31,12 +32,12 @@ abstract class AbstractEntityCollection implements Countable, IteratorAggregate
         $this->entities = $entities;
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return $this->entities;
     }
 
-    public function count()
+    public function count(): int
     {
         return $this->entities->count();
     }

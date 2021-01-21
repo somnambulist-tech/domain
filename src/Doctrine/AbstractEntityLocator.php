@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Domain\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
-use Somnambulist\Collection\MutableCollection;
+use Somnambulist\Components\Collection\MutableCollection;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\Paginate;
@@ -29,7 +29,7 @@ abstract class AbstractEntityLocator extends EntityRepository
      *
      * @return MutableCollection|object[]
      */
-    public function findAll()
+    public function findAll(): MutableCollection
     {
         return $this->findBy([]);
     }
@@ -44,7 +44,7 @@ abstract class AbstractEntityLocator extends EntityRepository
      *
      * @return MutableCollection|object[]
      */
-    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null): MutableCollection
     {
         return new MutableCollection(parent::findBy($criteria, $orderBy, $limit, $offset));
     }

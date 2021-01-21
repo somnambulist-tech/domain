@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Domain\Tests\Events;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Collection\FrozenCollection as Immutable;
+use Somnambulist\Components\Collection\FrozenCollection as Immutable;
 use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
 use Somnambulist\Components\Domain\Events\AbstractEvent;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\GroupPropertyEvent;

@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
 
-use Somnambulist\Collection\MutableCollection;
+use Somnambulist\Components\Collection\MutableCollection;
 
 /**
  * Trait FindByName

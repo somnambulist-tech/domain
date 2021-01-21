@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Domain\Tests\Doctrine;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Components\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
 use Somnambulist\Components\Domain\Entities\Types\Geography\Country;

@@ -23,7 +23,7 @@ final class MessengerQueryBus implements QueryBus
         $this->messageBus = $queryBus;
     }
 
-    public function execute(AbstractQuery $query)
+    public function execute(AbstractQuery $query): mixed
     {
         return $this->handle($query);
     }

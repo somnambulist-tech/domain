@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Queries\Behaviours;
 
-use Somnambulist\Collection\FrozenCollection;
+use Somnambulist\Components\Collection\FrozenCollection;
 
 /**
  * Trait CanSortQuery

@@ -41,7 +41,7 @@ abstract class AbstractValueObjectType extends Type
 
         try {
             $uuid = new $this->class($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, $this->name);
         }
 
@@ -58,7 +58,7 @@ abstract class AbstractValueObjectType extends Type
             if ($value instanceof $this->class) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

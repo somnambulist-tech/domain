@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Events\Publishers;
 
-use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Components\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Entities\AggregateRoot;
 use Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents;
 use Somnambulist\Components\Domain\Events\Behaviours\CanGatherEventsForDispatch;

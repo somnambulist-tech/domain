@@ -40,7 +40,7 @@ class EmailAddressType extends Type
 
         try {
             $vo = new EmailAddress($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
@@ -57,7 +57,7 @@ class EmailAddressType extends Type
             if ($value instanceof EmailAddress || Assert::that($value)->email()) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

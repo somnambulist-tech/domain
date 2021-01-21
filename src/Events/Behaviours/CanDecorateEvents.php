@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Events\Behaviours;
 
-use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Components\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Events\Decorators\EventDecoratorInterface;
 
 /**

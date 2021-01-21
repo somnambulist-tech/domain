@@ -40,7 +40,7 @@ class UrlType extends Type
 
         try {
             $url = new Url($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
@@ -57,7 +57,7 @@ class UrlType extends Type
             if ($value instanceof Url || Assert::that($value)->url()) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

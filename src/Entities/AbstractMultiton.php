@@ -36,7 +36,7 @@ abstract class AbstractMultiton extends BaseMultiton implements ValueObject
         return array_key_exists($key, static::keys());
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toString();
     }

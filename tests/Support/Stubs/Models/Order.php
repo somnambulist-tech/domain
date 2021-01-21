@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
 
-use Somnambulist\Collection\MutableCollection as Collection;
+use Somnambulist\Components\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
 use Somnambulist\Components\Domain\Entities\Types\Money\Money;

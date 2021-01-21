@@ -3,14 +3,14 @@
 namespace Somnambulist\Components\Domain\Events;
 
 use IlluminateAgnostic\Str\Support\Str;
-use Somnambulist\Collection\FrozenCollection;
+use Somnambulist\Components\Collection\FrozenCollection;
 use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
 use function array_merge;
 use function explode;
 use function is_null;
 use function microtime;
 use function sprintf;
-use function strpos;
+use function str_contains;
 use function substr;
 
 /**
@@ -44,12 +44,12 @@ abstract class AbstractEvent
 
     public function __unset($name) {}
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->getName();
     }
 
-    public static function create(array $payload = [], array $context = [], Aggregate $aggregate = null)
+    public static function create(array $payload = [], array $context = [], Aggregate $aggregate = null): static
     {
         return new static($payload, $context, $aggregate);
     }
@@ -135,7 +135,7 @@ abstract class AbstractEvent
         $event->group = $array['event']['group'] ?? 'app';
         $event->name  = $array['event']['name'];
 
-        if (false !== strpos($event->name, '.')) {
+        if (false !== str_contains($event->name, '.')) {
             $event->group = Str::beforeLast($event->name, '.');
             $event->name  = Str::afterLast($event->name, '.');
         }

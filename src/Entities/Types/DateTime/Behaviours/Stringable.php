@@ -18,7 +18,7 @@ trait Stringable
 
     private string $defaultFormat = 'Y-m-d H:i:s';
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toString();
     }

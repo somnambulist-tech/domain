@@ -37,7 +37,7 @@ class IPV4AddressType extends Type
 
         try {
             $ipv4 = new IPV4Address($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
@@ -54,7 +54,7 @@ class IPV4AddressType extends Type
             if ($value instanceof IPV4Address || Assert::that($value)->ipv4()) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

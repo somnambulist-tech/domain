@@ -56,7 +56,7 @@ class PhoneNumberType extends Type
 
         try {
             $uuid = new PhoneNumber($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
@@ -80,7 +80,7 @@ class PhoneNumberType extends Type
             if ($value instanceof PhoneNumber || Assert::that($value)->e164()) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

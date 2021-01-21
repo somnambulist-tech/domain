@@ -37,7 +37,7 @@ class IPV6AddressType extends Type
 
         try {
             $uuid = new IPV6Address($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
@@ -54,7 +54,7 @@ class IPV6AddressType extends Type
             if ($value instanceof IPV6Address || Assert::that($value)->ipv6()) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

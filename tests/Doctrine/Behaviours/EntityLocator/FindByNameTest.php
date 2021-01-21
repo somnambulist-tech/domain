@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Collection\MutableCollection;
+use Somnambulist\Components\Collection\MutableCollection;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByName;
 
 /**

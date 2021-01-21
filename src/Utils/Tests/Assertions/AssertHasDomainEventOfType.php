@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Utils\Tests\Assertions;
 
-use Somnambulist\Collection\MutableCollection;
+use Somnambulist\Components\Collection\MutableCollection;
 use Somnambulist\Components\Domain\Entities\AggregateRoot;
 use Somnambulist\Components\Domain\Events\AbstractEvent;
 use function get_class;

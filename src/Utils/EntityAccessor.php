@@ -27,7 +27,7 @@ final class EntityAccessor
      *
      * @return mixed
      */
-    public static function call(object $object, string $method, $scope = null, ...$args)
+    public static function call(object $object, string $method, mixed $scope = null, mixed ...$args)
     {
         return Closure::bind(fn () => $this->{$method}(...$args), $object, !is_null($scope) ? $scope : $object)();
     }
@@ -41,7 +41,7 @@ final class EntityAccessor
      *
      * @return bool
      */
-    public static function has(object $object, string $property, $scope = null): bool
+    public static function has(object $object, string $property, mixed $scope = null): bool
     {
         return Closure::bind(fn () => property_exists($this, $property), $object, !is_null($scope) ? $scope : $object)();
     }
@@ -55,7 +55,7 @@ final class EntityAccessor
      *
      * @return mixed
      */
-    public static function get(object $object, string $property, $scope = null)
+    public static function get(object $object, string $property, mixed $scope = null)
     {
         return Closure::bind(fn () => $this->{$property}, $object, !is_null($scope) ? $scope : $object)();
     }
@@ -70,7 +70,7 @@ final class EntityAccessor
      *
      * @return object
      */
-    public static function set(object $object, string $property, $value, $scope = null): object
+    public static function set(object $object, string $property, mixed $value, mixed $scope = null): object
     {
         Closure::bind(fn () => $this->{$property} = $value, $object, !is_null($scope) ? $scope : $object)();
 

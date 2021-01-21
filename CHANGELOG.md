@@ -1,12 +1,22 @@
 Change Log
 ==========
 
-2021-01-18 - 4.0.0
+2021-01-21 - 4.0.0
 ------------------
+
+ * Require PHP 8 to use Collection 5.0.0
+ * Add additional type hints
+ * Make use of exception catching without assignment
+
+2021-01-18
+----------
 
  * Fix PHP8 issues
  * Fix additional bugs
  * Update docs for release
+
+Note: this was originally tagged as a 4.0.0 release, however it was retracted in favour of one that
+uses `somnambulist/collection` 5.0.0+.
 
 2020-12-18
 ----------

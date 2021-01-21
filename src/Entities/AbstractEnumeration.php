@@ -41,7 +41,7 @@ abstract class AbstractEnumeration extends BaseEnumeration implements ValueObjec
         return in_array($value, array_values(static::values()));
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toString();
     }

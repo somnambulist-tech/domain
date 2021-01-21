@@ -44,7 +44,7 @@ abstract class AbstractIdentityType extends Type
 
         try {
             $uuid = new $this->class($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, $this->name);
         }
 
@@ -61,7 +61,7 @@ abstract class AbstractIdentityType extends Type
             if ($value instanceof $this->class || Assert::that($value)->uuid()) {
                 return (string)$value;
             }
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
 
         }
 

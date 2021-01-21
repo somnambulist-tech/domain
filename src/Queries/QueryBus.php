@@ -18,5 +18,5 @@ interface QueryBus
      *
      * @return mixed
      */
-    public function execute(AbstractQuery $query);
+    public function execute(AbstractQuery $query): mixed;
 }
