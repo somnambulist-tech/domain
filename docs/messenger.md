@@ -82,7 +82,7 @@ services:
 
     Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue:
     
-    Somnambulist\Components\Domain\Jos\JobQueue:
+    Somnambulist\Components\Domain\Jobs\JobQueue:
         alias: Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue
         public: true
     
