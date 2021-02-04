@@ -175,22 +175,29 @@ For example: a User can have several addresses of certain types:
 <?php
 class UserAddresses
 {
-     private $user;
-     private $addresses;
+    private $user;
+    private $addresses;
 
-     public function __construct(User $user, Collection $addresses)
-     {
-         // assign vars
-     }
+    public function __construct(User $user, Collection $addresses)
+    {
+        // assign vars
+    }
      
-     public function for(AddressType $type)
-     {
-         if (!$addr = $this->addresses->get((string)$type)) {
+    public function for(AddressType $type)
+    {
+        if (!$addr = $this->addresses->get((string)$type)) {
             throw new DomainException('User does not have an address for type: ' . $type);
-         }
+        }
          
-         return $addr;
-     }
+        return $addr;
+    }
+     
+    public function add(AddressType $type, AddressInfo $info): UserAddress
+    {
+        $this->entities->set((string)$type, $ua = new UserAddress($this->user, $type, $info));
+        
+        return $ua;
+    }
 }
 ```
 Now to update the address it would be something like:
@@ -200,6 +207,92 @@ $user->addresses()->for(AddressType::DELIVERY())->updateAddressTo($address);
 If the User does not have a delivery address, an exception would be raised. In this example
 an Enumeration is used for the type to provide type safety and the Address is passed as a
 value object, again, providing type safety.
+
+#### Built-in Entity Collection Helper / AbstractEntity
+
+Alternatively the `AbstractEntityCollection` class can be used to provide suitable defaults
+that you can extend to add your domain logic.
+
+To use this, your child entities should extend the `AbstractEntity` class. This is required to
+be able to use the `AbstractEntityCollection`. Note that these classes are set up to use basic
+integers as the identity of the child object. If you require something more sophisticated, you
+would need to implement your own alternative.
+
+Using the same example as above this would be implemented as:
+
+```php
+<?php
+use Somnambulist\Components\Domain\Entities\AbstractEntityCollection;
+
+class UserAddresses extends AbstractEntityCollection
+{
+     
+    public function for(AddressType $type)
+    {
+        if (!$addr = $this->addresses->get((string)$type)) {
+            throw new DomainException('User does not have an address for type: ' . $type);
+        }
+         
+        return $addr;
+    }
+     
+    public function add(AddressType $type, AddressInfo $info): UserAddress
+    {
+        $this->entities->set((string)$type, $ua = new UserAddress($this->root, $this->nextId(), $type, $info));
+        
+        $this->raise(AddressAddedToUser::class, [
+            // add payload info
+        ]);
+        
+        return $ua;
+    }
+}
+```
+
+On the AggregateRoot the method to load the helper changes slightly:
+
+```php
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Domain\Entities\Behaviours\AggregateEntityCollectionHelper;
+
+class User extends AggregateRoot
+{
+
+    use AggregateEntityCollectionHelper;
+
+    public function addresses(): UserAddresses
+    {
+        return $this->collectionHelperFor($this->addresses, UserAddresses::class);
+    }
+}
+```
+
+The helper will be instantiated if it is not already set and then the same instance will be
+returned each time. Only `AbstractEntityCollection` instances can be used with this trait.
+
+To map this to Doctrine the following should be used on the child mapping definition:
+
+```xml
+<doctrine-mapping>
+    <entity name="UserAddress" table="user_address">
+        <id name="root" association-key="true" />
+        <id name="id" type="integer" />
+
+        <many-to-one field="root" target-entity="User" inversed-by="addresses">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <join-column name="user_id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>
+```
+
+The important part is the change to the `id` field: there are now 2, with the first having the
+attribute `association-key`. This tells Doctrine to use the identity from the linked object,
+in this case the AggregateRoot (that is held in the `root` property on the AbstractEntity class).
+The second field tells Doctrine that the `id` property is also part of the identity. In effect
+the actual identity of our child entity is now <aggregate_id> + <child_id> and is a compound key.
 
 ### Firing Domain Events
 

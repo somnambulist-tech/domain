@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime;
 
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
 
@@ -51,7 +52,7 @@ class TimeZoneTest extends TestCase
     {
         $vo = new TimeZone('America/Toronto');
 
-        $this->assertInstanceOf(\DateTimeZone::class, $vo->toNative());
+        $this->assertInstanceOf(DateTimeZone::class, $vo->toNative());
     }
 
     public function testCanCompareOtherObjects()

@@ -5,6 +5,7 @@ namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindBySlug;
 use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use stdClass;
 
 /**
  * Class FindBySlugTest
@@ -37,7 +38,7 @@ class FindBySlugTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('findOneBy')
-            ->willReturn(new \stdClass())
+            ->willReturn(new stdClass())
         ;
 
         /** @var FindBySlug $mock */

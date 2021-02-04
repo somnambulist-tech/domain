@@ -7,6 +7,7 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
+use Exception;
 use PDOException;
 use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\AbstractUser;
@@ -62,10 +63,10 @@ trait BuildDoctrineInstance
                 $em->getClassMetadata(AbstractUser::class),
                 $em->getClassMetadata(Customer::class),
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             if (
                 $GLOBALS['DOCTRINE_DRIVER'] != 'pdo_mysql' ||
-                !($e instanceof PDOException && strpos($e->getMessage(), 'Base table or view already exists') !== false)
+                !($e instanceof PDOException && str_contains($e->getMessage(), 'Base table or view already exists'))
             ) {
                 throw $e;
             }

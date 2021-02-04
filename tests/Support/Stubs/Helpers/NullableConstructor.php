@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers;
 
+use InvalidArgumentException;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\NullableType;
 
 class NullableConstructor
@@ -12,6 +13,6 @@ class NullableConstructor
             return $enum;
         }
 
-        throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, NullableType::class));
+        throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, NullableType::class));
     }
 }

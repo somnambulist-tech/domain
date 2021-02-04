@@ -29,6 +29,7 @@ final class HTTPMethod extends AbstractEnumeration
     const HEAD = 'HEAD';
 }
 ```
+
 And then to use it:
 
 ```php
@@ -59,6 +60,8 @@ our instances:
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Entities\AbstractMultiton;
+
 final class Planet extends AbstractMultiton
 {
     protected function __construct($key, $name, $diameter, $mass, $distanceToSun)
@@ -84,6 +87,8 @@ when casting to string:
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Entities\AbstractMultiton;
+
 final class Planet extends AbstractMultiton
 {
 

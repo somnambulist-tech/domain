@@ -20,6 +20,7 @@ It consists of:
    * Contracts - value object interface definitions
    * Types - a collection of value-objects, enumerations and an aggregate root
    * AggregateRoot - an aggregate root stub implementation that can raise events
+   * AbstractEntity and AbstractEntityCollection - child entities and helper for an aggregate root
  * Events
    * EventBus interface / abstract event
    * SF Messenger EventBus implementation
@@ -35,7 +36,7 @@ It consists of:
 
 ### Requirements
 
- * PHP 7.4+
+ * PHP 8.0+
  * mb_string
  * bcmath
  * beberlei/assert

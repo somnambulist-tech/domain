@@ -5,6 +5,7 @@ namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
 use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use stdClass;
 
 /**
  * Class FindOrFailTest
@@ -46,13 +47,13 @@ class FindOrFailTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('find')
-            ->willReturn(new \stdClass)
+            ->willReturn(new stdClass)
         ;
 
         /** @var FindOrFail $mock */
         $entity = $mock->findOrFail(1234);
 
-        $this->assertInstanceOf(\stdClass::class, $entity);
+        $this->assertInstanceOf(stdClass::class, $entity);
     }
 
     public function testFindOneByOrFailCallsFindOneBy()
@@ -82,12 +83,12 @@ class FindOrFailTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('findOneBy')
-            ->willReturn(new \stdClass)
+            ->willReturn(new stdClass)
         ;
 
         /** @var FindOrFail $mock */
         $entity = $mock->findOneByOrFail(['name' => 'some name']);
 
-        $this->assertInstanceOf(\stdClass::class, $entity);
+        $this->assertInstanceOf(stdClass::class, $entity);
     }
 }

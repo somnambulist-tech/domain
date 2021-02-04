@@ -8,6 +8,8 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
+use ReflectionObject;
+use ReflectionProperty;
 use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Action;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Gender;
@@ -42,7 +44,7 @@ class EnumerationBridgeTest extends TestCase
         $this->platform = $this->prophesize(AbstractPlatform::class);
 
         // Before every test, clean registered types
-        $registry = new \ReflectionObject(Type::getTypeRegistry());
+        $registry = new ReflectionObject(Type::getTypeRegistry());
         $refProp = $registry->getProperty('instances');
         $refProp->setAccessible(true);
         $refProp->setValue($registry, []);
@@ -50,7 +52,7 @@ class EnumerationBridgeTest extends TestCase
 
     public function tearDown(): void
     {
-        $refProp = new \ReflectionProperty(Type::class, 'typeRegistry');
+        $refProp = new ReflectionProperty(Type::class, 'typeRegistry');
         $refProp->setAccessible(true);
         $refProp->setValue(null);
     }

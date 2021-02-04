@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime\DateTime;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
@@ -64,7 +65,7 @@ class FactoryTest extends TestCase
 
     public function testCreateFromFormatRaisesExceptionIfInvalid()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         DateTime::createFromFormat('bob', '2017-06-17 12:00:00');
     }
 

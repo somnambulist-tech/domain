@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Entities\Types\DateTime;
 
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Components\Domain\Entities\Types\Measure\AreaUnit;
@@ -23,7 +24,7 @@ class DateTimeTest extends TestCase
 
     public function testCanCastToString()
     {
-        $vo = new DateTime('2017-06-17 12:00:00', new \DateTimeZone('UTC'));
+        $vo = new DateTime('2017-06-17 12:00:00', new DateTimeZone('UTC'));
 
         $this->assertEquals('2017-06-17 12:00:00', (string)$vo);
     }
@@ -32,7 +33,7 @@ class DateTimeTest extends TestCase
     {
         $vo1 = new DateTime();
         $vo2 = $vo1->clone();
-        $vo3 = new DateTime('yesterday', new \DateTimeZone('Pacific/Honolulu'));
+        $vo3 = new DateTime('yesterday', new DateTimeZone('Pacific/Honolulu'));
 
         $this->assertTrue($vo1->equals($vo2));
         $this->assertFalse($vo1->equals($vo3));

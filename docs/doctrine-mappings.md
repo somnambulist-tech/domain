@@ -7,11 +7,6 @@ The mappings are symlinked from symfony to doctrine.
 A `TypeBootstrapper` is included for automatically registering the value-object enumerations
 as Doctrine types.
 
-### Requirements
-
- * PHP 7.4+
- * Doctrine ORM 2.7+
-
 ### Usage
 
 Copy or link the mapping files to your project in the Doctrine configuration. These are
@@ -27,7 +22,10 @@ __Note:__ enumerations are used in these mappings.
 To register the enumeration handlers add the following to your applications bootstrap
 code (e.g.: AppBundle::boot or AppServiceProvider::register|boot):
 
-    Somnambulist\Components\Domain\Doctrine\TypeBootstrapper::registerEnumerations();
+```php
+<?php
+Somnambulist\Components\Domain\Doctrine\TypeBootstrapper::registerEnumerations();
+```
 
 This will pre-register the following enumerations:
 
@@ -40,7 +38,7 @@ This will pre-register the following enumerations:
 In addition extra helpers are registered to allow the Country and Currency value objects
 to be used as enumerations. These are stored using the respective ISO 3-char codes.
 
-__Note:__ concrete enumerations cannot be extended. If the built in ones do not meet your
+__Note:__ concrete enumerations cannot be extended. If the built-in ones do not meet your
 needs, create your own.
 
 See [Doctrine Enumeration Bridge](./doctrine-enum-bridge.md) for more on using the bridge.
@@ -69,10 +67,13 @@ from a Collection object instead of a plain array.
 
 To register all the standard types add the following to your application bootstrap:
 
-    Somnambulist\Components\Domain\Doctrine\TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
+```php
+<?php
+Somnambulist\Components\Domain\Doctrine\TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
+```
 
 __Note:__ if you register `uuid` as a type, and then use it in e.g.: an embeddable your
-embeddable with receive a Uuid object, not a Uuid string. Ensure the type is set to `guid`
+embeddable will receive an Uuid object, not an Uuid string. Ensure the type is set to `guid`
 to get just the string value.
 
 #### Mapping Files
@@ -94,7 +95,7 @@ fields:
         type: currency
 ```
 
-To embedded the value-objects instead of using type casting:
+To embed the value-objects instead of using type casting:
 
 ```yaml
 embedded:

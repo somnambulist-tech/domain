@@ -23,7 +23,8 @@ For example:
 
 ```php
 <?php
-use Assert\Assert;use Somnambulist\Components\Domain\Entities\AbstractValueObject;
+use Assert\Assert;
+use Somnambulist\Components\Domain\Entities\AbstractValueObject;
 
 final class Uuid extends AbstractValueObject
 {

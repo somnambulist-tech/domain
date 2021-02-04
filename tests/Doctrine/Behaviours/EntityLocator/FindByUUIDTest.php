@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
 use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
 use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use stdClass;
 
 /**
  * Class FindByUUIDTest
@@ -38,7 +39,7 @@ class FindByUUIDTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('findOneBy')
-            ->willReturn(new \stdClass())
+            ->willReturn(new stdClass())
         ;
 
         /** @var FindByUUID $mock */

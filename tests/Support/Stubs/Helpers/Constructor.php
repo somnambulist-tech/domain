@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers;
 
+use InvalidArgumentException;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Gender;
 
 class Constructor
@@ -16,6 +17,6 @@ class Constructor
             return $gender;
         }
 
-        throw new \InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
+        throw new InvalidArgumentException(sprintf('"%s" not valid for "%s"', $value, Gender::class));
     }
 }

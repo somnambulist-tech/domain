@@ -5,6 +5,7 @@ namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Domain\Entities\Behaviours\AggregateEntityCollectionHelper;
 use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
 use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserAuthenticationDetailsUpdated;
@@ -19,6 +20,8 @@ use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserRegistrationCo
  */
 class User extends AggregateRoot
 {
+
+    use AggregateEntityCollectionHelper;
 
     private Name         $name;
     private EmailAddress $email;
@@ -63,6 +66,6 @@ class User extends AggregateRoot
 
     public function groups(): UserGroups
     {
-        return new UserGroups($this, $this->groups);
+        return $this->collectionHelperFor($this->groups, UserGroups::class);
     }
 }

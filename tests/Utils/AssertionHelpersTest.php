@@ -63,7 +63,7 @@ class AssertionHelpersTest extends TestCase
 
     public function testEntityHasPropertyValue()
     {
-        $entity = new MyEntity($u = new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');;
+        $entity = new MyEntity($u = new Uuid('e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
 
         $this->assertEntityHasPropertyWithValue($entity, 'id', $u);
     }

@@ -24,7 +24,7 @@ class PaginatorTest extends TestCase
     public function testCanPaginateQuery()
     {
         $paginator = new Paginator($this->em->createQuery());
-        $results = $paginator->paginate(20, 1);
+        $results = $paginator->paginate();
 
         $this->assertInstanceOf(Pagerfanta::class, $results);
     }

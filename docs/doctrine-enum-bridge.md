@@ -8,11 +8,6 @@ A default, string casting, serializer is used if no serializer is provided.
 All enumerations are stored using the DBs native varchar format. If you wish to use a custom
 DB type, extend and re-implement the `getSQLDeclaration()` method.
 
-### Requirements
-
- * PHP 7.4+
- * Doctrine 2.5+
-
 ### Usage
 
 In your frameworks application service provider / bundle boot method, register your enums and
@@ -29,6 +24,7 @@ For example, in a Symfony project, in your AppBundle class:
 ```php
 <?php
 use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AppBundle extends Bundle
 {
@@ -96,6 +92,7 @@ constructor:
 ```php
 <?php
 use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AppBundle extends Bundle
 {
@@ -162,7 +159,12 @@ VO to the ISO code for storage. These would be setup as follows:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CountryConstructor;use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor;use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CountryConstructor;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;
+use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;
+use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AppBundle extends Bundle
 {

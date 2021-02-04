@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+2021-02-04 - 4.1.0
+------------------
+
+ * Improve handling of EntityCollection helpers so that the identity during a request will always generate
+   new identities.
+ * Add trait for using collection helpers with aggregate root
+ * Add docs for using collection helper / abstract entity
+
 2021-01-25
 ----------
 

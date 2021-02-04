@@ -8,6 +8,8 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
+use Exception;
+use PDOException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
@@ -72,10 +74,10 @@ class DoctrineEventPublisherTest extends TestCase
                 $em->getClassMetadata(MyEntity::class),
                 $em->getClassMetadata(MyOtherEntity::class),
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             if (
                 $GLOBALS['DOCTRINE_DRIVER'] != 'pdo_mysql' ||
-                !($e instanceof \PDOException && strpos($e->getMessage(), 'Base table or view already exists') !== false)
+                !($e instanceof PDOException && str_contains($e->getMessage(), 'Base table or view already exists'))
             ) {
                 throw $e;
             }

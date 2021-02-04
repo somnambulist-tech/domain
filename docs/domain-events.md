@@ -32,6 +32,8 @@ up to you.
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+
 class SomeObject extends AggregateRoot
 {
     public function __construct($id, $name, $another, $createdAt)
@@ -51,6 +53,8 @@ constructors for primary object creation:
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Entities\AggregateRoot;
+
 class SomeObject extends AggregateRoot
 {
     private function __construct($id, $name, $another, $createdAt)
@@ -77,6 +81,8 @@ To define your own event extend the AbstractDomainEvent object. That's basically
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Events\AbstractEvent;
+
 class MyEntityCreatedEvent extends AbstractEvent
 {
 
@@ -88,12 +94,14 @@ to broadcast through a message queue you may want the event to name itself:
 
 ```php
 <?php
+use Somnambulist\Components\Domain\Events\AbstractEvent;
+
 abstract class AppDomainEvent extends AbstractEvent
 {
 
     protected string $group = 'app';
 
-    public function getEventName()
+    public function getEventName(): string
     {
         return sprintf('%s.%s', $this->getGroup(), strtolower($this->getName()));
     }

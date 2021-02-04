@@ -7,6 +7,8 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
+use Exception;
+use PDOException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor;
 use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
@@ -26,7 +28,6 @@ use Somnambulist\Components\Domain\Utils\IdentityGenerator;
 use Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType;
 use function password_hash;
 use function realpath;
-use function strpos;
 use function sys_get_temp_dir;
 use const PASSWORD_DEFAULT;
 
@@ -114,21 +115,34 @@ class EntityCollectionTest extends TestCase
         $loadedUser->groups()->join($g2 = new Group('b7c1a7ad-956b-45de-85be-fe507b190102'), Role::MEMBER());
         $em->flush();
 
-        $this->assertEquals(3, $em->getConnection()->executeQuery('SELECT COUNT(*) FROM user_groups WHERE user_id = :id', ['id' => $id])->fetchColumn());
+        $this->assertEquals(3, $em->getConnection()->executeQuery('SELECT COUNT(*) FROM user_groups WHERE user_id = :id', ['id' => $id])->fetchOne());
 
         $this->assertEquals(4, $loadedUser->groups()->for($g2)->id());
     }
 
+    public function testRemovingAnElementDoesNotReplaceId()
+    {
+        $user = $this->makeUser();
+
+        $user->groups()->join($g1 = new Group('0accbf52-d55e-4505-a709-1ef483811731'), Role::LEADER());
+        $user->groups()->join($g2 = new Group('b7c1a7ad-956b-45de-85be-fe507b190102'), Role::MEMBER());
+        $user->groups()->join($g3 = new Group('7829b3e1-bc4a-406d-8a34-895cbfecd1ae'), Role::MEMBER());
+
+        $user->groups()->leave($g3);
+
+        $user->groups()->join($g4 = new Group('7829b3e1-bc4a-406d-8a34-895cbfecd1ae'), Role::MEMBER());
+
+        $this->assertEquals(4, $user->groups()->for($g4)->id());
+    }
+
     private function makeUser(): User
     {
-        $user = User::create(
+        return User::create(
             $id = IdentityGenerator::randomOfType(UserId::class),
             new Name('bob'),
             new EmailAddress('bob@example.com'),
             new Password(password_hash('password', PASSWORD_DEFAULT))
         );
-
-        return $user;
     }
 
     protected function makeEntityManager(): EntityManager
@@ -171,10 +185,10 @@ class EntityCollectionTest extends TestCase
                 $em->getClassMetadata(User::class),
                 $em->getClassMetadata(UserGroup::class),
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             if (
                 $GLOBALS['DOCTRINE_DRIVER'] != 'pdo_mysql' ||
-                !($e instanceof \PDOException && strpos($e->getMessage(), 'Base table or view already exists') !== false)
+                !($e instanceof PDOException && str_contains($e->getMessage(), 'Base table or view already exists'))
             ) {
                 throw $e;
             }
