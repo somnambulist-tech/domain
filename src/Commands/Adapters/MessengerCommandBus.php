@@ -5,6 +5,7 @@ namespace Somnambulist\Components\Domain\Commands\Adapters;
 use Somnambulist\Components\Domain\Commands\AbstractCommand;
 use Somnambulist\Components\Domain\Commands\CommandBus;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
 /**
  * Class MessengerCommandBus
@@ -25,5 +26,10 @@ final class MessengerCommandBus implements CommandBus
     public function dispatch(AbstractCommand $command): void
     {
         $this->commandBus->dispatch($command);
+    }
+
+    public function afterCurrent(AbstractCommand $command): void
+    {
+        $this->commandBus->dispatch($command, [new DispatchAfterCurrentBusStamp()]);
     }
 }

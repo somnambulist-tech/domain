@@ -3,11 +3,16 @@
 namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models\ValueObjects;
 
 use Somnambulist\Components\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Domain\Entities\Behaviours\CalculateDifferenceBetweenInstances;
+use Somnambulist\Components\Domain\Entities\Behaviours\CastValueObjectToArray;
 use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
 use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
 
 class Purchaser extends AbstractValueObject
 {
+
+    use CastValueObjectToArray;
+    use CalculateDifferenceBetweenInstances;
 
     private string $name;
     private EmailAddress $email;

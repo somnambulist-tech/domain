@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+2021-04-28 - 4.2.0
+------------------
+
+ * Add `ObjectDiff` for comparing objects and returning an array of the differences by property, including arrays
+ * Add `EntityAccessor::extract()` for getting all properties from an object (including private, parent properties)
+ * Add `afterCurrent()` to `EventBus` and `CommandBus` to allow firing messages after the current has been handled
+
+Note: the `extract` and `ObjectDiff` are considered experimental.
+
 2021-02-04 - 4.1.0
 ------------------
 

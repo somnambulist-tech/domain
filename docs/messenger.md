@@ -140,7 +140,7 @@ This will register a Doctrine event subscriber that listens to:
  
 Events are queued, sorted by the timestamp to ensure the correct order and sent postFlush.
 
-__Note:__ by default Messenger 4.3+ defaults to PHP native serializer. This will mean that the
+__Note:__ Messenger 4.3+ defaults to PHP native serializer. This will mean that the
 message payload contains PHP serialized objects. To send JSON payloads, a custom serializer is
 needed. This must be configured as follows:
 

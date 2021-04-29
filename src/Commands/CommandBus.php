@@ -17,4 +17,11 @@ interface CommandBus
      * @param AbstractCommand $command
      */
     public function dispatch(AbstractCommand $command): void;
+
+    /**
+     * Dispatch the command only after the current handler has finished without an exception
+     *
+     * @param AbstractCommand $command
+     */
+    public function afterCurrent(AbstractCommand $command): void;
 }

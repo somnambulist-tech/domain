@@ -6,6 +6,7 @@ use Somnambulist\Components\Domain\Events\AbstractEvent;
 use Somnambulist\Components\Domain\Events\EventBus;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
 /**
  * Class MessengerEventBus
@@ -26,5 +27,10 @@ final class MessengerEventBus implements EventBus
     public function notify(AbstractEvent $event): void
     {
         $this->bus->dispatch($event, [new AmqpStamp($event->getEventName())]);
+    }
+
+    public function afterCurrent(AbstractEvent $event): void
+    {
+        $this->bus->dispatch($event, [new AmqpStamp($event->getEventName()), new DispatchAfterCurrentBusStamp()]);
     }
 }

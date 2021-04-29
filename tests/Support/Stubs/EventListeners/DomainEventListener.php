@@ -14,6 +14,13 @@ class DomainEventListener implements EventBus
         $this->{$method}($event);
     }
 
+    public function afterCurrent(AbstractEvent $event): void
+    {
+        $method = 'on' . $event->getName();
+
+        $this->{$method}($event);
+    }
+
     public function onMyEntityCreated(AbstractEvent $event)
     {
         printf(
