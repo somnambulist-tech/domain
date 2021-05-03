@@ -1,6 +1,10 @@
 # Somnambulist Domain Package
 
-[![GitHub Actions Build Status](https://github.com/somnambulist-tech/domain/workflows/tests/badge.svg)](https://github.com/somnambulist-tech/domain/actions?query=workflow%3Atests)
+[![GitHub Actions Build Status](https://img.shields.io/github/workflow/status/somnambulist-tech/domain/tests?logo=github)](https://github.com/somnambulist-tech/domain/actions?query=workflow%3Atests)
+[![Issues](https://img.shields.io/github/issues/somnambulist-tech/domain?logo=github)](https://github.com/somnambulist-tech/domain/issues)
+[![License](https://img.shields.io/github/license/somnambulist-tech/domain?logo=github)](https://github.com/somnambulist-tech/domain/blob/master/LICENSE)
+[![PHP Version](https://img.shields.io/packagist/php-v/somnambulist/domain?logo=php&logoColor=white)](https://packagist.org/packages/somnambulist/domain)
+[![Current Version](https://img.shields.io/packagist/v/somnambulist/domain?logo=packagist&logoColor=white)](https://packagist.org/packages/somnambulist/domain)
 
 Provides a core set of support classes for building domain oriented projects. This library compiles the
 previously separate domain and mapping libraries into a single project for easier maintenance.
