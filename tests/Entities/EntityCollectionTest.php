@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Components\Domain\Tests\Entities;
 
-use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
@@ -162,8 +161,6 @@ class EntityCollectionTest extends TestCase
             realpath(__DIR__ . '/../../config/xml/symfony') => 'Somnambulist\Components\Domain\Entities\Types',
         ]);
         $config = new Configuration();
-        $config->setMetadataCacheImpl(new ArrayCache());
-        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(sys_get_temp_dir());
         $config->setProxyNamespace('Somnambulist\Tests\DomainEvents\Proxies');
         $config->setMetadataDriverImpl($driver);

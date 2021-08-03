@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Components\Domain\Tests\Events\Publishers;
 
-use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
@@ -56,8 +55,6 @@ class DoctrineEventPublisherTest extends TestCase
             realpath(__DIR__ . '/../../Support/Stubs/config/sf') => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Models',
         ]);
         $config = new Configuration();
-        $config->setMetadataCacheImpl(new ArrayCache());
-        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(sys_get_temp_dir());
         $config->setProxyNamespace('Somnambulist\Tests\DomainEvents\Proxies');
         $config->setMetadataDriverImpl($driver);

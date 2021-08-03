@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Components\Domain\Tests\Support\Behaviours;
 
-use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
@@ -44,8 +43,6 @@ trait BuildDoctrineInstance
             __DIR__ . '/../../../config/xml/doctrine',
         ]);
         $config = new Configuration();
-        $config->setMetadataCacheImpl(new ArrayCache());
-        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(sys_get_temp_dir());
         $config->setProxyNamespace('Somnambulist\Components\Domain\Tests\Doctrine\Proxies');
         $config->setMetadataDriverImpl($driver);
