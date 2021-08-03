@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2021-08-03 - 4.2.1
+------------------
+
+ * Add `array` to the query `with()` docblock comment; add note about deprecated behaviour
+
 2021-04-28 - 4.2.0
 ------------------
 

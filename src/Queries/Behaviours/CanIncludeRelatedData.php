@@ -19,7 +19,10 @@ trait CanIncludeRelatedData
     /**
      * Add related data to be loaded with the query request
      *
-     * @param string ...$includes Either an array of includes or multiple single string arguments
+     * Note: passing an array as the only option is deprecated and will be removed
+     *       in the next major version of this library.
+     *
+     * @param string|array ...$includes Either an array of includes or multiple single string arguments
      *
      * @return static
      */
