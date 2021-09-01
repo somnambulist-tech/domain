@@ -11,6 +11,7 @@ use function is_null;
 use function microtime;
 use function sprintf;
 use function str_contains;
+use function str_ends_with;
 use function substr;
 
 /**
@@ -93,7 +94,7 @@ abstract class AbstractEvent
         $a     = explode('\\', $this->type);
         $class = end($a);
 
-        if (substr($class, -5) === "Event") {
+        if (str_ends_with($class, "Event")) {
             $class = substr($class, 0, -5);
         }
 
@@ -129,13 +130,13 @@ abstract class AbstractEvent
      */
     public static function fromArray(string $type, array $array): self
     {
-        $event        = new class($array['payload'] ?? [], $array['context'] ?? []) extends AbstractEvent {};
+        $event        = new GenericEvent($array['payload'] ?? [], $array['context'] ?? []);
         $event->type  = $type;
         $event->time  = $array['event']['time'];
         $event->group = $array['event']['group'] ?? 'app';
         $event->name  = $array['event']['name'];
 
-        if (false !== str_contains($event->name, '.')) {
+        if (str_contains($event->name, '.')) {
             $event->group = Str::beforeLast($event->name, '.');
             $event->name  = Str::afterLast($event->name, '.');
         }
@@ -170,3 +171,8 @@ abstract class AbstractEvent
         return json_encode($this->toArray());
     }
 }
+
+/**
+ * @internal Only used for hydration of events in the fromArray() method
+ */
+final class GenericEvent extends AbstractEvent {}

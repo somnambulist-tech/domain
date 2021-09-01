@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2021-09-01 - 4.2.2
+------------------
+
+ * Fix issue with SF Messenger validation and `AbstractEvent::fromArray()` generating errors in validation
+
 2021-08-03 - 4.2.1
 ------------------
 
