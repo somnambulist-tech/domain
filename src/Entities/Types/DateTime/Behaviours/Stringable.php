@@ -3,7 +3,6 @@
 namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
 use DateTime as PhpDateTime;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 
 /**
  * Trait Stringable
@@ -15,7 +14,6 @@ use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
  */
 trait Stringable
 {
-
     private string $defaultFormat = 'Y-m-d H:i:s';
 
     public function __toString(): string
@@ -28,7 +26,7 @@ trait Stringable
         return $this->format($this->defaultFormat);
     }
 
-    public function setDefaultFormat(string $format): DateTime
+    public function setDefaultFormat(string $format): static
     {
         $this->defaultFormat = $format;
 

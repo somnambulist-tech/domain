@@ -3,10 +3,12 @@
 namespace Somnambulist\Components\Domain\Entities\Types\DateTime;
 
 use DateTimeImmutable;
+use DateTimeZone;
 use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Comparable;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Factory;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Modifiers;
+use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Shifters;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Stringable;
 
 /**
@@ -17,10 +19,10 @@ use Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours\Stringable
  */
 class DateTime extends DateTimeImmutable implements ValueObject
 {
-
     use Comparable;
     use Factory;
     use Modifiers;
+    use Shifters;
     use Stringable;
 
     public function __set($name, $value)
@@ -28,9 +30,14 @@ class DateTime extends DateTimeImmutable implements ValueObject
         // prevent arbitrary properties
     }
 
-    public function clone(): DateTime
+    public function clone(): static
     {
         return clone $this;
+    }
+
+    public function toUtc(): static
+    {
+        return $this->setTimezone(new DateTimeZone('UTC'));
     }
 
     public function timezone(): TimeZone
@@ -68,6 +75,11 @@ class DateTime extends DateTimeImmutable implements ValueObject
         return (int)$this->format('s');
     }
 
+    public function millisecond(): int
+    {
+        return (int)$this->format('v');
+    }
+
     public function timestamp(): int
     {
         return (int)$this->format('U');
@@ -86,6 +98,19 @@ class DateTime extends DateTimeImmutable implements ValueObject
     public function dayOfWeek(): int
     {
         return (int)$this->format('w');
+    }
+
+    public function firstDayOfWeek(): int
+    {
+        // 0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat
+        return (new self('this week'))->dayOfWeek();
+    }
+
+    public function lastDayOfWeek(int $firstDow = -1): int
+    {
+        ($firstDow >= 0) or ($firstDow = $this->firstDayOfWeek());
+
+        return ($firstDow + 6) % 7;
     }
 
     public function dayOfYear(): int

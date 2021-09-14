@@ -14,25 +14,24 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 class TimeZone extends AbstractValueObject
 {
-
     private string $value;
 
     public function __construct(string $tz)
     {
         Assert::that($tz, null, 'value')
             ->notEmpty()
-            ->satisfy(fn ($value) => false !== @timezone_open($value))
+            ->satisfy(static fn ($value) => false !== @timezone_open($value))
         ;
 
         $this->value = $tz;
     }
 
-    public static function create(string $tz = null): self
+    public static function create(string $tz = null): static
     {
         return new static($tz ?? date_default_timezone_get());
     }
 
-    public static function utc(): self
+    public static function utc(): static
     {
         return new static('UTC');
     }

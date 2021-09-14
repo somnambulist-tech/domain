@@ -14,7 +14,6 @@ use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
  */
 trait Comparable
 {
-
     public function equals(object $object): bool
     {
         if (get_class($object) !== get_class($this)) {
@@ -108,9 +107,9 @@ trait Comparable
      *
      * @param DateTime|null $dt
      *
-     * @return DateTime
+     * @return static
      */
-    public function min(DateTime $dt = null): DateTime
+    public function min(DateTime $dt = null): static
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -122,9 +121,9 @@ trait Comparable
      *
      * @see min()
      *
-     * @return DateTime
+     * @return static
      */
-    public function minimum(DateTime $dt = null): DateTime
+    public function minimum(DateTime $dt = null): static
     {
         return $this->min($dt);
     }
@@ -134,9 +133,9 @@ trait Comparable
      *
      * @param DateTime|null $dt
      *
-     * @return DateTime
+     * @return static
      */
-    public function max(DateTime $dt = null): DateTime
+    public function max(DateTime $dt = null): static
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -148,9 +147,9 @@ trait Comparable
      *
      * @see max()
      *
-     * @return DateTime
+     * @return static
      */
-    public function maximum(DateTime $dt = null): DateTime
+    public function maximum(DateTime $dt = null): static
     {
         return $this->max($dt);
     }

@@ -16,18 +16,17 @@ use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
  */
 trait Factory
 {
-
-    public static function now($tz = null): DateTime
+    public static function now($tz = null): static
     {
         return static::parse('now', $tz instanceof TimeZone ? $tz : TimeZone::create($tz));
     }
 
-    public static function parse(string $time, TimeZone $tz): DateTime
+    public static function parse(string $time, TimeZone $tz): static
     {
         return new static($time, $tz->toNative());
     }
 
-    public static function parseUtc(string $time = 'now'): DateTime
+    public static function parseUtc(string $time = 'now'): static
     {
         return new static($time, new DateTimeZone('UTC'));
     }
@@ -47,9 +46,9 @@ trait Factory
      * @param null|int      $second
      * @param null|TimeZone $tz
      *
-     * @return DateTime
+     * @return static
      */
-    public static function create(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null, int $second = null, TimeZone $tz = null): DateTime
+    public static function create(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null, int $second = null, TimeZone $tz = null): static
     {
         [$nowYear, $nowMonth, $nowDay, $nowHour, $nowMin, $nowSec] = explode('-', date('Y-n-j-G-i-s', time()));
 
@@ -68,7 +67,7 @@ trait Factory
         );
     }
 
-    public static function createUtc(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null, int $second = null): DateTime
+    public static function createUtc(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null, int $second = null): static
     {
         return static::create($year, $month, $day, $hour, $minute, $second, TimeZone::utc());
     }
@@ -81,9 +80,9 @@ trait Factory
      * @param int|null      $day
      * @param TimeZone|null $tz
      *
-     * @return DateTime
+     * @return static
      */
-    public static function createFromDate(int $year, int $month, int $day, TimeZone $tz = null): DateTime
+    public static function createFromDate(int $year, int $month, int $day, TimeZone $tz = null): static
     {
         return static::create($year, $month, $day, null, null, null, $tz);
     }
@@ -96,9 +95,9 @@ trait Factory
      * @param int|null      $second
      * @param TimeZone|null $tz
      *
-     * @return DateTime
+     * @return static
      */
-    public static function createFromTime(int $hour, int $minute, int $second, TimeZone $tz = null): DateTime
+    public static function createFromTime(int $hour, int $minute, int $second, TimeZone $tz = null): static
     {
         return static::create(null, null, null, $hour, $minute, $second, $tz);
     }
@@ -108,7 +107,7 @@ trait Factory
      * @param string            $time
      * @param DateTimeZone|null $object
      *
-     * @return DateTime
+     * @return static
      */
     public static function createFromFormat(string $format, string $time, ?DateTimeZone $object = null)
     {
