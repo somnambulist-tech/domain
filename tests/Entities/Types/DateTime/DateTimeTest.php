@@ -19,7 +19,6 @@ use Somnambulist\Components\Domain\Entities\Types\Measure\AreaUnit;
  */
 class DateTimeTest extends TestCase
 {
-
     use Helpers;
 
     public function testCanCastToString()
@@ -53,5 +52,38 @@ class DateTimeTest extends TestCase
         $vo->foo = 'bar';
 
         $this->assertObjectNotHasAttribute('foo', $vo);
+    }
+
+    public function testToUtc()
+    {
+        $dt = new DateTime('2001-02-03 04:05:06.007+08:00');
+
+        $this->assertEquals(new \DateTime('2001-02-02 20:05:06.007+00:00'), $dt->toUtc());
+    }
+
+    public function testFirstDayOfWeek()
+    {
+        $this->assertEquals(1, (new DateTime())->firstDayOfWeek());
+    }
+
+    public function testLastDayOfWeek()
+    {
+        $this->assertEquals(0, (new DateTime())->lastDayOfWeek());
+    }
+
+    /** @dataProvider lastDayOfWeekTestData */
+    public function testLastDayOfWeekGivenFirstDayOfWeek(int $firstDow, int $lastDow)
+    {
+        $this->assertEquals($lastDow, (new DateTime())->lastDayOfWeek($firstDow));
+    }
+
+    public function lastDayOfWeekTestData(): array
+    {
+        // [ firstDow, lastDow ]
+        return [
+            [0, 6], [1, 0], [2, 1], [3, 2], [4, 3], [5, 4], [6, 5],
+            // out-of-range should still work
+            [7, 6], [8, 0],
+        ];
     }
 }
