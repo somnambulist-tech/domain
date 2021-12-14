@@ -10,7 +10,6 @@ namespace Somnambulist\Components\Domain\Queries\Behaviours;
  */
 trait CanPaginateQuery
 {
-
     private int $page = 1;
     private int $perPage = 30;
 

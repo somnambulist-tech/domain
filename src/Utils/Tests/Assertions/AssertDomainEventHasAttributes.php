@@ -17,7 +17,6 @@ use Somnambulist\Components\Domain\Events\AbstractEvent;
  */
 trait AssertDomainEventHasAttributes
 {
-
     /**
      * @param AggregateRoot $entity     The entity that raises events
      * @param string        $event      The event class name to check for

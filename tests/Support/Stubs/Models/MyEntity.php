@@ -9,6 +9,7 @@ use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityAddedAnotherEntity;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityNameUpdatedEvent;
+use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityWasRemovedEvent;
 
 class MyEntity extends AggregateRoot
 {
@@ -34,6 +35,11 @@ class MyEntity extends AggregateRoot
         $this->name = $name;
 
         $this->raise(MyEntityNameUpdatedEvent::class, ['id' => $this->id, 'new' => $name, 'previous' => $this->name]);
+    }
+
+    public function remove()
+    {
+        $this->raise(MyEntityWasRemovedEvent::class);
     }
 
     public function addRelated($name, $another, $createdAt)

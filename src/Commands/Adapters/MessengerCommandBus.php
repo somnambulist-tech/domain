@@ -15,7 +15,6 @@ use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
  */
 final class MessengerCommandBus implements CommandBus
 {
-
     private MessageBusInterface $commandBus;
 
     public function __construct(MessageBusInterface $commandBus)

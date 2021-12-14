@@ -16,7 +16,6 @@ use function get_class;
  */
 trait AssertEntityHasPropertyWithValue
 {
-
     /**
      * @param object $entity
      * @param string $property The property to check for presence and value

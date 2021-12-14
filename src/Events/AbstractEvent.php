@@ -22,7 +22,6 @@ use function substr;
  */
 abstract class AbstractEvent
 {
-
     protected string $group = 'app';
     protected ?string $name = null;
 

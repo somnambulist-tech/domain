@@ -17,6 +17,8 @@ use Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners\DomainEventListener;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
 use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyOtherEntity;
+use function ob_end_clean;
+use function ob_get_clean;
 use function realpath;
 
 /**
@@ -137,6 +139,36 @@ class DoctrineEventPublisherTest extends TestCase
         $expected .= "Added related entity with name: example1, another: test-test1 to entity id: e9177266-5a64-420d-afda-04feb7edf14d\n";
         $expected .= "Added related entity with name: example2, another: test-test2 to entity id: e9177266-5a64-420d-afda-04feb7edf14d\n";
         $expected .= "Added related entity with name: example3, another: test-test3 to entity id: e9177266-5a64-420d-afda-04feb7edf14d\n";
+
+        $this->expectOutputString($expected);
+
+        $this->assertCount(0, $entity->releaseAndResetEvents());
+    }
+
+    public function testFiresEventsForRemovedEntities()
+    {
+        $entity = new MyEntity(new Uuid($id = 'e9177266-5a64-420d-afda-04feb7edf14d'), 'test', 'bob');
+
+        $entity->addRelated('example1', 'test-test1', DateTime::now());
+        $entity->addRelated('example2', 'test-test2', DateTime::now());
+        $entity->addRelated('example3', 'test-test3', DateTime::now());
+
+        $this->em->persist($entity);
+        $this->em->flush();
+        $this->em->clear();
+
+        $entity = $this->em->find(MyEntity::class, $id);
+        $entity->remove();
+
+        $this->em->remove($entity);
+        $this->em->flush();
+
+        // @todo not sure how to clear the output buffer in a test case...
+        $expected  = "New item created with id: e9177266-5a64-420d-afda-04feb7edf14d, name: test, another: bob\n";
+        $expected .= "Added related entity with name: example1, another: test-test1 to entity id: e9177266-5a64-420d-afda-04feb7edf14d\n";
+        $expected .= "Added related entity with name: example2, another: test-test2 to entity id: e9177266-5a64-420d-afda-04feb7edf14d\n";
+        $expected .= "Added related entity with name: example3, another: test-test3 to entity id: e9177266-5a64-420d-afda-04feb7edf14d\n";
+        $expected .= "Entity id: $id was removed\n";
 
         $this->expectOutputString($expected);
 

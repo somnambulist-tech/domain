@@ -10,7 +10,6 @@ namespace Somnambulist\Components\Domain\Events;
  */
 interface EventBus
 {
-
     /**
      * Broadcast the message to all listeners
      *

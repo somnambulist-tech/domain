@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
  */
 abstract class AbstractFindByIdQuery extends AbstractQuery
 {
-
     private Uuid $id;
 
     public function __construct(Uuid $id)

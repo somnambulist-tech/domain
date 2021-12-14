@@ -17,7 +17,6 @@ use function get_class;
  */
 trait AssertDoesNotHaveDomainEventOfType
 {
-
     /**
      * @param AggregateRoot $entity The entity that raises events
      * @param string        $event  The event class name to check for

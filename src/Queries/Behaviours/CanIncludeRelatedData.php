@@ -4,6 +4,7 @@ namespace Somnambulist\Components\Domain\Queries\Behaviours;
 
 use function count;
 use function is_array;
+use function trigger_deprecation;
 
 /**
  * Trait CanIncludeRelatedData
@@ -13,7 +14,6 @@ use function is_array;
  */
 trait CanIncludeRelatedData
 {
-
     private array $includes = [];
 
     /**
@@ -29,6 +29,7 @@ trait CanIncludeRelatedData
     public function with(...$includes): self
     {
         if (count($includes) === 1 && is_array($includes[0])) {
+            trigger_deprecation('somnambulist/domain', '4.2.1', 'Passing an array of includes is deprecated. Use multiple string arguments');
             $includes = $includes[0];
         }
 

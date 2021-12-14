@@ -10,6 +10,5 @@ namespace Somnambulist\Components\Domain\Jobs;
  */
 interface JobQueue
 {
-
     public function queue(AbstractJob $job): void;
 }

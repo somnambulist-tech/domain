@@ -25,7 +25,6 @@ use Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery;
  */
 abstract class AbstractPaginatableQuery extends AbstractQuery
 {
-
     use CanIncludeRelatedData;
     use CanPaginateQuery;
     use CanSortQuery;

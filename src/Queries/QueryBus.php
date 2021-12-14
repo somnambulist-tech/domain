@@ -10,7 +10,6 @@ namespace Somnambulist\Components\Domain\Queries;
  */
 interface QueryBus
 {
-
     /**
      * Executes a query returning the result
      *

@@ -10,7 +10,6 @@ namespace Somnambulist\Components\Domain\Commands;
  */
 interface CommandBus
 {
-
     /**
      * Dispatch the command to the bus implementation
      *

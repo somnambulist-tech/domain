@@ -20,7 +20,6 @@ use function sprintf;
  */
 final class IdentityGenerator
 {
-
     public static function new(): Uuid
     {
         return self::randomOfType();
@@ -64,7 +63,7 @@ final class IdentityGenerator
 
     private static function make(string $type, UuidInterface $id): AbstractIdentity
     {
-        if (!is_a($type, AbstractIdentity::class, $string = true)) {
+        if (!is_a($type, AbstractIdentity::class, allow_string: true)) {
             throw new InvalidArgumentException(
                 sprintf('Identity type "%s" does not extend "%s"', $type, AbstractIdentity::class),
                 Assertion::INVALID_CLASS,

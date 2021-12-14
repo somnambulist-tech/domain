@@ -40,4 +40,9 @@ class DomainEventListener implements EventBus
             $event->payload()->get('id')
         );
     }
+
+    public function onMyEntityWasRemoved(AbstractEvent $event)
+    {
+        printf("Entity id: %s was removed\n", $event->getAggregate()->identity());
+    }
 }

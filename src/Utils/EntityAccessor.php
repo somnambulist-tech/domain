@@ -16,7 +16,6 @@ use function property_exists;
  */
 final class EntityAccessor
 {
-
     private function __construct() {}
 
     /**

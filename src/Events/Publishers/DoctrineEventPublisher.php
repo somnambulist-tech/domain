@@ -25,7 +25,6 @@ use Somnambulist\Components\Domain\Events\EventBus;
  */
 class DoctrineEventPublisher implements EventSubscriber
 {
-
     use CanDecorateEvents;
     use CanGatherEventsForDispatch;
     use CanSortEvents;
@@ -35,8 +34,8 @@ class DoctrineEventPublisher implements EventSubscriber
 
     public function __construct(EventBus $eventBus, iterable $decorators = [])
     {
-        $this->entities   = new Collection();
         $this->eventBus   = $eventBus;
+        $this->entities   = new Collection();
         $this->decorators = new Collection();
 
         foreach ($decorators as $decorator) {
@@ -46,14 +45,22 @@ class DoctrineEventPublisher implements EventSubscriber
 
     public function getSubscribedEvents()
     {
-        return [Events::prePersist, Events::preFlush, Events::postFlush];
+        return [Events::prePersist, Events::preRemove, Events::preFlush, Events::postFlush];
     }
 
     public function prePersist(LifecycleEventArgs $event): void
     {
         $entity = $event->getEntity();
 
-        if ($entity instanceof AggregateRoot) {
+        if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($event)) {
+            $this->entities->add($entity);
+        }
+    }
+
+    public function preRemove(LifecycleEventArgs $event): void
+    {
+        $entity = $event->getEntity();
+        if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($event)) {
             $this->entities->add($entity);
         }
     }
@@ -68,7 +75,9 @@ class DoctrineEventPublisher implements EventSubscriber
             }
 
             foreach ($entities as $entity) {
-                $this->entities->add($entity);
+                if ($this->entities->doesNotContain($event)) {
+                    $this->entities->add($entity);
+                }
             }
         }
     }

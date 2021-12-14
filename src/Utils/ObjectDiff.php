@@ -12,13 +12,23 @@ use function sprintf;
 /**
  * Class ObjectDiff
  *
+ * Attempts to compare two objects of the same type, property by property, producing
+ * an array of property names that contain differences in values. All properties will be
+ * checked including parent proeprties, protected and private members. Static members
+ * are ignored. Differences are presented as mine => , theirs => for each property.
+ * Nesting order is preserved: see tests for examples.
+ *
+ * Collections (arrays) will be compared element by element. If the elements in the
+ * collection have differences, then only the ones that differ will appear e.g.: two
+ * objects will sub-objects one with 3 the other with 2, will only show differences where
+ * the keys match between the collections.
+ *
  * @package    Somnambulist\Components\Domain\Utils
  * @subpackage Somnambulist\Components\Domain\Utils\ObjectDiff
  * @experimental added in 4.2.0
  */
 class ObjectDiff
 {
-
     /**
      * @param object $a
      * @param object $b
@@ -72,7 +82,7 @@ class ObjectDiff
 
     private function testScalarValue(array &$diff, string $prop, mixed $mine, mixed $theirs): void
     {
-        if ((is_scalar($mine) || is_null($mine))  && $mine !== $theirs) {
+        if ((is_scalar($mine) || is_null($mine)) && $mine !== $theirs) {
             $diff[$prop] = [
                 'mine'   => $mine,
                 'theirs' => $theirs,

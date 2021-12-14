@@ -10,7 +10,6 @@ namespace Somnambulist\Components\Domain\Commands;
  */
 abstract class AbstractCommand
 {
-
     public function __set($name, $value) {}
 
     public function __unset($name) {}

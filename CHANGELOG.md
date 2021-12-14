@@ -1,6 +1,17 @@
 Change Log
 ==========
 
+2021-12-14 - 4.3.1
+------------------
+
+ * Fix add `preRemove` handler to ensure removed aggregates are still tracked for events
+ * Fix add checks to prevent double adding aggregate roots when collecting entities
+
+2021-09-14 - 4.3.0
+------------------
+
+ * Add enhancements to `DateTime` and `TimeZone` objects (thanks to @jasonhofer)
+
 2021-09-01 - 4.2.2
 ------------------
 

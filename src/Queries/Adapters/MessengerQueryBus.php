@@ -15,7 +15,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
  */
 final class MessengerQueryBus implements QueryBus
 {
-
     use HandleTrait;
 
     public function __construct(MessageBusInterface $queryBus)

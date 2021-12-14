@@ -13,7 +13,6 @@ use Somnambulist\Components\Domain\Entities\AggregateRoot;
  */
 trait CanGatherEventsForDispatch
 {
-
     protected function gatherPublishedDomainEvents(Collection $entities): Collection
     {
         $events = new Collection();

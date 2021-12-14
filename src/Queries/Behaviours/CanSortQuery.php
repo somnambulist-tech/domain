@@ -12,7 +12,6 @@ use Somnambulist\Components\Collection\FrozenCollection;
  */
 trait CanSortQuery
 {
-
     private FrozenCollection $orderBy;
 
     public function getOrderBy(): FrozenCollection
