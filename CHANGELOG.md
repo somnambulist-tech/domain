@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+2021-12-14 - 4.3.3
+------------------
+
+ * Add more return types to address deprecation notices
+ * Add phpunit-bridge to dev dependencies for better tracking deprecations
+
 2021-12-14 - 4.3.2
 ------------------
 

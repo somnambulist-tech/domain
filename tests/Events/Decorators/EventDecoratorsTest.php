@@ -84,7 +84,7 @@ class EventDecoratorsTest extends TestCase
                     {
                         return '4fad6b95-34c1-47fd-971d-9deb9f8fa2c4';
                     }
-                }, 'user', 'provider');
+                }, 'user', ['provider']);
             }
         });
     }

@@ -43,7 +43,7 @@ class DoctrineEventPublisher implements EventSubscriber
         }
     }
 
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [Events::prePersist, Events::preRemove, Events::preFlush, Events::postFlush];
     }
