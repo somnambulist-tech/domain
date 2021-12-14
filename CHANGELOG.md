@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2021-12-14 - 4.3.2
+------------------
+
+ * Add return types to address deprecation notices
+
 2021-12-14 - 4.3.1
 ------------------
 

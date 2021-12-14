@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Domain\Entities\Types\DateTime\Behaviours;
 
+use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 use InvalidArgumentException;
@@ -107,9 +108,9 @@ trait Factory
      * @param string            $time
      * @param DateTimeZone|null $object
      *
-     * @return static
+     * @return DateTimeImmutable|false
      */
-    public static function createFromFormat(string $format, string $time, ?DateTimeZone $object = null)
+    public static function createFromFormat(string $format, string $time, ?DateTimeZone $object = null): DateTimeImmutable|false
     {
         if ($object !== null) {
             $dt = parent::createFromFormat($format, $time, $object);
