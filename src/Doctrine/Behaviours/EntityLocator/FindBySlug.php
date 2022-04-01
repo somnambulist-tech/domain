@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
  */
 trait FindBySlug
 {
-
     abstract protected function getEntityName();
 
     abstract public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);

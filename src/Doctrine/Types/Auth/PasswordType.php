@@ -13,7 +13,6 @@ use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
  */
 class PasswordType extends AbstractValueObjectType
 {
-
     protected string $name = 'password';
     protected string $class = Password::class;
 }

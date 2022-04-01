@@ -14,12 +14,8 @@ use function method_exists;
  */
 class DecorateWithUserData implements EventDecoratorInterface
 {
-
-    private Security $security;
-
-    public function __construct(Security $security)
+    public function __construct(private Security $security)
     {
-        $this->security = $security;
     }
 
     public function decorate(AbstractEvent $event): AbstractEvent

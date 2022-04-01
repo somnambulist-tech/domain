@@ -16,19 +16,14 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 abstract class AbstractIdentity extends AbstractValueObject
 {
-
-    protected string $value;
-
-    public function __construct(string $uuid)
+    public function __construct(protected string $value)
     {
-        Assert::that($uuid, null, 'uuid')->notEmpty()->uuid();
-
-        $this->value = $uuid;
+        Assert::that($value, null, 'uuid')->notEmpty()->uuid();
     }
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return $this->value;
     }
 
     public function toUuid(): Uuid

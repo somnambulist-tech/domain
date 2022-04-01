@@ -13,20 +13,13 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 final class ExternalIdentity extends AbstractValueObject
 {
-
-    private string $provider;
-    private string $identity;
-
-    public function __construct(string $provider, string $identity)
+    public function __construct(private string $provider, private string $identity)
     {
         Assert::lazy()->tryAll()
             ->that($provider, 'provider')->notEmpty()->notBlank()->maxLength(50)
             ->that($identity, 'identity')->notEmpty()->notBlank()->maxLength(100)
             ->verifyNow()
         ;
-
-        $this->provider = $provider;
-        $this->identity = $identity;
     }
 
     public function toString(): string

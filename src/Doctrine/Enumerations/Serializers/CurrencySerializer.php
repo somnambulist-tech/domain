@@ -14,7 +14,6 @@ use Somnambulist\Components\Domain\Entities\Types\Money\Currency;
  */
 class CurrencySerializer
 {
-
     /**
      * @param object           $value
      * @param AbstractPlatform $platform
@@ -22,7 +21,7 @@ class CurrencySerializer
      * @return string
      * @throws InvalidArgumentException
      */
-    public function __invoke($value, AbstractPlatform $platform)
+    public function __invoke($value, AbstractPlatform $platform): string
     {
         if (!$value instanceof Currency) {
             throw new InvalidArgumentException(sprintf(
@@ -30,6 +29,6 @@ class CurrencySerializer
             ));
         }
 
-        return (string)$value->code();
+        return $value->code();
     }
 }

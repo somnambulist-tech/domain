@@ -14,12 +14,11 @@ use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
  */
 abstract class AbstractValueObject implements ValueObject
 {
-
     public function __set($name, $value) {}
 
     public function __toString(): string
     {
-        return (string)$this->toString();
+        return $this->toString();
     }
 
     public function equals(object $object): bool

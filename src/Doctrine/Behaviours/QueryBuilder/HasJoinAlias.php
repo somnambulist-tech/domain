@@ -16,7 +16,6 @@ use Doctrine\DBAL\Query\QueryBuilder;
  */
 trait HasJoinAlias
 {
-
     public function hasJoinAlias(QueryBuilder $qb, string $alias): bool
     {
         $parts = $qb->getQueryPart('join');

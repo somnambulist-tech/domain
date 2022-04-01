@@ -12,7 +12,6 @@ use Doctrine\DBAL\Query\QueryBuilder;
  */
 trait HasSelectColumn
 {
-
     public function hasColumnInSelect(QueryBuilder $qb, string $column): bool
     {
         return in_array($column, $qb->getQueryPart('select'));

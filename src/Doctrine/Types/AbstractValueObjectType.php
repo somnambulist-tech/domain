@@ -20,16 +20,15 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 abstract class AbstractValueObjectType extends Type
 {
-
     protected string $name = 'value_object';
     protected string $class = AbstractValueObject::class;
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -48,7 +47,7 @@ abstract class AbstractValueObjectType extends Type
         return $uuid;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -65,12 +64,12 @@ abstract class AbstractValueObjectType extends Type
         throw ConversionException::conversionFailed($value, $this->name);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

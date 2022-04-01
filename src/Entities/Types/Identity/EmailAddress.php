@@ -13,19 +13,14 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 final class EmailAddress extends AbstractValueObject
 {
-
-    private string $value;
-
-    public function __construct(string $email)
+    public function __construct(private string $value)
     {
-        Assert::that($email, null, 'email')->notEmpty()->email()->maxLength(100);
-
-        $this->value = $email;
+        Assert::that($value, null, 'email')->notEmpty()->email()->maxLength(100);
     }
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return $this->value;
     }
 
     public function account(): string

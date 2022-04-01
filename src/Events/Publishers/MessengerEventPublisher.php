@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Events\AbstractEvent;
  */
 class MessengerEventPublisher extends AbstractEventPublisher
 {
-
     public function dispatch(): void
     {
         $this

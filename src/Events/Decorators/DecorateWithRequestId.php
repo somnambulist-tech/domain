@@ -13,14 +13,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class DecorateWithRequestId implements EventDecoratorInterface
 {
-
-    private RequestStack $requestStack;
     private string $header = 'X-Request-Id';
 
-    public function __construct(RequestStack $requestStack, string $header = null)
+    public function __construct(private RequestStack $requestStack, string $header = null)
     {
-        $this->requestStack = $requestStack;
-
         if (!is_null($header)) {
             $this->header = $header;
         }

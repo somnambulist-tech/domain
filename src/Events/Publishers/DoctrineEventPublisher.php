@@ -29,12 +29,10 @@ class DoctrineEventPublisher implements EventSubscriber
     use CanGatherEventsForDispatch;
     use CanSortEvents;
 
-    private EventBus $eventBus;
     private Collection $entities;
 
-    public function __construct(EventBus $eventBus, iterable $decorators = [])
+    public function __construct(private EventBus $eventBus, iterable $decorators = [])
     {
-        $this->eventBus   = $eventBus;
         $this->entities   = new Collection();
         $this->decorators = new Collection();
 
@@ -70,7 +68,7 @@ class DoctrineEventPublisher implements EventSubscriber
         $uow = $event->getEntityManager()->getUnitOfWork();
 
         foreach ($uow->getIdentityMap() as $class => $entities) {
-            if (!is_a($class, AggregateRoot::class, $string = true)) {
+            if (!is_a($class, AggregateRoot::class, true)) {
                 continue; // @codeCoverageIgnore
             }
 

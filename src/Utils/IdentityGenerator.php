@@ -63,7 +63,7 @@ final class IdentityGenerator
 
     private static function make(string $type, UuidInterface $id): AbstractIdentity
     {
-        if (!is_a($type, AbstractIdentity::class, allow_string: true)) {
+        if (!is_a($type, AbstractIdentity::class, true)) {
             throw new InvalidArgumentException(
                 sprintf('Identity type "%s" does not extend "%s"', $type, AbstractIdentity::class),
                 Assertion::INVALID_CLASS,

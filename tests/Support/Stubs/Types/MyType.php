@@ -7,7 +7,7 @@ use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
 
 class MyType extends EnumerationBridge
 {
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return 'FOO BAR';
     }

@@ -13,7 +13,6 @@ use Somnambulist\Components\Domain\Events\Decorators\EventDecoratorInterface;
  */
 trait CanDecorateEvents
 {
-
     protected Collection $decorators;
 
     protected function addDecorator(EventDecoratorInterface $decorator): void

@@ -13,25 +13,18 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 class PublicPrivateKey extends AbstractValueObject
 {
-
-    private string $publicKey;
-    private string $privateKey;
-
-    public function __construct(string $publicKey, string $privateKey)
+    public function __construct(private string $publicKey, private string $privateKey)
     {
         Assert::lazy()->tryAll()
             ->that($publicKey, 'publicKey')->notEmpty()->maxLength(64)
             ->that($privateKey, 'privateKey')->notEmpty()->maxLength(255)
             ->verifyNow()
         ;
-
-        $this->publicKey  = $publicKey;
-        $this->privateKey = $privateKey;
     }
 
     public function toString(): string
     {
-        return (string)$this->publicKey;
+        return $this->publicKey;
     }
 
     public function publicKey(): string

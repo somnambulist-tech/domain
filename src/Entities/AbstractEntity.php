@@ -8,8 +8,8 @@ use function get_class;
 /**
  * Class AbstractEntity
  *
- * Represents a child entity within an aggregate root. A child entity does not exists
- * outside of the scope of the aggregate root. If your child entity needs to be
+ * Represents a child entity within an aggregate root. A child entity does not exist
+ * beyond the scope of the aggregate root. If your child entity needs to be
  * accessed separately from the aggregate root, then it is not a child entity, but
  * instead a standalone entity and potentially another aggregate root.
  *
@@ -18,11 +18,10 @@ use function get_class;
  */
 abstract class AbstractEntity implements CanTestEquality
 {
-
-    protected int $id;
+    protected ?int $id = null;
     protected AggregateRoot $root;
 
-    public function id(): int
+    public function id(): ?int
     {
         return $this->id;
     }
@@ -39,5 +38,4 @@ abstract class AbstractEntity implements CanTestEquality
     public function __set($name, $value) {}
 
     public function __unset($name) {}
-
 }

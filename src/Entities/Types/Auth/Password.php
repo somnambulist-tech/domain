@@ -15,18 +15,13 @@ use function strtolower;
  */
 class Password extends AbstractValueObject
 {
-
-    private string $value;
-
-    public function __construct(string $value)
+    public function __construct(private string $value)
     {
         Assert::that($value, null, 'password')->notEmpty()->notBlank()->maxLength(255)->satisfy(function ($string) {
             $info = password_get_info($string);
 
             return 0 !== $info['algo'] && 'unknown' !== strtolower($info['algoName']);
         }, 'The password string must be pre-hashed');
-
-        $this->value = $value;
     }
 
     public function value(): string

@@ -17,15 +17,14 @@ use Somnambulist\Components\Collection\MutableCollection as Collection;
  */
 class JsonCollectionType extends Type
 {
-
     const TYPE_NAME = 'json_collection';
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getJsonTypeDeclarationSQL($column);
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (null === $value) {
             return null;
@@ -37,7 +36,7 @@ class JsonCollectionType extends Type
         return json_encode($value);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null || $value === '') {
             return new Collection();
@@ -48,12 +47,12 @@ class JsonCollectionType extends Type
         return new Collection(json_decode($value, true));
     }
 
-    public function getName()
+    public function getName(): string
     {
         return static::TYPE_NAME;
     }
 
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return !$platform->hasNativeJsonType();
     }

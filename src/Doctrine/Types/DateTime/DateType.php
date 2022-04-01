@@ -18,7 +18,7 @@ class DateType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return Types::DATE_MUTABLE;
     }
@@ -26,7 +26,7 @@ class DateType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getDateTypeDeclarationSQL($column);
     }
@@ -34,7 +34,7 @@ class DateType extends Type
     /**
      * {@inheritdoc}
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return ($value !== null) ? $value->format($platform->getDateFormatString()) : null;
     }
@@ -42,7 +42,7 @@ class DateType extends Type
     /**
      * {@inheritdoc}
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null || $value instanceof DateTime) {
             return $value;

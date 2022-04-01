@@ -20,7 +20,6 @@ use function sprintf;
  */
 abstract class AggregateRoot implements CanTestEquality
 {
-
     protected Identity $id;
     protected ?DateTime $createdAt = null;
     protected ?DateTime $updatedAt = null;
@@ -42,7 +41,7 @@ abstract class AggregateRoot implements CanTestEquality
 
     final public function raise(string $event, array $payload = [], array $context = []): void
     {
-        if (!is_a($event, AbstractEvent::class, $allowString = true)) {
+        if (!is_a($event, AbstractEvent::class, true)) {
             throw new InvalidArgumentException(
                 sprintf('Provided event class name was not an %s', AbstractEvent::class),
                 Assertion::INVALID_INSTANCE_OF

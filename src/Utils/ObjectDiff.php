@@ -14,7 +14,7 @@ use function sprintf;
  *
  * Attempts to compare two objects of the same type, property by property, producing
  * an array of property names that contain differences in values. All properties will be
- * checked including parent proeprties, protected and private members. Static members
+ * checked including parent properties, protected and private members. Static members
  * are ignored. Differences are presented as mine => , theirs => for each property.
  * Nesting order is preserved: see tests for examples.
  *

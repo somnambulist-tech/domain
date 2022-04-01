@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+2022-04-01
+----------
+
+ * Add `CanConvertValueToBoolean` trait for casting string values to booleans
+ * Add more return types to address deprecation messages
+ * Fix potential issue in enumeration handling when values are nullable
+ * Clean up class code
+
 2022-04-01 - 4.3.4
 ------------------
 

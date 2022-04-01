@@ -124,35 +124,28 @@ class AppBundle extends Bundle
 
 In your Doctrine mapping files simply set the type on the field:
 
-```yaml
-fields:
-    name:
-        type: string
-        length: 255
-    
-    gender:
-        type: gender
-    
-    action:
-        type: AppBundle\Enumerable\Action
+```xml
+<entity>
+    <field name="name" type="string" length="255"/>
+    <field name="gender" type="gender" length="10"/>
+    <field name="action" type="AppBundle\Enumerable\Action" length="10"/>
+</entity>
 ```
 
 The type should be set to whatever you used when registering. If this is the class name, use that;
 if you used a short name - use that instead. It is recommended to use short names as it is easier
 to manage them than figuring out the full class name (that does not usually auto-complete).
 
-__Note__: Doctrine has deprecated Yaml config, use XML instead.
-
 ### Built-in Enumeration Constructors
 
 The following value-object constructors are provided in the library in the `Doctrine\Enumerations`
 namespace:
 
- * CountryEnumeration
- * CurrencyEnumeration
- * GenericEloquentEnumeration
- * GenericEloquentMultiton
- * NullableGenericEloquentEnumeration
+ * CountryConstructor
+ * CurrencyConstructor
+ * NullableTypedEnumeratorConstructor - used when your enumeration allows a value of `null`
+ * TypedEnumeratorConstructor - enforces typing of the value to string or int before checking
+ * TypedMultitonConstructor - instantiates by key not value
  
 When using Country or Currency the custom serializer should be registered to correctly convert the
 VO to the ISO code for storage. These would be setup as follows:

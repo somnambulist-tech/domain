@@ -17,15 +17,14 @@ use Somnambulist\Components\Domain\Entities\Types\Web\IPV4Address;
  */
 class IPV4AddressType extends Type
 {
-
     public const NAME = 'ip_v4_address';
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -44,7 +43,7 @@ class IPV4AddressType extends Type
         return $ipv4;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -61,12 +60,12 @@ class IPV4AddressType extends Type
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
 
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

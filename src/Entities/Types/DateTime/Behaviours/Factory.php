@@ -6,7 +6,6 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
 use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
 
 /**
@@ -49,7 +48,8 @@ trait Factory
      *
      * @return static
      */
-    public static function create(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null, int $second = null, TimeZone $tz = null): static
+    public static function create(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null,
+        int $second = null, TimeZone $tz = null): static
     {
         [$nowYear, $nowMonth, $nowDay, $nowHour, $nowMin, $nowSec] = explode('-', date('Y-n-j-G-i-s', time()));
 
@@ -68,7 +68,8 @@ trait Factory
         );
     }
 
-    public static function createUtc(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null, int $second = null): static
+    public static function createUtc(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null,
+        int $second = null): static
     {
         return static::create($year, $month, $day, $hour, $minute, $second, TimeZone::utc());
     }
@@ -76,9 +77,9 @@ trait Factory
     /**
      * Create a datetime instance from just a date. The time portion is set to now.
      *
-     * @param int|null      $year
-     * @param int|null      $month
-     * @param int|null      $day
+     * @param int           $year
+     * @param int           $month
+     * @param int           $day
      * @param TimeZone|null $tz
      *
      * @return static
@@ -91,9 +92,9 @@ trait Factory
     /**
      * Create a datetime instance from just a time. The date portion is set to today.
      *
-     * @param int|null      $hour
-     * @param int|null      $minute
-     * @param int|null      $second
+     * @param int           $hour
+     * @param int           $minute
+     * @param int           $second
      * @param TimeZone|null $tz
      *
      * @return static

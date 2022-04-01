@@ -20,15 +20,14 @@ use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
  */
 class EmailAddressType extends Type
 {
-
     public const NAME = 'email_address';
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -47,7 +46,7 @@ class EmailAddressType extends Type
         return $vo;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -64,12 +63,12 @@ class EmailAddressType extends Type
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
 
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

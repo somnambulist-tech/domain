@@ -15,17 +15,16 @@ use function sprintf;
  */
 class EntityNotFoundException extends Exception
 {
-
     private string $type;
     private string $id;
 
     /**
      * @param string     $type
-     * @param ...int|string $identities
+     * @param int|string ...$identities
      *
-     * @return EntityNotFoundException
+     * @return static
      */
-    public static function entityNotFound(string $type, ...$identities): self
+    public static function entityNotFound(string $type, int|string ...$identities): self
     {
         $id = implode(':', $identities);
 

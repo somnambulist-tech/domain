@@ -12,7 +12,6 @@ use Doctrine\DBAL\Query\QueryBuilder;
  */
 trait HasGroupByColumn
 {
-
     public function hasColumnInGroupBy(QueryBuilder $qb, string $column): bool
     {
         return in_array($column, $qb->getQueryPart('groupBy'));

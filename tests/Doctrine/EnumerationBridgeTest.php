@@ -31,13 +31,9 @@ use Somnambulist\Components\Domain\Tests\Support\Stubs\Types\MyType;
  */
 class EnumerationBridgeTest extends TestCase
 {
-
     use ProphecyTrait;
 
-    /**
-     * @var AbstractPlatform
-     */
-    protected $platform;
+    protected mixed $platform = null;
 
     public function setUp(): void
     {

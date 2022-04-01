@@ -18,7 +18,6 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class IlikeFunction extends FunctionNode
 {
-
     /**
      * @var Node
      */
@@ -29,7 +28,7 @@ class IlikeFunction extends FunctionNode
      */
     protected $value;
 
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -43,7 +42,7 @@ class IlikeFunction extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return $this->field->dispatch($sqlWalker) . ' ILIKE ' . $this->value->dispatch($sqlWalker);
     }

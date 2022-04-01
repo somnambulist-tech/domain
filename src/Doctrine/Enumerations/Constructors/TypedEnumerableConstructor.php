@@ -15,28 +15,21 @@ use function in_array;
  */
 class TypedEnumerableConstructor
 {
-
-    private string $class;
-    private string $preCastAs;
-
-    public function __construct(string $class, string $preCastAs = 'string')
+    public function __construct(private string $class, private string $preCastAs = 'string')
     {
         if (!in_array($preCastAs, ['string', 'int'])) {
             throw new InvalidArgumentException(sprintf('preCastAs must be one of string or int, "%s" is not supported', $preCastAs));
         }
-
-        $this->class     = $class;
-        $this->preCastAs = $preCastAs;
     }
 
     /**
-     * @param string           $value
+     * @param string|int       $value
      * @param AbstractPlatform $platform
      *
-     * @return AbstractEnumeration
+     * @return AbstractEnumeration|null
      * @throws InvalidArgumentException
      */
-    public function __invoke(string $value, AbstractPlatform $platform)
+    public function __invoke(mixed $value, AbstractPlatform $platform): ?AbstractEnumeration
     {
         if (is_null($value)) {
             return null;

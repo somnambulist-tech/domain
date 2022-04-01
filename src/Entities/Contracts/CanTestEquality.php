@@ -10,6 +10,5 @@ namespace Somnambulist\Components\Domain\Entities\Contracts;
  */
 interface CanTestEquality
 {
-
     public function equals(object $object): bool;
 }

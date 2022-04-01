@@ -14,7 +14,6 @@ use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
  */
 class CountrySerializer
 {
-
     /**
      * @param object           $value
      * @param AbstractPlatform $platform
@@ -22,7 +21,7 @@ class CountrySerializer
      * @return string
      * @throws InvalidArgumentException
      */
-    public function __invoke($value, AbstractPlatform $platform)
+    public function __invoke($value, AbstractPlatform $platform): string
     {
         if (!$value instanceof Country) {
             throw new InvalidArgumentException(sprintf(
@@ -30,6 +29,6 @@ class CountrySerializer
             ));
         }
 
-        return (string)$value->code();
+        return $value->code();
     }
 }

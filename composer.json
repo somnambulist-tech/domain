@@ -32,10 +32,10 @@
         "ext-bcmath": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "beberlei/assert": "^3.0",
+        "beberlei/assert": "^3.3",
         "eloquent/enumeration": "^6.0",
         "pragmarx/ia-str": "^7.3",
-        "ramsey/uuid": "^4.0",
+        "ramsey/uuid": "^4.3",
         "somnambulist/collection": "^5.2"
     },
     "require-dev": {

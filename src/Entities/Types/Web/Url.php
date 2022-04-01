@@ -13,19 +13,14 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 final class Url extends AbstractValueObject
 {
-
-    private string $value;
-
-    public function __construct($url)
+    public function __construct(private string $value)
     {
-        Assert::that($url, null, 'url')->notEmpty()->url();
-
-        $this->value = $url;
+        Assert::that($value, null, 'url')->notEmpty()->url();
     }
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return $this->value;
     }
 
     public function scheme(): string

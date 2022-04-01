@@ -14,22 +14,18 @@ use InvalidArgumentException;
  */
 class NullableTypedEnumeratorConstructor
 {
-
-    private string $class;
-
-    public function __construct(string $class)
+    public function __construct(private string $class)
     {
-        $this->class = $class;
     }
 
     /**
-     * @param string           $value
+     * @param mixed           $value
      * @param AbstractPlatform $platform
      *
-     * @return AbstractEnumeration
+     * @return AbstractEnumeration|null
      * @throws InvalidArgumentException
      */
-    public function __invoke(string $value, AbstractPlatform $platform)
+    public function __invoke(mixed $value, AbstractPlatform $platform): ?AbstractEnumeration
     {
         if (null !== $member = $this->class::memberOrNullByValue($value)) {
             return $member;

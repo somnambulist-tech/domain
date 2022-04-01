@@ -24,7 +24,6 @@ use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
  */
 final class AreaUnit extends AbstractEnumeration
 {
-
     const ACRE    = 'ac';
     const HECTARE = 'ha';
 
@@ -36,5 +35,4 @@ final class AreaUnit extends AbstractEnumeration
     const SQ_FT   = 'sq_ft';
     const SQ_YARD = 'sq_yd';
     const SQ_MILE = 'sq_mi';
-
 }

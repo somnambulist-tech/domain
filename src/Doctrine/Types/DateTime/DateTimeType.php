@@ -17,8 +17,7 @@ use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
  */
 class DateTimeType extends Type
 {
-
-    public function getName()
+    public function getName(): string
     {
         return Types::DATETIME_MUTABLE;
     }
@@ -26,7 +25,7 @@ class DateTimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getDateTimeTypeDeclarationSQL($column);
     }
@@ -34,7 +33,7 @@ class DateTimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return ($value !== null) ? $value->format($platform->getDateTimeFormatString()) : null;
     }
@@ -42,7 +41,7 @@ class DateTimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null || $value instanceof DateTime) {
             return $value;

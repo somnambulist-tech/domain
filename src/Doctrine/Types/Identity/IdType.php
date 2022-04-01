@@ -13,7 +13,6 @@ use Somnambulist\Components\Domain\Entities\Types\Identity\Id;
  */
 class IdType extends AbstractIdentityType
 {
-
     protected string $name = 'identity';
     protected string $class = Id::class;
 }

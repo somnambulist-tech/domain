@@ -14,7 +14,6 @@ use function bccomp;
  */
 trait CanSortEvents
 {
-
     protected function sortEventsForDispatch(Collection $events): Collection
     {
         return $events->sort(fn (AbstractEvent $a, AbstractEvent $b) => bccomp((string)$a->getTime(), (string)$b->getTime(), 6));

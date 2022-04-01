@@ -203,7 +203,7 @@ class IsTest extends TestCase
 
     public function testIsCurrentMonthFalse()
     {
-        $this->assertFalse(DateTime::now()->modify('-1 month')->isCurrentMonth());
+        $this->assertFalse(DateTime::now()->modify('-2 month')->isCurrentMonth());
     }
 
     public function testIsSameMonthTrue()
@@ -213,7 +213,7 @@ class IsTest extends TestCase
 
     public function testIsSameMonthFalse()
     {
-        $this->assertFalse(DateTime::now()->isSameMonth(DateTime::now()->modify('-1 month')));
+        $this->assertFalse(DateTime::now()->isSameMonth(DateTime::now()->modify('-2 month')));
     }
 
     public function testIsSameMonthAndYearTrue()

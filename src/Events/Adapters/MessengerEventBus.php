@@ -16,21 +16,17 @@ use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
  */
 final class MessengerEventBus implements EventBus
 {
-
-    private MessageBusInterface $bus;
-
-    public function __construct(MessageBusInterface $eventBus)
+    public function __construct(private MessageBusInterface $eventBus)
     {
-        $this->bus = $eventBus;
     }
 
     public function notify(AbstractEvent $event): void
     {
-        $this->bus->dispatch($event, [new AmqpStamp($event->getEventName())]);
+        $this->eventBus->dispatch($event, [new AmqpStamp($event->getEventName())]);
     }
 
     public function afterCurrent(AbstractEvent $event): void
     {
-        $this->bus->dispatch($event, [new AmqpStamp($event->getEventName()), new DispatchAfterCurrentBusStamp()]);
+        $this->eventBus->dispatch($event, [new AmqpStamp($event->getEventName()), new DispatchAfterCurrentBusStamp()]);
     }
 }

@@ -14,16 +14,12 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 class TimeZone extends AbstractValueObject
 {
-    private string $value;
-
-    public function __construct(string $tz)
+    public function __construct(private string $value)
     {
-        Assert::that($tz, null, 'value')
+        Assert::that($value, null, 'timezone')
             ->notEmpty()
             ->satisfy(static fn ($value) => false !== @timezone_open($value))
         ;
-
-        $this->value = $tz;
     }
 
     public static function create(string $tz = null): static
@@ -38,7 +34,7 @@ class TimeZone extends AbstractValueObject
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return $this->value;
     }
 
     public function toNative(): DateTimeZone

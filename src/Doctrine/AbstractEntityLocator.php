@@ -19,7 +19,6 @@ use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\Paginate;
  */
 abstract class AbstractEntityLocator extends EntityRepository
 {
-
     use FindOrFail;
     use FindByUUID;
     use Paginate;

@@ -13,14 +13,8 @@ use function sprintf;
  */
 final class Area extends AbstractValueObject
 {
-
-    private float $value;
-    private AreaUnit $unit;
-
-    public function __construct(float $value, AreaUnit $unit)
+    public function __construct(private float $value, private AreaUnit $unit)
     {
-        $this->value = $value;
-        $this->unit  = $unit;
     }
 
     public function toString(): string

@@ -19,9 +19,7 @@ use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
  */
 final class Srid extends AbstractEnumeration
 {
-
     const BRITISH_NATIONAL_GRID = 27700;
     const OSGB1936              = 27700;
     const WGS84                 = 4326;
-
 }

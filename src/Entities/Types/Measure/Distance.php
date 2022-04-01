@@ -13,14 +13,8 @@ use function sprintf;
  */
 final class Distance extends AbstractValueObject
 {
-
-    private float $value;
-    private DistanceUnit $unit;
-
-    public function __construct(float $value, DistanceUnit $unit)
+    public function __construct(private float $value, private DistanceUnit $unit)
     {
-        $this->value = $value;
-        $this->unit  = $unit;
     }
 
     public function toString(): string

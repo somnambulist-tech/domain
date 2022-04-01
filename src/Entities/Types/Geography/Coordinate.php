@@ -15,22 +15,13 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 class Coordinate extends AbstractValueObject
 {
-
-    private float $latitude;
-    private float $longitude;
-    private Srid $srid;
-
-    public function __construct(float $latitude, float $longitude, Srid $srid)
+    public function __construct(private float $latitude, private float $longitude, private Srid $srid)
     {
         Assert::lazy()->tryAll()
             ->that($latitude, 'latitude')->range(-90, 90)
             ->that($longitude, 'longitude')->range(-180, 180)
             ->verifyNow()
         ;
-
-        $this->latitude  = $latitude;
-        $this->longitude = $longitude;
-        $this->srid      = $srid;
     }
 
     public function toString(): string

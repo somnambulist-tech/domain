@@ -14,11 +14,8 @@ use Symfony\Component\Messenger\MessageBusInterface;
  */
 final class MessengerJobQueue implements JobQueue
 {
-    private MessageBusInterface $jobQueue;
-
-    public function __construct(MessageBusInterface $jobQueue)
+    public function __construct(private MessageBusInterface $jobQueue)
     {
-        $this->jobQueue = $jobQueue;
     }
 
     public function queue(AbstractJob $job): void

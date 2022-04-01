@@ -14,15 +14,14 @@ use Somnambulist\Components\Domain\Entities\Types\Money\Currency;
  */
 class CurrencyConstructor
 {
-
     /**
      * @param string           $value
      * @param AbstractPlatform $platform
      *
-     * @return Currency
+     * @return Currency|null
      * @throws InvalidArgumentException
      */
-    public function __invoke($value, $platform)
+    public function __invoke($value, $platform): ?Currency
     {
         if (is_null($value)) {
             return null;

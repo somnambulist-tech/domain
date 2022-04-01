@@ -13,20 +13,13 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 final class Aggregate extends AbstractValueObject
 {
-
-    private string $class;
-    private string $identity;
-    
-    public function __construct(string $class, string $identity)
+    public function __construct(private string $class, private string $identity)
     {
         Assert::lazy()->tryAll()
             ->that($class, 'class')->notEmpty()->maxLength(255)
             ->that($identity, 'identity')->notEmpty()->uuid()
             ->verifyNow()
         ;
-
-        $this->class    = $class;
-        $this->identity = $identity;
     }
 
     public function toString(): string
@@ -41,6 +34,6 @@ final class Aggregate extends AbstractValueObject
 
     public function identity(): string
     {
-        return (string)$this->identity;
+        return $this->identity;
     }
 }

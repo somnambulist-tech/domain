@@ -15,7 +15,6 @@ use function sprintf;
  */
 class InvalidDomainRelationshipException extends InvalidDomainStateException
 {
-
     public static function cannotAddChildToEntity(string $type): self
     {
         return new static(sprintf('Entity "%s" does not support children', $type));

@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Utils\ObjectDiff;
  */
 trait CalculateDifferenceBetweenInstances
 {
-
     public function diff(object $that): array
     {
         return (new ObjectDiff())->diff($this, $that);

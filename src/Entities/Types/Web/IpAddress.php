@@ -12,11 +12,10 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 abstract class IpAddress extends AbstractValueObject
 {
-
     protected string $value;
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return $this->value;
     }
 }

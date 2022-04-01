@@ -25,28 +25,26 @@ abstract class AbstractEvent
     protected string $group = 'app';
     protected ?string $name = null;
 
-    private ?Aggregate $aggregate;
-    private array $payload;
-    private array $context;
     private float $time;
     private string $type;
 
-    public function __construct(array $payload = [], array $context = [], Aggregate $aggregate = null)
+    public function __construct(private array $payload = [], private array $context = [], private ?Aggregate $aggregate = null)
     {
-        $this->aggregate = $aggregate;
-        $this->payload   = $payload;
-        $this->context   = $context;
-        $this->time      = microtime(true);
-        $this->type      = static::class;
+        $this->time = microtime(true);
+        $this->type = static::class;
     }
 
-    public function __set($name, $value) {}
+    public function __set($name, $value)
+    {
+    }
 
-    public function __unset($name) {}
+    public function __unset($name)
+    {
+    }
 
     public function __toString(): string
     {
-        return (string)$this->getName();
+        return $this->getName();
     }
 
     public static function create(array $payload = [], array $context = [], Aggregate $aggregate = null): static
@@ -153,8 +151,8 @@ abstract class AbstractEvent
     {
         return [
             'aggregate' => [
-                'class' => $this->aggregate ? $this->aggregate->class() : null,
-                'id'    => $this->aggregate ? $this->aggregate->identity() : null,
+                'class' => $this->aggregate?->class(),
+                'id'    => $this->aggregate?->identity(),
             ],
             'event'     => [
                 'class' => $this->type,
@@ -175,5 +173,8 @@ abstract class AbstractEvent
 
 /**
  * @internal Only used for hydration of events in the fromArray() method
+ * @noinspection
  */
-final class GenericEvent extends AbstractEvent {}
+final class GenericEvent extends AbstractEvent
+{
+}

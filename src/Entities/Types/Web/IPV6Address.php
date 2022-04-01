@@ -12,7 +12,6 @@ use Assert\Assert;
  */
 final class IPV6Address extends IpAddress
 {
-
     public function __construct(string $ip)
     {
         Assert::that($ip, null, 'ip')->notEmpty()->ipv6();

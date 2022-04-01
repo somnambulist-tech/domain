@@ -21,7 +21,6 @@ use Somnambulist\Components\Domain\Entities\Types\Measure;
  */
 class TypeBootstrapper
 {
-
     public static array $types = [
         'date'       => Types\DateTime\DateType::class,
         'datetime'   => Types\DateTime\DateTimeType::class,

@@ -20,7 +20,6 @@ use IlluminateAgnostic\Str\Support\Str;
  */
 class CastToFunction extends FunctionNode
 {
-
     /**
      * @var Node
      */
@@ -31,7 +30,7 @@ class CastToFunction extends FunctionNode
      */
     protected $value;
 
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -53,7 +52,7 @@ class CastToFunction extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return $this->field->dispatch($sqlWalker) . '::' . $this->value;
     }

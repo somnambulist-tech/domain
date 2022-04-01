@@ -10,6 +10,5 @@ namespace Somnambulist\Components\Domain\Entities\Contracts;
  */
 interface CanCastToString
 {
-
     public function toString(): string;
 }

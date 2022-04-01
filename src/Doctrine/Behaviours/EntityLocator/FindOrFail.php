@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
  */
 trait FindOrFail
 {
-
     abstract protected function getEntityName();
 
     abstract public function find($id, $lockMode = null, $lockVersion = null);

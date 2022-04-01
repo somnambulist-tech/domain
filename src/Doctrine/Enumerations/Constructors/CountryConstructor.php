@@ -14,15 +14,14 @@ use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
  */
 class CountryConstructor
 {
-
     /**
      * @param string           $value
      * @param AbstractPlatform $platform
      *
-     * @return Country
+     * @return Country|null
      * @throws InvalidArgumentException
      */
-    public function __invoke($value, $platform)
+    public function __invoke($value, $platform): ?Country
     {
         if (is_null($value)) {
             return null;

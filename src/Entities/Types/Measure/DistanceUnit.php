@@ -22,7 +22,6 @@ use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
  */
 final class DistanceUnit extends AbstractEnumeration
 {
-
     const MILLIMETRE = 'mm';
     const CENTIMETRE = 'cm';
     const METRE      = 'm';
@@ -32,5 +31,4 @@ final class DistanceUnit extends AbstractEnumeration
     const FEET       = 'ft';
     const YARD       = 'yd';
     const MILE       = 'mi';
-
 }

@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Entities\AbstractMultiton;
  */
 final class Country extends AbstractMultiton
 {
-
     private string $name;
 
     protected function __construct(string $code, string $name)
@@ -22,7 +21,7 @@ final class Country extends AbstractMultiton
         parent::__construct($code);
     }
 
-    protected static function initializeMembers()
+    protected static function initializeMembers(): void
     {
         foreach (self::$mappings as $code => $name) {
             new self($code, $name);
@@ -31,7 +30,7 @@ final class Country extends AbstractMultiton
 
     public function toString(): string
     {
-        return (string)$this->code();
+        return $this->code();
     }
 
     public function equals(object $object): bool

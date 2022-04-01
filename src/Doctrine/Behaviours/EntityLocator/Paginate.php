@@ -14,7 +14,6 @@ use Somnambulist\Components\Domain\Doctrine\Paginator;
  */
 trait Paginate
 {
-
     public function paginate(Query $query, int $perPage, int $page = 1, bool $fetchJoinCollection = true): Pagerfanta
     {
         return Paginator::for($query)->paginate($perPage, $page, $fetchJoinCollection);

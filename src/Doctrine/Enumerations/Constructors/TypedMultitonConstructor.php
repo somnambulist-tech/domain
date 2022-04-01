@@ -14,22 +14,18 @@ use Somnambulist\Components\Domain\Entities\AbstractMultiton;
  */
 class TypedMultitonConstructor
 {
-
-    private string $class;
-
-    public function __construct(string $class)
+    public function __construct(private string $class)
     {
-        $this->class = $class;
     }
 
     /**
-     * @param string           $value
+     * @param string|int       $value
      * @param AbstractPlatform $platform
      *
-     * @return AbstractMultiton
+     * @return AbstractMultiton|null
      * @throws InvalidArgumentException
      */
-    public function __invoke(string $value, AbstractPlatform $platform)
+    public function __invoke(mixed $value, AbstractPlatform $platform): ?AbstractMultiton
     {
         if (is_null($value)) {
             return null;

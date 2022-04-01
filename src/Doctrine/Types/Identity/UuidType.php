@@ -13,7 +13,6 @@ use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
  */
 class UuidType extends AbstractIdentityType
 {
-
     protected string $name  = 'uuid';
     protected string $class = Uuid::class;
 }

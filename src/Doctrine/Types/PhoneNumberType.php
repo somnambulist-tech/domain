@@ -20,10 +20,6 @@ use Somnambulist\Components\Domain\Entities\Types\PhoneNumber;
  */
 class PhoneNumberType extends Type
 {
-
-    /**
-     * @var string
-     */
     const NAME = 'phone_number';
 
     /**
@@ -32,7 +28,7 @@ class PhoneNumberType extends Type
      * @param array            $column
      * @param AbstractPlatform $platform
      */
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getVarcharTypeDeclarationSQL($column);
     }
@@ -44,7 +40,7 @@ class PhoneNumberType extends Type
      * @return mixed|PhoneNumber|null
      * @throws ConversionException
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -70,7 +66,7 @@ class PhoneNumberType extends Type
      * @return mixed|string|null
      * @throws ConversionException
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -92,7 +88,7 @@ class PhoneNumberType extends Type
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -104,7 +100,7 @@ class PhoneNumberType extends Type
      *
      * @return boolean
      */
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

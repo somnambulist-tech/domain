@@ -21,8 +21,8 @@ use Symfony\Component\Serializer\SerializerInterface as SymfonySerializerInterfa
 use function array_merge;
 use function class_exists;
 use function sprintf;
+use function str_starts_with;
 use function strlen;
-use function strpos;
 use function substr;
 
 /**
@@ -33,7 +33,6 @@ use function substr;
  */
 class MessengerSerializer implements SerializerInterface
 {
-
     private const STAMP_HEADER_PREFIX = 'X-Message-Stamp-';
 
     private SymfonySerializer $serializer;
@@ -102,7 +101,7 @@ class MessengerSerializer implements SerializerInterface
         $stamps = [];
 
         foreach ($encodedEnvelope['headers'] as $name => $value) {
-            if (0 !== strpos($name, self::STAMP_HEADER_PREFIX)) {
+            if (!str_starts_with($name, self::STAMP_HEADER_PREFIX)) {
                 continue;
             }
 
@@ -178,18 +177,12 @@ class MessengerSerializer implements SerializerInterface
 
     private function getMimeTypeForFormat(): ?string
     {
-        switch ($this->format) {
-            case 'json':
-                return 'application/json';
-            case 'xml':
-                return 'application/xml';
-            case 'yml':
-            case 'yaml':
-                return 'application/x-yaml';
-            case 'csv':
-                return 'text/csv';
-        }
-
-        return null;
+        return match ($this->format) {
+            'json' => 'application/json',
+            'xml' => 'application/xml',
+            'yml', 'yaml' => 'application/x-yaml',
+            'csv' => 'text/csv',
+            default => null,
+        };
     }
 }

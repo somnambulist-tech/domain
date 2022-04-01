@@ -17,14 +17,25 @@ use function sprintf;
  */
 class InvalidDomainStateException extends Exception
 {
+    /**
+     * @param string $class
+     * @param mixed  $identifier
+     * @param string $operation
+     *
+     * @return static
+     */
+    public static function operationNotPermitted(string $class, mixed $identifier, string $operation): self
+    {
+        return new static(sprintf('The operation "%s" is not permitted on "%s" with identifier "%s"', $operation, $class, $identifier), 422);
+    }
 
     /**
-     * @param string     $field
-     * @param int|string $identifier
+     * @param string $field
+     * @param mixed  $identifier
      *
-     * @return InvalidDomainStateException
+     * @return static
      */
-    public static function entityWithIdentifierAlreadyExists(string $field, $identifier): self
+    public static function entityWithIdentifierAlreadyExists(string $field, mixed $identifier): self
     {
         return new static(sprintf('Entity with identifier "%s" with value "%s" already exists', $field, $identifier), 422);
     }

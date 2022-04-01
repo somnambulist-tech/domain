@@ -20,18 +20,13 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 class PhoneNumber extends AbstractValueObject
 {
-
-    private string $value;
-
-    public function __construct($number)
+    public function __construct(private string $value)
     {
-        Assert::that($number, null, 'number')->notEmpty()->e164();
-
-        $this->value = $number;
+        Assert::that($value, null, 'phone number')->notEmpty()->e164();
     }
 
     public function toString(): string
     {
-        return (string)$this->value;
+        return $this->value;
     }
 }

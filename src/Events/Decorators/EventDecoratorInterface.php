@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Events\AbstractEvent;
  */
 interface EventDecoratorInterface
 {
-
     /**
      * Decorates the event with contextual information before the event is dispatched
      *

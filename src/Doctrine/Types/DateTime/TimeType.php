@@ -18,7 +18,7 @@ class TimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return Types::TIME_MUTABLE;
     }
@@ -26,7 +26,7 @@ class TimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getTimeTypeDeclarationSQL($column);
     }
@@ -34,7 +34,7 @@ class TimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return ($value !== null) ? $value->format($platform->getTimeFormatString()) : null;
     }
@@ -42,7 +42,7 @@ class TimeType extends Type
     /**
      * {@inheritdoc}
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null || $value instanceof DateTime) {
             return $value;

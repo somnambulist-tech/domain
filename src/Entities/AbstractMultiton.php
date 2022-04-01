@@ -13,7 +13,6 @@ use Somnambulist\Components\Domain\Entities\Contracts\ValueObject;
  */
 abstract class AbstractMultiton extends BaseMultiton implements ValueObject
 {
-
     protected static array $cache = [];
 
     public static function keys(): array

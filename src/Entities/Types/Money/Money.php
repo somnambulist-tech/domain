@@ -12,14 +12,8 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  */
 final class Money extends AbstractValueObject
 {
-
-    private float $amount;
-    private Currency $currency;
-
-    public function __construct(float $amount, Currency $currency)
+    public function __construct(private float $amount, private Currency $currency)
     {
-        $this->amount   = $amount;
-        $this->currency = $currency;
     }
 
     public static function create(float $amount, $code): self

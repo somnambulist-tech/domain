@@ -12,7 +12,6 @@ use Somnambulist\Components\Domain\Utils\EntityAccessor;
  */
 trait CastValueObjectToArray
 {
-
     public function toArray(): array
     {
         return EntityAccessor::extract($this, ignoreStatic: true, recurseValues: true);

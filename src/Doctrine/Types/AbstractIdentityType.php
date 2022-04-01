@@ -23,16 +23,15 @@ use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
  */
 abstract class AbstractIdentityType extends Type
 {
-
     protected string $name = 'identity';
     protected string $class = Uuid::class;
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getGuidTypeDeclarationSQL($column);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -51,7 +50,7 @@ abstract class AbstractIdentityType extends Type
         return $uuid;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         if (empty($value)) {
             return null;
@@ -68,12 +67,12 @@ abstract class AbstractIdentityType extends Type
         throw ConversionException::conversionFailed($value, $this->name);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
     }

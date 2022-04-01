@@ -17,14 +17,13 @@ use function sprintf;
  */
 trait AggregateEntityCollectionHelper
 {
-
     private array $helpers = [];
 
     final protected function collectionHelperFor(Collection $collection, string $helperClass): AbstractEntityCollection
     {
         if (!is_a($helperClass, AbstractEntityCollection::class, allow_string: true)) {
             throw new InvalidArgumentException(
-                sprintf('Provided helper class name was not an %s', AbstractEntityCollection::class),
+                sprintf('Provided helper class name was not a %s', AbstractEntityCollection::class),
                 Assertion::INVALID_INSTANCE_OF
             );
         }

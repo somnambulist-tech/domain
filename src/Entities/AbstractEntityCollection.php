@@ -11,7 +11,7 @@ use function max;
 /**
  * Class AbstractEntityCollection
  *
- * Provides a wrapper for managing child entities outside of an aggregate root.
+ * Provides a wrapper for managing child entities outside an aggregate root.
  * This allows logic to still be tied with the aggregate, but moved out to a sub-object
  * to keep the main aggregate logic smaller.
  *
@@ -19,24 +19,19 @@ use function max;
  * the object identities. If you require a different scheme e.g.: some custom string then
  * implement your own base logic for those use-cases.
  *
- * When implementing be sure to add additional methods as necessary to provide the domain
- * implementations that are needed.
+ * When implementing add additional methods as necessary to provide the domain implementations
+ * that are needed, and use your domain terminology.
  *
  * @package    Somnambulist\Components\Domain\Entities
  * @subpackage Somnambulist\Components\Domain\Entities\AbstractEntityCollection
  */
 abstract class AbstractEntityCollection implements Countable, IteratorAggregate
 {
-
-    protected AggregateRoot $root;
-    protected Collection $entities;
     protected int $lastId;
 
-    public function __construct(AggregateRoot $root, Collection $entities)
+    public function __construct(protected AggregateRoot $root, protected Collection $entities)
     {
-        $this->root     = $root;
-        $this->entities = $entities;
-        $this->lastId   = $this->findLastId();
+        $this->lastId = $this->findLastId();
     }
 
     public function getIterator(): Traversable

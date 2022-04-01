@@ -17,7 +17,6 @@ use Somnambulist\Components\Domain\Events\EventBus;
  */
 abstract class AbstractEventPublisher
 {
-
     use CanDecorateEvents;
     use CanGatherEventsForDispatch;
     use CanSortEvents;

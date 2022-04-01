@@ -19,7 +19,6 @@ use InvalidArgumentException;
  */
 class EnumerationBridge extends Type
 {
-
     private string $name;
 
     /**
@@ -67,9 +66,7 @@ class EnumerationBridge extends Type
             return;
         }
 
-        $serializer = $serializer ?? function ($value) {
-                return ($value === null) ? null : (string)$value;
-            };
+        $serializer = $serializer ?? fn ($value) => ($value === null) ? null : (string)$value;
 
         // Register and customize the type
         static::addType($name, static::class);
@@ -81,22 +78,22 @@ class EnumerationBridge extends Type
         $type->serializer  = $serializer;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name ?: 'enum';
     }
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getVarcharTypeDeclarationSQL($column);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         return ($this->constructor)($value, $platform);
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return ($this->serializer)($value, $platform);
     }

@@ -14,12 +14,8 @@ use Pagerfanta\Pagerfanta;
  */
 class Paginator
 {
-
-    private Query $query;
-
-    public function __construct(Query $query)
+    public function __construct(private Query $query)
     {
-        $this->query = $query;
     }
 
     public static function for(Query $query): self
