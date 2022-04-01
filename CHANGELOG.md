@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2022-04-01 - 4.3.4
+------------------
+
+ * Fix bug in event deserialize; if event class exists and is an event it should use that
+
 2021-12-14 - 4.3.3
 ------------------
 

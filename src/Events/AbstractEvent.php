@@ -129,7 +129,9 @@ abstract class AbstractEvent
      */
     public static function fromArray(string $type, array $array): self
     {
-        $event        = new GenericEvent($array['payload'] ?? [], $array['context'] ?? []);
+        $class = class_exists($type) && is_a($type, self::class, true) ? $type : GenericEvent::class;
+
+        $event        = new $class($array['payload'] ?? [], $array['context'] ?? []);
         $event->type  = $type;
         $event->time  = $array['event']['time'];
         $event->group = $array['event']['group'] ?? 'app';
