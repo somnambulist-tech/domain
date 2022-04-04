@@ -18,7 +18,6 @@ use function sleep;
  */
 class MessengerEventPublisherTest extends TestCase
 {
-
     private MessengerEventPublisher $dispatcher;
 
     protected function setUp(): void

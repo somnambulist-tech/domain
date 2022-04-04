@@ -24,6 +24,7 @@ use function sprintf;
 use function str_starts_with;
 use function strlen;
 use function substr;
+use function trigger_deprecation;
 
 /**
  * Class MessengerSerializer
@@ -44,6 +45,8 @@ class MessengerSerializer implements SerializerInterface
         $this->serializer = $serializer ?? self::create()->serializer;
         $this->format     = $format;
         $this->context    = $context;
+
+        trigger_deprecation('somnambulist/domain', '4.5.0', '%s is deprecated; use %s instead', self::class, DomainEventNormalizer::class);
     }
 
     public static function create(): self

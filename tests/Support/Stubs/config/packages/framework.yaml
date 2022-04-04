@@ -1,0 +1,36 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    default_locale: en
+    http_method_override: true
+
+    test: true
+    session:
+        storage_factory_id: session.storage.factory.mock_file
+
+    router:
+        utf8: true
+
+    messenger:
+        default_bus: event.bus
+
+        serializer:
+            default_serializer: messenger.transport.symfony_serializer
+            symfony_serializer:
+                format: json
+                context: { }
+
+        buses:
+            event.bus:
+                middleware:
+
+        transports:
+            domain_events:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%/domain_events'
+                options:
+                    exchange:
+                        name: domain_events
+                        type: fanout
+            sync: 'sync://'
+
+        routing:
+            Somnambulist\Components\Domain\Events\AbstractEvent: domain_events

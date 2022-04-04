@@ -20,7 +20,9 @@
         <var name="DOCTRINE_USER" value=""/>
         <var name="DOCTRINE_PASSWORD" value=""/>
         <var name="DOCTRINE_HOST" value=""/>
+        <env name="KERNEL_CLASS" value="Somnambulist\Components\Domain\Tests\Support\Kernel"/>
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
+        <env name="MESSENGER_TRANSPORT_DSN" value="amqp://guest:guest@rabbitmq:5672/%2f" />
     </php>
     <testsuites>
         <testsuite name="Project Test Suite">

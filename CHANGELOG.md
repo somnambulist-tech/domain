@@ -1,8 +1,15 @@
 Change Log
 ==========
 
-2022-04-01
-----------
+2022-04-04 - 4.5.0
+------------------
+
+ * Re-implement domain event serialization to use a normalizer registered with SF Serializer
+ * Deprecate `MessengerSerializer` as it is not correctly handling stamps
+ * Updated messenger integration docs
+
+2022-04-01 - 4.4.0
+------------------
 
  * Add `CanConvertValueToBoolean` trait for casting string values to booleans
  * Add more return types to address deprecation messages

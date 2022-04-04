@@ -60,6 +60,7 @@ class FactoryTest extends TestCase
     {
         $vo = DateTime::createFromFormat('Y-m-d H:i:s', '2017-06-17 12:00:00');
 
+        $this->assertInstanceOf(DateTime::class, $vo);
         $this->assertEquals('2017-06-17 12:00:00', $vo->toString());
     }
 

@@ -55,7 +55,7 @@ class EventDecoratorsTest extends TestCase
             public function getToken()
             {
                 return new UsernamePasswordToken(new class implements UserInterface {
-                    public function getRoles()
+                    public function getRoles(): array
                     {
                         return ['ROLE_USER', 'ROLE_MODERATOR'];
                     }
@@ -68,6 +68,11 @@ class EventDecoratorsTest extends TestCase
                     public function getSalt()
                     {
                         return null;
+                    }
+
+                    public function getUserIdentifier(): string
+                    {
+                        return $this->getUsername();
                     }
 
                     public function getUsername()

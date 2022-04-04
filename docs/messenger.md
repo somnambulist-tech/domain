@@ -24,20 +24,16 @@ framework:
             # creates a MessageBusInterface instance available on the $commandBus argument
             command.bus:
                 middleware:
-                    - validation
                     - doctrine_transaction
 
             query.bus:
                 middleware:
-                    - validation
 
             event.bus:
                 middleware:
-                    - validation
 
             job.queue:
                 middleware:
-                    - validation
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
@@ -52,7 +48,7 @@ framework:
                 options:
                     exchange:
                         name: jobs
-                        type: direct
+                        type: fanout
             # optional to capture failures
             failed: 'doctrine://default?queue_name=failed'
             # synchronous transport
@@ -144,36 +140,27 @@ __Note:__ Messenger 4.3+ defaults to PHP native serializer. This will mean that 
 message payload contains PHP serialized objects. To send JSON payloads, a custom serializer is
 needed. This must be configured as follows:
 
+__Note:__ as of v4.5.0 the `MessengerSerializer` implementation has been deprecated, and should
+not be used. If you are currently using this, replace with the normalizer outlined below.
+
 Install Symfony Serializer if not already installed: `composer req symfony/serializer symfony/property-access`.
 
 __Note:__ `property-access` is required to enable the `ObjectNormalizer` that is used to
 serialize the envelope stamp objects.
 
-Add the following service definition and optional alias if desired:
+Add the following service to your `services.yaml` or another service file:
 ```yaml
 services:
-    Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer:
-        
-    somnambulist.domain.event_serializer:
-        alias: Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer
+    Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+        tags: ['serializer.normalizer']
 ```
+The `tags` are only required if autoconfigure is set to `false`.
 
-Set the serializer on the domain_events transport:
-```yaml
-framework:
-    messenger:
-        transports:
-            # https://symfony.com/doc/current/messenger.html#transport-configuration
-            domain_events:
-                dsn: '%env(MESSENGER_TRANSPORT_DSN)%/domain_events'
-                serializer: somnambulist.domain.event_serializer
-```
+This will register a custom (de)normalizer with the Symfony Serializer that can properly handle
+the structure of the domain events.
 
-You will need to require the Symfony serializer component for this to work. See: 
-https://symfony.com/doc/current/messenger.html#serializing-messages for further
-documentation.
-
-To use the Symfony Serializer by default for all serialization (except domain events):
+Next be sure to enable the default serializer, and configure it to always use JSON format:
+(See: https://symfony.com/doc/current/messenger.html#serializing-messages for documentation)
 
 ```yaml
 framework:

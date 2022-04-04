@@ -109,7 +109,7 @@ trait Factory
      * @param string            $time
      * @param DateTimeZone|null $object
      *
-     * @return DateTimeImmutable|false
+     * @return static|false
      */
     public static function createFromFormat(string $format, string $time, ?DateTimeZone $object = null): DateTimeImmutable|false
     {

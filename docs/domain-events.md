@@ -150,10 +150,10 @@ event bus (default Messenger).
 This dispatcher uses an abstract base that includes methods for sorting and collecting
 the events. It can be extended to perform other tasks.
 
-This dispatcher can be registered with the kernel.terminate events so that any collected
+This dispatcher can be registered with the `kernel.terminate` event so that any collected
 events are fired at the end of the current request.
 
-Remember that you will need to register the objects that will raise events before hand.
+Remember: you will need to register the objects that will raise events.
 
 __Note:__ the Messenger dispatcher does not release monitored aggregates after event
 dispatch. You will need to specifically stop listening for events to clear the listener.

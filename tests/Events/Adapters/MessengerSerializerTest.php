@@ -24,7 +24,6 @@ use function defined;
  */
 class MessengerSerializerTest extends TestCase
 {
-
     public static function setUpBeforeClass(): void
     {
         if (!defined('AMQP_NOPARAM')) {

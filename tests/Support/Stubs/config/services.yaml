@@ -1,0 +1,30 @@
+parameters:
+    locale: 'en'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Psr\Log\LoggerInterface:
+        alias: Symfony\Component\HttpKernel\Log\Logger
+
+    logger:
+        alias: Symfony\Component\HttpKernel\Log\Logger
+
+    Symfony\Component\HttpKernel\Log\Logger:
+        arguments:
+            - emergency
+
+    Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+
+    Somnambulist\Components\Domain\Events\EventBus:
+        alias: Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus
+        public: true
+
+    Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus:
+
+    Somnambulist\Components\Domain\Tests\Support\Stubs\EventHandlers\:
+        resource: '../EventHandlers/*.php'
+        tags: [{ name: messenger.message_handler, bus: event.bus }]
