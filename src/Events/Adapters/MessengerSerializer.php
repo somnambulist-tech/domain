@@ -138,7 +138,7 @@ class MessengerSerializer implements SerializerInterface
 
         $envelope = $envelope->withoutStampsOfType(NonSendableStampInterface::class);
 
-        $headers = ['type' => $envelope->getMessage()->getType()] + $this->encodeStamps($envelope) + $this->getContentTypeHeader();
+        $headers = ['type' => $envelope->getMessage()->type()] + $this->encodeStamps($envelope) + $this->getContentTypeHeader();
 
         return [
             'body'    => $this->serializer->encode($envelope->getMessage()->toArray(), $this->format, $context),

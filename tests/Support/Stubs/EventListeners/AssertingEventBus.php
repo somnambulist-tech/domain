@@ -28,8 +28,8 @@ class AssertingEventBus implements EventBus
 
     protected function getAssertionFor(AbstractEvent $event): callable
     {
-        if (array_key_exists($event->getName(), $this->assertions)) {
-            return $this->assertions[$event->getName()];
+        if (array_key_exists($event->name(), $this->assertions)) {
+            return $this->assertions[$event->name()];
         }
 
         return function (AbstractEvent $event) {};

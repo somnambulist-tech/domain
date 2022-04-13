@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Domain\Events\Behaviours;
 
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Domain\Events\Decorators\EventDecoratorInterface;
+use Somnambulist\Components\Domain\Events\EventDecoratorInterface;
 
 /**
  * Trait CanDecorateEvents

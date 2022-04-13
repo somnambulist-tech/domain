@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Decorators;
+namespace Somnambulist\Components\Domain\Events;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use function class_alias;
 
 /**
  * Interface EventDecoratorInterface
  *
  * @package    Somnambulist\Components\Domain\Events\Decorators
- * @subpackage Somnambulist\Components\Domain\Events\Decorators\EventDecoratorInterface
+ * @subpackage Somnambulist\Components\Domain\Events\EventDecoratorInterface
  */
 interface EventDecoratorInterface
 {
@@ -21,3 +21,5 @@ interface EventDecoratorInterface
      */
     public function decorate(AbstractEvent $event): AbstractEvent;
 }
+
+class_alias(EventDecoratorInterface::class, 'Somnambulist\Components\Domain\Events\Decorators\EventDecoratorInterface');

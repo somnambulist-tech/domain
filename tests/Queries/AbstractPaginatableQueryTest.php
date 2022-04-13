@@ -28,13 +28,13 @@ class AbstractPaginatableQueryTest extends TestCase
 
         $query = new class($criteria, [], 2, 10) extends AbstractPaginatableQuery {};
 
-        $this->assertEquals(2, $query->getPage());
-        $this->assertEquals(10, $query->getPerPage());
-        $this->assertInstanceOf(FrozenCollection::class, $query->getCriteria());
-        $this->assertInstanceOf(FrozenCollection::class, $query->getOrderBy());
-        $this->assertIsArray($query->getIncludes());
-        $this->assertCount(2, $query->getCriteria());
-        $this->assertCount(0, $query->getOrderBy());
+        $this->assertEquals(2, $query->page());
+        $this->assertEquals(10, $query->perPage());
+        $this->assertInstanceOf(FrozenCollection::class, $query->criteria());
+        $this->assertInstanceOf(FrozenCollection::class, $query->orderBy());
+        $this->assertIsArray($query->includes());
+        $this->assertCount(2, $query->criteria());
+        $this->assertCount(0, $query->orderBy());
     }
 
     public function testMethodPassThrough()

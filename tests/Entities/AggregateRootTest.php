@@ -69,9 +69,9 @@ class AggregateRootTest extends TestCase
 
         $event = $user->releaseAndResetEvents()[0];
 
-        $this->assertNotNull($event->getAggregate());
-        $this->assertEquals(User::class, $event->getAggregate()->class());
-        $this->assertEquals((string)$id, $event->getAggregate()->identity());
+        $this->assertNotNull($event->aggregate());
+        $this->assertEquals(User::class, $event->aggregate()->class());
+        $this->assertEquals((string)$id, $event->aggregate()->identity());
     }
 
     public function testEqualityIsByIdentity()

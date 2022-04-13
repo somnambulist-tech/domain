@@ -30,30 +30,30 @@ class DomainEventTest extends TestCase
     {
         $event = new MyEntityCreatedEvent([], [], new Aggregate(MyEntity::class, '73517dac-18c9-4e80-bea2-c384eb8e1e0d'));
 
-        $this->assertEquals(MyEntity::class, $event->getAggregate()->class());
-        $this->assertEquals('73517dac-18c9-4e80-bea2-c384eb8e1e0d', $event->getAggregate()->identity());
+        $this->assertEquals(MyEntity::class, $event->aggregate()->class());
+        $this->assertEquals('73517dac-18c9-4e80-bea2-c384eb8e1e0d', $event->aggregate()->identity());
     }
 
     public function testCanGetName()
     {
         $event = new NamespacedEvent();
 
-        $this->assertEquals('Namespaced', $event->getName());
-        $this->assertEquals('app', $event->getGroup());
+        $this->assertEquals('Namespaced', $event->name());
+        $this->assertEquals('app', $event->group());
     }
 
     public function testCanGetEventName()
     {
         $event = new NamespacedEvent();
 
-        $this->assertEquals('app.namespaced', $event->getEventName());
+        $this->assertEquals('app.namespaced', $event->longName());
     }
 
     public function testNotificationNameResolvesClassProperty()
     {
         $event = new GroupPropertyEvent();
 
-        $this->assertEquals('my_group.group_property', $event->getEventName());
+        $this->assertEquals('my_group.group_property', $event->longName());
     }
 
     public function testCanCastToString()
@@ -67,7 +67,7 @@ class DomainEventTest extends TestCase
     {
         $event = NamespacedEvent::create();
 
-        $this->assertEquals('Namespaced', $event->getName());
+        $this->assertEquals('Namespaced', $event->name());
     }
 
     public function testCanUpdateContext()
@@ -105,7 +105,7 @@ class DomainEventTest extends TestCase
                 'class' => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
                 'group' => 'app',
                 'name'  => 'Namespaced',
-                'time'  => $event->getTime(),
+                'time'  => $event->createdAt(),
             ],
             'payload'   => [
                 'foo' => 'bar',
@@ -149,9 +149,9 @@ class DomainEventTest extends TestCase
 
         $event = AbstractEvent::fromArray(NamespacedEvent::class, $data);
 
-        $this->assertEquals(NamespacedEvent::class, $event->getType());
-        $this->assertEquals($ts, $event->getTime());
-        $this->assertNull($event->getAggregate());
+        $this->assertEquals(NamespacedEvent::class, $event->type());
+        $this->assertEquals($ts, $event->createdAt());
+        $this->assertNull($event->aggregate());
         $this->assertEquals('bar', $event->payload()->get('foo'));
         $this->assertEquals('value', $event->context()->get('context'));
         $this->assertEquals('user@example.example', $event->context()->get('user'));
@@ -182,7 +182,7 @@ class DomainEventTest extends TestCase
         $event = AbstractEvent::fromArray(stdClass::class, $data);
 
         $this->assertInstanceOf(AbstractEvent::class, $event);
-        $this->assertEquals(stdClass::class, $event->getType());
+        $this->assertEquals(stdClass::class, $event->type());
     }
 
     public function testFromArrayReturnsAnonymousClassIfEventDoesNotExist()
@@ -210,9 +210,9 @@ class DomainEventTest extends TestCase
         $event = AbstractEvent::fromArray($t = 'Some\Class\ThatDoesNotExist', $data);
 
         $this->assertInstanceOf(AbstractEvent::class, $event);
-        $this->assertEquals($t, $event->getType());
-        $this->assertEquals('a_group', $event->getGroup());
-        $this->assertEquals('ThatDoesNotExist', $event->getName());
-        $this->assertEquals('a_group.that_does_not_exist', $event->getEventName());
+        $this->assertEquals($t, $event->type());
+        $this->assertEquals('a_group', $event->group());
+        $this->assertEquals('ThatDoesNotExist', $event->name());
+        $this->assertEquals('a_group.that_does_not_exist', $event->longName());
     }
 }

@@ -9,14 +9,14 @@ class DomainEventListener implements EventBus
 {
     public function notify(AbstractEvent $event): void
     {
-        $method = 'on' . $event->getName();
+        $method = 'on' . $event->name();
 
         $this->{$method}($event);
     }
 
     public function afterCurrent(AbstractEvent $event): void
     {
-        $method = 'on' . $event->getName();
+        $method = 'on' . $event->name();
 
         $this->{$method}($event);
     }
@@ -43,6 +43,6 @@ class DomainEventListener implements EventBus
 
     public function onMyEntityWasRemoved(AbstractEvent $event)
     {
-        printf("Entity id: %s was removed\n", $event->getAggregate()->identity());
+        printf("Entity id: %s was removed\n", $event->aggregate()->identity());
     }
 }

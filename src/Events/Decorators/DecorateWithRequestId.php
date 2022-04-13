@@ -3,6 +3,7 @@
 namespace Somnambulist\Components\Domain\Events\Decorators;
 
 use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\EventDecoratorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**

@@ -12,14 +12,6 @@ use Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery;
 /**
  * Class AbstractPaginatableQuery
  *
- * Allows accessing criteria keys by methods starting with "getXXX". The following
- * attribute names will be tried: without get, lcfirst, snake case. For example:
- * an attribute named user_group can be accessed via: getUserGroup. The following
- * combinations will be tried: UserGroup, userGroup and user_group.
- *
- * If the attribute is not found, null will be returned. Invalid method calls will
- * raise an exception.
- *
  * @package    Somnambulist\Components\Domain\Queries
  * @subpackage Somnambulist\Components\Domain\Queries\AbstractPaginatableQuery
  */
@@ -42,6 +34,8 @@ abstract class AbstractPaginatableQuery extends AbstractQuery
     public function __call($name, $arguments)
     {
         if (Str::startsWith($name, 'get')) {
+            trigger_deprecation('somnambulist/domain', '4.6.0', 'Dynamic getters have been deprecated. Implement concrete methods instead.');
+
             $name = Str::replaceFirst('get', '', $name);
 
             return $this->criteria->only(Str::snake($name), Str::ucfirst($name), $name)->first() ?? null;
@@ -52,6 +46,23 @@ abstract class AbstractPaginatableQuery extends AbstractQuery
 
     public function getCriteria(): FrozenCollection
     {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use criteria() instead');
+
+        return $this->criteria();
+    }
+
+    public function criteria(): FrozenCollection
+    {
         return $this->criteria;
+    }
+
+    public function get(string $key, mixed $default): mixed
+    {
+        return $this->criteria()->get($key, $default);
+    }
+
+    public function has(string $key): bool
+    {
+        return $this->criteria()->has($key);
     }
 }

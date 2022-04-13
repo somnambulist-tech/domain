@@ -16,6 +16,6 @@ trait CanSortEvents
 {
     protected function sortEventsForDispatch(Collection $events): Collection
     {
-        return $events->sort(fn (AbstractEvent $a, AbstractEvent $b) => bccomp((string)$a->getTime(), (string)$b->getTime(), 6));
+        return $events->sort(fn (AbstractEvent $a, AbstractEvent $b) => bccomp((string)$a->createdAt(), (string)$b->createdAt(), 6));
     }
 }

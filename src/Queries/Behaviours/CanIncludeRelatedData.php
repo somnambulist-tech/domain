@@ -26,7 +26,7 @@ trait CanIncludeRelatedData
      *
      * @return static
      */
-    public function with(...$includes): self
+    public function include(...$includes): self
     {
         if (count($includes) === 1 && is_array($includes[0])) {
             trigger_deprecation('somnambulist/domain', '4.2.1', 'Passing an array of includes is deprecated. Use multiple string arguments');
@@ -38,7 +38,21 @@ trait CanIncludeRelatedData
         return $this;
     }
 
+    public function with(...$includes): self
+    {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'with() is deprecated, use include() instead');
+
+        return $this->include(...$includes);
+    }
+
     public function getIncludes(): array
+    {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use includes() instead');
+
+        return $this->includes();
+    }
+
+    public function includes(): array
     {
         return $this->includes;
     }

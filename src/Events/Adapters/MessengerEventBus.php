@@ -22,11 +22,11 @@ final class MessengerEventBus implements EventBus
 
     public function notify(AbstractEvent $event): void
     {
-        $this->eventBus->dispatch($event, [new AmqpStamp($event->getEventName())]);
+        $this->eventBus->dispatch($event, [new AmqpStamp($event->longName())]);
     }
 
     public function afterCurrent(AbstractEvent $event): void
     {
-        $this->eventBus->dispatch($event, [new AmqpStamp($event->getEventName()), new DispatchAfterCurrentBusStamp()]);
+        $this->eventBus->dispatch($event, [new AmqpStamp($event->longName()), new DispatchAfterCurrentBusStamp()]);
     }
 }

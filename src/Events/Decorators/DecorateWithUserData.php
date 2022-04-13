@@ -3,6 +3,7 @@
 namespace Somnambulist\Components\Domain\Events\Decorators;
 
 use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Domain\Events\EventDecoratorInterface;
 use Symfony\Component\Security\Core\Security;
 use function method_exists;
 
@@ -29,7 +30,7 @@ class DecorateWithUserData implements EventDecoratorInterface
         $event->appendContext([
             'user' => [
                 'id'    => method_exists($user, 'getId') ? (string)$user->getId() : null,
-                'name'  => $user->getUsername(),
+                'name'  => $user->getUserIdentifier(),
                 'roles' => $user->getRoles(),
             ],
         ]);

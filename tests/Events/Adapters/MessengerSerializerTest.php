@@ -48,10 +48,10 @@ class MessengerSerializerTest extends TestCase
         $event = $envelope->getMessage();
 
         $this->assertInstanceOf(Envelope::class, $envelope);
-        $this->assertEquals(NamespacedEvent::class, $event->getType());
-        $this->assertEquals(1571844439.726061, $event->getTime());
-        $this->assertEquals('app', $event->getGroup());
-        $this->assertEquals('namespaced', $event->getName());
+        $this->assertEquals(NamespacedEvent::class, $event->type());
+        $this->assertEquals(1571844439.726061, $event->createdAt());
+        $this->assertEquals('app', $event->group());
+        $this->assertEquals('namespaced', $event->name());
     }
 
     public function testEncode()
@@ -63,7 +63,7 @@ class MessengerSerializerTest extends TestCase
         $message = $serializer->encode(
             new Envelope(
                 $event,
-                [new AmqpStamp($event->getEventName())]
+                [new AmqpStamp($event->longName())]
             )
         );
 
@@ -83,7 +83,7 @@ class MessengerSerializerTest extends TestCase
             new Envelope(
                 $event,
                 [
-                    new AmqpStamp($event->getEventName()),
+                    new AmqpStamp($event->longName()),
                     new BusNameStamp('eventBus'),
                     new TransportMessageIdStamp('my-id-here'),
                 ]

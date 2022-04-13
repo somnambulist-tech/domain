@@ -15,6 +15,7 @@ use function sprintf;
 use function str_contains;
 use function str_ends_with;
 use function substr;
+use function trigger_deprecation;
 
 /**
  * Class AbstractEvent
@@ -46,7 +47,7 @@ abstract class AbstractEvent
 
     public function __toString(): string
     {
-        return $this->getName();
+        return $this->name();
     }
 
     public static function create(array $payload = [], array $context = [], Aggregate $aggregate = null): static
@@ -56,15 +57,36 @@ abstract class AbstractEvent
 
     public function getAggregate(): ?Aggregate
     {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use aggregate() instead');
+
+        return $this->aggregate();
+    }
+
+    public function aggregate(): ?Aggregate
+    {
         return $this->aggregate;
     }
 
     public function getGroup(): string
     {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use group() instead');
+
+        return $this->group();
+    }
+
+    public function group(): string
+    {
         return $this->group;
     }
 
     public function getName(): string
+    {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use name() instead');
+
+        return $this->name();
+    }
+
+    public function name(): string
     {
         if (is_null($this->name)) {
             $this->name = $this->parseName();
@@ -75,17 +97,38 @@ abstract class AbstractEvent
 
     public function getTime(): float
     {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use createdAt() instead');
+
+        return $this->createdAt();
+    }
+
+    public function createdAt(): float
+    {
         return $this->time;
     }
 
     public function getType(): string
+    {
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use type() instead');
+
+        return $this->type();
+    }
+
+    public function type(): string
     {
         return $this->type;
     }
 
     public function getEventName(): string
     {
-        return sprintf('%s.%s', $this->group, Str::snake($this->getName()));
+        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use longName() instead');
+
+        return $this->longName();
+    }
+
+    public function longName(): string
+    {
+        return sprintf('%s.%s', $this->group, Str::snake($this->name()));
     }
 
     private function parseName(): string
@@ -159,7 +202,7 @@ abstract class AbstractEvent
             'event'     => [
                 'class' => $this->type,
                 'group' => $this->group,
-                'name'  => $this->getName(),
+                'name'  => $this->name(),
                 'time'  => $this->time,
             ],
             'payload'   => $this->payload,
