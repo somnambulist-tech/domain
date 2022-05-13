@@ -1,8 +1,14 @@
 Change Log
 ==========
 
-2022-04-13 - 4.6.0
+2022-05-13 - 4.6.0
 ------------------
+
+ * Add support for `$supportedEventPrefixes` to the event normalizer to handle cases where event
+   is not defined in the project
+
+2022-04-13
+----------
 
  * Deprecate `with()` on `CanIncludeRelatedData`
  * Deprecate dynamic accessors on `AbstractPaginatableQuery`

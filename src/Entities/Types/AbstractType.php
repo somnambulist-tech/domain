@@ -16,7 +16,7 @@ use Somnambulist\Components\Domain\Entities\AbstractValueObject;
  * To use, extend this class and then create either a Type mapping via an embeddable
  * Doctrine configuration, or use the EnumerationBridge to map a custom type.
  *
- * @package Somnambulist\Components\Domain\Entities\Types
+ * @package    Somnambulist\Components\Domain\Entities\Types
  * @subpackage Somnambulist\Components\Domain\Entities\Types\AbstractType
  */
 abstract class AbstractType extends AbstractValueObject
@@ -26,7 +26,7 @@ abstract class AbstractType extends AbstractValueObject
         Assert::that($value, null, 'type')->notEmpty()->maxLength(50);
     }
 
-    public static function default(): self
+    public static function default(): static
     {
         return new static('default');
     }

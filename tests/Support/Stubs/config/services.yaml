@@ -18,6 +18,8 @@ services:
             - emergency
 
     Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+        arguments:
+            $supportedEventPrefixes: [ 'App\Domain\Events', 'Service\Context\Domain\Events', 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events' ]
 
     Somnambulist\Components\Domain\Events\EventBus:
         alias: Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus

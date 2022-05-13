@@ -2,15 +2,15 @@
 
 Symfony Messenger can be used to implement:
 
- * CommandBus
- * QueryBus
- * EventBus
- * JobQueue
+* CommandBus
+* QueryBus
+* EventBus
+* JobQueue
 
 These implementations are based on the Symfony documentation:
 
- * https://symfony.com/doc/current/messenger/handler_results.html
- * https://symfony.com/doc/current/messenger/multiple_buses.html
+* https://symfony.com/doc/current/messenger/handler_results.html
+* https://symfony.com/doc/current/messenger/multiple_buses.html
 
 This requires setting up messenger as follows:
 
@@ -71,25 +71,25 @@ Then the following services should be defined in `services.yaml`:
 ```yaml
 services:
     Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus:
-    
+
     Somnambulist\Components\Domain\Events\EventBus:
         alias: Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus
         public: true
 
     Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue:
-    
+
     Somnambulist\Components\Domain\Jobs\JobQueue:
         alias: Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue
         public: true
-    
+
     Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus:
-    
+
     Somnambulist\Components\Domain\Commands\CommandBus:
         alias: Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus
         public: true
-    
+
     Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus:
-    
+
     Somnambulist\Components\Domain\Queries\QueryBus:
         alias: Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus
         public: true
@@ -125,15 +125,16 @@ To enable the event subscriber add the following to your `services.yaml`:
 ```yaml
 services:
     Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher:
-        tags: ['doctrine.event_subscriber']
+        tags: [ 'doctrine.event_subscriber' ]
 ```
 
 This will register a Doctrine event subscriber that listens to:
 
- * prePersist
- * preFlush
- * postFlush
- 
+* prePersist
+* preRemove
+* preFlush
+* postFlush
+
 Events are queued, sorted by the timestamp to ensure the correct order and sent postFlush.
 
 __Note:__ Messenger 4.3+ defaults to PHP native serializer. This will mean that the
@@ -149,15 +150,53 @@ __Note:__ `property-access` is required to enable the `ObjectNormalizer` that is
 serialize the envelope stamp objects.
 
 Add the following service to your `services.yaml` or another service file:
+
 ```yaml
 services:
     Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
-        tags: ['serializer.normalizer']
+        tags: [ 'serializer.normalizer' ]
 ```
+
 The `tags` are only required if autoconfigure is set to `false`.
 
 This will register a custom (de)normalizer with the Symfony Serializer that can properly handle
 the structure of the domain events.
+
+The `DomainEventNormalizer` will handle any events that are instances of `AbstractEvent` or that
+start with one of a set of class name prefixes. These are needed when you are receiving events
+from other services that are not defined but should still be handled. They are configured by passing
+an array of strings in the service definition:
+
+```yaml
+services:
+    Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+        tags: [ 'serializer.normalizer' ]
+        arguments:
+            $supportedEventPrefixes: [ 'App\Domain\Events\', 'Service\Context\Domain\Events' ]
+```
+
+__Note:__ any event mentioned should follow the structure exported by `AbstractEvent::toArray`.
+```json
+{
+    "aggregate": {
+        "class": null,
+        "id": null
+    },
+    "event": {
+        "class": "The\\Event\\Class\\That\\Was\\Fired",
+        "group": "app",
+        "name": "fired",
+        "time": 1652475367.784834
+    },
+    "payload": {
+        "foo": "bar"
+    },
+    "context": {
+        "context": "value",
+        "user": "user@example.example"
+    }
+}
+```
 
 Next be sure to enable the default serializer, and configure it to always use JSON format:
 (See: https://symfony.com/doc/current/messenger.html#serializing-messages for documentation)
@@ -176,4 +215,4 @@ __Note:__ the `EventBus` provided here is specifically for domain events. For ge
 consider adding a separate bus.
 
 __Note:__ since v3 the EventBus can handle generic events - they will not have an aggregate
-associated with them.
+associated with them but must still extend `AbstractEvent`.
