@@ -9,7 +9,6 @@ use Symfony\Component\Serializer\Normalizer\ContextAwareDenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
 use function class_exists;
 use function is_a;
-use function str_contains;
 
 /**
  * Class DomainEventNormalizer

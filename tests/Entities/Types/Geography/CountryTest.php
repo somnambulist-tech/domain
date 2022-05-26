@@ -17,7 +17,6 @@ use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
  */
 class CountryTest extends TestCase
 {
-
     public function testCreate()
     {
         $vo = Country::memberByKey('CAN');
@@ -25,6 +24,8 @@ class CountryTest extends TestCase
         $this->assertEquals('Canada', $vo->name());
         $this->assertEquals('CAN', $vo->code());
         $this->assertEquals('CAN', $vo->toString());
+        $this->assertEquals('CA', $vo->code2());
+        $this->assertEquals(124, $vo->id());
     }
 
     public function testCreateStatically()
@@ -35,12 +36,35 @@ class CountryTest extends TestCase
         $this->assertEquals('USA', $vo->code());
     }
 
+    public function testCreateByIsoNum()
+    {
+        $vo = Country::getByISONumber(840);
+
+        $this->assertEquals('United States of America', $vo->name());
+        $this->assertEquals('USA', $vo->code());
+    }
+
+    public function testCreateByIso2()
+    {
+        $vo = Country::getByISO2Char('us');
+
+        $this->assertEquals('United States of America', $vo->name());
+        $this->assertEquals('USA', $vo->code());
+    }
+
+    public function testCreateByIso3()
+    {
+        $vo = Country::getByISO3Char('USA');
+
+        $this->assertEquals('United States of America', $vo->name());
+        $this->assertEquals('USA', $vo->code());
+    }
+
     public function testCanCastToString()
     {
         $vo = Country::memberByKey('CAN');
 
         $this->assertEquals('CAN', (string)$vo);
-        $this->assertEquals('CAN', (string)$vo->code());
     }
 
     public function testCanCompare()

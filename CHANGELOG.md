@@ -1,8 +1,13 @@
 Change Log
 ==========
 
-2022-05-13 - 4.6.0
+2022-05-26 - 4.6.0
 ------------------
+
+ * Add ISO 2 char and numeric codes to `Country`, updated country list from ISO
+
+2022-05-13
+----------
 
  * Add support for `$supportedEventPrefixes` to the event normalizer to handle cases where event
    is not defined in the project
@@ -277,7 +282,7 @@ uses `somnambulist/collection` 5.0.0+.
 2019-09-30
 ----------
 
- * Add an SF Messenger based Command, Event and Query bus based on
+ * Add an SF Messenger based Command, Event and Query bus
 
 2019-09-03 - 2.1.0
 ------------------

@@ -21,6 +21,7 @@ use function defined;
  * @group events
  * @group events-adapter
  * @group events-adapter-serializer
+ * @todo remove
  */
 class MessengerSerializerTest extends TestCase
 {

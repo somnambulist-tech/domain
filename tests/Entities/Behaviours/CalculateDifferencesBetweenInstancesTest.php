@@ -36,11 +36,19 @@ class CalculateDifferencesBetweenInstancesTest extends TestCase
                 'theirs' => 'tester',
             ],
             'country' => [
-                'name' => [
-                    'mine'   => 'Canada',
-                    'theirs' => 'United Kingdom',
+                'id'    => [
+                    'mine'   => 124,
+                    'theirs' => 826,
                 ],
-                'key'  => [
+                'code2' => [
+                    'mine'   => 'CA',
+                    'theirs' => 'GB',
+                ],
+                'name'  => [
+                    'mine'   => 'Canada',
+                    'theirs' => 'United Kingdom of Great Britain and Northern Ireland',
+                ],
+                'key'   => [
                     'mine'   => 'CAN',
                     'theirs' => 'GBR',
                 ],
@@ -78,11 +86,19 @@ class CalculateDifferencesBetweenInstancesTest extends TestCase
         $expected = [
             'name' => [
                 'mine'   => 'Canada',
-                'theirs' => 'United Kingdom',
+                'theirs' => 'United Kingdom of Great Britain and Northern Ireland',
             ],
             'key'  => [
                 'mine'   => 'CAN',
                 'theirs' => 'GBR',
+            ],
+            'id'    => [
+                'mine'   => 124,
+                'theirs' => 826,
+            ],
+            'code2' => [
+                'mine'   => 'CA',
+                'theirs' => 'GB',
             ],
         ];
 

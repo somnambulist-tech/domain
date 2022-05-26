@@ -27,7 +27,7 @@ class EntityAccessorTest extends TestCase
     {
         $ret = EntityAccessor::extract(Country::memberByKey('CAN'));
 
-        $this->assertEquals(['name' => 'Canada', 'key' => 'CAN'], $ret);
+        $this->assertEquals(['name' => 'Canada', 'key' => 'CAN', 'id' => 124, 'code2' => 'CA'], $ret);
     }
 
     public function testExtractComplexObjects()
@@ -61,6 +61,8 @@ class EntityAccessorTest extends TestCase
                         [
                             'name' => 'Canada',
                             'key'  => 'CAN',
+                            'id' => 124,
+                            'code2' => 'CA',
                         ],
                 ],
             'total'      =>

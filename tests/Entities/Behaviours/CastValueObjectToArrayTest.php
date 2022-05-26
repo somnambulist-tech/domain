@@ -23,7 +23,7 @@ class CastValueObjectToArrayTest extends TestCase
         $expected = [
             'name'    => 'test',
             'email'   => ['value' => 'a@b.co'],
-            'country' => ['name' => 'Canada', 'key' => 'CAN'],
+            'country' => ['name' => 'Canada', 'key' => 'CAN', 'id' => 124, 'code2' => 'CA'],
         ];
 
         $this->assertEquals($expected, $vo->toArray());

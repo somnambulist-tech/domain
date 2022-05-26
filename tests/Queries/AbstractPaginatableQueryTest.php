@@ -37,6 +37,9 @@ class AbstractPaginatableQueryTest extends TestCase
         $this->assertCount(0, $query->orderBy());
     }
 
+    /**
+     * @todo remove
+     */
     public function testMethodPassThrough()
     {
         $criteria = [
@@ -50,6 +53,9 @@ class AbstractPaginatableQueryTest extends TestCase
         $this->assertEquals('%@example.com', $query->getEmailAddress());
     }
 
+    /**
+     * @todo remove
+     */
     public function testMethodPassThroughReturnsNullIfNotInCriteria()
     {
         $criteria = [
@@ -61,6 +67,9 @@ class AbstractPaginatableQueryTest extends TestCase
         $this->assertNull($query->getCountry());
     }
 
+    /**
+     * @todo remove
+     */
     public function testMethodPassThroughRaisesExceptionIfNotPrefixedWithGet()
     {
         $criteria = [
