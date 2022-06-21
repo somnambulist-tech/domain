@@ -1,15 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Components\Doctrine\Types\Identity;
 
-use Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Id;
+use Somnambulist\Components\Doctrine\Types\AbstractIdentityType;
+use Somnambulist\Components\Models\Types\Identity\Id;
 
 /**
- * Class IdType
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Types
- * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\IdType
+ * Allows using an Id instance as a type instead of an embeddable, allowing it to be
+ * used as an id type.
  */
 class IdType extends AbstractIdentityType
 {

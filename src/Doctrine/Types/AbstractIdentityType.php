@@ -1,25 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types;
+namespace Somnambulist\Components\Doctrine\Types;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
 
 /**
- * Class AbstractIdentityType
- *
  * Provides a type base that can be extended to set a specific identity class instead
  * of being hard-wired for only "uuid" etc. Extend and override the name and class
  * with the values you need, then register the type either directly in the Doctrine
  * config or via the {@see TypeBootstrapper}
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Types
- * @subpackage Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType
  */
 abstract class AbstractIdentityType extends Type
 {

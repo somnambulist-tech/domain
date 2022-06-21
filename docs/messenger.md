@@ -56,10 +56,10 @@ framework:
 
         routing:
             # Route your messages to the transports
-            Somnambulist\Components\Domain\Events\AbstractEvent: domain_events
-            Somnambulist\Components\Domain\Jobs\AbstractJob: job_queue
-            Somnambulist\Components\Domain\Commands\AbstractCommand: sync
-            Somnambulist\Components\Domain\Queries\AbstractQuery: sync
+            Somnambulist\Components\Events\AbstractEvent: domain_events
+            Somnambulist\Components\Jobs\AbstractJob: job_queue
+            Somnambulist\Components\Commands\AbstractCommand: sync
+            Somnambulist\Components\Queries\AbstractQuery: sync
 ```
 
 The above configuration will automatically route all extended Commands and Queries to the sync
@@ -70,28 +70,28 @@ Then the following services should be defined in `services.yaml`:
 
 ```yaml
 services:
-    Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus:
+    Somnambulist\Components\Events\Adapters\MessengerEventBus:
 
-    Somnambulist\Components\Domain\Events\EventBus:
-        alias: Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus
+    Somnambulist\Components\Events\EventBus:
+        alias: Somnambulist\Components\Events\Adapters\MessengerEventBus
         public: true
 
-    Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue:
+    Somnambulist\Components\Jobs\Adapters\MessengerJobQueue:
 
-    Somnambulist\Components\Domain\Jobs\JobQueue:
-        alias: Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue
+    Somnambulist\Components\Jobs\JobQueue:
+        alias: Somnambulist\Components\Jobs\Adapters\MessengerJobQueue
         public: true
 
-    Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus:
+    Somnambulist\Components\Commands\Adapters\MessengerCommandBus:
 
-    Somnambulist\Components\Domain\Commands\CommandBus:
-        alias: Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus
+    Somnambulist\Components\Commands\CommandBus:
+        alias: Somnambulist\Components\Commands\Adapters\MessengerCommandBus
         public: true
 
-    Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus:
+    Somnambulist\Components\Queries\Adapters\MessengerQueryBus:
 
-    Somnambulist\Components\Domain\Queries\QueryBus:
-        alias: Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus
+    Somnambulist\Components\Queries\QueryBus:
+        alias: Somnambulist\Components\Queries\Adapters\MessengerQueryBus
         public: true
 ```
 
@@ -124,7 +124,7 @@ To enable the event subscriber add the following to your `services.yaml`:
 
 ```yaml
 services:
-    Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher:
+    Somnambulist\Components\Events\Publishers\DoctrineEventPublisher:
         tags: [ 'doctrine.event_subscriber' ]
 ```
 
@@ -153,7 +153,7 @@ Add the following service to your `services.yaml` or another service file:
 
 ```yaml
 services:
-    Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+    Somnambulist\Components\Events\Adapters\DomainEventNormalizer:
         tags: [ 'serializer.normalizer' ]
 ```
 
@@ -169,10 +169,10 @@ an array of strings in the service definition:
 
 ```yaml
 services:
-    Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+    Somnambulist\Components\Events\Adapters\DomainEventNormalizer:
         tags: [ 'serializer.normalizer' ]
         arguments:
-            $supportedEventPrefixes: [ 'App\Domain\Events\', 'Service\Context\Domain\Events' ]
+            $supportedEventPrefixes: [ 'App\Events\', 'Service\Context\Events' ]
 ```
 
 __Note:__ any event mentioned should follow the structure exported by `AbstractEvent::toArray`.

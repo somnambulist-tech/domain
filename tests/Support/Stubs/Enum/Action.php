@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Enum;
+namespace Somnambulist\Components\Tests\Support\Stubs\Enum;
 
-use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Models\AbstractEnumeration;
 
 /**
  * @method static Action CREATE()

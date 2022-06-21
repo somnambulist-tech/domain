@@ -1,13 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Commands;
+namespace Somnambulist\Components\Commands;
 
-/**
- * Interface CommandBus
- *
- * @package    Somnambulist\Components\Domain\Commands
- * @subpackage Somnambulist\Components\Domain\Commands\CommandBus
- */
 interface CommandBus
 {
     /**

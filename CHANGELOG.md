@@ -1,6 +1,21 @@
 Change Log
 ==========
 
+2022-07-07 - 4.7.0
+------------------
+
+ * Add `DateFormat` with all the various date formatting letters as constants
+ * Add `DateFormatBuilder` for descriptively building date formats
+
+2022-06-21
+----------
+
+ * Re-namespace to remove `Domain`, class aliases registered for BC
+ * Remove many unnecessary class level docblock comments
+ * Move `Entities` to `Models`, classes are aliased to preserve previous for BC
+ * Add `AbstractSurrogateEntity` for entities with nullable identities
+ * Add extra documentation in docblock headers in several model classes
+
 2022-05-26 - 4.6.0
 ------------------
 

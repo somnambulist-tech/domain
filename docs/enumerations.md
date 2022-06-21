@@ -17,7 +17,7 @@ Continuing with the above example of HTTP verb, we create an enumeration as foll
 <?php
 namespace App\Domain;
 
-use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Models\AbstractEnumeration;
 
 final class HTTPMethod extends AbstractEnumeration
 {
@@ -60,7 +60,7 @@ our instances:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AbstractMultiton;
+use Somnambulist\Components\Models\AbstractMultiton;
 
 final class Planet extends AbstractMultiton
 {
@@ -87,11 +87,10 @@ when casting to string:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AbstractMultiton;
+use Somnambulist\Components\Models\AbstractMultiton;
 
 final class Planet extends AbstractMultiton
 {
-
     public function toString(): string
     {
         return (string)$this->name();

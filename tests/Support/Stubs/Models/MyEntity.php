@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityAddedAnotherEntity;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityNameUpdatedEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityWasRemovedEvent;
+use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityAddedAnotherEntity;
+use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityNameUpdatedEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityWasRemovedEvent;
 
 class MyEntity extends AggregateRoot
 {

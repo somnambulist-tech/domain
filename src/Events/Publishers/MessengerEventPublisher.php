@@ -1,15 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Publishers;
+namespace Somnambulist\Components\Events\Publishers;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Events\AbstractEvent;
 
-/**
- * Class DomainEventPublisher
- *
- * @package    Somnambulist\Components\Domain\Events\Publishers\Messenger
- * @subpackage Somnambulist\Components\Domain\Events\Publishers\Messenger\DomainEventPublisher
- */
 class MessengerEventPublisher extends AbstractEventPublisher
 {
     public function dispatch(): void

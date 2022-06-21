@@ -1,32 +1,26 @@
 <?php
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine;
+namespace Somnambulist\Components\Tests\Doctrine;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
-use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
-use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Entities\Types\Money\Currency;
-use Somnambulist\Components\Domain\Entities\Types\Money\Money;
-use Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\DateTime\TimeZone;
+use Somnambulist\Components\Models\Types\Geography\Country;
+use Somnambulist\Components\Models\Types\Identity\EmailAddress;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Models\Types\Money\Currency;
+use Somnambulist\Components\Models\Types\Money\Money;
+use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
+use Somnambulist\Components\Tests\Support\Stubs\Models\Order;
+use Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
 
 /**
- * Class XmlMappingTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\XmlMappingTest
- *
  * @group doctrine
  * @group doctrine-mapping-xml
  */
 class XmlMappingTest extends TestCase
 {
-
     use BuildDoctrineInstance;
 
     public function testCanPersistAndRestoreValueObjectsAndEnumerations()

@@ -1,15 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Doctrine\Behaviours\EntityLocator;
 
-use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
 
-/**
- * Trait FindBySlug
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindBySlug
- */
 trait FindBySlug
 {
     abstract protected function getEntityName();

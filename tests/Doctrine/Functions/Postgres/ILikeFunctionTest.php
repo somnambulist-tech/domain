@@ -1,24 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Tests\Doctrine\Functions\Postgres;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Functions\Postgres\IlikeFunction;
-use Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
+use Somnambulist\Components\Doctrine\Functions\Postgres\IlikeFunction;
+use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
 /**
- * Class ILikeFunctionTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres\ILikeFunctionTest
- *
  * @group doctrine
  * @group doctrine-functions
  * @group doctrine-functions-ilike
  */
 class ILikeFunctionTest extends TestCase
 {
-
     use BuildDoctrineInstance;
 
     public function testGetSql()
@@ -26,7 +20,7 @@ class ILikeFunctionTest extends TestCase
         $this->em->getConfiguration()->addCustomStringFunction('ILIKE', IlikeFunction::class);
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order a WHERE ILIKE(a.name, :name) = true')
+            ->createQuery('SELECT a FROM Somnambulist\Components\Tests\Support\Stubs\Models\Order a WHERE ILIKE(a.name, :name) = true')
         ;
         $sql = $query->getSQL();
 

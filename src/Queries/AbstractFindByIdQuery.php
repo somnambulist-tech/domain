@@ -1,20 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Queries;
+namespace Somnambulist\Components\Queries;
 
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Models\Types\Identity\AbstractIdentity;
 
-/**
- * Class AbstractFindByIdQuery
- *
- * @package    Somnambulist\Components\Domain\Queries
- * @subpackage Somnambulist\Components\Domain\Queries\AbstractFindByIdQuery
- */
 abstract class AbstractFindByIdQuery extends AbstractQuery
 {
-    private Uuid $id;
+    private AbstractIdentity $id;
 
-    public function __construct(Uuid $id)
+    public function __construct(AbstractIdentity $id)
     {
         $this->id = $id;
     }
@@ -24,14 +18,14 @@ abstract class AbstractFindByIdQuery extends AbstractQuery
         return (string)$this->id;
     }
 
-    public function getId(): Uuid
+    public function getId(): AbstractIdentity
     {
         trigger_deprecation('somnambulist/domain', '4.6.0', 'Use id() instead');
 
         return $this->id();
     }
 
-    public function id(): Uuid
+    public function id(): AbstractIdentity
     {
         return $this->id;
     }

@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Events\Decorators;
+namespace Somnambulist\Components\Tests\Events\Decorators;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Events\Decorators\DecorateWithRequestId;
-use Somnambulist\Components\Domain\Events\Decorators\DecorateWithUserData;
-use Somnambulist\Components\Domain\Events\Publishers\MessengerEventPublisher;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners\AssertingEventBus;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Events\Decorators\DecorateWithRequestId;
+use Somnambulist\Components\Events\Decorators\DecorateWithUserData;
+use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
+use Somnambulist\Components\Tests\Support\Stubs\EventListeners\AssertingEventBus;
+use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -18,12 +18,6 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * Class EventDecoratorsTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Events\Decorators
- * @subpackage Somnambulist\Components\Domain\Tests\Events\Decorators\EventDecoratorsTest
- */
 class EventDecoratorsTest extends TestCase
 {
 

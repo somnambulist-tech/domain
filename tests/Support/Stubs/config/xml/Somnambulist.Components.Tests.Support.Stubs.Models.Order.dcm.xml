@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Somnambulist\Components\Tests\Support\Stubs\Models\Order" table="orders">
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+
+        <embedded name="orderRef" class="Somnambulist\Components\Models\Types\Identity\Uuid" use-column-prefix="false" />
+        <embedded name="purchaser" class="Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser" />
+        <embedded name="total" class="Somnambulist\Components\Models\Types\Money\Money" />
+
+        <field name="properties" type="json" />
+        <field name="name" type="string" nullable="true"/>
+        <field name="createdAt" type="datetime"/>
+    </entity>
+</doctrine-mapping>

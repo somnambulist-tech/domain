@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers;
+namespace Somnambulist\Components\Tests\Support\Stubs\Helpers;
 
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Gender;
+use Somnambulist\Components\Tests\Support\Stubs\Enum\Gender;
 
 class Serializer
 {

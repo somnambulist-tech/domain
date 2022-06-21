@@ -24,7 +24,7 @@ code (e.g.: AppBundle::boot or AppServiceProvider::register|boot):
 
 ```php
 <?php
-Somnambulist\Components\Domain\Doctrine\TypeBootstrapper::registerEnumerations();
+Somnambulist\Components\Doctrine\TypeBootstrapper::registerEnumerations();
 ```
 
 This will pre-register the following enumerations:
@@ -69,7 +69,7 @@ To register all the standard types add the following to your application bootstr
 
 ```php
 <?php
-Somnambulist\Components\Domain\Doctrine\TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
+Somnambulist\Components\Doctrine\TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
 ```
 
 __Note:__ if you register `uuid` as a type, and then use it in e.g.: an embeddable your
@@ -100,18 +100,18 @@ To embed the value-objects instead of using type casting:
 ```yaml
 embedded:
     contact:
-        class: Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress
+        class: Somnambulist\Components\Models\Types\Identity\EmailAddress
         
     homepage:
-        class: Somnambulist\Components\Domain\Entities\Types\Web\Url
+        class: Somnambulist\Components\Models\Types\Web\Url
 ```
 
 Or in XML format:
 
 ```xml
 <entity name="My\Entity">
-    <embedded name="contact" class="Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress" />
-    <embedded name="homepage" class="Somnambulist\Components\Domain\Entities\Types\Web\Url" />
+    <embedded name="contact" class="Somnambulist\Components\Models\Types\Identity\EmailAddress" />
+    <embedded name="homepage" class="Somnambulist\Components\Models\Types\Web\Url" />
 </entity>
 ```
 
@@ -146,12 +146,12 @@ doctrine:
                 is_bundle: false
                 prefix:    App\Entities
 
-            Somnambulist\Components\Domain\Entities\Types:
+            Somnambulist\Components\Models\Types:
                 mapping:   true
                 type:      xml
                 dir:       '%kernel.project_dir%/config/mappings/somnambulist'
                 is_bundle: false
-                prefix:    Somnambulist\Components\Domain\Entities\Types
+                prefix:    Somnambulist\Components\Models\Types
 ```
 
 Then either copy or symlink the appropriate config files from vendor config folder to your projects

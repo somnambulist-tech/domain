@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Functions;
+namespace Somnambulist\Components\Doctrine\Functions;
 
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -36,9 +36,6 @@ use Doctrine\ORM\Query\SqlWalker;
  * - query within a subset of all the available types
  *
  * Copyright Jason Hofer https://gist.github.com/jasonhofer/8420677
- *
- * @package    Somnambulist\Components\Domain\Doctrine
- * @subpackage Somnambulist\Components\Domain\Doctrine\Functions
  */
 class TypeFunction extends FunctionNode
 {

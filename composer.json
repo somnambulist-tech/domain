@@ -19,12 +19,27 @@
     ],
     "autoload": {
         "psr-4": {
-            "Somnambulist\\Components\\Domain\\": "src/"
-        }
+            "Somnambulist\\Components\\Commands\\": "src/Commands",
+            "Somnambulist\\Components\\Doctrine\\": "src/Doctrine",
+            "Somnambulist\\Components\\Models\\": "src/Models",
+            "Somnambulist\\Components\\Events\\": "src/Events",
+            "Somnambulist\\Components\\Jobs\\": "src/Jobs",
+            "Somnambulist\\Components\\Queries\\": "src/Queries",
+            "Somnambulist\\Components\\Utils\\": "src/Utils"
+        },
+        "files": [
+            "src/classmap.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Somnambulist\\Components\\Domain\\Tests\\": "tests/"
+            "Somnambulist\\Components\\Tests\\Commands\\": "tests/Commands",
+            "Somnambulist\\Components\\Tests\\Doctrine\\": "tests/Doctrine",
+            "Somnambulist\\Components\\Tests\\Models\\": "tests/Models",
+            "Somnambulist\\Components\\Tests\\Events\\": "tests/Events",
+            "Somnambulist\\Components\\Tests\\Queries\\": "tests/Queries",
+            "Somnambulist\\Components\\Tests\\Utils\\": "tests/Utils",
+            "Somnambulist\\Components\\Tests\\Support\\": "tests/Support"
         }
     },
     "require": {
@@ -40,6 +55,7 @@
     },
     "require-dev": {
         "ext-pdo": "*",
+        "doctrine/doctrine-bundle": "^2.7.0",
         "doctrine/orm": "^2.11",
         "pagerfanta/pagerfanta": "^3.6",
         "phpunit/phpunit": "^9.5",

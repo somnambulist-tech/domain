@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Entities\Behaviours\AggregateEntityCollectionHelper;
-use Somnambulist\Components\Domain\Entities\Types\Auth\Password;
-use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserAuthenticationDetailsUpdated;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserCreated;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserRegistrationComplete;
+use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Models\Behaviours\AggregateEntityCollectionHelper;
+use Somnambulist\Components\Models\Types\Auth\Password;
+use Somnambulist\Components\Models\Types\Identity\EmailAddress;
+use Somnambulist\Components\Tests\Support\Stubs\Events\UserAuthenticationDetailsUpdated;
+use Somnambulist\Components\Tests\Support\Stubs\Events\UserCreated;
+use Somnambulist\Components\Tests\Support\Stubs\Events\UserRegistrationComplete;
 
 /**
  * Class User
  *
- * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Models\User
+ * @package    Somnambulist\Components\Tests\Support\Stubs\Models
+ * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\User
  */
 class User extends AggregateRoot
 {

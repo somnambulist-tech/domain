@@ -1,18 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Queries\Adapters;
+namespace Somnambulist\Components\Queries\Adapters;
 
-use Somnambulist\Components\Domain\Queries\AbstractQuery;
-use Somnambulist\Components\Domain\Queries\QueryBus;
+use Somnambulist\Components\Queries\AbstractQuery;
+use Somnambulist\Components\Queries\QueryBus;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-/**
- * Class MessengerQueryBus
- *
- * @package    Somnambulist\Components\Domain\Queries\Adapters
- * @subpackage Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus
- */
 final class MessengerQueryBus implements QueryBus
 {
     use HandleTrait;

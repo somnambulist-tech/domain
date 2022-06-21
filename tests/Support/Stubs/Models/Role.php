@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
-use Somnambulist\Components\Domain\Entities\AbstractEnumeration;
+use Somnambulist\Components\Models\AbstractEnumeration;
 
 /**
  * Class Role
  *
- * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Role
+ * @package    Somnambulist\Components\Tests\Support\Stubs\Models
+ * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\Role
  */
 final class Role extends AbstractEnumeration
 {

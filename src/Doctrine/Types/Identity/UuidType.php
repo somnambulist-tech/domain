@@ -1,15 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types\Identity;
+namespace Somnambulist\Components\Doctrine\Types\Identity;
 
-use Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Doctrine\Types\AbstractIdentityType;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
 
 /**
- * Class UuidType
+ * Store Uuid instances as a type instead of as an embeddable, allows UUID
+ * objects to be used as an id.
  *
- * @package    Somnambulist\Components\Domain\Doctrine\Types
- * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Identity\UuidType
+ * Note: not recommended for use inside other value objects as an instance of UUID
+ * will be hydrated instead of the string value.
  */
 class UuidType extends AbstractIdentityType
 {

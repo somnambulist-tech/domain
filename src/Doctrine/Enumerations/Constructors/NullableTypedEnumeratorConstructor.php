@@ -1,17 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors;
+namespace Somnambulist\Components\Doctrine\Enumerations\Constructors;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Eloquent\Enumeration\AbstractEnumeration;
 use InvalidArgumentException;
 
-/**
- * Class NullableTypedEnumeratorConstructor
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors
- * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\NullableTypedEnumeratorConstructor
- */
 class NullableTypedEnumeratorConstructor
 {
     public function __construct(private string $class)

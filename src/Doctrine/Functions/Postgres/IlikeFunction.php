@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
@@ -9,24 +9,15 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
- * Class IlikeFunction
+ * MathTextFunction ::= "ILIKE" "(" StringPrimary "," StringPrimary ")"
  *
+ * Originally from:
  * @link https://github.com/fabiofumarola/edb/blob/master/src/Kdde/EdbBundle/DQL/ILIKE.php
- *
- * @package    Somnambulist\Components\Domain\Doctrine
- * @subpackage Somnambulist\Components\Domain\Doctrine\Functions\Postgres
  */
 class IlikeFunction extends FunctionNode
 {
-    /**
-     * @var Node
-     */
-    protected $field;
-
-    /**
-     * @var Node
-     */
-    protected $value;
+    protected mixed $field;
+    protected mixed $value;
 
     public function parse(Parser $parser): void
     {

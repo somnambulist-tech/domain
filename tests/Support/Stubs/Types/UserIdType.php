@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Types;
+namespace Somnambulist\Components\Tests\Support\Stubs\Types;
 
-use Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId;
+use Somnambulist\Components\Doctrine\Types\AbstractIdentityType;
+use Somnambulist\Components\Tests\Support\Stubs\Models\UserId;
 
 /**
  * Class UserIdType
  *
- * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Types
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Types\UserIdType
+ * @package    Somnambulist\Components\Tests\Support\Stubs\Types
+ * @subpackage Somnambulist\Components\Tests\Support\Stubs\Types\UserIdType
  */
 class UserIdType extends AbstractIdentityType
 {

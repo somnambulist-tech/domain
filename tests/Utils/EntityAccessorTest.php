@@ -1,24 +1,21 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Utils;
+namespace Somnambulist\Components\Tests\Utils;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\TimeZone;
-use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
-use Somnambulist\Components\Domain\Entities\Types\Identity\EmailAddress;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Entities\Types\Money\Currency;
-use Somnambulist\Components\Domain\Entities\Types\Money\Money;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
-use Somnambulist\Components\Domain\Utils\EntityAccessor;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\DateTime\TimeZone;
+use Somnambulist\Components\Models\Types\Geography\Country;
+use Somnambulist\Components\Models\Types\Identity\EmailAddress;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Models\Types\Money\Currency;
+use Somnambulist\Components\Models\Types\Money\Money;
+use Somnambulist\Components\Tests\Support\Stubs\Models\Order;
+use Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
+use Somnambulist\Components\Utils\EntityAccessor;
 
 /**
- * Class EntityAccessorTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Utils
- * @subpackage Somnambulist\Components\Domain\Tests\Utils\EntityAccessorTest
+ * @group utils
  */
 class EntityAccessorTest extends TestCase
 {

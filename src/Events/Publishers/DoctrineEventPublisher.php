@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Publishers;
+namespace Somnambulist\Components\Events\Publishers;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -8,20 +8,15 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Events;
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents;
-use Somnambulist\Components\Domain\Events\Behaviours\CanGatherEventsForDispatch;
-use Somnambulist\Components\Domain\Events\Behaviours\CanSortEvents;
-use Somnambulist\Components\Domain\Events\EventBus;
+use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Events\Behaviours\CanDecorateEvents;
+use Somnambulist\Components\Events\Behaviours\CanGatherEventsForDispatch;
+use Somnambulist\Components\Events\Behaviours\CanSortEvents;
+use Somnambulist\Components\Events\EventBus;
 
 /**
- * Class DomainEventListener
- *
  * Based on the Gist by B. Eberlei https://gist.github.com/beberlei/53cd6580d87b1f5cd9ca
- *
- * @package    Somnambulist\Components\Domain\Events\Publishers\Doctrine\Subscribers
- * @subpackage Somnambulist\Components\Domain\Events\Publishers\Doctrine\Subscribers\DomainEventPublisher
  */
 class DoctrineEventPublisher implements EventSubscriber
 {

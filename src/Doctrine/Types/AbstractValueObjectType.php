@@ -1,22 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types;
+namespace Somnambulist\Components\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Models\AbstractValueObject;
 
 /**
- * Class AbstractValueObjectType
- *
  * For simple (single value) Value Objects, allows a custom type to be mapped to Doctrine.
  * This allows the definition to be <field name="" type="name_here" /> instead of needing
  * to use an embedded field.
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Types
- * @subpackage Somnambulist\Components\Domain\Doctrine\Types\AbstractValueObjectType
  */
 abstract class AbstractValueObjectType extends Type
 {

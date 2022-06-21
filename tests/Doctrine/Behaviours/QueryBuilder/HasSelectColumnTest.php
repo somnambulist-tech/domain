@@ -1,25 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder;
+namespace Somnambulist\Components\Tests\Doctrine\Behaviours\QueryBuilder;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder\HasSelectColumn;
+use Somnambulist\Components\Doctrine\Behaviours\QueryBuilder\HasSelectColumn;
 
 /**
- * Class HasSelectColumnTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder\HasSelectColumnTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-dbal
  */
 class HasSelectColumnTest extends TestCase
 {
-
     public function testCanCheckForColumnInSelect()
     {
         $test = $this->getMockForTrait(HasSelectColumn::class);

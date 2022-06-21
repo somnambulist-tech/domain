@@ -1,18 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder;
+namespace Somnambulist\Components\Doctrine\Behaviours\QueryBuilder;
 
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
- * Trait HasJoinAlias
- *
  * Adapted from the DQL solution provided by:
+ *
  * @author zuzuleinen via Stackoverflow
  * @link https://stackoverflow.com/a/27020853
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder
- * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder\HasJoinAlias
  */
 trait HasJoinAlias
 {

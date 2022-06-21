@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners;
+namespace Somnambulist\Components\Tests\Support\Stubs\EventListeners;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Events\EventBus;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Events\EventBus;
 use function array_key_exists;
 
 class AssertingEventBus implements EventBus

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types\DateTime;
+namespace Somnambulist\Components\Doctrine\Types\DateTime;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
 
 /**
  * Type that maps an SQL DATE to a Carbon object.
@@ -15,33 +15,21 @@ use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
  */
 class DateType extends Type
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return Types::DATE_MUTABLE;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
         return $platform->getDateTypeDeclarationSQL($column);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {
         return ($value !== null) ? $value->format($platform->getDateFormatString()) : null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function convertToPHPValue($value, AbstractPlatform $platform): mixed
     {
         if ($value === null || $value instanceof DateTime) {

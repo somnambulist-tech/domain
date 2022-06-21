@@ -24,11 +24,10 @@ For example:
 ```php
 <?php
 use Assert\Assert;
-use Somnambulist\Components\Domain\Entities\AbstractValueObject;
+use Somnambulist\Components\Models\AbstractValueObject;
 
 final class Uuid extends AbstractValueObject
 {
-
     private string $uuid;
 
     public function __construct(string $uuid)

@@ -1,20 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Publishers;
+namespace Somnambulist\Components\Events\Publishers;
 
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents;
-use Somnambulist\Components\Domain\Events\Behaviours\CanGatherEventsForDispatch;
-use Somnambulist\Components\Domain\Events\Behaviours\CanSortEvents;
-use Somnambulist\Components\Domain\Events\EventBus;
+use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Events\Behaviours\CanDecorateEvents;
+use Somnambulist\Components\Events\Behaviours\CanGatherEventsForDispatch;
+use Somnambulist\Components\Events\Behaviours\CanSortEvents;
+use Somnambulist\Components\Events\EventBus;
 
-/**
- * Class AbstractEventPublisher
- *
- * @package    Somnambulist\Components\Domain\Events\Publishers
- * @subpackage Somnambulist\Components\Domain\Events\Publishers\AbstractEventPublisher
- */
 abstract class AbstractEventPublisher
 {
     use CanDecorateEvents;

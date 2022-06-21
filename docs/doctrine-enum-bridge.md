@@ -23,7 +23,7 @@ For example, in a Symfony project, in your AppBundle class:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AppBundle extends Bundle
@@ -50,7 +50,7 @@ In Laravel, add to your AppServiceProvider (`register` and `boot` should both wo
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -91,7 +91,7 @@ constructor:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AppBundle extends Bundle
@@ -152,11 +152,11 @@ VO to the ISO code for storage. These would be setup as follows:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CountryConstructor;
-use Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor;
-use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer;
-use Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer;
-use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Doctrine\Enumerations\Constructors\CountryConstructor;
+use Somnambulist\Components\Doctrine\Enumerations\Constructors\CurrencyConstructor;
+use Somnambulist\Components\Doctrine\Enumerations\Serializers\CountrySerializer;
+use Somnambulist\Components\Doctrine\Enumerations\Serializers\CurrencySerializer;
+use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AppBundle extends Bundle
@@ -174,7 +174,7 @@ If you use the fully qualified class name via the `::class` constant, then the D
 reference this type:
 
 ```xml
-<field name="currency" type="Somnambulist\Components\Domain\Entities\Types\Money\Currency" length="3" nullable="false"/>
+<field name="currency" type="Somnambulist\Components\Models\Types\Money\Currency" length="3" nullable="false"/>
 ```
 vs:
 ```xml

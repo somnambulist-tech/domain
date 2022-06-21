@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Behaviours;
+namespace Somnambulist\Components\Tests\Support\Behaviours;
 
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
@@ -8,20 +8,13 @@ use Doctrine\ORM\Mapping\Driver\XmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use Exception;
 use PDOException;
-use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\AbstractUser;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Customer;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order;
+use Somnambulist\Components\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Tests\Support\Stubs\Models\AbstractUser;
+use Somnambulist\Components\Tests\Support\Stubs\Models\Customer;
+use Somnambulist\Components\Tests\Support\Stubs\Models\Order;
 
-/**
- * Trait BuildDoctrineInstance
- *
- * @package    Somnambulist\Components\Domain\Tests\Support\Behaviours
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance
- */
 trait BuildDoctrineInstance
 {
-
     /**
      * @var EntityManager
      */
@@ -44,7 +37,7 @@ trait BuildDoctrineInstance
         ]);
         $config = new Configuration();
         $config->setProxyDir(sys_get_temp_dir());
-        $config->setProxyNamespace('Somnambulist\Components\Domain\Tests\Doctrine\Proxies');
+        $config->setProxyNamespace('Somnambulist\Components\Tests\Doctrine\Proxies');
         $config->setMetadataDriverImpl($driver);
 
         TypeBootstrapper::registerEnumerations();

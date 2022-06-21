@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Utils;
+namespace Somnambulist\Components\Utils;
 
 use Closure;
 use ReflectionObject;
@@ -8,12 +8,6 @@ use function is_null;
 use function is_object;
 use function property_exists;
 
-/**
- * Class EntityAccessor
- *
- * @package    Somnambulist\Components\Domain\Utils
- * @subpackage Somnambulist\Components\Domain\Utils\EntityAccessor
- */
 final class EntityAccessor
 {
     private function __construct() {}

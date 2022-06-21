@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types;
+namespace Somnambulist\Components\Doctrine\Types;
 
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -8,14 +8,9 @@ use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 
 /**
- * Class EnumerationBridge
- *
  * This class is based on PhpEnumType from acelaya\doctrine-enum-type:
  *
- * @link       https://github.com/acelaya/doctrine-enum-type/blob/master/src/Type/PhpEnumType.php
- *
- * @package    Somnambulist\Components\Domain\Doctrine
- * @subpackage Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge
+ * @link https://github.com/acelaya/doctrine-enum-type/blob/master/src/Type/PhpEnumType.php
  */
 class EnumerationBridge extends Type
 {
@@ -66,7 +61,7 @@ class EnumerationBridge extends Type
             return;
         }
 
-        $serializer = $serializer ?? fn ($value) => ($value === null) ? null : (string)$value;
+        $serializer = $serializer ?? fn($value) => ($value === null) ? null : (string)$value;
 
         // Register and customize the type
         static::addType($name, static::class);

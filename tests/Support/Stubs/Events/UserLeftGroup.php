@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Events;
+namespace Somnambulist\Components\Tests\Support\Stubs\Events;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Events\AbstractEvent;
 
 /**
  * Class UserLeftGroup
  *
- * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Events
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserLeftGroup
+ * @package    Somnambulist\Components\Tests\Support\Stubs\Events
+ * @subpackage Somnambulist\Components\Tests\Support\Stubs\Events\UserLeftGroup
  */
 class UserLeftGroup extends AbstractEvent
 {

@@ -1,25 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindBySlug;
-use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindBySlug;
+use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
 use stdClass;
 
 /**
- * Class FindBySlugTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindBySlugTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-locator
  */
 class FindBySlugTest extends TestCase
 {
-
     public function testFindBySlugCallsFindOneBy()
     {
         $mock = $this->getMockForTrait(FindBySlug::class);

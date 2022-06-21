@@ -1,24 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Utils;
+namespace Somnambulist\Components\Tests\Utils;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserId;
-use Somnambulist\Components\Domain\Utils\IdentityGenerator;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Tests\Support\Stubs\Models\UserId;
+use Somnambulist\Components\Utils\IdentityGenerator;
 
 /**
- * Class IdentityGeneratorTest
- *
- * @package Somnambulist\Components\Domain\Tests\Utils
- * @subpackage Somnambulist\Components\Domain\Tests\Utils\IdentityGeneratorTest
- *
  * @group utils
  * @group utils-identity-generator
  */
 class IdentityGeneratorTest extends TestCase
 {
-
     public function testRandom()
     {
         $uuid = IdentityGenerator::random();

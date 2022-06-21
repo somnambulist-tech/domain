@@ -1,19 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Adapters;
+namespace Somnambulist\Components\Events\Adapters;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Events\EventBus;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Events\EventBus;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
-/**
- * Class MessengerEventBus
- *
- * @package    Somnambulist\Components\Domain\Events\Adapters
- * @subpackage Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus
- */
 final class MessengerEventBus implements EventBus
 {
     public function __construct(private MessageBusInterface $eventBus)

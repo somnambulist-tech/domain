@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Events\Adapters;
+namespace Somnambulist\Components\Tests\Events\Adapters;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent;
+use Somnambulist\Components\Events\Adapters\MessengerSerializer;
+use Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Stamp\BusNameStamp;
@@ -13,11 +13,6 @@ use function define;
 use function defined;
 
 /**
- * Class MessengerSerializerTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Events\Adapters
- * @subpackage Somnambulist\Components\Domain\Tests\Events\Adapters\MessengerSerializerTest
- *
  * @group events
  * @group events-adapter
  * @group events-adapter-serializer
@@ -35,10 +30,10 @@ class MessengerSerializerTest extends TestCase
     public function testDecode()
     {
         $payload = [
-            'body'    => '{"aggregate":{"class":null,"id":null},"event":{"class":"Somnambulist\\\\Domain\\\\Tests\\\\Support\\\\Stubs\\\\Events\\\\NamespacedEvent","name":"app.namespaced","version":2,"time":1571844439.726061},"context":{"context":"value","user":"user@example.example"},"payload":{"foo":"bar"}}',
+            'body'    => '{"aggregate":{"class":null,"id":null},"event":{"class":"Somnambulist\\\\Tests\\\\Support\\\\Stubs\\\\Events\\\\NamespacedEvent","name":"app.namespaced","version":2,"time":1571844439.726061},"context":{"context":"value","user":"user@example.example"},"payload":{"foo":"bar"}}',
             'headers' =>
                 [
-                    'type'         => 'Somnambulist\\Components\\Domain\\Tests\\Support\\Stubs\\Events\\NamespacedEvent',
+                    'type'         => 'Somnambulist\\Components\\Tests\\Support\\Stubs\\Events\\NamespacedEvent',
                     'Content-Type' => 'application/json',
                 ],
         ];
