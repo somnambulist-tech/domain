@@ -9,7 +9,8 @@ use function get_class;
  * Represents a child entity within an aggregate root.
  *
  * Unlike `AbstractEntity` this implementation expects the identity to be provided
- * externally to the domain from the persistence store.
+ * externally to the domain from the persistence store. An integer type is being
+ * used to avoid performance issues between differing persistence stores.
  */
 abstract class AbstractSurrogateEntity implements CanTestEquality
 {

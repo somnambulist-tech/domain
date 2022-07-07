@@ -291,6 +291,15 @@ in this case the AggregateRoot (that is held in the `root` property on the Abstr
 The second field tells Doctrine that the `id` property is also part of the identity. In effect
 the actual identity of our child entity is now <aggregate_id> + <child_id> and is a compound key.
 
+For database provided identities (surrogate identities), `AbstractSurrogateEntity` and 
+`AbstractSurrogateEntityCollection` can be used as bases instead. Note that both of these
+implementations are intended to be used with integer keys. For other types of identity key, use
+your own logic.
+
+Additionally: it is strongly discouraged to use an abstract entity type in your domain as it
+encourages pushing logic down that is context specific. Generally it is better to duplicate the
+logic per context to avoid future issues should a specific contexts usage change.
+
 ### Firing Domain Events
 
 See [Domain Events](domain-events.md) for integrating various strategies for dispatching

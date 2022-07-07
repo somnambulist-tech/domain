@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Models\Types\Web;
 
 use Assert\Assert;
 
-final class IPv4Address extends IpAddress
+final class IPV4Address extends IpAddress
 {
     public function __construct(string $ip)
     {

@@ -88,7 +88,7 @@ class_alias('Somnambulist\Components\Models\Types\Money\Currency', 'Somnambulist
 class_alias('Somnambulist\Components\Models\Types\Money\Money', 'Somnambulist\Components\Domain\Entities\Types\Money\Money');
 class_alias('Somnambulist\Components\Models\Types\PhoneNumber', 'Somnambulist\Components\Domain\Entities\Types\PhoneNumber');
 class_alias('Somnambulist\Components\Models\Types\Web\IPV6Address', 'Somnambulist\Components\Domain\Entities\Types\Web\IPV6Address');
-class_alias('Somnambulist\Components\Models\Types\Web\IPv4Address', 'Somnambulist\Components\Domain\Entities\Types\Web\IPv4Address');
+class_alias('Somnambulist\Components\Models\Types\Web\IPV4Address', 'Somnambulist\Components\Domain\Entities\Types\Web\IPv4Address');
 class_alias('Somnambulist\Components\Models\Types\Web\IpAddress', 'Somnambulist\Components\Domain\Entities\Types\Web\IpAddress');
 class_alias('Somnambulist\Components\Models\Types\Web\Url', 'Somnambulist\Components\Domain\Entities\Types\Web\Url');
 class_alias('Somnambulist\Components\Events\AbstractEvent', 'Somnambulist\Components\Domain\Events\AbstractEvent');

@@ -1,6 +1,6 @@
 ## Value Objects Library
 
-Value Objects (VOs) are Immutable domain objects that represent some value in your domain model but without
+Value Objects (VOs) are immutable domain objects that represent some value in your domain model but without
 a thread of continuous identity i.e. their identity is through their properties. VOs allow your entities to
 encapsulate properties and provide type safety.
 
@@ -58,3 +58,41 @@ toString() method must cast null to a string to avoid type errors.
 __Note:__ when referencing UUIDs if the UUID type is registered and your field type is set to `uuid` Doctrine
 will hydrate a Uuid object - not a string. Be sure to use `guid` as the type in these cases; or do not register
 the UUID type mapping, or map that to something else.
+
+### Provided Types
+
+The following generics are provided as part of the `somnambulist/domain` library:
+
+| Type Class                 | Description                                                                                       |
+|----------------------------|---------------------------------------------------------------------------------------------------|
+| Auth\Password              | A hashed password, validation is via the `password_get_info` function                             |
+| Auth\PublicPrivateKey      | A key pair for HMAC signing / validation or other encryption tasks                                |
+| DateTime\DateTime          | Extended `DateTimeImmutable` object with additional helpers                                       |
+| DateTime\DateFormat        | All date formatting options as constants for reference                                            |
+| DateTime\DateFormatBuilder | Aids building a date format through a fluent, descriptive interface                               |
+| DateTime\TimeZone          | Extended `TimeZone` for DateTime component                                                        |
+| Geography\Coordinate       | A latitude / longitude in a specific spatial system                                               |
+| Geography\Country          | An enumerated ISO country object with 2/3/numeric codes                                           |
+| Geography\Srid             | An enumerated spatial system reference number, only a couple are listed                           |
+| Identity\AbstractIdentity  | A base class for validating a UUID as an identity, can be extended to named identity classes      |
+| Identity\Aggregate         | The class name + id for an aggregate root                                                         |
+| Identity\EmailAddress      | A valid email address                                                                             |
+| Identity\ExternalIdentity  | An identity provided by a third party service                                                     |
+| Identity\Id                | A generic identity object that is a UUID                                                          |
+| Identity\Uuid              | A generic named UUID identity object                                                              |
+| Measure\Area               | An area including the units describing that area                                                  |
+| Measure\AreaUnit           | An enumeration of various area measurement types                                                  |
+| Measure\Distance           | A distance including the units describing the distance                                            |
+| Measure\DistanceUnit       | An enumeration of various distance measurement types                                              |
+| Money\Currency             | An enumeration of various ISO currencies including the number of decimal places                   |
+| Money\Money                | Represents an amount of money, not intended to be used for calculations                           |
+| Web\IpAddress              | An abstract base class representing an IP address allowing either V4 or V6 to be used             |
+| Web\IpV4Address            | An IPV4 address                                                                                   |
+| Web\IpV6Address            | An IPV6 address                                                                                   |
+| Web\Url                    | A valid URL, includes helper methods for extracting parts of the URL                              |
+| AbstractType               | An abstract type allowing for user provided types instead of an enumeration                       |
+| PhoneNumber                | A valid E164 phone number, this is a fully qualified +XXYYYY where XX is the country dialing code |
+
+For the enumerations, additional values can be suggested by creating issues, or making a PR with the suggestions.
+
+Note: for SRID values, there are thousands of potential systems - however many are geographic specific.

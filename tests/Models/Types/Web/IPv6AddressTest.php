@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Tests\Models\Types\Web;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Models\Types\Web\IPv4Address;
+use Somnambulist\Components\Models\Types\Web\IPV4Address;
 use Somnambulist\Components\Models\Types\Web\IPV6Address;
 
 /**
@@ -30,7 +30,7 @@ class IPv6AddressTest extends TestCase
     public function testCanCompare()
     {
         $vo1 = new IPV6Address('::10');
-        $vo2 = new IPv4Address('192.168.0.2');
+        $vo2 = new IPV4Address('192.168.0.2');
 
         $this->assertTrue($vo1->equals($vo1));
         $this->assertFalse($vo2->equals($vo1));

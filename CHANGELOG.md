@@ -6,6 +6,7 @@ Change Log
 
  * Add `DateFormat` with all the various date formatting letters as constants
  * Add `DateFormatBuilder` for descriptively building date formats
+ * Correct capitalisation of `IPv4Address` -> `IPV4Address`
 
 2022-06-21
 ----------
