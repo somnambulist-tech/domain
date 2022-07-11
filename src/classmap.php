@@ -1,7 +1,6 @@
 <?php declare(strict_types=1);
 # temporary aliases for BC 4 -> 5
 class_alias('Somnambulist\Components\Commands\AbstractCommand', 'Somnambulist\Components\Domain\Commands\AbstractCommand');
-class_alias('Somnambulist\Components\Commands\Adapters\MessengerCommandBus', 'Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus');
 class_alias('Somnambulist\Components\Commands\CommandBus', 'Somnambulist\Components\Domain\Commands\CommandBus');
 class_alias('Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindByName', 'Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByName');
 class_alias('Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindBySlug', 'Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindBySlug');
@@ -19,28 +18,8 @@ class_alias('Somnambulist\Components\Doctrine\Enumerations\Constructors\TypedEnu
 class_alias('Somnambulist\Components\Doctrine\Enumerations\Constructors\TypedMultitonConstructor', 'Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\TypedMultitonConstructor');
 class_alias('Somnambulist\Components\Doctrine\Enumerations\Serializers\CountrySerializer', 'Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer');
 class_alias('Somnambulist\Components\Doctrine\Enumerations\Serializers\CurrencySerializer', 'Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CurrencySerializer');
-class_alias('Somnambulist\Components\Doctrine\Functions\Postgres\CastToFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\Postgres\CastToFunction');
-class_alias('Somnambulist\Components\Doctrine\Functions\Postgres\IlikeFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\Postgres\IlikeFunction');
-class_alias('Somnambulist\Components\Doctrine\Functions\Postgres\ReplaceFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\Postgres\ReplaceFunction');
-class_alias('Somnambulist\Components\Doctrine\Functions\TypeFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\TypeFunction');
 class_alias('Somnambulist\Components\Doctrine\Paginator', 'Somnambulist\Components\Domain\Doctrine\Paginator');
 class_alias('Somnambulist\Components\Doctrine\TypeBootstrapper', 'Somnambulist\Components\Domain\Doctrine\TypeBootstrapper');
-class_alias('Somnambulist\Components\Doctrine\Types\AbstractIdentityType', 'Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType');
-class_alias('Somnambulist\Components\Doctrine\Types\AbstractValueObjectType', 'Somnambulist\Components\Domain\Doctrine\Types\AbstractValueObjectType');
-class_alias('Somnambulist\Components\Doctrine\Types\Auth\PasswordType', 'Somnambulist\Components\Domain\Doctrine\Types\Auth\PasswordType');
-class_alias('Somnambulist\Components\Doctrine\Types\DateTime\DateTimeType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\DateTimeType');
-class_alias('Somnambulist\Components\Doctrine\Types\DateTime\DateTimeTzType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\DateTimeTzType');
-class_alias('Somnambulist\Components\Doctrine\Types\DateTime\DateType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\DateType');
-class_alias('Somnambulist\Components\Doctrine\Types\DateTime\TimeType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\TimeType');
-class_alias('Somnambulist\Components\Doctrine\Types\EnumerationBridge', 'Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge');
-class_alias('Somnambulist\Components\Doctrine\Types\Identity\EmailAddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Identity\EmailAddressType');
-class_alias('Somnambulist\Components\Doctrine\Types\Identity\IdType', 'Somnambulist\Components\Domain\Doctrine\Types\Identity\IdType');
-class_alias('Somnambulist\Components\Doctrine\Types\Identity\UuidType', 'Somnambulist\Components\Domain\Doctrine\Types\Identity\UuidType');
-class_alias('Somnambulist\Components\Doctrine\Types\JsonCollectionType', 'Somnambulist\Components\Domain\Doctrine\Types\JsonCollectionType');
-class_alias('Somnambulist\Components\Doctrine\Types\PhoneNumberType', 'Somnambulist\Components\Domain\Doctrine\Types\PhoneNumberType');
-class_alias('Somnambulist\Components\Doctrine\Types\Web\IPV4AddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\IPV4AddressType');
-class_alias('Somnambulist\Components\Doctrine\Types\Web\IPV6AddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\IPV6AddressType');
-class_alias('Somnambulist\Components\Doctrine\Types\Web\UrlType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\UrlType');
 class_alias('Somnambulist\Components\Models\AbstractEntity', 'Somnambulist\Components\Domain\Entities\AbstractEntity');
 class_alias('Somnambulist\Components\Models\AbstractEntityCollection', 'Somnambulist\Components\Domain\Entities\AbstractEntityCollection');
 class_alias('Somnambulist\Components\Models\AbstractEnumeration', 'Somnambulist\Components\Domain\Entities\AbstractEnumeration');
@@ -90,9 +69,6 @@ class_alias('Somnambulist\Components\Models\Types\Web\IPV4Address', 'Somnambulis
 class_alias('Somnambulist\Components\Models\Types\Web\IpAddress', 'Somnambulist\Components\Domain\Entities\Types\Web\IpAddress');
 class_alias('Somnambulist\Components\Models\Types\Web\Url', 'Somnambulist\Components\Domain\Entities\Types\Web\Url');
 class_alias('Somnambulist\Components\Events\AbstractEvent', 'Somnambulist\Components\Domain\Events\AbstractEvent');
-class_alias('Somnambulist\Components\Events\Adapters\DomainEventNormalizer', 'Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer');
-class_alias('Somnambulist\Components\Events\Adapters\MessengerEventBus', 'Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus');
-class_alias('Somnambulist\Components\Events\Adapters\MessengerSerializer', 'Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer');
 class_alias('Somnambulist\Components\Events\Behaviours\CanDecorateEvents', 'Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents');
 class_alias('Somnambulist\Components\Events\Behaviours\CanGatherEventsForDispatch', 'Somnambulist\Components\Domain\Events\Behaviours\CanGatherEventsForDispatch');
 class_alias('Somnambulist\Components\Events\Behaviours\CanSortEvents', 'Somnambulist\Components\Domain\Events\Behaviours\CanSortEvents');
@@ -101,15 +77,12 @@ class_alias('Somnambulist\Components\Events\Decorators\DecorateWithUserData', 'S
 class_alias('Somnambulist\Components\Events\EventBus', 'Somnambulist\Components\Domain\Events\EventBus');
 class_alias('Somnambulist\Components\Events\EventDecoratorInterface', 'Somnambulist\Components\Domain\Events\EventDecoratorInterface');
 class_alias('Somnambulist\Components\Events\Publishers\AbstractEventPublisher', 'Somnambulist\Components\Domain\Events\Publishers\AbstractEventPublisher');
-class_alias('Somnambulist\Components\Events\Publishers\DoctrineEventPublisher', 'Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher');
 class_alias('Somnambulist\Components\Events\Publishers\MessengerEventPublisher', 'Somnambulist\Components\Domain\Events\Publishers\MessengerEventPublisher');
 class_alias('Somnambulist\Components\Jobs\AbstractJob', 'Somnambulist\Components\Domain\Jobs\AbstractJob');
-class_alias('Somnambulist\Components\Jobs\Adapters\MessengerJobQueue', 'Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue');
 class_alias('Somnambulist\Components\Jobs\JobQueue', 'Somnambulist\Components\Domain\Jobs\JobQueue');
 class_alias('Somnambulist\Components\Queries\AbstractFindByIdQuery', 'Somnambulist\Components\Domain\Queries\AbstractFindByIdQuery');
 class_alias('Somnambulist\Components\Queries\AbstractPaginatableQuery', 'Somnambulist\Components\Domain\Queries\AbstractPaginatableQuery');
 class_alias('Somnambulist\Components\Queries\AbstractQuery', 'Somnambulist\Components\Domain\Queries\AbstractQuery');
-class_alias('Somnambulist\Components\Queries\Adapters\MessengerQueryBus', 'Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus');
 class_alias('Somnambulist\Components\Queries\Behaviours\CanConvertValueToBoolean', 'Somnambulist\Components\Domain\Queries\Behaviours\CanConvertValueToBoolean');
 class_alias('Somnambulist\Components\Queries\Behaviours\CanIncludeRelatedData', 'Somnambulist\Components\Domain\Queries\Behaviours\CanIncludeRelatedData');
 class_alias('Somnambulist\Components\Queries\Behaviours\CanPaginateQuery', 'Somnambulist\Components\Domain\Queries\Behaviours\CanPaginateQuery');
@@ -125,7 +98,40 @@ class_alias('Somnambulist\Components\Utils\Tests\Assertions\AssertHasDomainEvent
 
 if (class_exists('Doctrine\ORM\EntityRepository')) {
     class_alias('Somnambulist\Components\Doctrine\AbstractModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractEntityLocator');
+    class_alias('Somnambulist\Components\Doctrine\Functions\TypeFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\TypeFunction');
+    class_alias('Somnambulist\Components\Doctrine\Functions\Postgres\CastToFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\Postgres\CastToFunction');
+    class_alias('Somnambulist\Components\Doctrine\Functions\Postgres\IlikeFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\Postgres\IlikeFunction');
+    class_alias('Somnambulist\Components\Doctrine\Functions\Postgres\ReplaceFunction', 'Somnambulist\Components\Domain\Doctrine\Functions\Postgres\ReplaceFunction');
+    class_alias('Somnambulist\Components\Events\Publishers\DoctrineEventPublisher', 'Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher');
+}
+if (class_exists('Doctrine\DBAL\Types\Type')) {
+    class_alias('Somnambulist\Components\Doctrine\Types\AbstractIdentityType', 'Somnambulist\Components\Domain\Doctrine\Types\AbstractIdentityType');
+    class_alias('Somnambulist\Components\Doctrine\Types\AbstractValueObjectType', 'Somnambulist\Components\Domain\Doctrine\Types\AbstractValueObjectType');
+    class_alias('Somnambulist\Components\Doctrine\Types\Auth\PasswordType', 'Somnambulist\Components\Domain\Doctrine\Types\Auth\PasswordType');
+    class_alias('Somnambulist\Components\Doctrine\Types\DateTime\DateTimeType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\DateTimeType');
+    class_alias('Somnambulist\Components\Doctrine\Types\DateTime\DateTimeTzType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\DateTimeTzType');
+    class_alias('Somnambulist\Components\Doctrine\Types\DateTime\DateType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\DateType');
+    class_alias('Somnambulist\Components\Doctrine\Types\DateTime\TimeType', 'Somnambulist\Components\Domain\Doctrine\Types\DateTime\TimeType');
+    class_alias('Somnambulist\Components\Doctrine\Types\EnumerationBridge', 'Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge');
+    class_alias('Somnambulist\Components\Doctrine\Types\Identity\EmailAddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Identity\EmailAddressType');
+    class_alias('Somnambulist\Components\Doctrine\Types\Identity\IdType', 'Somnambulist\Components\Domain\Doctrine\Types\Identity\IdType');
+    class_alias('Somnambulist\Components\Doctrine\Types\Identity\UuidType', 'Somnambulist\Components\Domain\Doctrine\Types\Identity\UuidType');
+    class_alias('Somnambulist\Components\Doctrine\Types\JsonCollectionType', 'Somnambulist\Components\Domain\Doctrine\Types\JsonCollectionType');
+    class_alias('Somnambulist\Components\Doctrine\Types\PhoneNumberType', 'Somnambulist\Components\Domain\Doctrine\Types\PhoneNumberType');
+    class_alias('Somnambulist\Components\Doctrine\Types\Web\IPV4AddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\IPV4AddressType');
+    class_alias('Somnambulist\Components\Doctrine\Types\Web\IPV6AddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\IPV6AddressType');
+    class_alias('Somnambulist\Components\Doctrine\Types\Web\UrlType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\UrlType');
 }
 if (class_exists('Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository')) {
     class_alias('Somnambulist\Components\Doctrine\AbstractServiceModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractServiceEntityLocator');
+}
+if (class_exists('Symfony\Component\Serializer\Serializer')) {
+    class_alias('Somnambulist\Components\Events\Adapters\DomainEventNormalizer', 'Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer');
+}
+if (class_exists('Symfony\Component\Messenger\MessageBusInterface')) {
+    class_alias('Somnambulist\Components\Commands\Adapters\MessengerCommandBus', 'Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus');
+    class_alias('Somnambulist\Components\Events\Adapters\MessengerEventBus', 'Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus');
+    class_alias('Somnambulist\Components\Events\Adapters\MessengerSerializer', 'Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer');
+    class_alias('Somnambulist\Components\Jobs\Adapters\MessengerJobQueue', 'Somnambulist\Components\Domain\Jobs\Adapters\MessengerJobQueue');
+    class_alias('Somnambulist\Components\Queries\Adapters\MessengerQueryBus', 'Somnambulist\Components\Domain\Queries\Adapters\MessengerQueryBus');
 }

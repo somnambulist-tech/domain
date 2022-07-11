@@ -5,6 +5,7 @@ Change Log
 ----------
 
  * Fix locator aliases to work without doctrine
+ * Fix additional aliases to work without messenger, serializer, etc.
 
 2022-07-07
 ----------
