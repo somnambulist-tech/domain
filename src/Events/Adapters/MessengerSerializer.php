@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Adapters;
+namespace Somnambulist\Components\Events\Adapters;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Events\AbstractEvent;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\InvalidArgumentException;
 use Symfony\Component\Messenger\Exception\LogicException;
@@ -26,12 +26,6 @@ use function strlen;
 use function substr;
 use function trigger_deprecation;
 
-/**
- * Class MessengerSerializer
- *
- * @package    Somnambulist\Components\Domain\Events\Adapters
- * @subpackage Somnambulist\Components\Domain\Events\Adapters\MessengerSerializer
- */
 class MessengerSerializer implements SerializerInterface
 {
     private const STAMP_HEADER_PREFIX = 'X-Message-Stamp-';

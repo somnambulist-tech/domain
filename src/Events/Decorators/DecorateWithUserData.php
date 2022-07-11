@@ -1,18 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Decorators;
+namespace Somnambulist\Components\Events\Decorators;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Events\EventDecoratorInterface;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Events\EventDecoratorInterface;
 use Symfony\Component\Security\Core\Security;
 use function method_exists;
 
-/**
- * Class DecorateWithUserData
- *
- * @package    Somnambulist\Components\Domain\Events\Decorators
- * @subpackage Somnambulist\Components\Domain\Events\Decorators\DecorateWithUserData
- */
 class DecorateWithUserData implements EventDecoratorInterface
 {
     public function __construct(private Security $security)

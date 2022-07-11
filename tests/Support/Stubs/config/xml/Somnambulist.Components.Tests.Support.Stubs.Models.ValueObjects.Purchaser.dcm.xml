@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <embeddable name="Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser">
+        <embedded name="email" class="Somnambulist\Components\Models\Types\Identity\EmailAddress" use-column-prefix="false" />
+
+        <field name="name" type="string" />
+        <field name="country" type="country" length="3" />
+    </embeddable>
+</doctrine-mapping>

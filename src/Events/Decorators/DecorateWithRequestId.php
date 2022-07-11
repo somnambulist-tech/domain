@@ -1,17 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Decorators;
+namespace Somnambulist\Components\Events\Decorators;
 
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Events\EventDecoratorInterface;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Events\EventDecoratorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * Class DecorateWithRequestId
- *
- * @package    Somnambulist\Components\Domain\Events\Decorators
- * @subpackage Somnambulist\Components\Domain\Events\Decorators\DecorateWithRequestId
- */
 class DecorateWithRequestId implements EventDecoratorInterface
 {
     private string $header = 'X-Request-Id';

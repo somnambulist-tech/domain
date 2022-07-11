@@ -1,16 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Queries\Behaviours;
+namespace Somnambulist\Components\Queries\Behaviours;
 
 use function array_map;
 use function in_array;
 
-/**
- * Class CanConvertValueToBoolean
- *
- * @package    Somnambulist\Components\Domain\Queries\Behaviours
- * @subpackage Somnambulist\Components\Domain\Queries\Behaviours\CanConvertValueToBoolean
- */
 trait CanConvertValueToBoolean
 {
     private function convertStringToBoolean(string $value): bool

@@ -1,13 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Commands;
+namespace Somnambulist\Components\Commands;
 
-/**
- * Class AbstractCommand
- *
- * @package    Somnambulist\Components\Domain\Commands
- * @subpackage Somnambulist\Components\Domain\Commands\AbstractCommand
- */
 abstract class AbstractCommand
 {
     public function __set($name, $value) {}

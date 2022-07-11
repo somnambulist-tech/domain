@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Enum;
+namespace Somnambulist\Components\Tests\Support\Stubs\Enum;
 
 use Eloquent\Enumeration\AbstractEnumeration;
 

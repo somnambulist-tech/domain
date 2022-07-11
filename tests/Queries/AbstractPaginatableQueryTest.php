@@ -1,24 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Queries;
+namespace Somnambulist\Components\Tests\Queries;
 
 use BadMethodCallException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\FrozenCollection;
-use Somnambulist\Components\Domain\Queries\AbstractPaginatableQuery;
+use Somnambulist\Components\Queries\AbstractPaginatableQuery;
 
 /**
- * Class AbstractPaginatableQueryTest
- *
- * @package Somnambulist\Components\Domain\Tests\Queries
- * @subpackage Somnambulist\Components\Domain\Tests\Queries\AbstractPaginatableQueryTest
- *
  * @group queries
  * @group queries-paginatable-query
  */
 class AbstractPaginatableQueryTest extends TestCase
 {
-
     public function testPropertyAssignment()
     {
         $criteria = [

@@ -1,17 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers;
+namespace Somnambulist\Components\Doctrine\Enumerations\Serializers;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Entities\Types\Geography\Country;
+use Somnambulist\Components\Models\Types\Geography\Country;
 
-/**
- * Class CountrySerializer
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers
- * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Serializers\CountrySerializer
- */
 class CountrySerializer
 {
     /**
@@ -21,7 +15,7 @@ class CountrySerializer
      * @return string
      * @throws InvalidArgumentException
      */
-    public function __invoke($value, AbstractPlatform $platform): string
+    public function __invoke(object $value, AbstractPlatform $platform): string
     {
         if (!$value instanceof Country) {
             throw new InvalidArgumentException(sprintf(

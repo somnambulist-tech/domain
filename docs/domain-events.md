@@ -32,7 +32,7 @@ up to you.
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Models\AggregateRoot;
 
 class SomeObject extends AggregateRoot
 {
@@ -53,7 +53,7 @@ constructors for primary object creation:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Models\AggregateRoot;
 
 class SomeObject extends AggregateRoot
 {
@@ -81,7 +81,7 @@ To define your own event extend the AbstractDomainEvent object. That's basically
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Events\AbstractEvent;
 
 class MyEntityCreatedEvent extends AbstractEvent
 {
@@ -94,7 +94,7 @@ to broadcast through a message queue you may want the event to name itself:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Events\AbstractEvent;
 
 abstract class AppDomainEvent extends AbstractEvent
 {

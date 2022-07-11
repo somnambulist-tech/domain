@@ -1,24 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Tests\Doctrine\Functions\Postgres;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Functions\Postgres\ReplaceFunction;
-use Somnambulist\Components\Domain\Tests\Support\Behaviours\BuildDoctrineInstance;
+use Somnambulist\Components\Doctrine\Functions\Postgres\ReplaceFunction;
+use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
 /**
- * Class ReplaceFunctionTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Functions\Postgres\ReplaceFunctionTest
- *
  * @group doctrine
  * @group doctrine-functions
  * @group doctrine-functions-replace
  */
 class ReplaceFunctionTest extends TestCase
 {
-
     use BuildDoctrineInstance;
 
     public function testGetSql()
@@ -26,7 +20,7 @@ class ReplaceFunctionTest extends TestCase
         $this->em->getConfiguration()->addCustomStringFunction('REPLACE', ReplaceFunction::class);
 
         $query = $this->em
-            ->createQuery('SELECT a FROM Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Order a WHERE REPLACE(a.name, \'bob\', \'sally\') = true')
+            ->createQuery('SELECT a FROM Somnambulist\Components\Tests\Support\Stubs\Models\Order a WHERE REPLACE(a.name, \'bob\', \'sally\') = true')
         ;
         $sql = $query->getSQL();
 

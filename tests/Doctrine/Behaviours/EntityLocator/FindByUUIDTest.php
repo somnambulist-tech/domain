@@ -1,26 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID;
-use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindByUUID;
+use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
 use stdClass;
 
 /**
- * Class FindByUUIDTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByUUIDTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-locator
  */
 class FindByUUIDTest extends TestCase
 {
-
     public function testFindByUUIDCallsFindOneBy()
     {
         $mock = $this->getMockForTrait(FindByUUID::class);

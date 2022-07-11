@@ -1,16 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Queries\Behaviours;
+namespace Somnambulist\Components\Queries\Behaviours;
 
 use Somnambulist\Components\Collection\FrozenCollection;
 use function class_alias;
 
-/**
- * Trait CanSortQuery
- *
- * @package    Somnambulist\Components\Domain\Queries\Behaviours
- * @subpackage Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery
- */
 trait CanSortQuery
 {
     private FrozenCollection $orderBy;
@@ -28,4 +22,4 @@ trait CanSortQuery
     }
 }
 
-class_alias(CanSortQuery::class, 'Somnambulist\Components\Domain\Queries\Behaviours\CanOrderQuery');
+class_alias(CanSortQuery::class, 'Somnambulist\Components\Queries\Behaviours\CanOrderQuery');

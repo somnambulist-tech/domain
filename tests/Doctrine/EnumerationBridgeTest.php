@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine;
+namespace Somnambulist\Components\Tests\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -10,21 +10,16 @@ use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionObject;
 use ReflectionProperty;
-use Somnambulist\Components\Domain\Doctrine\Types\EnumerationBridge;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Action;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\Gender;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Enum\NullableType;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers\Constructor;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers\NullableConstructor;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Helpers\Serializer;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Types\MyType;
+use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
+use Somnambulist\Components\Tests\Support\Stubs\Enum\Action;
+use Somnambulist\Components\Tests\Support\Stubs\Enum\Gender;
+use Somnambulist\Components\Tests\Support\Stubs\Enum\NullableType;
+use Somnambulist\Components\Tests\Support\Stubs\Helpers\Constructor;
+use Somnambulist\Components\Tests\Support\Stubs\Helpers\NullableConstructor;
+use Somnambulist\Components\Tests\Support\Stubs\Helpers\Serializer;
+use Somnambulist\Components\Tests\Support\Stubs\Types\MyType;
 
 /**
- * Class EnumerationBridgeTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\EnumerationBridgeTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-enum

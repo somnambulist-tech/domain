@@ -1,17 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Queries\Behaviours;
+namespace Somnambulist\Components\Queries\Behaviours;
 
 use function count;
 use function is_array;
 use function trigger_deprecation;
 
-/**
- * Trait CanIncludeRelatedData
- *
- * @package Somnambulist\Components\Domain\Queries\Behaviours
- * @subpackage Somnambulist\Components\Domain\Queries\Behaviours\CanIncludeRelatedData
- */
 trait CanIncludeRelatedData
 {
     private array $includes = [];

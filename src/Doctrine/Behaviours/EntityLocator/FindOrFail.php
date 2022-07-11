@@ -1,15 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Doctrine\Behaviours\EntityLocator;
 
-use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
 
-/**
- * Trait FindOrFail
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail
- */
 trait FindOrFail
 {
     abstract protected function getEntityName();
@@ -19,12 +13,12 @@ trait FindOrFail
     abstract public function findOneBy(array $criteria, array $orderBy = null);
 
     /**
-     * @param string|int $id
+     * @param mixed $id
      *
      * @return object
      * @throws EntityNotFoundException
      */
-    public function findOrFail($id): object
+    public function findOrFail(mixed $id): object
     {
         if (null === $entity = $this->find((string)$id)) {
             throw EntityNotFoundException::entityNotFound($this->getEntityName(), (string)$id);
@@ -45,7 +39,7 @@ trait FindOrFail
     public function findOneByOrFail(array $criteria, array $orderBy = null): object
     {
         if (null === $entity = $this->findOneBy($criteria, $orderBy)) {
-            throw EntityNotFoundException::entityNotFound($this->getEntityName(), implode(':', $criteria));
+            throw EntityNotFoundException::entityNotFound($this->getEntityName(), ...array_values($criteria));
         }
 
         return $entity;

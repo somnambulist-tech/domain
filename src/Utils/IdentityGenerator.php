@@ -1,23 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Utils;
+namespace Somnambulist\Components\Utils;
 
 use Assert\Assertion;
 use Assert\InvalidArgumentException;
 use Ramsey\Uuid\Uuid as UuidFactory;
 use Ramsey\Uuid\UuidInterface;
-use Somnambulist\Components\Domain\Entities\Types\Identity\AbstractIdentity;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
+use Somnambulist\Components\Models\Types\Identity\AbstractIdentity;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
 use function implode;
 use function is_a;
 use function sprintf;
 
-/**
- * Class IdentityGenerator
- *
- * @package    Somnambulist\Components\Domain\Utils
- * @subpackage Somnambulist\Components\Domain\Utils\IdentityGenerator
- */
 final class IdentityGenerator
 {
     public static function new(): Uuid

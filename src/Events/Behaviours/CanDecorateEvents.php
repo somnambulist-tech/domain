@@ -1,16 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Behaviours;
+namespace Somnambulist\Components\Events\Behaviours;
 
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Domain\Events\EventDecoratorInterface;
+use Somnambulist\Components\Events\EventDecoratorInterface;
 
-/**
- * Trait CanDecorateEvents
- *
- * @package    Somnambulist\Components\Domain\Events\Behaviours
- * @subpackage Somnambulist\Components\Domain\Events\Behaviours\CanDecorateEvents
- */
 trait CanDecorateEvents
 {
     protected Collection $decorators;

@@ -1,24 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\MutableCollection;
-use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByName;
+use Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindByName;
 
 /**
- * Class FindByNameTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindByNameTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-locator
  */
 class FindByNameTest extends TestCase
 {
-
     public function testFindByNameCallsFindBy()
     {
         $mock = $this->getMockForTrait(FindByName::class);

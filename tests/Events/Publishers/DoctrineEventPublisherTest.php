@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Events\Publishers;
+namespace Somnambulist\Components\Tests\Events\Publishers;
 
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\Configuration;
@@ -10,23 +10,16 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Exception;
 use PDOException;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\TypeBootstrapper;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Events\Publishers\DoctrineEventPublisher;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners\DomainEventListener;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyOtherEntity;
-use function ob_end_clean;
-use function ob_get_clean;
+use Somnambulist\Components\Doctrine\TypeBootstrapper;
+use Somnambulist\Components\Events\Publishers\DoctrineEventPublisher;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Tests\Support\Stubs\EventListeners\DomainEventListener;
+use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Tests\Support\Stubs\Models\MyOtherEntity;
 use function realpath;
 
 /**
- * Class DoctrineEventPublisherTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Events\Publishers
- * @subpackage Somnambulist\Components\Domain\Tests\Events\Publishers\DoctrineEventPublisherTest
- *
  * @group events
  * @group events-publishers
  * @group events-publishers-doctrine
@@ -54,11 +47,11 @@ class DoctrineEventPublisherTest extends TestCase
         ];
 
         $driver = new SimplifiedXmlDriver([
-            realpath(__DIR__ . '/../../Support/Stubs/config/sf') => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Models',
+            realpath(__DIR__ . '/../../Support/Stubs/config/sf') => 'Somnambulist\Components\Tests\Support\Stubs\Models',
         ]);
         $config = new Configuration();
         $config->setProxyDir(sys_get_temp_dir());
-        $config->setProxyNamespace('Somnambulist\Tests\DomainEvents\Proxies');
+        $config->setProxyNamespace('Somnambulist\TestsEvents\Proxies');
         $config->setMetadataDriverImpl($driver);
 
         TypeBootstrapper::registerEnumerations();

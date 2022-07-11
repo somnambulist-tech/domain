@@ -1,31 +1,24 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Events\Publishers;
+namespace Somnambulist\Components\Tests\Events\Publishers;
 
-use Pagerfanta\Pagerfanta;
 use PHPUnit\Framework\Assert;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
-use Somnambulist\Components\Domain\Events\EventBus;
-use Somnambulist\Components\Domain\Tests\Support\Behaviours\BootKernel;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\RequeuableEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserCreated;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\User;
-use Somnambulist\Components\Domain\Utils\EntityAccessor;
+use Somnambulist\Components\Events\EventBus;
+use Somnambulist\Components\Models\Types\Identity\Aggregate;
+use Somnambulist\Components\Tests\Support\Behaviours\BootKernel;
+use Somnambulist\Components\Tests\Support\Stubs\Events\RequeuableEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Events\UserCreated;
+use Somnambulist\Components\Tests\Support\Stubs\Models\User;
+use Somnambulist\Components\Utils\EntityAccessor;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpTransport;
-use function defined;
 use function extension_loaded;
 
 /**
- * Class MessengerPublishAndListenTest
- *
  * Tests that domain events can be successfully re-queued in the event of failure, including
  * backing off. Only run locally as it requires AMQP to properly test.
- *
- * @package    Somnambulist\Components\Domain\Tests\Events\Publishers
- * @subpackage Somnambulist\Components\Domain\Tests\Events\Publishers\MessengerPublishAndListenTest
  *
  * @group amqp
  */

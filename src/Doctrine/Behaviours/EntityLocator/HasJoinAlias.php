@@ -1,18 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Doctrine\Behaviours\EntityLocator;
 
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Trait HasJoinAlias
+ * Adapted from the solution provided by:
  *
  * @author zuzuleinen via Stackoverflow
  * @link https://stackoverflow.com/a/27020853
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\HasJoinAlias
  */
 trait HasJoinAlias
 {

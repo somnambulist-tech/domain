@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Utils;
+namespace Somnambulist\Components\Utils;
 
 use InvalidArgumentException;
 use ReflectionObject;
@@ -10,7 +10,7 @@ use function is_scalar;
 use function sprintf;
 
 /**
- * Class ObjectDiff
+ * Diff Objects
  *
  * Attempts to compare two objects of the same type, property by property, producing
  * an array of property names that contain differences in values. All properties will be
@@ -23,18 +23,10 @@ use function sprintf;
  * objects will sub-objects one with 3 the other with 2, will only show differences where
  * the keys match between the collections.
  *
- * @package    Somnambulist\Components\Domain\Utils
- * @subpackage Somnambulist\Components\Domain\Utils\ObjectDiff
  * @experimental added in 4.2.0
  */
 class ObjectDiff
 {
-    /**
-     * @param object $a
-     * @param object $b
-     *
-     * @return array
-     */
     public function diff(object $a, object $b): array
     {
         if ($a::class !== $b::class) {

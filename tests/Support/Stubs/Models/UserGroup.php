@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
-use Somnambulist\Components\Domain\Entities\AbstractEntity;
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Models\AbstractEntity;
+use Somnambulist\Components\Models\AggregateRoot;
 
 /**
  * Class UserGroup
  *
- * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserGroup
+ * @package    Somnambulist\Components\Tests\Support\Stubs\Models
+ * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\UserGroup
  */
 class UserGroup extends AbstractEntity
 {

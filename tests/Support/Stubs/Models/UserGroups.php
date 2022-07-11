@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Entities\AbstractEntityCollection;
-use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserJoinedGroup;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\UserLeftGroup;
+use Somnambulist\Components\Models\AbstractEntityCollection;
+use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Tests\Support\Stubs\Events\UserJoinedGroup;
+use Somnambulist\Components\Tests\Support\Stubs\Events\UserLeftGroup;
 
 /**
  * Class UserGroups
  *
- * @package    Somnambulist\Components\Domain\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserGroups
+ * @package    Somnambulist\Components\Tests\Support\Stubs\Models
+ * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\UserGroups
  */
 final class UserGroups extends AbstractEntityCollection
 {

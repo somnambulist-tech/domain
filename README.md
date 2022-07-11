@@ -20,9 +20,9 @@ It consists of:
    * Abstract EntityLocator that extends EntityRepository
    * Custom Postgres DQL functions
    * Custom traits for EntityRepository
- * Entities
+ * Models
    * Contracts - value object interface definitions
-   * Types - a collection of value-objects, enumerations and an aggregate root
+   * Types - a collection of value-objects, enumerations, and date helpers
    * AggregateRoot - an aggregate root stub implementation that can raise events
    * AbstractEntity and AbstractEntityCollection - child entities and helper for an aggregate root
  * Events
@@ -54,9 +54,14 @@ Install using composer, or checkout / pull the files from github.com.
 
  * composer require somnambulist/domain
 
+### Upgrading from 4.X to 5.X
+
+From 5.X this project will be re-namespaced to drop `Domain`. 4.X includes a `classmap.php` providing
+aliases for backwards compatibility.
+
 ### Upgrading from 3.X to 4.X
 
-From 4.X this projects was re-namespaced to `Somnambulist\Components\Domain`. Update all references to
+From 4.X this project was re-namespaced to `Somnambulist\Components\Domain`. Update all references to
 reflect this change this includes any Doctrine mapping files / annotations.
 
 The Doctrine `AbstractIdentityType` was moved out of the `Identity` namespace to the main `Types`.

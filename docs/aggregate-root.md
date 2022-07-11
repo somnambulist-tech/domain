@@ -62,7 +62,7 @@ up to you.
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Models\AggregateRoot;
 
 class MyAggregate extends AggregateRoot
 {
@@ -84,7 +84,7 @@ constructors for primary object creation:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
+use Somnambulist\Components\Models\AggregateRoot;
 
 class MyAggregate extends AggregateRoot
 {
@@ -138,7 +138,6 @@ The OrderItem method might be something like:
 <?php
 class OrderItem
 {
-
     public function changeQuantity(int $quantity): void
     {
         Assert::that($quantity, 'quantity')->gt(0)->lte(20);
@@ -222,11 +221,10 @@ Using the same example as above this would be implemented as:
 
 ```php
 <?php
-use Somnambulist\Components\Domain\Entities\AbstractEntityCollection;
+use Somnambulist\Components\Models\AbstractEntityCollection;
 
 class UserAddresses extends AbstractEntityCollection
 {
-     
     public function for(AddressType $type)
     {
         if (!$addr = $this->addresses->get((string)$type)) {
@@ -252,12 +250,11 @@ class UserAddresses extends AbstractEntityCollection
 On the AggregateRoot the method to load the helper changes slightly:
 
 ```php
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Entities\Behaviours\AggregateEntityCollectionHelper;
+use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Models\Behaviours\AggregateEntityCollectionHelper;
 
 class User extends AggregateRoot
 {
-
     use AggregateEntityCollectionHelper;
 
     public function addresses(): UserAddresses
@@ -293,6 +290,15 @@ attribute `association-key`. This tells Doctrine to use the identity from the li
 in this case the AggregateRoot (that is held in the `root` property on the AbstractEntity class).
 The second field tells Doctrine that the `id` property is also part of the identity. In effect
 the actual identity of our child entity is now <aggregate_id> + <child_id> and is a compound key.
+
+For database provided identities (surrogate identities), `AbstractSurrogateEntity` and 
+`AbstractSurrogateEntityCollection` can be used as bases instead. Note that both of these
+implementations are intended to be used with integer keys. For other types of identity key, use
+your own logic.
+
+Additionally: it is strongly discouraged to use an abstract entity type in your domain as it
+encourages pushing logic down that is context specific. Generally it is better to duplicate the
+logic per context to avoid future issues should a specific contexts usage change.
 
 ### Firing Domain Events
 

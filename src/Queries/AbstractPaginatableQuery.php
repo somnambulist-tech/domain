@@ -1,20 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Queries;
+namespace Somnambulist\Components\Queries;
 
 use BadMethodCallException;
 use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Collection\FrozenCollection;
-use Somnambulist\Components\Domain\Queries\Behaviours\CanIncludeRelatedData;
-use Somnambulist\Components\Domain\Queries\Behaviours\CanPaginateQuery;
-use Somnambulist\Components\Domain\Queries\Behaviours\CanSortQuery;
+use Somnambulist\Components\Queries\Behaviours\CanIncludeRelatedData;
+use Somnambulist\Components\Queries\Behaviours\CanPaginateQuery;
+use Somnambulist\Components\Queries\Behaviours\CanSortQuery;
 
-/**
- * Class AbstractPaginatableQuery
- *
- * @package    Somnambulist\Components\Domain\Queries
- * @subpackage Somnambulist\Components\Domain\Queries\AbstractPaginatableQuery
- */
 abstract class AbstractPaginatableQuery extends AbstractQuery
 {
     use CanIncludeRelatedData;

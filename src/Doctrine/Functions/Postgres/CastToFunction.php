@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
@@ -11,24 +11,12 @@ use Doctrine\ORM\Query\SqlWalker;
 use IlluminateAgnostic\Str\Support\Str;
 
 /**
- * Class CastToFunction
- *
  * Postgres simple casting: CAST(<field>, '<type>') ::= <field>::<type>
- *
- * @package    Somnambulist\Components\Domain\Doctrine
- * @subpackage Somnambulist\Components\Domain\Doctrine\Functions\Postgres
  */
 class CastToFunction extends FunctionNode
 {
-    /**
-     * @var Node
-     */
-    protected $field;
-
-    /**
-     * @var Node
-     */
-    protected $value;
+    protected mixed $field;
+    protected mixed $value;
 
     public function parse(Parser $parser): void
     {

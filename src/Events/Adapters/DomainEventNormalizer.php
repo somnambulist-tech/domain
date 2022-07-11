@@ -1,21 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Events\Adapters;
+namespace Somnambulist\Components\Events\Adapters;
 
 use IlluminateAgnostic\Str\Support\Str;
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Events\AbstractEvent;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\ContextAwareDenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
 use function class_exists;
 use function is_a;
 
-/**
- * Class DomainEventNormalizer
- *
- * @package    Somnambulist\Components\Domain\Events\Adapters
- * @subpackage Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer
- */
 class DomainEventNormalizer implements ContextAwareNormalizerInterface, ContextAwareDenormalizerInterface, CacheableSupportsMethodInterface
 {
     public function __construct(private array $supportedEventPrefixes = [])

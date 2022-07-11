@@ -33,4 +33,4 @@ framework:
             sync: 'sync://'
 
         routing:
-            Somnambulist\Components\Domain\Events\AbstractEvent: domain_events
+            Somnambulist\Components\Events\AbstractEvent: domain_events

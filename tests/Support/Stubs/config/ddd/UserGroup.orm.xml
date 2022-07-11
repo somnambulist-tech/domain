@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="Somnambulist\Components\Domain\Tests\Support\Stubs\Models\UserGroup" table="user_groups">
+    <entity name="Somnambulist\Components\Tests\Support\Stubs\Models\UserGroup" table="user_groups">
         <id name="root" association-key="true" />
         <id name="id" type="integer" />
 
-        <embedded name="group" class="Somnambulist\Components\Domain\Tests\Support\Stubs\Models\Group" use-column-prefix="false"/>
+        <embedded name="group" class="Somnambulist\Components\Tests\Support\Stubs\Models\Group" use-column-prefix="false"/>
 
         <field name="role" type="group_role"/>
 
-        <many-to-one field="root" target-entity="Somnambulist\Components\Domain\Tests\Support\Stubs\Models\User" inversed-by="groups">
+        <many-to-one field="root" target-entity="Somnambulist\Components\Tests\Support\Stubs\Models\User" inversed-by="groups">
             <cascade>
                 <cascade-persist/>
             </cascade>

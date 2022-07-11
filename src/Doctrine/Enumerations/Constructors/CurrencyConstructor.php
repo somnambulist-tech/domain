@@ -1,17 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors;
+namespace Somnambulist\Components\Doctrine\Enumerations\Constructors;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Entities\Types\Money\Currency;
+use Somnambulist\Components\Models\Types\Money\Currency;
 
-/**
- * Class CurrencyConstructor
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors
- * @subpackage Somnambulist\Components\Domain\Doctrine\Enumerations\Constructors\CurrencyConstructor
- */
 class CurrencyConstructor
 {
     /**

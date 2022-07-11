@@ -1,22 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Utils\Tests\Assertions;
+namespace Somnambulist\Components\Utils\Tests\Assertions;
 
 use Somnambulist\Components\Collection\MutableCollection;
-use Somnambulist\Components\Domain\Entities\AggregateRoot;
-use Somnambulist\Components\Domain\Events\AbstractEvent;
+use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Events\AbstractEvent;
 use function get_class;
 use function sprintf;
 
 /**
- * Trait AssertHasDomainEventOfType
+ * Test Helper
  *
  * Tests that a particular type of event was raised by an entity operation. Optionally:
  * that a specific number of the events were raised. The count match must be greater than
  * 0 (zero).
- *
- * @package    Somnambulist\Components\Domain\Utils\Tests\Assertions
- * @subpackage Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType
  */
 trait AssertHasDomainEventOfType
 {

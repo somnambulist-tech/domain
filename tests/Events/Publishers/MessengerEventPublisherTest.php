@@ -1,21 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Events\Publishers;
+namespace Somnambulist\Components\Tests\Events\Publishers;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Events\Publishers\MessengerEventPublisher;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\EventListeners\DomainEventListener;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
+use Somnambulist\Components\Tests\Support\Stubs\EventListeners\DomainEventListener;
+use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use function sleep;
 
-/**
- * Class MessengerEventPublisherTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Events\Publishers
- * @subpackage Somnambulist\Components\Domain\Tests\Events\Publishers\MessengerEventPublisherTest
- */
 class MessengerEventPublisherTest extends TestCase
 {
     private MessengerEventPublisher $dispatcher;

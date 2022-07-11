@@ -1,25 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator;
+namespace Somnambulist\Components\Tests\Doctrine\Behaviours\EntityLocator;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindOrFail;
-use Somnambulist\Components\Domain\Entities\Exceptions\EntityNotFoundException;
+use Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindOrFail;
+use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
 use stdClass;
 
 /**
- * Class FindOrFailTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\EntityLocator\FindOrFailTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-locator
  */
 class FindOrFailTest extends TestCase
 {
-
     public function testFindOrFailCallsFind()
     {
         $this->expectException(EntityNotFoundException::class);

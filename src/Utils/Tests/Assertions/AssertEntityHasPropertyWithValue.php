@@ -1,18 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Utils\Tests\Assertions;
+namespace Somnambulist\Components\Utils\Tests\Assertions;
 
-use Somnambulist\Components\Domain\Utils\EntityAccessor;
+use Somnambulist\Components\Utils\EntityAccessor;
 use function get_class;
 
 /**
- * Trait AssertEntityHasPropertyWithValue
+ * Test Helper
  *
  * Assert that an entity has a given property with value. Needed to test entities without
  * public getters.
- *
- * @package    Somnambulist\Components\Domain\Utils\Tests\Assertions
- * @subpackage Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue
  */
 trait AssertEntityHasPropertyWithValue
 {

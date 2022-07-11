@@ -17,16 +17,16 @@ services:
         arguments:
             - emergency
 
-    Somnambulist\Components\Domain\Events\Adapters\DomainEventNormalizer:
+    Somnambulist\Components\Events\Adapters\DomainEventNormalizer:
         arguments:
-            $supportedEventPrefixes: [ 'App\Domain\Events', 'Service\Context\Domain\Events', 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events' ]
+            $supportedEventPrefixes: [ 'App\Events', 'Service\Context\Events', 'Somnambulist\Components\Tests\Support\Stubs\Events' ]
 
-    Somnambulist\Components\Domain\Events\EventBus:
-        alias: Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus
+    Somnambulist\Components\Events\EventBus:
+        alias: Somnambulist\Components\Events\Adapters\MessengerEventBus
         public: true
 
-    Somnambulist\Components\Domain\Events\Adapters\MessengerEventBus:
+    Somnambulist\Components\Events\Adapters\MessengerEventBus:
 
-    Somnambulist\Components\Domain\Tests\Support\Stubs\EventHandlers\:
+    Somnambulist\Components\Tests\Support\Stubs\EventHandlers\:
         resource: '../EventHandlers/*.php'
         tags: [{ name: messenger.message_handler, bus: event.bus }]

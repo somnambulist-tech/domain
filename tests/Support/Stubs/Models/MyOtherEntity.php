@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
 
 class MyOtherEntity
 {

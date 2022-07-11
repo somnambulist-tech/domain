@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Support\Stubs\Models;
+namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Domain\Entities\Behaviours\CalculateDifferenceBetweenInstances;
-use Somnambulist\Components\Domain\Entities\Types\DateTime\DateTime;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Uuid;
-use Somnambulist\Components\Domain\Entities\Types\Money\Money;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
+use Somnambulist\Components\Models\Behaviours\CalculateDifferenceBetweenInstances;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
+use Somnambulist\Components\Models\Types\Money\Money;
+use Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
 
 class Order
 {

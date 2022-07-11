@@ -1,22 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Types\Web;
+namespace Somnambulist\Components\Doctrine\Types\Web;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
-use Somnambulist\Components\Domain\Entities\Types\Web\Url;
+use Somnambulist\Components\Models\Types\Web\Url;
 
 /**
- * Class UrlType
- *
- * Store URL ValueObjects as strings and re-hydrate, without needing to use an
- * embeddable.
- *
- * @package    Somnambulist\Components\Domain\Doctrine\Types
- * @subpackage Somnambulist\Components\Domain\Doctrine\Types\Web\UrlType
+ * Store URL ValueObjects as strings and re-hydrate, without needing to use an embeddable.
  */
 class UrlType extends Type
 {

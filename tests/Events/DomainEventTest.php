@@ -1,31 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Events;
+namespace Somnambulist\Components\Tests\Events;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\FrozenCollection as Immutable;
-use Somnambulist\Components\Domain\Entities\Types\Identity\Aggregate;
-use Somnambulist\Components\Domain\Events\AbstractEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\GroupPropertyEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent;
-use Somnambulist\Components\Domain\Tests\Support\Stubs\Models\MyEntity;
+use Somnambulist\Components\Models\Types\Identity\Aggregate;
+use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Events\GroupPropertyEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent;
+use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use stdClass;
 use function json_encode;
 use function microtime;
 
 /**
- * Class DomainEventTest
- *
- * @package    Somnambulist\Tests\DomainEvents
- * @subpackage Somnambulist\Tests\DomainEvents\DomainEventTest
- *
  * @group events
  * @group events-event
  */
 class DomainEventTest extends TestCase
 {
-
     public function testCanSetAggregateRoot()
     {
         $event = new MyEntityCreatedEvent([], [], new Aggregate(MyEntity::class, '73517dac-18c9-4e80-bea2-c384eb8e1e0d'));
@@ -102,7 +96,7 @@ class DomainEventTest extends TestCase
                 'id'    => null,
             ],
             'event'     => [
-                'class' => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
+                'class' => 'Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent',
                 'group' => 'app',
                 'name'  => 'Namespaced',
                 'time'  => $event->createdAt(),
@@ -134,7 +128,7 @@ class DomainEventTest extends TestCase
                 'id'    => null,
             ],
             'event'     => [
-                'class'   => 'Somnambulist\Components\Domain\Tests\Support\Stubs\Events\NamespacedEvent',
+                'class'   => 'Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent',
                 'name'    => 'app.namespaced',
                 'time'    => $ts = microtime(true),
             ],

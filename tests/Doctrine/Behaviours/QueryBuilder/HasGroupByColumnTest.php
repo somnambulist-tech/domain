@@ -1,25 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder;
+namespace Somnambulist\Components\Tests\Doctrine\Behaviours\QueryBuilder;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Domain\Doctrine\Behaviours\QueryBuilder\HasGroupByColumn;
+use Somnambulist\Components\Doctrine\Behaviours\QueryBuilder\HasGroupByColumn;
 
 /**
- * Class HasGroupByColumnTest
- *
- * @package    Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder
- * @subpackage Somnambulist\Components\Domain\Tests\Doctrine\Behaviours\QueryBuilder\HasGroupByColumnTest
- *
  * @group doctrine
  * @group doctrine-behaviours
  * @group doctrine-behaviours-dbal
  */
 class HasGroupByColumnTest extends TestCase
 {
-
     public function testCanCheckForGroupByColumn()
     {
         $test = $this->getMockForTrait(HasGroupByColumn::class);

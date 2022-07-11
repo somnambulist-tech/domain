@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Somnambulist\Components\Domain\Doctrine\Functions\Postgres;
+namespace Somnambulist\Components\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
@@ -8,8 +8,6 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
- * Class ReplaceFunction
- *
  * Postgres replace function: REPLACE(<field>, '<search>', '<replace>') ::= <field>::<search>::<replace>
  *
  * Originally by:
@@ -17,15 +15,12 @@ use Doctrine\ORM\Query\SqlWalker;
  * @link https://github.com/beberlei/DoctrineExtensions/blob/master/src/Query/Mysql/Replace.php
  *
  * Adapted for Postgres.
- *
- * @package    Somnambulist\Components\Domain\Doctrine
- * @subpackage Somnambulist\Components\Domain\Doctrine\Functions\Postgres
  */
 class ReplaceFunction extends FunctionNode
 {
-    protected $search  = null;
-    protected $replace = null;
-    protected $subject = null;
+    protected mixed $search  = null;
+    protected mixed $replace = null;
+    protected mixed $subject = null;
 
     public function parse(Parser $parser): void
     {
