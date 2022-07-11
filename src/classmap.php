@@ -122,7 +122,7 @@ if (class_exists('Doctrine\DBAL\Types\Type')) {
     class_alias('Somnambulist\Components\Doctrine\Types\Web\IPV6AddressType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\IPV6AddressType');
     class_alias('Somnambulist\Components\Doctrine\Types\Web\UrlType', 'Somnambulist\Components\Domain\Doctrine\Types\Web\UrlType');
 }
-if (class_exists('Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository')) {
+if (class_exists('Doctrine\ORM\EntityRepository') && class_exists('Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository')) {
     class_alias('Somnambulist\Components\Doctrine\AbstractServiceModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractServiceEntityLocator');
 }
 if (class_exists('Symfony\Component\Serializer\Serializer')) {
