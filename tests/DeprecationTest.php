@@ -4,6 +4,9 @@ namespace Somnambulist\Components\Tests;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @group deprecations
+ */
 class DeprecationTest extends TestCase
 {
     public function testOldNamespace()

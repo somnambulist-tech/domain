@@ -3,8 +3,6 @@
 class_alias('Somnambulist\Components\Commands\AbstractCommand', 'Somnambulist\Components\Domain\Commands\AbstractCommand');
 class_alias('Somnambulist\Components\Commands\Adapters\MessengerCommandBus', 'Somnambulist\Components\Domain\Commands\Adapters\MessengerCommandBus');
 class_alias('Somnambulist\Components\Commands\CommandBus', 'Somnambulist\Components\Domain\Commands\CommandBus');
-class_alias('Somnambulist\Components\Doctrine\AbstractModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractEntityLocator');
-class_alias('Somnambulist\Components\Doctrine\AbstractServiceModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractServiceEntityLocator');
 class_alias('Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindByName', 'Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByName');
 class_alias('Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindBySlug', 'Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindBySlug');
 class_alias('Somnambulist\Components\Doctrine\Behaviours\EntityLocator\FindByUUID', 'Somnambulist\Components\Domain\Doctrine\Behaviours\EntityLocator\FindByUUID');
@@ -124,3 +122,10 @@ class_alias('Somnambulist\Components\Utils\Tests\Assertions\AssertDoesNotHaveDom
 class_alias('Somnambulist\Components\Utils\Tests\Assertions\AssertDomainEventHasAttributes', 'Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertDomainEventHasAttributes');
 class_alias('Somnambulist\Components\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue', 'Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue');
 class_alias('Somnambulist\Components\Utils\Tests\Assertions\AssertHasDomainEventOfType', 'Somnambulist\Components\Domain\Utils\Tests\Assertions\AssertHasDomainEventOfType');
+
+if (class_exists('Doctrine\ORM\EntityRepository')) {
+    class_alias('Somnambulist\Components\Doctrine\AbstractModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractEntityLocator');
+}
+if (class_exists('Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository')) {
+    class_alias('Somnambulist\Components\Doctrine\AbstractServiceModelLocator', 'Somnambulist\Components\Domain\Doctrine\AbstractServiceEntityLocator');
+}

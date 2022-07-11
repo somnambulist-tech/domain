@@ -1,8 +1,13 @@
 Change Log
 ==========
 
-2022-07-07 - 4.7.0
-------------------
+2022-07-11
+----------
+
+ * Fix locator aliases to work without doctrine
+
+2022-07-07
+----------
 
  * Add `DateFormat` with all the various date formatting letters as constants
  * Add `DateFormatBuilder` for descriptively building date formats
