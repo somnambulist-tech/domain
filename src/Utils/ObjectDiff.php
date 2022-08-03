@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Utils;
 
+use DateTimeInterface;
 use InvalidArgumentException;
 use ReflectionObject;
 use function is_iterable;
@@ -20,8 +21,8 @@ use function sprintf;
  *
  * Collections (arrays) will be compared element by element. If the elements in the
  * collection have differences, then only the ones that differ will appear e.g.: two
- * objects will sub-objects one with 3 the other with 2, will only show differences where
- * the keys match between the collections.
+ * objects with sub-objects, one with 3, and the other with 2; will only show differences
+ * where the keys match between the collections.
  *
  * @experimental added in 4.2.0
  */
@@ -34,6 +35,9 @@ class ObjectDiff
         }
         if ($a === $b) {
             return [];
+        }
+        if ($a instanceof DateTimeInterface) {
+            return $this->testDateTimeInstances($a, $b);
         }
 
         $diff   = [];
@@ -94,5 +98,25 @@ class ObjectDiff
         if (is_object($mine) && is_object($theirs) && $mine !== $theirs) {
             $diff[$prop] = array_filter($this->diff($mine, $theirs));
         }
+    }
+
+    private function testDateTimeInstances(DateTimeInterface $a, DateTimeInterface $b): array
+    {
+        $diff = [];
+
+        if ($a->format('Y-m-d H:i:s.u') !== $b->format('Y-m-d H:i:s.u')) {
+            $diff['time'] = [
+                'mine'   => $a->format('Y-m-d H:i:s.u'),
+                'theirs' => $b->format('Y-m-d H:i:s.u'),
+            ];
+        }
+        if ($a->getTimezone()->getName() !== $b->getTimezone()->getName()) {
+            $diff['timezone'] = [
+                'mine'   => $a->getTimezone()->getName(),
+                'theirs' => $b->getTimezone()->getName(),
+            ];
+        }
+
+        return $diff;
     }
 }

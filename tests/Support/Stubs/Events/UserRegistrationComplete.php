@@ -4,12 +4,6 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Events;
 
 use Somnambulist\Components\Events\AbstractEvent;
 
-/**
- * Class UserRegistrationComplete
- *
- * @package    Somnambulist\Components\Tests\Support\Stubs\Events
- * @subpackage Somnambulist\Components\Tests\Support\Stubs\Events\UserRegistrationComplete
- */
 class UserRegistrationComplete extends AbstractEvent
 {
 

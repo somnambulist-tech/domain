@@ -45,7 +45,7 @@ class DoctrineEventPublisher implements EventSubscriber
     {
         $entity = $event->getEntity();
 
-        if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($event)) {
+        if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($entity)) {
             $this->entities->add($entity);
         }
     }
@@ -53,7 +53,7 @@ class DoctrineEventPublisher implements EventSubscriber
     public function preRemove(LifecycleEventArgs $event): void
     {
         $entity = $event->getEntity();
-        if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($event)) {
+        if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($entity)) {
             $this->entities->add($entity);
         }
     }

@@ -1,8 +1,27 @@
 Change Log
 ==========
 
-2022-07-11
+2022-09-26
 ----------
+
+ * Generate event name at construction time
+ * Make event name snake_case by default
+ * Fix `EntityAccessor::extract` not pulling date object time/timezone values
+ * Fix `ObjectDiff` not supporting date object comparison
+
+2022-09-06
+----------
+
+ * Require PHP 8.1
+ * Remove all deprecated classes and methods
+ * Remove classmap
+ * Remove more missed unnecessary docblocks
+ * Add missing final to value objects
+ * Add readonly to many properties where it can be
+ * Make context readonly on AbstractEvent and modifications return a new instance, preserving time
+
+2022-07-11 - 4.7.0
+------------------
 
  * Fix locator aliases to work without doctrine
  * Fix additional aliases to work without messenger, serializer, etc.

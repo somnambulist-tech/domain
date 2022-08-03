@@ -12,12 +12,6 @@ use Somnambulist\Components\Tests\Support\Stubs\Events\UserAuthenticationDetails
 use Somnambulist\Components\Tests\Support\Stubs\Events\UserCreated;
 use Somnambulist\Components\Tests\Support\Stubs\Events\UserRegistrationComplete;
 
-/**
- * Class User
- *
- * @package    Somnambulist\Components\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\User
- */
 class User extends AggregateRoot
 {
 

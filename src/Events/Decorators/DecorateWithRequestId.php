@@ -21,8 +21,6 @@ class DecorateWithRequestId implements EventDecoratorInterface
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        $event->appendContext(['request_id' => $request->headers->get($this->header)]);
-
-        return $event;
+        return $event->appendContext(['request_id' => $request->headers->get($this->header)]);
     }
 }

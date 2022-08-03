@@ -15,7 +15,6 @@ use function sprintf;
 use function str_contains;
 use function str_ends_with;
 use function substr;
-use function trigger_deprecation;
 
 abstract class AbstractEvent
 {
@@ -25,10 +24,17 @@ abstract class AbstractEvent
     private float $time;
     private string $type;
 
-    public function __construct(private array $payload = [], private array $context = [], private ?Aggregate $aggregate = null)
-    {
+    public function __construct(
+        private readonly array $payload = [],
+        private readonly array $context = [],
+        private readonly ?Aggregate $aggregate = null,
+    ) {
         $this->time = microtime(true);
         $this->type = static::class;
+
+        if (is_null($this->name)) {
+            $this->name = $this->parseName();
+        }
     }
 
     public function __set($name, $value)
@@ -49,23 +55,9 @@ abstract class AbstractEvent
         return new static($payload, $context, $aggregate);
     }
 
-    public function getAggregate(): ?Aggregate
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use aggregate() instead');
-
-        return $this->aggregate();
-    }
-
     public function aggregate(): ?Aggregate
     {
         return $this->aggregate;
-    }
-
-    public function getGroup(): string
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use group() instead');
-
-        return $this->group();
     }
 
     public function group(): string
@@ -73,27 +65,9 @@ abstract class AbstractEvent
         return $this->group;
     }
 
-    public function getName(): string
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use name() instead');
-
-        return $this->name();
-    }
-
     public function name(): string
     {
-        if (is_null($this->name)) {
-            $this->name = $this->parseName();
-        }
-
         return $this->name;
-    }
-
-    public function getTime(): float
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use createdAt() instead');
-
-        return $this->createdAt();
     }
 
     public function createdAt(): float
@@ -101,28 +75,14 @@ abstract class AbstractEvent
         return $this->time;
     }
 
-    public function getType(): string
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use type() instead');
-
-        return $this->type();
-    }
-
     public function type(): string
     {
         return $this->type;
     }
 
-    public function getEventName(): string
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use longName() instead');
-
-        return $this->longName();
-    }
-
     public function longName(): string
     {
-        return sprintf('%s.%s', $this->group, Str::snake($this->name()));
+        return sprintf('%s.%s', $this->group, $this->name());
     }
 
     private function parseName(): string
@@ -134,7 +94,7 @@ abstract class AbstractEvent
             $class = substr($class, 0, -5);
         }
 
-        return $class;
+        return Str::snake($class);
     }
 
     public function payload(): FrozenCollection
@@ -147,14 +107,20 @@ abstract class AbstractEvent
         return new FrozenCollection($this->context);
     }
 
-    public function appendContext(array $context): void
+    public function appendContext(array $context): static
     {
-        $this->context = array_merge($this->context, $context);
+        $new = new static($this->payload, array_merge($this->context, $context), $this->aggregate);
+        $new->time = $this->time;
+
+        return $new;
     }
 
-    public function replaceContext(array $context): void
+    public function replaceContext(array $context): static
     {
-        $this->context = $context;
+        $new = new static($this->payload, $context, $this->aggregate);
+        $new->time = $this->time;
+
+        return $new;
     }
 
     /**
@@ -167,8 +133,13 @@ abstract class AbstractEvent
     public static function fromArray(string $type, array $array): self
     {
         $class = class_exists($type) && is_a($type, self::class, true) ? $type : GenericEvent::class;
+        $agg   = null;
 
-        $event        = new $class($array['payload'] ?? [], $array['context'] ?? []);
+        if ($array['aggregate']['class'] && $array['aggregate']['id']) {
+            $agg = new Aggregate($array['aggregate']['class'], $array['aggregate']['id']);
+        }
+
+        $event        = new $class($array['payload'] ?? [], $array['context'] ?? [], $agg);
         $event->type  = $type;
         $event->time  = $array['event']['time'];
         $event->group = $array['event']['group'] ?? 'app';
@@ -177,10 +148,6 @@ abstract class AbstractEvent
         if (str_contains($event->name, '.')) {
             $event->group = Str::beforeLast($event->name, '.');
             $event->name  = Str::afterLast($event->name, '.');
-        }
-
-        if ($array['aggregate']['class'] && $array['aggregate']['id']) {
-            $event->aggregate = new Aggregate($array['aggregate']['class'], $array['aggregate']['id']);
         }
 
         return $event;
@@ -196,7 +163,7 @@ abstract class AbstractEvent
             'event'     => [
                 'class' => $this->type,
                 'group' => $this->group,
-                'name'  => $this->name(),
+                'name'  => $this->name,
                 'time'  => $this->time,
             ],
             'payload'   => $this->payload,

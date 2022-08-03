@@ -5,12 +5,6 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 use Assert\Assert;
 use Somnambulist\Components\Models\AbstractValueObject;
 
-/**
- * Class Name
- *
- * @package    Somnambulist\Components\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\Name
- */
 final class Name extends AbstractValueObject
 {
 

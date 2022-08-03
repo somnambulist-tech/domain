@@ -10,7 +10,7 @@ use Somnambulist\Components\Models\AbstractValueObject;
  */
 final class Url extends AbstractValueObject
 {
-    public function __construct(private string $value)
+    public function __construct(private readonly string $value)
     {
         Assert::that($value, null, 'url')->notEmpty()->url();
     }

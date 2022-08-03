@@ -10,7 +10,7 @@ use Somnambulist\Components\Models\AbstractValueObject;
  */
 final class ExternalIdentity extends AbstractValueObject
 {
-    public function __construct(private string $provider, private string $identity)
+    public function __construct(private readonly string $provider, private readonly string $identity)
     {
         Assert::lazy()->tryAll()
             ->that($provider, 'provider')->notEmpty()->notBlank()->maxLength(50)

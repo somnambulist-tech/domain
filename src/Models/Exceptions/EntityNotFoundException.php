@@ -11,8 +11,8 @@ use function sprintf;
  */
 class EntityNotFoundException extends Exception
 {
-    private string $type;
-    private string $id;
+    private readonly string $type;
+    private readonly string $id;
 
     public static function entityNotFound(string $type, int|string ...$identities): self
     {

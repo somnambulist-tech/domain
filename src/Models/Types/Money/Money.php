@@ -13,7 +13,7 @@ use Somnambulist\Components\Models\AbstractValueObject;
  */
 final class Money extends AbstractValueObject
 {
-    public function __construct(private float $amount, private Currency $currency)
+    public function __construct(private readonly float $amount, private readonly Currency $currency)
     {
     }
 

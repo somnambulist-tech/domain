@@ -77,11 +77,11 @@ class CalculateDifferencesBetweenInstancesTest extends TestCase
         $v2 = Country::memberByKey('GBR');
 
         $expected = [
-            'name' => [
+            'name'  => [
                 'mine'   => 'Canada',
                 'theirs' => 'United Kingdom of Great Britain and Northern Ireland',
             ],
-            'key'  => [
+            'key'   => [
                 'mine'   => 'CAN',
                 'theirs' => 'GBR',
             ],
@@ -149,6 +149,12 @@ class CalculateDifferencesBetweenInstancesTest extends TestCase
                     'theirs' => 1234.98,
                 ],
             ],
+            'createdAt' => [
+                'time' => [
+                    'mine'   => $o1->createdAt()->format('Y-m-d H:i:s.u'),
+                    'theirs' => $o2->createdAt()->format('Y-m-d H:i:s.u'),
+                ],
+            ],
         ];
 
         $this->assertEquals($expected, $o1->diff($o2));
@@ -186,5 +192,13 @@ class CalculateDifferencesBetweenInstancesTest extends TestCase
         ];
 
         $this->assertEquals($expected, (new ObjectDiff())->diff($o1, $o2));
+    }
+
+    public function testDateDiff()
+    {
+        $diff = (new ObjectDiff())->diff(DateTime::now(), DateTime::now(new TimeZone('America/Toronto')));
+
+        $this->assertArrayHasKey('time', $diff);
+        $this->assertArrayHasKey('timezone', $diff);
     }
 }

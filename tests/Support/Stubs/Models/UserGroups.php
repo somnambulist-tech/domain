@@ -8,12 +8,6 @@ use Somnambulist\Components\Models\Exceptions\EntityNotFoundException;
 use Somnambulist\Components\Tests\Support\Stubs\Events\UserJoinedGroup;
 use Somnambulist\Components\Tests\Support\Stubs\Events\UserLeftGroup;
 
-/**
- * Class UserGroups
- *
- * @package    Somnambulist\Components\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\UserGroups
- */
 final class UserGroups extends AbstractEntityCollection
 {
 

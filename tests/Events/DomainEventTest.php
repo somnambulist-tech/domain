@@ -67,9 +67,33 @@ class DomainEventTest extends TestCase
     public function testCanUpdateContext()
     {
         $event = NamespacedEvent::create(['foo' => 'bar'], ['context' => 'value']);
-        $event->appendContext(['user' => 'user@example.example']);
+        $event = $event->appendContext(['user' => 'user@example.example']);
 
         $this->assertEquals(['context' => 'value', 'user' => 'user@example.example'], $event->context()->toArray());
+    }
+
+    public function testUpdatedContextPreservesOriginalTime()
+    {
+        $event1 = NamespacedEvent::create(['foo' => 'bar'], ['context' => 'value']);
+        $event2 = $event1->appendContext(['user' => 'user@example.example']);
+
+        $this->assertEquals($event2->createdAt(), $event1->createdAt());
+    }
+
+    public function testCanReplaceContext()
+    {
+        $event = NamespacedEvent::create(['foo' => 'bar'], ['context' => 'value']);
+        $event = $event->replaceContext(['user' => 'user@example.example']);
+
+        $this->assertEquals(['user' => 'user@example.example'], $event->context()->toArray());
+    }
+
+    public function testReplaceContextPreservesOriginalTime()
+    {
+        $event1 = NamespacedEvent::create(['foo' => 'bar'], ['context' => 'value']);
+        $event2 = $event1->replaceContext(['user' => 'user@example.example']);
+
+        $this->assertEquals($event2->createdAt(), $event1->createdAt());
     }
 
     public function testCanGetContext()

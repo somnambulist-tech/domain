@@ -10,7 +10,7 @@ use function sprintf;
  */
 final class Area extends AbstractValueObject
 {
-    public function __construct(private float $value, private AreaUnit $unit)
+    public function __construct(private readonly float $value, private readonly AreaUnit $unit)
     {
     }
 

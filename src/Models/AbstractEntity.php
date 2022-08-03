@@ -19,17 +19,13 @@ use function get_class;
  *
  * This implementation expects the identity to be provided by the aggregate root that
  * owns it. During creation, both the aggregate and this identity should be provided.
- *
- * Note: in 5.0 the type definition will change to require an integer identity; it will
- * no longer allow for null. See `AbstractSurrogateEntity` for entities with nullable
- * identities.
  */
 abstract class AbstractEntity implements CanTestEquality
 {
-    protected ?int $id = null;
+    protected int $id;
     protected AggregateRoot $root;
 
-    public function id(): ?int
+    public function id(): int
     {
         return $this->id;
     }

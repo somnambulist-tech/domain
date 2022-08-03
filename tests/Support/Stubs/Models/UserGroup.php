@@ -5,12 +5,6 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 use Somnambulist\Components\Models\AbstractEntity;
 use Somnambulist\Components\Models\AggregateRoot;
 
-/**
- * Class UserGroup
- *
- * @package    Somnambulist\Components\Tests\Support\Stubs\Models
- * @subpackage Somnambulist\Components\Tests\Support\Stubs\Models\UserGroup
- */
 class UserGroup extends AbstractEntity
 {
 

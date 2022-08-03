@@ -2,8 +2,6 @@
 
 namespace Somnambulist\Components\Queries;
 
-use BadMethodCallException;
-use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Collection\FrozenCollection;
 use Somnambulist\Components\Queries\Behaviours\CanIncludeRelatedData;
 use Somnambulist\Components\Queries\Behaviours\CanPaginateQuery;
@@ -15,7 +13,7 @@ abstract class AbstractPaginatableQuery extends AbstractQuery
     use CanPaginateQuery;
     use CanSortQuery;
 
-    private FrozenCollection $criteria;
+    private readonly FrozenCollection $criteria;
 
     public function __construct(array $criteria = [], array $orderBy = [], int $page = 1, int $perPage = 30)
     {
@@ -23,26 +21,6 @@ abstract class AbstractPaginatableQuery extends AbstractQuery
         $this->orderBy  = new FrozenCollection($orderBy);
         $this->page     = $page;
         $this->perPage  = $perPage;
-    }
-
-    public function __call($name, $arguments)
-    {
-        if (Str::startsWith($name, 'get')) {
-            trigger_deprecation('somnambulist/domain', '4.6.0', 'Dynamic getters have been deprecated. Implement concrete methods instead.');
-
-            $name = Str::replaceFirst('get', '', $name);
-
-            return $this->criteria->only(Str::snake($name), Str::ucfirst($name), $name)->first() ?? null;
-        }
-
-        throw new BadMethodCallException(sprintf('Method not found for "%s"', $name));
-    }
-
-    public function getCriteria(): FrozenCollection
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use criteria() instead');
-
-        return $this->criteria();
     }
 
     public function criteria(): FrozenCollection

@@ -7,14 +7,7 @@ use function class_alias;
 
 trait CanSortQuery
 {
-    private FrozenCollection $orderBy;
-
-    public function getOrderBy(): FrozenCollection
-    {
-        trigger_deprecation('somnambulist/domain', '4.6.0', 'Use orderBy() instead');
-
-        return $this->orderBy();
-    }
+    private readonly FrozenCollection $orderBy;
 
     public function orderBy(): FrozenCollection
     {

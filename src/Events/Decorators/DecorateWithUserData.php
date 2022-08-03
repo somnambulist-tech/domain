@@ -16,19 +16,15 @@ class DecorateWithUserData implements EventDecoratorInterface
     public function decorate(AbstractEvent $event): AbstractEvent
     {
         if (null === $user = $this->security->getUser()) {
-            $event->appendContext(['user' => ['id' => null, 'name' => 'unauthenticated', 'roles' => []]]);
-
-            return $event;
+            return $event->appendContext(['user' => ['id' => null, 'name' => 'unauthenticated', 'roles' => []]]);
         }
 
-        $event->appendContext([
+        return $event->appendContext([
             'user' => [
                 'id'    => method_exists($user, 'getId') ? (string)$user->getId() : null,
                 'name'  => $user->getUserIdentifier(),
                 'roles' => $user->getRoles(),
             ],
         ]);
-
-        return $event;
     }
 }

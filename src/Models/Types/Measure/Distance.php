@@ -10,7 +10,7 @@ use function sprintf;
  */
 final class Distance extends AbstractValueObject
 {
-    public function __construct(private float $value, private DistanceUnit $unit)
+    public function __construct(private readonly float $value, private readonly DistanceUnit $unit)
     {
     }
 

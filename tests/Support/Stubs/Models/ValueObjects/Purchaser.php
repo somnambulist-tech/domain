@@ -14,9 +14,9 @@ class Purchaser extends AbstractValueObject
     use CastValueObjectToArray;
     use CalculateDifferenceBetweenInstances;
 
-    private string $name;
-    private EmailAddress $email;
-    private Country $country;
+    private readonly string $name;
+    private readonly EmailAddress $email;
+    private readonly Country $country;
 
     public function __construct(string $name, EmailAddress $email, Country $country)
     {

@@ -3,6 +3,7 @@
 namespace Somnambulist\Components\Utils;
 
 use Closure;
+use DateTimeInterface;
 use ReflectionObject;
 use function is_null;
 use function is_object;
@@ -108,6 +109,11 @@ final class EntityAccessor
                 }
 
                 $arr[$prop->getName()] = $v;
+            }
+
+            if ($value instanceof DateTimeInterface && !isset($arr['time'], $arr['timezone'])) {
+                $arr['time']     = $value->format('Y-m-d H:i:s.u');
+                $arr['timezone'] = $value->getTimezone()->getName();
             }
         } while ($refObj = $refObj->getParentClass());
 

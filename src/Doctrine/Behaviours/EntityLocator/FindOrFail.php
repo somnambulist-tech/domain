@@ -13,14 +13,16 @@ trait FindOrFail
     abstract public function findOneBy(array $criteria, array $orderBy = null);
 
     /**
-     * @param mixed $id
+     * @param mixed    $id
+     * @param int|null $lockMode
+     * @param int|null $lockVersion
      *
      * @return object
      * @throws EntityNotFoundException
      */
-    public function findOrFail(mixed $id): object
+    public function findOrFail(mixed $id, $lockMode = null, $lockVersion = null): object
     {
-        if (null === $entity = $this->find((string)$id)) {
+        if (null === $entity = $this->find((string)$id, $lockMode, $lockVersion)) {
             throw EntityNotFoundException::entityNotFound($this->getEntityName(), (string)$id);
         }
 
