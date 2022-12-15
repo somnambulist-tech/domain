@@ -11,11 +11,11 @@ use Somnambulist\Components\Events\Decorators\DecorateWithUserData;
 use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
 use Somnambulist\Components\Tests\Support\Stubs\EventListeners\AssertingEventBus;
 use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class EventDecoratorsTest extends TestCase
@@ -26,7 +26,7 @@ class EventDecoratorsTest extends TestCase
     protected function setUp(): void
     {
         $this->dispatcher = new MessengerEventPublisher(new AssertingEventBus([
-            'MyEntityCreated' => $c = function (AbstractEvent $event) {
+            'my_entity_created' => $c = function (AbstractEvent $event) {
                 $this->assertArrayHasKey('request_id', $event->context()->toArray());
                 $this->assertEquals('98e2929d-b861-456f-9026-4afe7e3f1e23', $event->context()->get('request_id'));
                 $this->assertArrayHasKey('user', $event->context()->toArray());
@@ -34,7 +34,7 @@ class EventDecoratorsTest extends TestCase
                 $this->assertArrayHasKey('name', $event->context()->toArray()['user']);
                 $this->assertEquals('4fad6b95-34c1-47fd-971d-9deb9f8fa2c4', $event->context()->get('user.id'));
             },
-            'MyEntityAddedAnotherEntity' => $c,
+            'my_entity_added_another_entity' => $c,
         ]), [
             new DecorateWithRequestId($stack = new RequestStack()),
             new DecorateWithUserData(new Security($container = new Container())),

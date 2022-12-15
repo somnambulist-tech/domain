@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Support\Stubs\EventListeners;
 
+use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Events\EventBus;
 
@@ -9,7 +10,7 @@ class DomainEventListener implements EventBus
 {
     public function notify(AbstractEvent $event): void
     {
-        $method = 'on' . $event->name();
+        $method = 'on' . Str::studly($event->name());
 
         $this->{$method}($event);
     }

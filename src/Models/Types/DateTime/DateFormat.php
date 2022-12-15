@@ -58,7 +58,7 @@ final class DateFormat
     const RFC_2822 = 'r';
     const UNIX = 'U';
 
-    public function __construct(private string $format)
+    public function __construct(private readonly string $format)
     {
     }
 

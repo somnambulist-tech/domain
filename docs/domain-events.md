@@ -103,7 +103,7 @@ abstract class AppDomainEvent extends AbstractEvent
 
     public function getEventName(): string
     {
-        return sprintf('%s.%s', $this->getGroup(), strtolower($this->getName()));
+        return sprintf('%s.%s', $this->group(), strtolower($this->name()));
     }
 }
 ```

@@ -1,0 +1,16 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <PHPCodeStyleSettings>
+      <option name="ALIGN_KEY_VALUE_PAIRS" value="true" />
+      <option name="COMMA_AFTER_LAST_ARRAY_ELEMENT" value="true" />
+      <option name="LOWER_CASE_BOOLEAN_CONST" value="true" />
+      <option name="LOWER_CASE_NULL_CONST" value="true" />
+      <option name="ELSE_IF_STYLE" value="COMBINE" />
+      <option name="VARIABLE_NAMING_STYLE" value="CAMEL_CASE" />
+      <option name="FORCE_SHORT_DECLARATION_ARRAY_STYLE" value="true" />
+    </PHPCodeStyleSettings>
+    <codeStyleSettings language="PHP">
+      <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
+    </codeStyleSettings>
+  </code_scheme>
+</component>

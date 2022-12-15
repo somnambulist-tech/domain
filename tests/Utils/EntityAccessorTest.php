@@ -33,7 +33,7 @@ class EntityAccessorTest extends TestCase
             new Uuid('69747623-e51e-4503-8085-5a81ef4a9676'),
             new Purchaser('Foo Bar', new EmailAddress('foo.bar@example.com'), Country::memberByKey('CAN')),
             new Money(34.56, Currency::memberByKey('CAD')),
-            DateTime::parse('now', new TimeZone('America/Toronto'))
+            $dt = DateTime::parse('now', new TimeZone('America/Toronto'))
         );
         $order->properties()->set('items', [
             ['name' => 'test one',],
@@ -56,9 +56,9 @@ class EntityAccessorTest extends TestCase
                         ],
                     'country' =>
                         [
-                            'name' => 'Canada',
-                            'key'  => 'CAN',
-                            'id' => 124,
+                            'name'  => 'Canada',
+                            'key'   => 'CAN',
+                            'id'    => 124,
                             'code2' => 'CA',
                         ],
                 ],
@@ -74,6 +74,8 @@ class EntityAccessorTest extends TestCase
             'createdAt'  =>
                 [
                     'defaultFormat' => 'Y-m-d H:i:s',
+                    'time'          => $dt->format('Y-m-d H:i:s.u'),
+                    'timezone'      => $dt->timezone()->toString(),
                 ],
             'properties' =>
                 [

@@ -5,7 +5,7 @@ Change Log
 ----------
 
  * Generate event name at construction time
- * Make event name snake_case by default
+ * B/C: Make event name snake_case by default
  * Fix `EntityAccessor::extract` not pulling date object time/timezone values
  * Fix `ObjectDiff` not supporting date object comparison
 

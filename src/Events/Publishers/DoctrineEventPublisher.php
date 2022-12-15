@@ -43,7 +43,7 @@ class DoctrineEventPublisher implements EventSubscriber
 
     public function prePersist(LifecycleEventArgs $event): void
     {
-        $entity = $event->getEntity();
+        $entity = $event->getObject();
 
         if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($entity)) {
             $this->entities->add($entity);
@@ -52,7 +52,7 @@ class DoctrineEventPublisher implements EventSubscriber
 
     public function preRemove(LifecycleEventArgs $event): void
     {
-        $entity = $event->getEntity();
+        $entity = $event->getObject();
         if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($entity)) {
             $this->entities->add($entity);
         }
@@ -60,7 +60,7 @@ class DoctrineEventPublisher implements EventSubscriber
 
     public function preFlush(PreFlushEventArgs $event): void
     {
-        $uow = $event->getEntityManager()->getUnitOfWork();
+        $uow = $event->getObjectManager()->getUnitOfWork();
 
         foreach ($uow->getIdentityMap() as $class => $entities) {
             if (!is_a($class, AggregateRoot::class, true)) {

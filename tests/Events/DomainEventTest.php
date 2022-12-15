@@ -32,7 +32,7 @@ class DomainEventTest extends TestCase
     {
         $event = new NamespacedEvent();
 
-        $this->assertEquals('Namespaced', $event->name());
+        $this->assertEquals('namespaced', $event->name());
         $this->assertEquals('app', $event->group());
     }
 
@@ -54,14 +54,14 @@ class DomainEventTest extends TestCase
     {
         $event = new NamespacedEvent();
 
-        $this->assertEquals('Namespaced', (string)$event);
+        $this->assertEquals('namespaced', (string)$event);
     }
 
     public function testCreate()
     {
         $event = NamespacedEvent::create();
 
-        $this->assertEquals('Namespaced', $event->name());
+        $this->assertEquals('namespaced', $event->name());
     }
 
     public function testCanUpdateContext()
@@ -122,7 +122,7 @@ class DomainEventTest extends TestCase
             'event'     => [
                 'class' => 'Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent',
                 'group' => 'app',
-                'name'  => 'Namespaced',
+                'name'  => 'namespaced',
                 'time'  => $event->createdAt(),
             ],
             'payload'   => [
@@ -152,9 +152,9 @@ class DomainEventTest extends TestCase
                 'id'    => null,
             ],
             'event'     => [
-                'class'   => 'Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent',
-                'name'    => 'app.namespaced',
-                'time'    => $ts = microtime(true),
+                'class' => 'Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent',
+                'name'  => 'app.namespaced',
+                'time'  => $ts = microtime(true),
             ],
             'context'   => [
                 'context' => 'value',
@@ -213,7 +213,7 @@ class DomainEventTest extends TestCase
             'event'     => [
                 'class' => 'Some\Class\ThatDoesNotExist',
                 'group' => 'a_group',
-                'name'  => 'ThatDoesNotExist',
+                'name'  => 'that_does_not_exist',
                 'time'  => $ts = microtime(true),
             ],
             'context'   => [
@@ -230,7 +230,7 @@ class DomainEventTest extends TestCase
         $this->assertInstanceOf(AbstractEvent::class, $event);
         $this->assertEquals($t, $event->type());
         $this->assertEquals('a_group', $event->group());
-        $this->assertEquals('ThatDoesNotExist', $event->name());
+        $this->assertEquals('that_does_not_exist', $event->name());
         $this->assertEquals('a_group.that_does_not_exist', $event->longName());
     }
 }

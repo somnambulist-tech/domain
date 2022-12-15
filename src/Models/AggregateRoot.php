@@ -37,7 +37,7 @@ use function sprintf;
  * }
  * </code>
  *
- * Generally constructors should be private to enforce object creation through named factor
+ * Generally constructors should be private to enforce object creation through named factory
  * methods. This allows events to be generated only on actual creation and not potentially
  * via "new" instances.
  */
