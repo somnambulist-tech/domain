@@ -1,6 +1,5 @@
 # Somnambulist Domain Package
-
-[![GitHub Actions Build Status](https://img.shields.io/github/workflow/status/somnambulist-tech/domain/tests?logo=github)](https://github.com/somnambulist-tech/domain/actions?query=workflow%3Atests)
+[![GitHub Actions Build Status](https://img.shields.io/github/actions/workflow/status/somnambulist-tech/domain/tests.yml?logo=github&branch=master)](https://github.com/somnambulist-tech/domain/actions?query=workflow%3Atests)
 [![Issues](https://img.shields.io/github/issues/somnambulist-tech/domain?logo=github)](https://github.com/somnambulist-tech/domain/issues)
 [![License](https://img.shields.io/github/license/somnambulist-tech/domain?logo=github)](https://github.com/somnambulist-tech/domain/blob/master/LICENSE)
 [![PHP Version](https://img.shields.io/packagist/php-v/somnambulist/domain?logo=php&logoColor=white)](https://packagist.org/packages/somnambulist/domain)
