@@ -9,7 +9,7 @@ use function method_exists;
 
 class DecorateWithUserData implements EventDecoratorInterface
 {
-    public function __construct(private Security $security)
+    public function __construct(private readonly Security $security)
     {
     }
 

@@ -57,6 +57,7 @@
         "pagerfanta/pagerfanta": "^3.6",
         "phpunit/phpunit": "^9.5",
         "phpspec/prophecy-phpunit": "~2.0",
+        "somnambulist/read-models": "^3.3",
         "symfony/amqp-messenger": "^6.0",
         "symfony/event-dispatcher": "^6.0",
         "symfony/framework-bundle": "^6.0",

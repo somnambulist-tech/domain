@@ -8,14 +8,7 @@ use Somnambulist\Components\Models\Types\Money\Currency;
 
 class CurrencyConstructor
 {
-    /**
-     * @param string           $value
-     * @param AbstractPlatform $platform
-     *
-     * @return Currency|null
-     * @throws InvalidArgumentException
-     */
-    public function __invoke($value, $platform): ?Currency
+    public function __invoke(?string $value, AbstractPlatform $platform): ?Currency
     {
         if (is_null($value)) {
             return null;

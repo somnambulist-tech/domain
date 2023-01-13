@@ -19,7 +19,7 @@ class JsonCollectionType extends Type
         return $platform->getJsonTypeDeclarationSQL($column);
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if (null === $value) {
             return null;
@@ -45,10 +45,5 @@ class JsonCollectionType extends Type
     public function getName(): string
     {
         return static::TYPE_NAME;
-    }
-
-    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
-    {
-        return !$platform->hasNativeJsonType();
     }
 }

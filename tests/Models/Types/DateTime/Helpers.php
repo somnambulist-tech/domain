@@ -11,7 +11,7 @@ trait Helpers
         date_default_timezone_set('America/Toronto');
     }
 
-    protected function assertDateTime(DateTime $d, $year, $month, $day, $hour = null, $minute = null, $second = null)
+    protected function assertDateTime(DateTime $d, $year, $month, $day, $hour = null, $minute = null, $second = null): void
     {
         $actual   = [
             'years'  => $year,
@@ -38,7 +38,7 @@ trait Helpers
         $this->assertSame($expected, $actual);
     }
 
-    protected function assertInstanceOfDateTime($d)
+    protected function assertInstanceOfDateTime($d): void
     {
         $this->assertInstanceOf(DateTime::class, $d);
     }

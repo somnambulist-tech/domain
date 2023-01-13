@@ -81,7 +81,7 @@ class ShiftersTest extends TestCase
     /** @dataProvider startOfWeekTestData */
     public function testStartOfWeekGivenFirstDayOfWeek(string $testDate, int $firstDow, string $expectedDate)
     {
-        $expected = new PhpDateTime("{$expectedDate} 00:00:00+08:00");
+        $expected = new PhpDateTime("$expectedDate 00:00:00+08:00");
         $testDate = new DateTime($testDate);
 
         $this->assertEquals($expected, $testDate->startOfWeek($firstDow));
@@ -128,7 +128,7 @@ class ShiftersTest extends TestCase
     /** @dataProvider endOfWeekTestData */
     public function testEndOfWeekGivenFirstDayOfWeek(string $testDate, int $firstDow, string $expectedDate)
     {
-        $expected = new PhpDateTime("{$expectedDate} 23:59:59+08:00");
+        $expected = new PhpDateTime("$expectedDate 23:59:59+08:00");
         $testDate = new DateTime($testDate);
 
         $this->assertEquals($expected, $testDate->endOfWeek($firstDow));

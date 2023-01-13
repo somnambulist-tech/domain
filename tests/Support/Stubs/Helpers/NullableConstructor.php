@@ -7,7 +7,7 @@ use Somnambulist\Components\Tests\Support\Stubs\Enum\NullableType;
 
 class NullableConstructor
 {
-    public function __invoke($value)
+    public function __invoke($value): mixed
     {
         if (null !== $enum = NullableType::memberOrNullByValue($value)) {
             return $enum;

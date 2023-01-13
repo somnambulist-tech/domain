@@ -55,7 +55,7 @@ final class TypeBootstrapper
     public static function registerTypes(array $types): void
     {
         foreach ($types as $type => $class) {
-            static::registerType($type, $class);
+            self::registerType($type, $class);
         }
     }
 }

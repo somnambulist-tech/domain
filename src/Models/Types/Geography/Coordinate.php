@@ -6,12 +6,15 @@ use Assert\Assert;
 use Somnambulist\Components\Models\AbstractValueObject;
 
 /**
- * Represents a latitude and longitude within a geo-spatial system.
+ * Represents a latitude and longitude within a geospatial system.
  */
-class Coordinate extends AbstractValueObject
+final class Coordinate extends AbstractValueObject
 {
-    public function __construct(private float $latitude, private float $longitude, private Srid $srid)
-    {
+    public function __construct(
+        private readonly float $latitude,
+        private readonly float $longitude,
+        private readonly Srid $srid
+    ) {
         Assert::lazy()->tryAll()
             ->that($latitude, 'latitude')->range(-90, 90)
             ->that($longitude, 'longitude')->range(-180, 180)

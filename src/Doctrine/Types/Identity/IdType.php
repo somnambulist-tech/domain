@@ -6,8 +6,8 @@ use Somnambulist\Components\Doctrine\Types\AbstractIdentityType;
 use Somnambulist\Components\Models\Types\Identity\Id;
 
 /**
- * Allows using an Id instance as a type instead of an embeddable, allowing it to be
- * used as an id type.
+ * Allows using an id instance as a type instead of an embeddable, allowing it to be
+ * used as type in the column mapping.
  */
 class IdType extends AbstractIdentityType
 {

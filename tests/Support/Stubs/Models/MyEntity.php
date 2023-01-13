@@ -5,6 +5,7 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Somnambulist\Components\Models\AggregateRoot;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
 use Somnambulist\Components\Models\Types\Identity\Uuid;
 use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityAddedAnotherEntity;
 use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
@@ -62,17 +63,17 @@ class MyEntity extends AggregateRoot
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getAnother()
+    public function getAnother(): string
     {
         return $this->another;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

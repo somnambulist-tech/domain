@@ -21,7 +21,7 @@ class MyOtherEntity
         $this->createdAt = $createdAt;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }

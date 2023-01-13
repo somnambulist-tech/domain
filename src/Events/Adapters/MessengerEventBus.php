@@ -10,7 +10,7 @@ use Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp;
 
 final class MessengerEventBus implements EventBus
 {
-    public function __construct(private MessageBusInterface $eventBus)
+    public function __construct(private readonly MessageBusInterface $eventBus)
     {
     }
 

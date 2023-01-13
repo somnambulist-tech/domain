@@ -37,7 +37,7 @@ abstract class AbstractServiceModelLocator extends ServiceEntityRepository
     /**
      * Finds all entities in the repository.
      *
-     * @return MutableCollection|object[]
+     * @return MutableCollection<object>
      */
     public function findAll(): MutableCollection
     {
@@ -52,7 +52,7 @@ abstract class AbstractServiceModelLocator extends ServiceEntityRepository
      * @param int|null   $limit
      * @param int|null   $offset
      *
-     * @return MutableCollection|object[]
+     * @return MutableCollection<object>
      */
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null): MutableCollection
     {

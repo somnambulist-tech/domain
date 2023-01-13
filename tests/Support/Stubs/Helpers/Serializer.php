@@ -6,13 +6,8 @@ use Somnambulist\Components\Tests\Support\Stubs\Enum\Gender;
 
 class Serializer
 {
-
-    /**
-     * @param Gender $value
-     *
-     * @return string
-     */
-    public function __invoke($value) {
+    public function __invoke(Gender $value): string
+    {
         return $value->value();
     }
 }

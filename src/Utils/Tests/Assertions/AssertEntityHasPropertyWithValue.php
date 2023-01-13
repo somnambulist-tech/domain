@@ -20,7 +20,7 @@ trait AssertEntityHasPropertyWithValue
      * @param mixed  $scope    Scope defines the level of access, if null the current entity is used.
      *                         For certain private properties, this may need to be set to the parent class.
      */
-    public function assertEntityHasPropertyWithValue(object $entity, string $property, mixed $expected, mixed $scope = null)
+    public function assertEntityHasPropertyWithValue(object $entity, string $property, mixed $expected, mixed $scope = null): void
     {
         $this->assertTrue(
             EntityAccessor::has($entity, $property, $scope ?? $entity),

@@ -8,6 +8,6 @@ trait CastValueObjectToArray
 {
     public function toArray(): array
     {
-        return EntityAccessor::extract($this, ignoreStatic: true, recurseValues: true);
+        return EntityAccessor::extract($this, recurseValues: true);
     }
 }

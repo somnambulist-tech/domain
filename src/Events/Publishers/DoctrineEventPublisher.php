@@ -26,7 +26,7 @@ class DoctrineEventPublisher implements EventSubscriber
 
     private Collection $entities;
 
-    public function __construct(private EventBus $eventBus, iterable $decorators = [])
+    public function __construct(private readonly EventBus $eventBus, iterable $decorators = [])
     {
         $this->entities   = new Collection();
         $this->decorators = new Collection();

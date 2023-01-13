@@ -8,7 +8,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class MessengerJobQueue implements JobQueue
 {
-    public function __construct(private MessageBusInterface $jobQueue)
+    public function __construct(private readonly MessageBusInterface $jobQueue)
     {
     }
 

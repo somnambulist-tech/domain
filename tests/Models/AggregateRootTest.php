@@ -39,7 +39,7 @@ class AggregateRootTest extends TestCase
     public function testRaisingEvents()
     {
         $user = User::create(
-            $id = IdentityGenerator::randomOfType(UserId::class),
+            IdentityGenerator::randomOfType(UserId::class),
             new Name('bob'),
             new EmailAddress('bob@example.com'),
             new Password(password_hash('password', PASSWORD_DEFAULT))

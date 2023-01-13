@@ -51,6 +51,7 @@ class ObjectDiff
                 }
 
                 $prop->setAccessible(true);
+
                 $mine   = $prop->getValue($a);
                 $theirs = $prop->getValue($b);
 

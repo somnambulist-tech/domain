@@ -19,7 +19,7 @@ trait AssertDomainEventHasAttributes
      * @param string        $event      The event class name to check for
      * @param array         $attributes An array of key -> value pairs to check in the first matched event
      */
-    public function assertDomainEventHasAttributes(AggregateRoot $entity, string $event, array $attributes)
+    public function assertDomainEventHasAttributes(AggregateRoot $entity, string $event, array $attributes): void
     {
         $events = new MutableCollection($entity->releaseAndResetEvents());
 

@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Components\Tests\Queries;
 
-use BadMethodCallException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\FrozenCollection;
 use Somnambulist\Components\Queries\AbstractPaginatableQuery;

@@ -23,7 +23,7 @@ final class EntityAccessor
      *
      * @return mixed
      */
-    public static function call(object $object, string $method, mixed $scope = null, mixed ...$args)
+    public static function call(object $object, string $method, mixed $scope = null, mixed ...$args): mixed
     {
         return Closure::bind(fn () => $this->{$method}(...$args), $object, !is_null($scope) ? $scope : $object)();
     }
@@ -51,7 +51,7 @@ final class EntityAccessor
      *
      * @return mixed
      */
-    public static function get(object $object, string $property, mixed $scope = null)
+    public static function get(object $object, string $property, mixed $scope = null): mixed
     {
         return Closure::bind(fn () => $this->{$property}, $object, !is_null($scope) ? $scope : $object)();
     }

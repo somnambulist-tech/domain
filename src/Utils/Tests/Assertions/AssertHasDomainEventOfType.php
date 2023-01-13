@@ -22,7 +22,7 @@ trait AssertHasDomainEventOfType
      * @param string        $event  The event class name to check for
      * @param int|null      $count  Optional: must have this many events of the type
      */
-    public function assertHasDomainEventOfType(AggregateRoot $entity, string $event, int $count = null)
+    public function assertHasDomainEventOfType(AggregateRoot $entity, string $event, int $count = null): void
     {
         $events  = new MutableCollection($entity->releaseAndResetEvents());
         $matched = $events->filter(fn (AbstractEvent $evt) => $evt instanceof $event)->count();

@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Support\Behaviours;
 
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\XmlDriver;
@@ -15,10 +16,7 @@ use Somnambulist\Components\Tests\Support\Stubs\Models\Order;
 
 trait BuildDoctrineInstance
 {
-    /**
-     * @var EntityManager
-     */
-    protected $em;
+    protected ?EntityManager $em = null;
 
     protected function setUp(): void
     {
@@ -43,7 +41,7 @@ trait BuildDoctrineInstance
         TypeBootstrapper::registerEnumerations();
         TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
 
-        $em = EntityManager::create($conn, $config);
+        $em = new EntityManager(DriverManager::getConnection($conn), $config);
 
         $schemaTool = new SchemaTool($em);
 

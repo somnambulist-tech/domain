@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 class NullableTypedEnumeratorConstructor
 {
-    public function __construct(private string $class)
+    public function __construct(private readonly string $class)
     {
     }
 

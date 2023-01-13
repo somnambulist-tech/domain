@@ -4,6 +4,7 @@ namespace Somnambulist\Components\Tests\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\TypeRegistry;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
@@ -18,6 +19,7 @@ use Somnambulist\Components\Tests\Support\Stubs\Helpers\Constructor;
 use Somnambulist\Components\Tests\Support\Stubs\Helpers\NullableConstructor;
 use Somnambulist\Components\Tests\Support\Stubs\Helpers\Serializer;
 use Somnambulist\Components\Tests\Support\Stubs\Types\MyType;
+use Somnambulist\Components\Utils\EntityAccessor;
 
 /**
  * @group doctrine
@@ -35,10 +37,7 @@ class EnumerationBridgeTest extends TestCase
         $this->platform = $this->prophesize(AbstractPlatform::class);
 
         // Before every test, clean registered types
-        $registry = new ReflectionObject(Type::getTypeRegistry());
-        $refProp = $registry->getProperty('instances');
-        $refProp->setAccessible(true);
-        $refProp->setValue($registry, []);
+        EntityAccessor::set(Type::getTypeRegistry(), 'instances', [], TypeRegistry::class);
     }
 
     public function tearDown(): void
@@ -96,12 +95,10 @@ class EnumerationBridgeTest extends TestCase
             },
         ]);
 
-        /** @var Type $actionType */
         $actionType = Type::getType(Action::class);
         $this->assertInstanceOf(EnumerationBridge::class, $actionType);
         $this->assertEquals(Action::class, $actionType->getName());
 
-        /** @var Type $actionType */
         $genderType = Type::getType('gender');
         $this->assertInstanceOf(EnumerationBridge::class, $genderType);
         $this->assertEquals('gender', $genderType->getName());
@@ -124,12 +121,10 @@ class EnumerationBridgeTest extends TestCase
             'gender2' => new Constructor(),
         ]);
 
-        /** @var Type $actionType */
         $actionType = Type::getType(Action::class);
         $this->assertInstanceOf(EnumerationBridge::class, $actionType);
         $this->assertEquals(Action::class, $actionType->getName());
 
-        /** @var Type $actionType */
         $genderType = Type::getType('gender');
         $this->assertInstanceOf(EnumerationBridge::class, $genderType);
         $this->assertEquals('gender', $genderType->getName());
@@ -137,7 +132,7 @@ class EnumerationBridgeTest extends TestCase
 
     public function testGetSQLDeclarationReturnsValueFromPlatform()
     {
-        $this->platform->getVarcharTypeDeclarationSQL(Argument::cetera())->willReturn('declaration');
+        $this->platform->getStringTypeDeclarationSQL(Argument::cetera())->willReturn('declaration');
 
         EnumerationBridge::registerEnumType(Gender::class, function ($value) {
             if (null !== $gender = Gender::memberOrNullByValue($value)) {

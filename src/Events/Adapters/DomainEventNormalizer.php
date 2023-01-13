@@ -12,7 +12,7 @@ use function is_a;
 
 class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {
-    public function __construct(private array $supportedEventPrefixes = [])
+    public function __construct(private readonly array $supportedEventPrefixes = [])
     {
     }
 

@@ -10,7 +10,7 @@ you need for your domain, following your domain naming (e.g. if you do not call 
 EmailAddress then create your own VO for that purpose).
 
 VOs should be self-validating during construction. For this purpose, the Assertion library by Benjamin
-Eberlei is used, however you may wish to use another or filter_var() etc directly.
+Eberlei is used, however you may wish to use another or filter_var() etc. directly.
 
 If you see something missing or have suggestions for other methods, submit a PR or ticket.
 

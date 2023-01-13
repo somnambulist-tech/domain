@@ -24,7 +24,7 @@ final class UserGroups extends AbstractEntityCollection
     public function get(int $id): UserGroup
     {
         if (null === $group = $this->findById($id)) {
-            throw EntityNotFoundException::entityNotFound(UserGroup::class, $this->root->id(), $id);
+            throw EntityNotFoundException::entityNotFound(UserGroup::class, $this->root->id()->toString(), $id);
         }
 
         return $group;
@@ -33,7 +33,7 @@ final class UserGroups extends AbstractEntityCollection
     public function for(Group $group): UserGroup
     {
         if (null === $ug = $this->findByGroup($group)) {
-            throw EntityNotFoundException::entityNotFound(UserGroup::class, $this->root->id(), $group);
+            throw EntityNotFoundException::entityNotFound(UserGroup::class, $this->root->id()->toString(), $group->toString());
         }
 
         return $ug;

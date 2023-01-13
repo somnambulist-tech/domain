@@ -18,7 +18,7 @@ trait AssertDoesNotHaveDomainEventOfType
      * @param AggregateRoot $entity The entity that raises events
      * @param string        $event  The event class name to check for
      */
-    public function assertDoesNotHaveDomainEventOfType(AggregateRoot $entity, string $event)
+    public function assertDoesNotHaveDomainEventOfType(AggregateRoot $entity, string $event): void
     {
         $events  = new MutableCollection($entity->releaseAndResetEvents());
         $matched = $events->filter(fn (AbstractEvent $evt) => $evt instanceof $event)->count();

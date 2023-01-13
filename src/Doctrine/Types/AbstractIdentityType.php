@@ -45,7 +45,7 @@ abstract class AbstractIdentityType extends Type
         return $uuid;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         if (empty($value)) {
             return null;

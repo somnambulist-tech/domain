@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Models;
 
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
@@ -85,9 +86,9 @@ class EntityCollectionTest extends TestCase
         $user = $this->makeUser();
         $id   = $user->id();
 
-        $user->groups()->join($g1 = new Group('0accbf52-d55e-4505-a709-1ef483811731'), Role::LEADER());
+        $user->groups()->join(new Group('0accbf52-d55e-4505-a709-1ef483811731'), Role::LEADER());
         $user->groups()->join($g2 = new Group('b7c1a7ad-956b-45de-85be-fe507b190102'), Role::MEMBER());
-        $user->groups()->join($g3 = new Group('7829b3e1-bc4a-406d-8a34-895cbfecd1ae'), Role::MEMBER());
+        $user->groups()->join(new Group('7829b3e1-bc4a-406d-8a34-895cbfecd1ae'), Role::MEMBER());
 
         $em = $this->makeEntityManager();
 
@@ -117,8 +118,8 @@ class EntityCollectionTest extends TestCase
     {
         $user = $this->makeUser();
 
-        $user->groups()->join($g1 = new Group('0accbf52-d55e-4505-a709-1ef483811731'), Role::LEADER());
-        $user->groups()->join($g2 = new Group('b7c1a7ad-956b-45de-85be-fe507b190102'), Role::MEMBER());
+        $user->groups()->join(new Group('0accbf52-d55e-4505-a709-1ef483811731'), Role::LEADER());
+        $user->groups()->join(new Group('b7c1a7ad-956b-45de-85be-fe507b190102'), Role::MEMBER());
         $user->groups()->join($g3 = new Group('7829b3e1-bc4a-406d-8a34-895cbfecd1ae'), Role::MEMBER());
 
         $user->groups()->leave($g3);
@@ -131,7 +132,7 @@ class EntityCollectionTest extends TestCase
     private function makeUser(): User
     {
         return User::create(
-            $id = IdentityGenerator::randomOfType(UserId::class),
+            IdentityGenerator::randomOfType(UserId::class),
             new Name('bob'),
             new EmailAddress('bob@example.com'),
             new Password(password_hash('password', PASSWORD_DEFAULT))
@@ -167,7 +168,7 @@ class EntityCollectionTest extends TestCase
         ]);
         EnumerationBridge::registerEnumType('group_role', new TypedEnumerableConstructor(Role::class));
 
-        $em = EntityManager::create($conn, $config);
+        $em = new EntityManager(DriverManager::getConnection($conn), $config);
 
         $schemaTool = new SchemaTool($em);
 

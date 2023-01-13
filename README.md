@@ -39,7 +39,7 @@ It consists of:
 
 ### Requirements
 
- * PHP 8.0+
+ * PHP 8.1+
  * mb_string
  * bcmath
  * beberlei/assert
@@ -58,6 +58,11 @@ Install using composer, or checkout / pull the files from github.com.
 From 5.X this project will be re-namespaced to drop `Domain`. 4.X includes a `classmap.php` providing
 aliases for backwards compatibility.
 
+From 5.0 the QueryBus supports typed response objects. This is an optional feature that provides a built-in 
+mechanism to handle failed queries without trapping exceptions in the calling code.
+
+From 5.0 domain event names are always generated at construction time as `snake_case`.
+
 ### Upgrading from 3.X to 4.X
 
 From 4.X this project was re-namespaced to `Somnambulist\Components\Domain`. Update all references to
@@ -70,16 +75,19 @@ The Doctrine `AbstractIdentityType` was moved out of the `Identity` namespace to
 See the docs folder for more documentation on each component.
 
  * [Aggregate Root](docs/aggregate-root.md)
- * [Enumeration Bridge](docs/doctrine-enum-bridge.md)
- * [Enumerations](docs/enumerations.md)
- * [Doctrine Mapping](docs/doctrine-mappings.md)
  * [Domain Events](docs/domain-events.md)
- * [Symfony Messenger Integration](docs/messenger.md)
  * [Value Objects](docs/value-objects.md)
+ * [Enumerations](docs/enumerations.md)
+ * [Enumeration Bridge](docs/doctrine-enum-bridge.md)
+ * [Doctrine Mapping](docs/doctrine-mappings.md)
+ * [Symfony Messenger Integration](docs/messenger.md)
+ * [Using Command Query Separation](docs/cqrs.md)
 
 ### Links
 
  * [Doctrine](http://doctrine-project.org)
- * [Domain Input Mapper](https://github.com/dave-redfern/somnambulist-domain-input)
- * [Read-Models](https://github.com/dave-redfern/somnambulist-read-models)
- * [Collection](https://github.com/dave-redfern/somnambulist-collection)
+ * [API Bundle](https://github.com/somnambulist-tech/api-bundle)
+ * [API Client](https://github.com/somnambulist-tech/api-client)
+ * [Collection](https://github.com/somnambulist-tech/collection)
+ * [Form Requests](https://github.com/somnambulist-tech/form-request-bundle)
+ * [Read-Models](https://github.com/somnambulist-tech/read-models)

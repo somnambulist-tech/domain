@@ -8,7 +8,7 @@ use Somnambulist\Components\Models\AbstractMultiton;
 
 class TypedMultitonConstructor
 {
-    public function __construct(private string $class)
+    public function __construct(private readonly string $class)
     {
     }
 

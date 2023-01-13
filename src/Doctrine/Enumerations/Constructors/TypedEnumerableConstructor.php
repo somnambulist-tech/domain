@@ -9,7 +9,7 @@ use function in_array;
 
 class TypedEnumerableConstructor
 {
-    public function __construct(private string $class, private string $preCastAs = 'string')
+    public function __construct(private readonly string $class, private readonly string $preCastAs = 'string')
     {
         if (!in_array($preCastAs, ['string', 'int'])) {
             throw new InvalidArgumentException(sprintf('preCastAs must be one of string or int, "%s" is not supported', $preCastAs));

@@ -186,7 +186,7 @@ class DomainEventTest extends TestCase
                 'class'   => 'Events\NamespacedEvent',
                 'name'    => 'app.namespaced',
                 'version' => 2,
-                'time'    => $ts = microtime(true),
+                'time'    => microtime(true),
             ],
             'context'   => [
                 'context' => 'value',
@@ -214,7 +214,7 @@ class DomainEventTest extends TestCase
                 'class' => 'Some\Class\ThatDoesNotExist',
                 'group' => 'a_group',
                 'name'  => 'that_does_not_exist',
-                'time'  => $ts = microtime(true),
+                'time'  => microtime(true),
             ],
             'context'   => [
                 'context' => 'value',

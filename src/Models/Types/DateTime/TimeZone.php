@@ -8,7 +8,7 @@ use Somnambulist\Components\Models\AbstractValueObject;
 
 class TimeZone extends AbstractValueObject
 {
-    public function __construct(private string $value)
+    public function __construct(private readonly string $value)
     {
         Assert::that($value, null, 'timezone')
             ->notEmpty()

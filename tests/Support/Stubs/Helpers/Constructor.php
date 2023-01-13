@@ -7,7 +7,7 @@ use Somnambulist\Components\Tests\Support\Stubs\Enum\Gender;
 
 class Constructor
 {
-    public function __invoke($value)
+    public function __invoke($value): ?Gender
     {
         if (null === $value) {
             return null;

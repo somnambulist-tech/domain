@@ -3,6 +3,7 @@
 namespace Somnambulist\Components\Tests\Events\Publishers;
 
 use Doctrine\Common\EventManager;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
@@ -26,11 +27,7 @@ use function realpath;
  */
 class DoctrineEventPublisherTest extends TestCase
 {
-
-    /**
-     * @var EntityManager
-     */
-    protected $em;
+    protected ?EntityManager $em = null;
 
     protected function setUp(): void
     {
@@ -57,7 +54,7 @@ class DoctrineEventPublisherTest extends TestCase
         TypeBootstrapper::registerEnumerations();
         TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
 
-        $em = EntityManager::create($conn, $config, $evm);
+        $em = new EntityManager(DriverManager::getConnection($conn), $config, $evm);
 
         $schemaTool = new SchemaTool($em);
 

@@ -24,6 +24,15 @@ final class IdentityGenerator
         return self::randomOfType();
     }
 
+    /**
+     * @param string $type
+     *
+     * @template T of object
+     * @template-extends AbstractIdentity
+     *
+     * @psalm-return T
+     * @return AbstractIdentity
+     */
     public static function randomOfType(string $type = Uuid::class): AbstractIdentity
     {
         return self::make($type, UuidFactory::uuid4());
@@ -32,7 +41,7 @@ final class IdentityGenerator
     /**
      * Creates a UUID v5 in the provided namespace using the values
      *
-     * Multiple string values can be passed and they will be dot separated as the identity
+     * Multiple string values can be passed. They will be dot separated as the identity
      * string. E.g.: `IdentityGenerator::hashed($ns, 'var', 'foo', 'bar')` would hash the
      * string "var.foo.bar" (without quotes).
      *
@@ -50,6 +59,17 @@ final class IdentityGenerator
         return self::hashedOfType($namespace, Uuid::class, ...$values);
     }
 
+    /**
+     * @param Uuid $namespace
+     * @param string $type
+     * @param string ...$values
+     *
+     * @template T of object
+     * @template-extends AbstractIdentity
+     *
+     * @psalm-return T
+     * @return AbstractIdentity
+     */
     public static function hashedOfType(Uuid $namespace, string $type = Uuid::class, ...$values): AbstractIdentity
     {
         return self::make($type, UuidFactory::uuid5((string)$namespace, implode('.', $values)));

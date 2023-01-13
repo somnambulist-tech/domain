@@ -1,6 +1,19 @@
 Change Log
 ==========
 
+2023-01-12
+----------
+
+ * Add interface for queries to support response objects
+ * Add metadata behaviour for queries for additional context information
+ * Add and update documentation
+ * Tweak and clean up various code inspection issues
+
+2023-01-04
+----------
+
+ * Add support for query response objects in query bus
+
 2022-09-26
 ----------
 

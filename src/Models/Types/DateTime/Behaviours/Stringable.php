@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Models\Types\DateTime\Behaviours;
 
-use DateTime as PhpDateTime;
+use DateTimeInterface as PhpDateTime;
 use Somnambulist\Components\Models\Types\DateTime\DateFormat;
 
 /**

@@ -46,7 +46,7 @@ class EventDecoratorsTest extends TestCase
         $stack->push($request);
 
         $container->set('security.token_storage', new class {
-            public function getToken()
+            public function getToken(): UsernamePasswordToken
             {
                 return new UsernamePasswordToken(new class implements UserInterface {
                     public function getRoles(): array
@@ -69,7 +69,7 @@ class EventDecoratorsTest extends TestCase
                         return $this->getUsername();
                     }
 
-                    public function getUsername()
+                    public function getUsername(): string
                     {
                         return 'foo@bar.com';
                     }
@@ -79,7 +79,7 @@ class EventDecoratorsTest extends TestCase
 
                     }
 
-                    public function getId()
+                    public function getId(): string
                     {
                         return '4fad6b95-34c1-47fd-971d-9deb9f8fa2c4';
                     }

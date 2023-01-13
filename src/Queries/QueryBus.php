@@ -2,6 +2,8 @@
 
 namespace Somnambulist\Components\Queries;
 
+use Somnambulist\Components\Queries\Responses\AbstractQueryResponse;
+
 interface QueryBus
 {
     /**
@@ -9,7 +11,7 @@ interface QueryBus
      *
      * @param AbstractQuery $query
      *
-     * @return mixed
+     * @return mixed|AbstractQueryResponse
      */
     public function execute(AbstractQuery $query): mixed;
 }

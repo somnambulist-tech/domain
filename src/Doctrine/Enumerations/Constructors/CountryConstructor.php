@@ -8,14 +8,7 @@ use Somnambulist\Components\Models\Types\Geography\Country;
 
 class CountryConstructor
 {
-    /**
-     * @param string           $value
-     * @param AbstractPlatform $platform
-     *
-     * @return Country|null
-     * @throws InvalidArgumentException
-     */
-    public function __invoke($value, $platform): ?Country
+    public function __invoke(?string $value, AbstractPlatform $platform): ?Country
     {
         if (is_null($value)) {
             return null;

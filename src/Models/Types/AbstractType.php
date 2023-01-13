@@ -18,7 +18,7 @@ use Somnambulist\Components\Models\AbstractValueObject;
  */
 abstract class AbstractType extends AbstractValueObject
 {
-    public function __construct(private string $value)
+    public function __construct(private readonly string $value)
     {
         Assert::that($value, null, 'type')->notEmpty()->maxLength(50);
     }

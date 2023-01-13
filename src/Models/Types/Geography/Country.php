@@ -25,17 +25,17 @@ final class Country extends AbstractMultiton
 
     public static function getByISONumber(int $code): self
     {
-        return static::memberBy('id', $code);
+        return self::memberBy('id', $code);
     }
 
     public static function getByISO2Char(string $code): self
     {
-        return static::memberBy('code2', strtoupper($code));
+        return self::memberBy('code2', strtoupper($code));
     }
 
     public static function getByISO3Char(string $code): self
     {
-        return static::memberByKey(strtoupper($code));
+        return self::memberByKey(strtoupper($code));
     }
 
     public function toString(): string
