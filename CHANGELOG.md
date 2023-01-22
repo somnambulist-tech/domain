@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+2023-01-22
+----------
+
+ * Add `Paginatable` and `Sortable` as interfaces for queries
+ * Move `UsesResponseClass` to `Queries\Contracts` with fallback alias
+
 2023-01-12
 ----------
 

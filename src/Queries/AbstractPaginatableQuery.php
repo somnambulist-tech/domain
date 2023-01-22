@@ -3,13 +3,17 @@
 namespace Somnambulist\Components\Queries;
 
 use Somnambulist\Components\Collection\FrozenCollection;
+use Somnambulist\Components\Queries\Behaviours\CanIncludeMetaData;
 use Somnambulist\Components\Queries\Behaviours\CanIncludeRelatedData;
 use Somnambulist\Components\Queries\Behaviours\CanPaginateQuery;
 use Somnambulist\Components\Queries\Behaviours\CanSortQuery;
+use Somnambulist\Components\Queries\Contracts\Paginatable;
+use Somnambulist\Components\Queries\Contracts\Sortable;
 
-abstract class AbstractPaginatableQuery extends AbstractQuery
+abstract class AbstractPaginatableQuery extends AbstractQuery implements Paginatable, Sortable
 {
     use CanIncludeRelatedData;
+    use CanIncludeMetaData;
     use CanPaginateQuery;
     use CanSortQuery;
 

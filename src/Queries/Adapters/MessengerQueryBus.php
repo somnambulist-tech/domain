@@ -7,7 +7,7 @@ use Somnambulist\Components\Queries\AbstractQuery;
 use Somnambulist\Components\Queries\QueryBus;
 use Somnambulist\Components\Queries\Responses\AbstractQueryResponse;
 use Somnambulist\Components\Queries\Responses\QueryResponseStatus;
-use Somnambulist\Components\Queries\UsesResponseClass;
+use Somnambulist\Components\Queries\Contracts\UsesResponseClass;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Throwable;
