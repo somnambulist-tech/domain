@@ -35,6 +35,6 @@ class DistanceUnitTest extends TestCase
         $vo = DistanceUnit::FEET();
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

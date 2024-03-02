@@ -98,8 +98,6 @@ class DoctrineEventPublisherTest extends TestCase
 
         $this->assertCount(0, $entity->releaseAndResetEvents());
 
-        $this->getActualOutput();
-
         sleep(1);
 
         $entity->addRelated('example', 'test-test', DateTime::now());

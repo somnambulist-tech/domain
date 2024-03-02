@@ -62,6 +62,6 @@ class TimeZoneTest extends TestCase
         $vo      = new TimeZone('America/Toronto');
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

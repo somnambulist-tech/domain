@@ -3,8 +3,8 @@
 namespace Somnambulist\Components\Doctrine\Enumerations\Constructors;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Eloquent\Enumeration\AbstractEnumeration;
 use InvalidArgumentException;
+use Somnambulist\Components\Enumeration\AbstractEnumeration;
 
 class NullableTypedEnumeratorConstructor
 {

@@ -51,6 +51,6 @@ class UuidTest extends TestCase
         $vo = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

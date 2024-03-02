@@ -4,11 +4,11 @@ namespace Somnambulist\Components\Models;
 
 use Assert\Assertion;
 use Assert\InvalidArgumentException;
+use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Models\Contracts\CanTestEquality;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
 use Somnambulist\Components\Models\Types\Identity\AbstractIdentity as Identity;
 use Somnambulist\Components\Models\Types\Identity\Aggregate;
-use Somnambulist\Components\Events\AbstractEvent;
 use function is_a;
 use function sprintf;
 

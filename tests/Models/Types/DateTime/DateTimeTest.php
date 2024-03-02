@@ -48,7 +48,7 @@ class DateTimeTest extends TestCase
         $vo      = new DateTime();
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 
     public function testToUtc()
@@ -74,7 +74,7 @@ class DateTimeTest extends TestCase
         $this->assertEquals($lastDow, (new DateTime())->lastDayOfWeek($firstDow));
     }
 
-    public function lastDayOfWeekTestData(): array
+    public static function lastDayOfWeekTestData(): array
     {
         // [ firstDow, lastDow ]
         return [

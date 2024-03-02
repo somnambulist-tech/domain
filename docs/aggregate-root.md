@@ -291,6 +291,10 @@ in this case the AggregateRoot (that is held in the `root` property on the Abstr
 The second field tells Doctrine that the `id` property is also part of the identity. In effect
 the actual identity of our child entity is now <aggregate_id> + <child_id> and is a compound key.
 
+> Note: you must include the inverse relationship back to the aggregate root if using a composite
+> identifier. If it is not included, Doctrine may not correctly determine the necessary components
+> when querying the data.
+
 For database provided identities (surrogate identities), `AbstractSurrogateEntity` and 
 `AbstractSurrogateEntityCollection` can be used as bases instead. Note that both of these
 implementations are intended to be used with integer keys. For other types of identity key, use

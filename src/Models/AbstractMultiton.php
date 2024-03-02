@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Models;
 
-use Eloquent\Enumeration\AbstractMultiton as BaseMultiton;
+use Somnambulist\Components\Enumeration\AbstractMultiton as BaseMultiton;
 use Somnambulist\Components\Models\Contracts\ValueObject;
 
 abstract class AbstractMultiton extends BaseMultiton implements ValueObject
@@ -33,8 +33,4 @@ abstract class AbstractMultiton extends BaseMultiton implements ValueObject
     {
         return $this->toString();
     }
-
-    public function __set($name, $value) {}
-
-    public function __unset($name) {}
 }

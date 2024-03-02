@@ -51,6 +51,6 @@ class PhoneNumberTest extends TestCase
         $vo      = new PhoneNumber('+12345678901');
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

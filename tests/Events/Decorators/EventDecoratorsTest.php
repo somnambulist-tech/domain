@@ -3,12 +3,12 @@
 namespace Somnambulist\Components\Tests\Events\Decorators;
 
 use PHPUnit\Framework\TestCase;
-use Somnambulist\Components\Models\Types\DateTime\DateTime;
-use Somnambulist\Components\Models\Types\Identity\Uuid;
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Events\Decorators\DecorateWithRequestId;
 use Somnambulist\Components\Events\Decorators\DecorateWithUserData;
 use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
+use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use Somnambulist\Components\Models\Types\Identity\Uuid;
 use Somnambulist\Components\Tests\Support\Stubs\EventListeners\AssertingEventBus;
 use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -74,7 +74,7 @@ class EventDecoratorsTest extends TestCase
                         return 'foo@bar.com';
                     }
 
-                    public function eraseCredentials()
+                    public function eraseCredentials(): void
                     {
 
                     }

@@ -52,6 +52,6 @@ class ExternalIdentityTest extends TestCase
         $vo = new ExternalIdentity('Provider', 'ExternalIdentity');
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

@@ -15,7 +15,7 @@ own and then copy and adapt the mappings as you need.
 
 Remember: value-objects are part of your domain model and should be treated with care.
 
-__Note:__ enumerations are used in these mappings.
+> __Note:__ enumerations are used in these mappings.
 
 #### Register Enumeration Handlers
 
@@ -35,10 +35,10 @@ This will pre-register the following enumerations:
  * Measure\DistanceUnit as distance_unit
  * Geography\Srid as srid
  
-In addition extra helpers are registered to allow the Country and Currency value objects
+In addition: extra helpers are registered to allow the Country and Currency value objects
 to be used as enumerations. These are stored using the respective ISO 3-char codes.
 
-__Note:__ concrete enumerations cannot be extended. If the built-in ones do not meet your
+> __Note:__ concrete enumerations cannot be extended. If the built-in ones do not meet your
 needs, create your own.
 
 See [Doctrine Enumeration Bridge](./doctrine-enum-bridge.md) for more on using the bridge.
@@ -72,9 +72,9 @@ To register all the standard types add the following to your application bootstr
 Somnambulist\Components\Doctrine\TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
 ```
 
-__Note:__ if you register `uuid` as a type, and then use it in e.g.: an embeddable your
-embeddable will receive an Uuid object, not an Uuid string. Ensure the type is set to `guid`
-to get just the string value.
+> __Note:__ if you register `uuid` as a type, and then use it in e.g.: an embeddable your
+> embeddable will receive an Uuid object, not an Uuid string. Ensure the type is set to `guid`
+> to get just the string value.
 
 #### Mapping Files
 

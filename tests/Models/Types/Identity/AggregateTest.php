@@ -52,6 +52,6 @@ class AggregateTest extends TestCase
         $vo = new Aggregate(__CLASS__, '5244f8c4-e984-4797-bee4-c9616655f3d6');
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

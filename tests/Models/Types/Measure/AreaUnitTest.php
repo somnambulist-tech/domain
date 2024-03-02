@@ -35,6 +35,6 @@ class AreaUnitTest extends TestCase
         $vo = AreaUnit::SQ_FT();
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

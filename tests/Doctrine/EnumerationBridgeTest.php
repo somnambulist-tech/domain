@@ -9,7 +9,6 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
-use ReflectionObject;
 use ReflectionProperty;
 use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 use Somnambulist\Components\Tests\Support\Stubs\Enum\Action;
@@ -38,13 +37,14 @@ class EnumerationBridgeTest extends TestCase
 
         // Before every test, clean registered types
         EntityAccessor::set(Type::getTypeRegistry(), 'instances', [], TypeRegistry::class);
+        EntityAccessor::set(Type::getTypeRegistry(), 'instancesReverseIndex', [], TypeRegistry::class);
     }
 
     public function tearDown(): void
     {
         $refProp = new ReflectionProperty(Type::class, 'typeRegistry');
         $refProp->setAccessible(true);
-        $refProp->setValue(null);
+        $refProp->setValue(null, null);
     }
 
     public function testEnumTypesAreProperlyRegistered()

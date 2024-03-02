@@ -88,7 +88,7 @@ class ShiftersTest extends TestCase
         $this->assertEquals($expected, $testDate->startOf('week', $firstDow));
     }
 
-    public function startOfWeekTestData(): array
+    public static function startOfWeekTestData(): array
     {
         // [ testDate, firstDow, expectedDate ]
         return [
@@ -135,7 +135,7 @@ class ShiftersTest extends TestCase
         $this->assertEquals($expected, $testDate->endOf('week', $firstDow));
     }
 
-    public function endOfWeekTestData(): array
+    public static function endOfWeekTestData(): array
     {
         // [ testDate, firstDow, expectedDate ]
         return [

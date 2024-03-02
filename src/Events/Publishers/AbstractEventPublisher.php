@@ -3,11 +3,11 @@
 namespace Somnambulist\Components\Events\Publishers;
 
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Models\AggregateRoot;
 use Somnambulist\Components\Events\Behaviours\CanDecorateEvents;
 use Somnambulist\Components\Events\Behaviours\CanGatherEventsForDispatch;
 use Somnambulist\Components\Events\Behaviours\CanSortEvents;
 use Somnambulist\Components\Events\EventBus;
+use Somnambulist\Components\Models\AggregateRoot;
 
 abstract class AbstractEventPublisher
 {

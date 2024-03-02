@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Support\Stubs\Enum;
 
-use Eloquent\Enumeration\AbstractEnumeration;
+use Somnambulist\Components\Models\AbstractEnumeration;
 
 /**
  * @method static Gender MALE()

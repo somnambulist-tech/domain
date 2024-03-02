@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+2024-02-24
+----------
+
+ * Update Doctrine integrations for ORM 3
+ * Replace eloquent/enumeration with somnambulist/enumeration
+ * Update dev deps to SF 6.4 or better
+ * Update Symfony integrations to 6.4 or better
+
 2023-01-22
 ----------
 

@@ -6,6 +6,7 @@
         <cache>
           <versions>
             <info id="Local" version="9.3.8" />
+            <info id="Local/Users/dave/Projects/somnambulist/domain/vendor/autoload.php" version="10.5.10" />
           </versions>
         </cache>
       </tool>

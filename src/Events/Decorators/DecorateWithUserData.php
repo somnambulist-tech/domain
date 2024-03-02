@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Events\Decorators;
 
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Events\EventDecoratorInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use function method_exists;
 
 class DecorateWithUserData implements EventDecoratorInterface

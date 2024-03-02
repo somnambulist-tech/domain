@@ -139,8 +139,8 @@ Events are queued, sorted by the timestamp to ensure the correct order and sent 
 
 Ensure that Symfony Serializer has been installed: `composer req symfony/serializer symfony/property-access`.
 
-__Note:__ `property-access` is required to enable the `ObjectNormalizer` that is used to
-serialize the envelope stamp objects.
+> __Note:__ `property-access` is required to enable the `ObjectNormalizer` that is used to
+> serialize the envelope stamp objects.
 
 Add the following service to your `services.yaml` or another service file:
 
@@ -168,7 +168,8 @@ services:
             $supportedEventPrefixes: [ 'App\Events\', 'Service\Context\Events' ]
 ```
 
-__Note:__ any event mentioned should follow the structure exported by `AbstractEvent::toArray`.
+> __Note:__ any event mentioned should follow the structure exported by `AbstractEvent::toArray`.
+
 ```json
 {
     "aggregate": {
@@ -204,8 +205,8 @@ framework:
                 context: { }
 ```
 
-__Note:__ the `EventBus` provided here is specifically for domain events. For general events
-consider adding a separate bus.
+> __Note:__ the `EventBus` provided here is specifically for domain events. For general events
+> consider adding a separate bus.
 
-__Note:__ since v3 the EventBus can handle generic events - they will not have an aggregate
-associated with them but must still extend `AbstractEvent`.
+> __Note:__ since v3 the EventBus can handle generic events - they will not have an aggregate
+> associated with them but must still extend `AbstractEvent`.

@@ -76,12 +76,12 @@ When registering the type, you can either use the fully qualified class name, or
 string. The only limitation is that it should be unique for each enumeration. In the above example
 we could register the enumeration as `http_action` instead.
 
-__Note:__ the bridge will check if the type has already been registered and skip it if that is
-the case. If you wish to replace an existing type then you should use `Type::overrideType()`,
-however that will only work if the type has already been registered.
+> __Note:__ the bridge will check if the type has already been registered and skip it if that is
+> the case. If you wish to replace an existing type then you should use `Type::overrideType()`,
+> however that will only work if the type has already been registered.
 
-__Note:__ when using short aliases you **MUST** explicitly set the class in the constructor for
-hydrating the object. This means that constructors cannot be shared with other types.
+> __Note:__ when using short aliases you **MUST** explicitly set the class in the constructor for
+> hydrating the object. This means that constructors cannot be shared with other types.
 
 #### Register Multiple Types
 
@@ -169,9 +169,9 @@ class AppBundle extends Bundle
 }
 ```
 
-__Note:__ the first argument of `registerEnumType` is the alias/name for how to refer to this type.
-If you use the fully qualified class name via the `::class` constant, then the Doctrine mapping must
-reference this type:
+> __Note:__ the first argument of `registerEnumType` is the alias/name for how to refer to this type.
+> If you use the fully qualified class name via the `::class` constant, then the Doctrine mapping must
+> reference this type:
 
 ```xml
 <field name="currency" type="Somnambulist\Components\Models\Types\Money\Currency" length="3" nullable="false"/>

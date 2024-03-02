@@ -3,8 +3,8 @@
 namespace Somnambulist\Components\Utils\Tests\Assertions;
 
 use Somnambulist\Components\Collection\MutableCollection;
-use Somnambulist\Components\Models\AggregateRoot;
 use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Models\AggregateRoot;
 use function get_class;
 use function sprintf;
 

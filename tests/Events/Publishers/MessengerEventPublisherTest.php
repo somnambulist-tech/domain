@@ -3,9 +3,9 @@
 namespace Somnambulist\Components\Tests\Events\Publishers;
 
 use PHPUnit\Framework\TestCase;
+use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
 use Somnambulist\Components\Models\Types\Identity\Uuid;
-use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
 use Somnambulist\Components\Tests\Support\Stubs\EventListeners\DomainEventListener;
 use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use function sleep;
@@ -39,8 +39,6 @@ class MessengerEventPublisherTest extends TestCase
         $this->dispatcher->dispatch();
 
         $this->assertCount(0, $entity->releaseAndResetEvents());
-
-        $this->getActualOutput();
 
         sleep(1);
 

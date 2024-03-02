@@ -126,17 +126,17 @@ This implementation includes a Doctrine subscriber that will listen for Aggregat
 These are collected and once the Unit of Work has been flushed successfully will be
 dispatched via the EventBus implementation that is in use (default Messenger).
  
- * __Note:__ it is not required to use the `DomainEventPublisher` subscriber. You can
-   implement your own event dispatcher, use another dispatcher entirely (the frameworks)
-   and then manually trigger the domain events by flushing the changes and then manually
-   calling `releaseAndResetEvents` and dispatching the events.
+> __Note:__ it is not required to use the `DomainEventPublisher` subscriber. You can
+> implement your own event dispatcher, use another dispatcher entirely (the frameworks)
+> and then manually trigger the domain events by flushing the changes and then manually
+> calling `releaseAndResetEvents` and dispatching the events.
 
 To use the included listener, add it to your list of event subscribers in the Doctrine
 configuration. This is per entity manager.
 
- * __Note:__ to use listeners with domain events that rely on Doctrine repositories
-   it is necessary to defer loading those subscribers until after Doctrine has been
-   resolved.
+> __Note:__ to use listeners with domain events that rely on Doctrine repositories
+> it is necessary to defer loading those subscribers until after Doctrine has been
+> resolved.
 
 As of v3 the events are only broadcast on the event bus and are not sent to Doctrines
 event manager.
@@ -155,8 +155,8 @@ events are fired at the end of the current request.
 
 Remember: you will need to register the objects that will raise events.
 
-__Note:__ the Messenger dispatcher does not release monitored aggregates after event
-dispatch. You will need to specifically stop listening for events to clear the listener.
+> __Note:__ the Messenger dispatcher does not release monitored aggregates after event
+> dispatch. You will need to specifically stop listening for events to clear the listener.
 
 Be sure to read the posts by Benjamin Eberlei mentioned earlier and check out his
 [Assertion library](https://github.com/beberlei/assert) for low dependency entity

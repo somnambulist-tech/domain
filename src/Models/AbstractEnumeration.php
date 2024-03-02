@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Models;
 
-use Eloquent\Enumeration\AbstractEnumeration as BaseEnumeration;
+use Somnambulist\Components\Enumeration\AbstractEnumeration as BaseEnumeration;
 use Somnambulist\Components\Models\Contracts\ValueObject;
 
 abstract class AbstractEnumeration extends BaseEnumeration implements ValueObject
@@ -38,10 +38,6 @@ abstract class AbstractEnumeration extends BaseEnumeration implements ValueObjec
     {
         return $this->toString();
     }
-
-    public function __set($name, $value) {}
-
-    public function __unset($name) {}
 
     public function toString(): string
     {

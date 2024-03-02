@@ -54,6 +54,6 @@ class PublicPrivateKeyTest extends TestCase
         $vo = new PublicPrivateKey(static::TEST_STRING, 'PublicPrivateKeyTest');
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

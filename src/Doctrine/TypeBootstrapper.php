@@ -8,7 +8,6 @@ use Somnambulist\Components\Doctrine\Enumerations\Constructors\CurrencyConstruct
 use Somnambulist\Components\Doctrine\Enumerations\Constructors\TypedEnumerableConstructor;
 use Somnambulist\Components\Doctrine\Enumerations\Serializers\CountrySerializer;
 use Somnambulist\Components\Doctrine\Enumerations\Serializers\CurrencySerializer;
-use Somnambulist\Components\Doctrine\Types;
 use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 use Somnambulist\Components\Models\Types\Geography;
 use Somnambulist\Components\Models\Types\Measure;

@@ -4,8 +4,8 @@ namespace Somnambulist\Components\Tests\Events;
 
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\FrozenCollection as Immutable;
-use Somnambulist\Components\Models\Types\Identity\Aggregate;
 use Somnambulist\Components\Events\AbstractEvent;
+use Somnambulist\Components\Models\Types\Identity\Aggregate;
 use Somnambulist\Components\Tests\Support\Stubs\Events\GroupPropertyEvent;
 use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityCreatedEvent;
 use Somnambulist\Components\Tests\Support\Stubs\Events\NamespacedEvent;

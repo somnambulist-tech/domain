@@ -3,17 +3,18 @@
 namespace Somnambulist\Components\Events\Publishers;
 
 use Doctrine\Common\EventSubscriber;
-use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\Event\PreFlushEventArgs;
+use Doctrine\ORM\Event\PrePersistEventArgs;
+use Doctrine\ORM\Event\PreRemoveEventArgs;
 use Doctrine\ORM\Events;
 use Somnambulist\Components\Collection\MutableCollection as Collection;
-use Somnambulist\Components\Models\AggregateRoot;
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Events\Behaviours\CanDecorateEvents;
 use Somnambulist\Components\Events\Behaviours\CanGatherEventsForDispatch;
 use Somnambulist\Components\Events\Behaviours\CanSortEvents;
 use Somnambulist\Components\Events\EventBus;
+use Somnambulist\Components\Models\AggregateRoot;
 
 /**
  * Based on the Gist by B. Eberlei https://gist.github.com/beberlei/53cd6580d87b1f5cd9ca
@@ -41,7 +42,7 @@ class DoctrineEventPublisher implements EventSubscriber
         return [Events::prePersist, Events::preRemove, Events::preFlush, Events::postFlush];
     }
 
-    public function prePersist(LifecycleEventArgs $event): void
+    public function prePersist(PrePersistEventArgs $event): void
     {
         $entity = $event->getObject();
 
@@ -50,9 +51,10 @@ class DoctrineEventPublisher implements EventSubscriber
         }
     }
 
-    public function preRemove(LifecycleEventArgs $event): void
+    public function preRemove(PreRemoveEventArgs $event): void
     {
         $entity = $event->getObject();
+
         if ($entity instanceof AggregateRoot && $this->entities->doesNotContain($entity)) {
             $this->entities->add($entity);
         }

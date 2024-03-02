@@ -65,6 +65,6 @@ class EmailAddressTest extends TestCase
         $vo = new EmailAddress('foo@example.com');
         $vo->foo = 'bar';
 
-        $this->assertObjectNotHasAttribute('foo', $vo);
+        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

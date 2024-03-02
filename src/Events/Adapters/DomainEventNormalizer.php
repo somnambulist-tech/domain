@@ -4,13 +4,12 @@ namespace Somnambulist\Components\Events\Adapters;
 
 use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Events\AbstractEvent;
-use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use function class_exists;
 use function is_a;
 
-class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
+class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     public function __construct(private readonly array $supportedEventPrefixes = [])
     {
@@ -19,6 +18,13 @@ class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterfac
     public function hasCacheableSupportsMethod(): bool
     {
         return true;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            AbstractEvent::class,
+        ];
     }
 
     public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
