@@ -2,9 +2,6 @@
 
 namespace Somnambulist\Components\Jobs;
 
-abstract class AbstractJob
+abstract readonly class AbstractJob
 {
-    public function __set($name, $value) {}
-
-    public function __unset($name) {}
 }

@@ -17,14 +17,14 @@ abstract class AbstractPaginatableQuery extends AbstractQuery implements Paginat
     use CanPaginateQuery;
     use CanSortQuery;
 
-    private readonly FrozenCollection $criteria;
+    private FrozenCollection $criteria;
 
     public function __construct(array $criteria = [], array $orderBy = [], int $page = 1, int $perPage = 30)
     {
         $this->criteria = new FrozenCollection($criteria);
-        $this->orderBy  = new FrozenCollection($orderBy);
-        $this->page     = $page;
-        $this->perPage  = $perPage;
+        $this->orderBy = new FrozenCollection($orderBy);
+        $this->page = $page;
+        $this->perPage = $perPage;
     }
 
     public function criteria(): FrozenCollection
