@@ -8,9 +8,9 @@ use Somnambulist\Components\Models\AbstractValueObject;
 /**
  * Represents an identity provided by a third party
  */
-final class ExternalIdentity extends AbstractValueObject
+final readonly class ExternalIdentity extends AbstractValueObject
 {
-    public function __construct(private readonly string $provider, private readonly string $identity)
+    public function __construct(private string $provider, private string $identity)
     {
         Assert::lazy()->tryAll()
             ->that($provider, 'provider')->notEmpty()->notBlank()->maxLength(50)

@@ -2,13 +2,12 @@ framework:
     secret: '%env(APP_SECRET)%'
     default_locale: en
     http_method_override: true
-
+    handle_all_throwables: true
     test: true
-    session:
-        storage_factory_id: session.storage.factory.mock_file
-
     router:
         utf8: true
+    php_errors:
+        log: true
 
     messenger:
         default_bus: event.bus

@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Doctrine\Types;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use Somnambulist\Components\Models\Types\PhoneNumber;
@@ -35,7 +35,7 @@ class PhoneNumberType extends Type
         try {
             $uuid = new PhoneNumber($value);
         } catch (InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, static::NAME);
+            throw ValueNotConvertible::new($value, static::NAME);
         }
 
         return $uuid;
@@ -55,7 +55,7 @@ class PhoneNumberType extends Type
 
         }
 
-        throw ConversionException::conversionFailed($value, static::NAME);
+        throw ValueNotConvertible::new($value, static::NAME);
     }
 
     public function getName(): string

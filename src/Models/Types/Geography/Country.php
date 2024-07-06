@@ -8,10 +8,10 @@ use function strtoupper;
 final class Country extends AbstractMultiton
 {
     protected function __construct(
-        private readonly int $id,
-        private readonly string $code2,
+        private int $id,
+        private string $code2,
         string $code3,
-        private readonly string $name
+        private string $name
     ) {
         parent::__construct($code3);
     }

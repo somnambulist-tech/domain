@@ -3,15 +3,14 @@
 namespace Somnambulist\Components\Tests\Doctrine\Functions;
 
 use Doctrine\ORM\Query;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\Functions\TypeFunction;
 use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
-/**
- * @group doctrine
- * @group doctrine-functions
- * @group doctrine-functions-type
- */
+#[Group('doctrine')]
+#[Group('doctrine-functions')]
+#[Group('doctrine-functions-type')]
 class TypeFunctionTest extends TestCase
 {
     use BuildDoctrineInstance;

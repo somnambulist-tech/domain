@@ -3,6 +3,8 @@
 namespace Somnambulist\Components\Tests\Events\Publishers;
 
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 use Somnambulist\Components\Events\EventBus;
 use Somnambulist\Components\Models\Types\Identity\Aggregate;
 use Somnambulist\Components\Tests\Support\Behaviours\BootKernel;
@@ -19,9 +21,8 @@ use function extension_loaded;
 /**
  * Tests that domain events can be successfully re-queued in the event of failure, including
  * backing off. Only run locally as it requires AMQP to properly test.
- *
- * @group amqp
  */
+#[Group('amqp')]
 class MessengerPublishAndListenTest extends KernelTestCase
 {
     use BootKernel;
@@ -93,9 +94,7 @@ class MessengerPublishAndListenTest extends KernelTestCase
         $this->assertEquals(1, $bus->getMessageCount());
     }
 
-    /**
-     * @depends testRequeueEvents
-     */
+    #[Depends('testRequeueEvents')]
     public function testRequeueReprocess()
     {
         $application = new Application(static::$kernel);

@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Doctrine\Types\Identity;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
@@ -35,7 +35,7 @@ class EmailAddressType extends Type
         try {
             $vo = new EmailAddress($value);
         } catch (InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, static::NAME);
+            throw ValueNotConvertible::new($value, static::NAME);
         }
 
         return $vo;
@@ -55,7 +55,7 @@ class EmailAddressType extends Type
 
         }
 
-        throw ConversionException::conversionFailed($value, static::NAME);
+        throw ValueNotConvertible::new($value, static::NAME);
     }
 
     public function getName(): string

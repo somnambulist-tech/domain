@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Doctrine\Types\Web;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use Somnambulist\Components\Models\Types\Web\Url;
@@ -34,7 +34,7 @@ class UrlType extends Type
         try {
             $url = new Url($value);
         } catch (InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, static::NAME);
+            throw ValueNotConvertible::new($value, static::NAME);
         }
 
         return $url;
@@ -54,7 +54,7 @@ class UrlType extends Type
 
         }
 
-        throw ConversionException::conversionFailed($value, static::NAME);
+        throw ValueNotConvertible::new($value, static::NAME);
     }
 
     public function getName(): string

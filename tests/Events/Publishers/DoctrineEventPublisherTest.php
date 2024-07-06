@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use Exception;
 use PDOException;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\TypeBootstrapper;
 use Somnambulist\Components\Events\Publishers\DoctrineEventPublisher;
@@ -20,11 +21,9 @@ use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use Somnambulist\Components\Tests\Support\Stubs\Models\MyOtherEntity;
 use function realpath;
 
-/**
- * @group events
- * @group events-publishers
- * @group events-publishers-doctrine
- */
+#[Group('events')]
+#[Group('events-publishers')]
+#[Group('events-publishers-doctrine')]
 class DoctrineEventPublisherTest extends TestCase
 {
     protected ?EntityManager $em = null;

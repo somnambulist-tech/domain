@@ -3,14 +3,13 @@
 namespace Somnambulist\Components\Tests\Doctrine;
 
 use Pagerfanta\Pagerfanta;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\Paginator;
 use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
-/**
- * @group doctrine
- * @group doctrine-paginator
- */
+#[Group('doctrine')]
+#[Group('doctrine-paginator')]
 class PaginatorTest extends TestCase
 {
     use BuildDoctrineInstance;

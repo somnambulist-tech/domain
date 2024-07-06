@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Events\Publishers;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Events\Publishers\MessengerEventPublisher;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
@@ -10,6 +11,9 @@ use Somnambulist\Components\Tests\Support\Stubs\EventListeners\DomainEventListen
 use Somnambulist\Components\Tests\Support\Stubs\Models\MyEntity;
 use function sleep;
 
+#[Group('events')]
+#[Group('events-publishers')]
+#[Group('events-publishers-messenger')]
 class MessengerEventPublisherTest extends TestCase
 {
     private MessengerEventPublisher $dispatcher;

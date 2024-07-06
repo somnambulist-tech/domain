@@ -3,14 +3,12 @@
 namespace Somnambulist\Components\Tests\Models\Types\Identity;
 
 use Assert\InvalidArgumentException;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-email
- */
+#[Group('models')]
+#[Group('models-types')]
 class EmailAddressTest extends TestCase
 {
     public function testCreate()
@@ -58,13 +56,5 @@ class EmailAddressTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
         $this->assertTrue($vo1->equals($vo3));
         $this->assertTrue($vo1->equals($vo1));
-    }
-
-    public function testCantSetArbitraryProperties()
-    {
-        $vo = new EmailAddress('foo@example.com');
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

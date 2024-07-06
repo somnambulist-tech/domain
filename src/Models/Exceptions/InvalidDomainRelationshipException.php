@@ -5,12 +5,17 @@ namespace Somnambulist\Components\Models\Exceptions;
 use function sprintf;
 
 /**
- * Exception for when operating on entity relationships is invalid.
+ * Exception when operating on entity relationships is invalid.
  *
  * @codeCoverageIgnore
  */
 class InvalidDomainRelationshipException extends InvalidDomainStateException
 {
+    public static function parentDoesNotExist(string $type, string $id): self
+    {
+        return new static(sprintf('Entity of type "%s" with id "%s" does not exist', $type, $id));
+    }
+
     public static function cannotAddChildToEntity(string $type): self
     {
         return new static(sprintf('Entity "%s" does not support children', $type));

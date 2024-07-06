@@ -10,7 +10,6 @@ use Somnambulist\Components\Tests\Support\Stubs\Events\UserLeftGroup;
 
 final class UserGroups extends AbstractEntityCollection
 {
-
     private function isMemberOf(Group $group): bool
     {
         return $this->entities->filter(fn (UserGroup $ug) => $ug->group()->equals($group))->count() > 0;

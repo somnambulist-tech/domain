@@ -2,15 +2,14 @@
 
 namespace Somnambulist\Components\Tests\Doctrine\Functions\Postgres;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\Functions\Postgres\ReplaceFunction;
 use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
-/**
- * @group doctrine
- * @group doctrine-functions
- * @group doctrine-functions-replace
- */
+#[Group('doctrine')]
+#[Group('doctrine-functions')]
+#[Group('doctrine-functions-replace')]
 class ReplaceFunctionTest extends TestCase
 {
     use BuildDoctrineInstance;

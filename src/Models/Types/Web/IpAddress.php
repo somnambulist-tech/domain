@@ -7,9 +7,11 @@ use Somnambulist\Components\Models\AbstractValueObject;
 /**
  * Represents an IP address in the domain
  */
-abstract class IpAddress extends AbstractValueObject
+abstract readonly class IpAddress extends AbstractValueObject
 {
-    protected string $value;
+    public function __construct(protected string $value)
+    {
+    }
 
     public function toString(): string
     {

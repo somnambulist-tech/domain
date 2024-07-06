@@ -2,14 +2,13 @@
 
 namespace Somnambulist\Components\Tests\Queries;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\FrozenCollection;
 use Somnambulist\Components\Queries\AbstractPaginatableQuery;
 
-/**
- * @group queries
- * @group queries-paginatable-query
- */
+#[Group('queries')]
+#[Group('queries-paginatable')]
 class AbstractPaginatableQueryTest extends TestCase
 {
     public function testPropertyAssignment()

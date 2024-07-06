@@ -11,9 +11,9 @@ use Somnambulist\Components\Models\AbstractValueObject;
  * should use a dedicated library for handling actual calculations, and then convert
  * the result to this value object for storage.
  */
-final class Money extends AbstractValueObject
+final readonly class Money extends AbstractValueObject
 {
-    public function __construct(private readonly float $amount, private readonly Currency $currency)
+    public function __construct(private float $amount, private Currency $currency)
     {
     }
 

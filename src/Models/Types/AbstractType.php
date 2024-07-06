@@ -16,11 +16,11 @@ use Somnambulist\Components\Models\AbstractValueObject;
  * To use, extend this class and then create either a Type mapping via an embeddable
  * Doctrine configuration, or use the EnumerationBridge to map a custom type.
  */
-abstract class AbstractType extends AbstractValueObject
+abstract readonly class AbstractType extends AbstractValueObject
 {
-    public function __construct(private readonly string $value)
+    public function __construct(private string $type)
     {
-        Assert::that($value, null, 'type')->notEmpty()->maxLength(50);
+        Assert::that($type, null, 'type')->notEmpty()->maxLength(50);
     }
 
     public static function default(): static
@@ -30,11 +30,11 @@ abstract class AbstractType extends AbstractValueObject
 
     public function toString(): string
     {
-        return $this->value;
+        return $this->type;
     }
 
     public function type(): string
     {
-        return $this->value;
+        return $this->type;
     }
 }

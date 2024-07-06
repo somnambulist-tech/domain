@@ -2,15 +2,13 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Identity;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
 use Somnambulist\Components\Models\Types\Identity\ExternalIdentity;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-external
- */
+#[Group('models')]
+#[Group('models-types')]
 class ExternalIdentityTest extends TestCase
 {
     public function testCreate()
@@ -45,13 +43,5 @@ class ExternalIdentityTest extends TestCase
         $vo2 = new EmailAddress('bob@example.com');
 
         $this->assertFalse($vo1->equals($vo2));
-    }
-
-    public function testCantSetArbitraryProperties()
-    {
-        $vo = new ExternalIdentity('Provider', 'ExternalIdentity');
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

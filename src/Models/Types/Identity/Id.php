@@ -5,7 +5,7 @@ namespace Somnambulist\Components\Models\Types\Identity;
 /**
  * The identity for an entity, typically the aggregate root
  */
-final class Id extends AbstractIdentity
+final readonly class Id extends AbstractIdentity
 {
 
 }

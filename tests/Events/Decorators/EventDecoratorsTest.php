@@ -20,7 +20,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class EventDecoratorsTest extends TestCase
 {
-
     private MessengerEventPublisher $dispatcher;
 
     protected function setUp(): void

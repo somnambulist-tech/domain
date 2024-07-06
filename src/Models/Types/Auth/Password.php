@@ -10,9 +10,9 @@ use function strtolower;
 /**
  * Represents a hashed password in the domain
  */
-class Password extends AbstractValueObject
+final readonly class Password extends AbstractValueObject
 {
-    public function __construct(private readonly string $value)
+    public function __construct(private string $value)
     {
         Assert::that($value, null, 'password')
             ->notEmpty()->notBlank()->maxLength(255)->satisfy(

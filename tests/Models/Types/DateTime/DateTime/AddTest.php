@@ -2,15 +2,14 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\DateTime\DateTime;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
 use Somnambulist\Components\Tests\Models\Types\DateTime\Helpers;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-datetime
- */
+#[Group('models')]
+#[Group('models-types')]
+#[Group('models-types-datetime')]
 class AddTest extends TestCase
 {
     use Helpers;

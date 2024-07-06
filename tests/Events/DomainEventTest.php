@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Events;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\FrozenCollection as Immutable;
 use Somnambulist\Components\Events\AbstractEvent;
@@ -14,10 +15,8 @@ use stdClass;
 use function json_encode;
 use function microtime;
 
-/**
- * @group events
- * @group events-event
- */
+#[Group('events')]
+#[Group('events-event')]
 class DomainEventTest extends TestCase
 {
     public function testCanSetAggregateRoot()
@@ -98,14 +97,14 @@ class DomainEventTest extends TestCase
 
     public function testCanGetContext()
     {
-        $event = $this->getMockForAbstractClass(AbstractEvent::class);
+        $event = new class extends AbstractEvent {};
 
         $this->assertInstanceOf(Immutable::class, $event->context());
     }
 
     public function testCanGetPayload()
     {
-        $event = $this->getMockForAbstractClass(AbstractEvent::class);
+        $event = new class extends AbstractEvent {};
 
         $this->assertInstanceOf(Immutable::class, $event->payload());
     }

@@ -3,14 +3,12 @@
 namespace Somnambulist\Components\Tests\Models\Types;
 
 use Assert\InvalidArgumentException;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\PhoneNumber;
 
-/**
- * @group      models
- * @group      models-types
- * @group      models-types-phone
- */
+#[Group('models')]
+#[Group('models-types')]
 class PhoneNumberTest extends TestCase
 {
     public function testCreate()
@@ -44,13 +42,5 @@ class PhoneNumberTest extends TestCase
         $this->assertFalse($vo1->equals($vo2));
         $this->assertTrue($vo1->equals($vo3));
         $this->assertTrue($vo1->equals($vo1));
-    }
-
-    public function testCantSetArbitraryProperties()
-    {
-        $vo      = new PhoneNumber('+12345678901');
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

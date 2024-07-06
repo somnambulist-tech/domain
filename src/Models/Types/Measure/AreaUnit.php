@@ -2,32 +2,24 @@
 
 namespace Somnambulist\Components\Models\Types\Measure;
 
-use Somnambulist\Components\Models\AbstractEnumeration;
+use Somnambulist\Components\Models\Contracts\CanTestEquality;
 
-/**
- * @method static AreaUnit ACRE()
- * @method static AreaUnit HECTARE()
- *
- * @method static AreaUnit SQ_MM()
- * @method static AreaUnit SQ_CM()
- * @method static AreaUnit SQ_M()
- * @method static AreaUnit SQ_KM()
- * @method static AreaUnit SQ_INCH()
- * @method static AreaUnit SQ_FT()
- * @method static AreaUnit SQ_YARD()
- * @method static AreaUnit SQ_MILE()
- */
-final class AreaUnit extends AbstractEnumeration
+enum AreaUnit: string implements CanTestEquality
 {
-    const ACRE    = 'ac';
-    const HECTARE = 'ha';
+    case ACRE    = 'ac';
+    case HECTARE = 'ha';
 
-    const SQ_MM   = 'sq_mm';
-    const SQ_CM   = 'sq_cm';
-    const SQ_M    = 'sq_m';
-    const SQ_KM   = 'sq_km';
-    const SQ_INCH = 'sq_in';
-    const SQ_FT   = 'sq_ft';
-    const SQ_YARD = 'sq_yd';
-    const SQ_MILE = 'sq_mi';
+    case SQ_MM   = 'sq_mm';
+    case SQ_CM   = 'sq_cm';
+    case SQ_M    = 'sq_m';
+    case SQ_KM   = 'sq_km';
+    case SQ_INCH = 'sq_in';
+    case SQ_FT   = 'sq_ft';
+    case SQ_YARD = 'sq_yd';
+    case SQ_MILE = 'sq_mi';
+
+    public function equals(object $object): bool
+    {
+        return $this === $object;
+    }
 }

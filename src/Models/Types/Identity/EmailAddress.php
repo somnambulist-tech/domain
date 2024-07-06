@@ -8,9 +8,9 @@ use Somnambulist\Components\Models\AbstractValueObject;
 /**
  * Represents an email address in the domain
  */
-final class EmailAddress extends AbstractValueObject
+final readonly class EmailAddress extends AbstractValueObject
 {
-    public function __construct(private readonly string $value)
+    public function __construct(private string $value)
     {
         Assert::that($value, null, 'email')->notEmpty()->email()->maxLength(100);
     }

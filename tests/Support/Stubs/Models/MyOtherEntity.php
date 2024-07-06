@@ -6,7 +6,6 @@ use Somnambulist\Components\Models\Types\DateTime\DateTime;
 
 class MyOtherEntity
 {
-
     protected ?int $id = null;
     protected MyEntity $myEntity;
     protected string $name;

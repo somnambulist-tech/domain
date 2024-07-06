@@ -2,14 +2,12 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Money;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Money\Currency;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-currency
- */
+#[Group('models')]
+#[Group('models-types')]
 class CurrencyTest extends TestCase
 {
     public function testCreate()

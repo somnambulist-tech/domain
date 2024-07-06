@@ -8,9 +8,9 @@ use Somnambulist\Components\Models\AbstractValueObject;
 /**
  * Represents an aggregate root in a different context e.g. event
  */
-final class Aggregate extends AbstractValueObject
+final readonly class Aggregate extends AbstractValueObject
 {
-    public function __construct(private readonly string $class, private readonly string $identity)
+    public function __construct(private string $class, private string $identity)
     {
         Assert::lazy()->tryAll()
             ->that($class, 'class')->notEmpty()->maxLength(255)

@@ -2,15 +2,13 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Identity;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Identity\Aggregate;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-aggregate
- */
+#[Group('models')]
+#[Group('models-types')]
 class AggregateTest extends TestCase
 {
     public function testCreate()
@@ -45,13 +43,5 @@ class AggregateTest extends TestCase
         $vo2 = new EmailAddress('bob@example.com');
 
         $this->assertFalse($vo1->equals($vo2));
-    }
-
-    public function testCantSetArbitraryProperties()
-    {
-        $vo = new Aggregate(__CLASS__, '5244f8c4-e984-4797-bee4-c9616655f3d6');
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Doctrine\Types\DateTime;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\InvalidFormat;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\Types;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
@@ -38,7 +38,7 @@ class TimeType extends Type
 
         $val = DateTime::createFromFormat('!' . $platform->getTimeFormatString(), $value);
         if (!$val) {
-            throw ConversionException::conversionFailedFormat($value, $this->getName(), $platform->getTimeFormatString());
+            throw InvalidFormat::new($value, $this->getName(), $platform->getTimeFormatString());
         }
 
         return $val;

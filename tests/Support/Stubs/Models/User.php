@@ -14,7 +14,6 @@ use Somnambulist\Components\Tests\Support\Stubs\Events\UserRegistrationComplete;
 
 class User extends AggregateRoot
 {
-
     use AggregateEntityCollectionHelper;
 
     private Name         $name;

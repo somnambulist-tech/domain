@@ -9,7 +9,7 @@ namespace Somnambulist\Components\Models\Types\DateTime;
  * To compose a string with named methods, see {@link DateFormatBuilder}. DateFormats
  * are intentionally read-only.
  */
-final class DateFormat
+final readonly class DateFormat
 {
     const SPACE = ' ';
 
@@ -58,7 +58,7 @@ final class DateFormat
     const RFC_2822 = 'r';
     const UNIX = 'U';
 
-    public function __construct(private readonly string $format)
+    public function __construct(private string $format)
     {
     }
 

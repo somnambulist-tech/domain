@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Doctrine;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Collection\MutableCollection as Collection;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
@@ -15,10 +16,8 @@ use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 use Somnambulist\Components\Tests\Support\Stubs\Models\Order;
 use Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
 
-/**
- * @group doctrine
- * @group doctrine-mapping-xml
- */
+#[Group('doctrine')]
+#[Group('doctrine-xmlmapping')]
 class XmlMappingTest extends TestCase
 {
     use BuildDoctrineInstance;

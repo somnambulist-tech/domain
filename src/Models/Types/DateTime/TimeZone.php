@@ -6,9 +6,9 @@ use Assert\Assert;
 use DateTimeZone;
 use Somnambulist\Components\Models\AbstractValueObject;
 
-class TimeZone extends AbstractValueObject
+final readonly class TimeZone extends AbstractValueObject
 {
-    public function __construct(private readonly string $value)
+    public function __construct(private string $value)
     {
         Assert::that($value, null, 'timezone')
             ->notEmpty()

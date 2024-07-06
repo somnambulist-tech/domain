@@ -4,12 +4,12 @@ namespace Somnambulist\Components\Models\Types\Web;
 
 use Assert\Assert;
 
-final class IPV4Address extends IpAddress
+final readonly class IPV4Address extends IpAddress
 {
     public function __construct(string $ip)
     {
         Assert::that($ip, null, 'ip')->notEmpty()->ipv4();
 
-        $this->value = $ip;
+        parent::__construct($ip);
     }
 }

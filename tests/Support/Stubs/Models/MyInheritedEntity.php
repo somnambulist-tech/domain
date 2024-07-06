@@ -4,7 +4,6 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 class MyInheritedEntity extends AbstractEntity
 {
-
     private string $id;
 
     public function __construct(string $id, string $name)

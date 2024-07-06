@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Doctrine\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use Somnambulist\Components\Models\AbstractValueObject;
@@ -36,7 +36,7 @@ abstract class AbstractValueObjectType extends Type
         try {
             $uuid = new $this->class($value);
         } catch (InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, $this->name);
+            throw ValueNotConvertible::new($value, $this->name);
         }
 
         return $uuid;
@@ -56,7 +56,7 @@ abstract class AbstractValueObjectType extends Type
 
         }
 
-        throw ConversionException::conversionFailed($value, $this->name);
+        throw ValueNotConvertible::new($value, $this->name);
     }
 
     public function getName(): string

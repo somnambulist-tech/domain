@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Utils;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
 use Somnambulist\Components\Models\Types\DateTime\TimeZone;
@@ -14,12 +15,10 @@ use Somnambulist\Components\Tests\Support\Stubs\Models\Order;
 use Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
 use Somnambulist\Components\Utils\EntityAccessor;
 
-/**
- * @group utils
- */
+#[Group('utils')]
+#[Group('utils-accessor')]
 class EntityAccessorTest extends TestCase
 {
-
     public function testExtractParentPrivateProperties()
     {
         $ret = EntityAccessor::extract(Country::memberByKey('CAN'));
@@ -79,7 +78,7 @@ class EntityAccessorTest extends TestCase
                 ],
             'properties' =>
                 [
-                    'collectionClass' => null,
+                    'collectionClass' => 'Somnambulist\\Components\\Collection\\MutableCollection',
                     'items'           =>
                         [
                             'items' =>
@@ -104,6 +103,7 @@ class EntityAccessorTest extends TestCase
                             'run' => 'Somnambulist\\Components\\Collection\\Utils\\RunProxy',
                             'map' => 'Somnambulist\\Components\\Collection\\Utils\\MapProxy',
                         ],
+                    'type'            => null,
                 ],
             'name'       => null,
         ];

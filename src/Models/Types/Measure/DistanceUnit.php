@@ -2,28 +2,22 @@
 
 namespace Somnambulist\Components\Models\Types\Measure;
 
-use Somnambulist\Components\Models\AbstractEnumeration;
+use Somnambulist\Components\Models\Contracts\CanTestEquality;
 
-/**
- * @method static DistanceUnit MILLIMETRE()
- * @method static DistanceUnit CENTIMETRE()
- * @method static DistanceUnit METRE()
- * @method static DistanceUnit KM()
- *
- * @method static DistanceUnit INCH()
- * @method static DistanceUnit FEET()
- * @method static DistanceUnit YARD()
- * @method static DistanceUnit MILE()
- */
-final class DistanceUnit extends AbstractEnumeration
+enum DistanceUnit: string implements CanTestEquality
 {
-    const MILLIMETRE = 'mm';
-    const CENTIMETRE = 'cm';
-    const METRE      = 'm';
-    const KM         = 'km';
+    case MILLIMETRE = 'mm';
+    case CENTIMETRE = 'cm';
+    case METRE      = 'm';
+    case KM         = 'km';
 
-    const INCH       = 'in';
-    const FEET       = 'ft';
-    const YARD       = 'yd';
-    const MILE       = 'mi';
+    case INCH       = 'in';
+    case FEET       = 'ft';
+    case YARD       = 'yd';
+    case MILE       = 'mi';
+
+    public function equals(object $object): bool
+    {
+        return $this === $object;
+    }
 }

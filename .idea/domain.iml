@@ -2,7 +2,21 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/Commands" isTestSource="false" packagePrefix="Somnambulist\Components\Commands\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Doctrine" isTestSource="false" packagePrefix="Somnambulist\Components\Doctrine\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Events" isTestSource="false" packagePrefix="Somnambulist\Components\Events\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Jobs" isTestSource="false" packagePrefix="Somnambulist\Components\Jobs\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Models" isTestSource="false" packagePrefix="Somnambulist\Components\Models\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Queries" isTestSource="false" packagePrefix="Somnambulist\Components\Queries\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Utils" isTestSource="false" packagePrefix="Somnambulist\Components\Utils\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Commands" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Commands\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Doctrine" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Doctrine\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Events" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Events\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Models" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Models\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Queries" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Queries\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Support" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Support\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/Utils" isTestSource="true" packagePrefix="Somnambulist\Components\Tests\Utils\" />
       <excludeFolder url="file://$MODULE_DIR$/var" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/assert" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
@@ -105,6 +119,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/somnambulist/enumeration" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/clock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/type-info" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -2,15 +2,14 @@
 
 namespace Somnambulist\Components\Tests\Doctrine\Functions\Postgres;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\Functions\Postgres\IlikeFunction;
 use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
-/**
- * @group doctrine
- * @group doctrine-functions
- * @group doctrine-functions-ilike
- */
+#[Group('doctrine')]
+#[Group('doctrine-functions')]
+#[Group('doctrine-functions-ilike')]
 class ILikeFunctionTest extends TestCase
 {
     use BuildDoctrineInstance;

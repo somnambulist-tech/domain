@@ -11,7 +11,6 @@ use Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects\Purchaser;
 
 class Order
 {
-
     use CalculateDifferenceBetweenInstances;
 
     protected ?int $id = null;

@@ -2,14 +2,12 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Web;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Web\Url;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-url
- */
+#[Group('models')]
+#[Group('models-types')]
 class UrlTest extends TestCase
 {
     public function testCreate()

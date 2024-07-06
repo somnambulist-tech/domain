@@ -15,9 +15,9 @@ use Somnambulist\Components\Models\AbstractValueObject;
  * Note: allow sufficient storage space for the number, and always store the number
  * as a string and never an integer.
  */
-final class PhoneNumber extends AbstractValueObject
+final readonly class PhoneNumber extends AbstractValueObject
 {
-    public function __construct(private readonly string $value)
+    public function __construct(private string $value)
     {
         Assert::that($value, null, 'phone number')->notEmpty()->e164();
     }

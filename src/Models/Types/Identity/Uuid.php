@@ -2,7 +2,7 @@
 
 namespace Somnambulist\Components\Models\Types\Identity;
 
-final class Uuid extends AbstractIdentity
+final readonly class Uuid extends AbstractIdentity
 {
 
 }

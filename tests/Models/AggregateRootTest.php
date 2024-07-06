@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Models;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Auth\Password;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
@@ -15,10 +16,8 @@ use Somnambulist\Components\Utils\Tests\Assertions\AssertHasDomainEventOfType;
 use function password_hash;
 use const PASSWORD_DEFAULT;
 
-/**
- * @group models
- * @group models-aggregate
- */
+#[Group('models')]
+#[Group('models-aggregate')]
 class AggregateRootTest extends TestCase
 {
     use AssertHasDomainEventOfType;

@@ -2,6 +2,7 @@
 
 namespace Somnambulist\Components\Tests\Utils;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Identity\Uuid;
@@ -15,9 +16,8 @@ use Somnambulist\Components\Utils\Tests\Assertions\AssertDomainEventHasAttribute
 use Somnambulist\Components\Utils\Tests\Assertions\AssertEntityHasPropertyWithValue;
 use Somnambulist\Components\Utils\Tests\Assertions\AssertHasDomainEventOfType;
 
-/**
- * @group utils
- */
+#[Group('utils')]
+#[Group('utils-helpers')]
 class AssertionHelpersTest extends TestCase
 {
     use AssertDoesNotHaveDomainEventOfType;

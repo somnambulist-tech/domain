@@ -8,9 +8,9 @@ use Somnambulist\Components\Models\AbstractValueObject;
 /**
  * Represents a URL in the domain
  */
-final class Url extends AbstractValueObject
+final readonly class Url extends AbstractValueObject
 {
-    public function __construct(private readonly string $value)
+    public function __construct(private string $value)
     {
         Assert::that($value, null, 'url')->notEmpty()->url();
     }

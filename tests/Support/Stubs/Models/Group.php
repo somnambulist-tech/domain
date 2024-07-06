@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 use Somnambulist\Components\Models\Types\Identity\AbstractIdentity;
 
-class Group extends AbstractIdentity
+readonly class Group extends AbstractIdentity
 {
 
 

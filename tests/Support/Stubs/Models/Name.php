@@ -5,9 +5,8 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 use Assert\Assert;
 use Somnambulist\Components\Models\AbstractValueObject;
 
-final class Name extends AbstractValueObject
+final readonly class Name extends AbstractValueObject
 {
-
     private string $value;
 
     public function __construct(string $name)

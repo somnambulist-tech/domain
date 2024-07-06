@@ -2,15 +2,13 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Identity;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
 use Somnambulist\Components\Models\Types\Identity\Uuid;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-uuid
- */
+#[Group('models')]
+#[Group('models-types')]
 class UuidTest extends TestCase
 {
     public function testCreate()
@@ -44,13 +42,5 @@ class UuidTest extends TestCase
         $vo2 = new EmailAddress('bob@example.com');
 
         $this->assertFalse($vo1->equals($vo2));
-    }
-
-    public function testCantSetArbitraryProperties()
-    {
-        $vo = new Uuid(\Ramsey\Uuid\Uuid::uuid4()->toString());
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

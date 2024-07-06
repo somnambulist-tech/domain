@@ -3,16 +3,14 @@
 namespace Somnambulist\Components\Tests\Models\Types\Auth;
 
 use Assert\InvalidArgumentException;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Auth\Password;
 use function password_hash;
 use const PASSWORD_DEFAULT;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-password
- */
+#[Group('models')]
+#[Group('models-types')]
 class PasswordTest extends TestCase
 {
     public function testCreate()

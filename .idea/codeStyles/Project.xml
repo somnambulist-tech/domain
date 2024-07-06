@@ -8,8 +8,10 @@
       <option name="ELSE_IF_STYLE" value="COMBINE" />
       <option name="VARIABLE_NAMING_STYLE" value="CAMEL_CASE" />
       <option name="FORCE_SHORT_DECLARATION_ARRAY_STYLE" value="true" />
+      <option name="MULTILINE_CHAINED_CALLS_SEMICOLON_ON_NEW_LINE" value="true" />
     </PHPCodeStyleSettings>
     <codeStyleSettings language="PHP">
+      <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
       <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
     </codeStyleSettings>
   </code_scheme>

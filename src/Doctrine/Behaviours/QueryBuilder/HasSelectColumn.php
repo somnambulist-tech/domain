@@ -3,11 +3,19 @@
 namespace Somnambulist\Components\Doctrine\Behaviours\QueryBuilder;
 
 use Doctrine\DBAL\Query\QueryBuilder;
+use Somnambulist\Components\Utils\EntityAccessor;
+use function method_exists;
 
 trait HasSelectColumn
 {
     public function hasColumnInSelect(QueryBuilder $qb, string $column): bool
     {
-        return in_array($column, $qb->getQueryPart('select'));
+        if (method_exists($qb, 'getQueryPart')) {
+            $columns = $qb->getQueryPart('select');
+        } else {
+            $columns = EntityAccessor::get($qb, 'select');
+        }
+
+        return in_array($column, $columns);
     }
 }

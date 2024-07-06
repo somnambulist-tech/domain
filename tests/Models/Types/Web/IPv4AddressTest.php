@@ -2,14 +2,12 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Web;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Web\IPV4Address;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-ipv4
- */
+#[Group('models')]
+#[Group('models-types')]
 class IPv4AddressTest extends TestCase
 {
     public function testCreate()

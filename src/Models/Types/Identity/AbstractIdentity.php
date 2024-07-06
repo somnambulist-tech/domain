@@ -11,7 +11,7 @@ use Somnambulist\Components\Models\AbstractValueObject;
  * Base class that allows extension to provide a typed "identity" in an aggregate / entity.
  * The UUID type extends this to provide a concrete identity that is a typed UUID.
  */
-abstract class AbstractIdentity extends AbstractValueObject
+abstract readonly class AbstractIdentity extends AbstractValueObject
 {
     public function __construct(protected string $value)
     {

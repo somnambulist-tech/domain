@@ -2,15 +2,14 @@
 
 namespace Somnambulist\Components\Tests\Utils;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Identity\Uuid;
 use Somnambulist\Components\Tests\Support\Stubs\Models\UserId;
 use Somnambulist\Components\Utils\IdentityGenerator;
 
-/**
- * @group utils
- * @group utils-identity-generator
- */
+#[Group('utils')]
+#[Group('utils-identity')]
 class IdentityGeneratorTest extends TestCase
 {
     public function testRandom()

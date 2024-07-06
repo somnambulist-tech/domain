@@ -4,7 +4,6 @@ namespace Somnambulist\Components\Tests\Support\Stubs\Models;
 
 abstract class AbstractEntity
 {
-
     private string $name;
 
     public function __construct(string $name)

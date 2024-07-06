@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Doctrine\Types\Web;
 
 use Assert\Assert;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\Type;
 use InvalidArgumentException;
 use Somnambulist\Components\Models\Types\Web\IPV6Address;
@@ -34,7 +34,7 @@ class IPV6AddressType extends Type
         try {
             $uuid = new IPV6Address($value);
         } catch (InvalidArgumentException) {
-            throw ConversionException::conversionFailed($value, static::NAME);
+            throw ValueNotConvertible::new($value, static::NAME);
         }
 
         return $uuid;
@@ -54,7 +54,7 @@ class IPV6AddressType extends Type
 
         }
 
-        throw ConversionException::conversionFailed($value, static::NAME);
+        throw ValueNotConvertible::new($value, static::NAME);
     }
 
     public function getName(): string

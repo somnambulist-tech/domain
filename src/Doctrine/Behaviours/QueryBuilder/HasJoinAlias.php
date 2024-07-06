@@ -2,7 +2,11 @@
 
 namespace Somnambulist\Components\Doctrine\Behaviours\QueryBuilder;
 
+use Doctrine\DBAL\Query\Join;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Somnambulist\Components\Utils\EntityAccessor;
+use function is_a;
+use function method_exists;
 
 /**
  * Adapted from the DQL solution provided by:
@@ -14,11 +18,19 @@ trait HasJoinAlias
 {
     public function hasJoinAlias(QueryBuilder $qb, string $alias): bool
     {
-        $parts = $qb->getQueryPart('join');
+        if (method_exists($qb, 'getQueryPart')) {
+            $parts = $qb->getQueryPart('join');
+        } else {
+            $parts = EntityAccessor::get($qb, 'join', $qb);
+        }
 
         foreach ($parts as $joins) {
             foreach ($joins as $join) {
-                if ($join['joinAlias'] === $alias) {
+                if (
+                    (is_array($join) && $join['joinAlias'] === $alias)
+                    ||
+                    (is_a($join, Join::class) && $join->alias === $alias)
+                ) {
                     return true;
                 }
             }

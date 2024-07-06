@@ -11,7 +11,7 @@ use function is_scalar;
 use function sprintf;
 
 /**
- * Diff Objects
+ * Calculate the differences between two objects
  *
  * Attempts to compare two objects of the same type, property by property, producing
  * an array of property names that contain differences in values. All properties will be
@@ -28,6 +28,19 @@ use function sprintf;
  */
 class ObjectDiff
 {
+    /**
+     * Returns true if there are no differences between the two objects
+     *
+     * @param object $a
+     * @param object $b
+     *
+     * @return bool
+     */
+    public static function equal(object $a, object $b): bool
+    {
+        return 0 === count((new self)->diff($a, $b));
+    }
+
     public function diff(object $a, object $b): array
     {
         if ($a::class !== $b::class) {

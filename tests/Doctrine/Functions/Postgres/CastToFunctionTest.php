@@ -3,16 +3,15 @@
 namespace Somnambulist\Components\Tests\Doctrine\Functions\Postgres;
 
 use Doctrine\ORM\Query\QueryException;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\Functions\Postgres\CastToFunction;
 use Somnambulist\Components\Doctrine\Functions\Postgres\IlikeFunction;
 use Somnambulist\Components\Tests\Support\Behaviours\BuildDoctrineInstance;
 
-/**
- * @group doctrine
- * @group doctrine-functions
- * @group doctrine-functions-cast
- */
+#[Group('doctrine')]
+#[Group('doctrine-functions')]
+#[Group('doctrine-functions-cast')]
 class CastToFunctionTest extends TestCase
 {
     use BuildDoctrineInstance;

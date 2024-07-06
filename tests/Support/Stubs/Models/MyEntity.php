@@ -14,7 +14,6 @@ use Somnambulist\Components\Tests\Support\Stubs\Events\MyEntityWasRemovedEvent;
 
 class MyEntity extends AggregateRoot
 {
-
     protected string     $name;
     protected string     $another;
     protected Collection $related;

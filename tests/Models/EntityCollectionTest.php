@@ -31,10 +31,8 @@ use function realpath;
 use function sys_get_temp_dir;
 use const PASSWORD_DEFAULT;
 
-/**
- * @group models
- * @group models-collection
- */
+#[\PHPUnit\Framework\Attributes\Group('models')]
+#[\PHPUnit\Framework\Attributes\Group('models-collection')]
 class EntityCollectionTest extends TestCase
 {
     use AssertHasDomainEventOfType;

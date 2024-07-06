@@ -2,15 +2,13 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Auth;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Auth\PublicPrivateKey;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-pubkey
- */
+#[Group('models')]
+#[Group('models-types')]
 class PublicPrivateKeyTest extends TestCase
 {
     const TEST_STRING = 'Somnambulist\Components\Models\Types';
@@ -47,13 +45,5 @@ class PublicPrivateKeyTest extends TestCase
         $vo2 = new EmailAddress('bob@example.com');
 
         $this->assertFalse($vo1->equals($vo2));
-    }
-    
-    public function testCantSetArbitraryProperties()
-    {
-        $vo = new PublicPrivateKey(static::TEST_STRING, 'PublicPrivateKeyTest');
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

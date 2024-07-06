@@ -3,14 +3,14 @@
 namespace Somnambulist\Components\Tests\Models\Types\DateTime\DateTime;
 
 use DateTime as PhpDateTime;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
 
-/**
- * @group      models
- * @group      models-types
- * @group      models-types-datetime
- */
+#[Group('models')]
+#[Group('models-types')]
+#[Group('models-types-datetime')]
 class ShiftersTest extends TestCase
 {
     protected const TEST_DATE = '2001-02-03 04:05:06.007+08:00'; // Saturday
@@ -78,7 +78,7 @@ class ShiftersTest extends TestCase
         $this->assertEquals($expected, $testDate->startOf('week'));
     }
 
-    /** @dataProvider startOfWeekTestData */
+    #[DataProvider('startOfWeekTestData')]
     public function testStartOfWeekGivenFirstDayOfWeek(string $testDate, int $firstDow, string $expectedDate)
     {
         $expected = new PhpDateTime("$expectedDate 00:00:00+08:00");
@@ -125,7 +125,7 @@ class ShiftersTest extends TestCase
         $this->assertEquals($expected, $testDate->endOf('week'));
     }
 
-    /** @dataProvider endOfWeekTestData */
+    #[DataProvider('endOfWeekTestData')]
     public function testEndOfWeekGivenFirstDayOfWeek(string $testDate, int $firstDow, string $expectedDate)
     {
         $expected = new PhpDateTime("$expectedDate 23:59:59+08:00");

@@ -2,13 +2,12 @@
 
 namespace Somnambulist\Components\Tests\Doctrine;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Doctrine\TypeBootstrapper;
 
-/**
- * @group doctrine
- * @group doctrine-bootstrapper
- */
+#[Group('doctrine')]
+#[Group('doctrine-bootstrapper')]
 class BootstrapperTest extends TestCase
 {
     public function testCanCallBootstrapRegisterTypesMultipleTimes()

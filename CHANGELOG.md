@@ -1,6 +1,43 @@
 Change Log
 ==========
 
+2024-07-06
+----------
+ 
+ * Require PHP 8.3+
+ * Make all value-objects readonly
+ * Switch `Srid` to be a value-object instead of enumerable
+ * Switch `AreaUnit` and `DistanceUnit` to native enum
+ * Update to PHPUnit 11
+ * Update tests to use attributes instead of docblocks
+
+2024-06-22
+----------
+ 
+ * Remove model locators
+ * Add `AbstractAggregateRepository`
+
+2024-06-14
+----------
+ 
+ * Fix exception usage in Doctrine types
+
+2024-06-10
+----------
+
+ * Add version to `AggregateRoot`, increments on event raising
+
+2024-06-07
+----------
+
+ * Update traits to match ORM 3 type hints
+ * Change AbstractServiceModelLocator::findBy to locateBy() to account for type hint changes
+ * Change AbstractServiceModelLocator::findAll to locateAll() to account for type hint changes
+ * Remove locator findByName/Slug/UUID traits
+ * Remove abstract methods from locator traits
+ * Add FindOrFail::get()
+ * Add support for DBAL 4 in DBAL traits
+
 2024-02-24
 ----------
 

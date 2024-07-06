@@ -3,14 +3,12 @@
 namespace Somnambulist\Components\Tests\Models\Types\DateTime;
 
 use DateTimeZone;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\DateTime\TimeZone;
 
-/**
- * @group      models
- * @group      models-types
- * @group      models-types-datetime
- */
+#[Group('models')]
+#[Group('models-types')]
 class TimeZoneTest extends TestCase
 {
     public function testCreate()
@@ -55,13 +53,5 @@ class TimeZoneTest extends TestCase
 
         $this->assertTrue($vo1->equals($vo1));
         $this->assertFalse($vo1->equals($vo2));
-    }
-
-    public function testCantSetArbitraryProperties()
-    {
-        $vo      = new TimeZone('America/Toronto');
-        $vo->foo = 'bar';
-
-        $this->assertObjectNotHasProperty('foo', $vo);
     }
 }

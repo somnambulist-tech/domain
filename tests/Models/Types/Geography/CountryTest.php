@@ -2,14 +2,12 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Geography;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Geography\Country;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-country
- */
+#[Group('models')]
+#[Group('models-types')]
 class CountryTest extends TestCase
 {
     public function testCreate()

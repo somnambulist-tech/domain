@@ -6,6 +6,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\TypeRegistry;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
@@ -20,11 +21,9 @@ use Somnambulist\Components\Tests\Support\Stubs\Helpers\Serializer;
 use Somnambulist\Components\Tests\Support\Stubs\Types\MyType;
 use Somnambulist\Components\Utils\EntityAccessor;
 
-/**
- * @group doctrine
- * @group doctrine-behaviours
- * @group doctrine-behaviours-enum
- */
+#[Group('doctrine')]
+#[Group('doctrine-behaviours')]
+#[Group('doctrine-behaviours-enum')]
 class EnumerationBridgeTest extends TestCase
 {
     use ProphecyTrait;

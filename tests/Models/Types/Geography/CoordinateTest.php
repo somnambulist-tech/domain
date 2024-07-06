@@ -2,20 +2,18 @@
 
 namespace Somnambulist\Components\Tests\Models\Types\Geography;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\Geography\Coordinate;
 use Somnambulist\Components\Models\Types\Geography\Srid;
 
-/**
- * @group models
- * @group models-types
- * @group models-types-coord
- */
+#[Group('models')]
+#[Group('models-types')]
 class CoordinateTest extends TestCase
 {
     public function testCreate()
     {
-        $vo = new Coordinate(4, 7, Srid::WGS84());
+        $vo = new Coordinate(4, 7, new Srid(4326));
 
         $this->assertEquals(4, $vo->latitude());
         $this->assertEquals(7, $vo->longitude());

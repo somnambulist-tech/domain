@@ -3,17 +3,17 @@
 namespace Somnambulist\Components\Tests\Models\Types\DateTime;
 
 use DateTimeZone;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Somnambulist\Components\Models\Types\DateTime\DateFormat;
 use Somnambulist\Components\Models\Types\DateTime\DateFormatBuilder;
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
 use Somnambulist\Components\Models\Types\Measure\AreaUnit;
 
-/**
- * @group      models
- * @group      models-types
- * @group      models-types-datetime
- */
+#[Group('models')]
+#[Group('models-types')]
+#[Group('models-types-datetime')]
 class DateTimeTest extends TestCase
 {
     use Helpers;
@@ -38,7 +38,7 @@ class DateTimeTest extends TestCase
     public function testCanCompareOtherObjects()
     {
         $vo1 = new DateTime();
-        $vo2 = AreaUnit::SQ_M();
+        $vo2 = AreaUnit::SQ_M;
 
         $this->assertFalse($vo1->equals($vo2));
     }
@@ -68,7 +68,7 @@ class DateTimeTest extends TestCase
         $this->assertEquals(0, (new DateTime())->lastDayOfWeek());
     }
 
-    /** @dataProvider lastDayOfWeekTestData */
+    #[DataProvider('lastDayOfWeekTestData')]
     public function testLastDayOfWeekGivenFirstDayOfWeek(int $firstDow, int $lastDow)
     {
         $this->assertEquals($lastDow, (new DateTime())->lastDayOfWeek($firstDow));

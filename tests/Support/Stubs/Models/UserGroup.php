@@ -7,7 +7,6 @@ use Somnambulist\Components\Models\AggregateRoot;
 
 class UserGroup extends AbstractEntity
 {
-
     private Group $group;
     private Role  $role;
 

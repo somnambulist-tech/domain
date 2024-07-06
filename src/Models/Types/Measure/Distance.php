@@ -8,15 +8,15 @@ use function sprintf;
 /**
  * Represents a distance and unit in the domain
  */
-final class Distance extends AbstractValueObject
+final readonly class Distance extends AbstractValueObject
 {
-    public function __construct(private readonly float $value, private readonly DistanceUnit $unit)
+    public function __construct(private float $value, private DistanceUnit $unit)
     {
     }
 
     public function toString(): string
     {
-        return sprintf('%s %s', $this->value, $this->unit);
+        return sprintf('%s %s', $this->value, $this->unit->value);
     }
 
     public function value(): float

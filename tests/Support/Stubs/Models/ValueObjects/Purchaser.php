@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Somnambulist\Components\Tests\Support\Stubs\Models\ValueObjects;
 
@@ -8,15 +8,14 @@ use Somnambulist\Components\Models\Behaviours\CastValueObjectToArray;
 use Somnambulist\Components\Models\Types\Geography\Country;
 use Somnambulist\Components\Models\Types\Identity\EmailAddress;
 
-class Purchaser extends AbstractValueObject
+readonly class Purchaser extends AbstractValueObject
 {
-
     use CastValueObjectToArray;
     use CalculateDifferenceBetweenInstances;
 
-    private readonly string $name;
-    private readonly EmailAddress $email;
-    private readonly Country $country;
+    private string $name;
+    private EmailAddress $email;
+    private Country $country;
 
     public function __construct(string $name, EmailAddress $email, Country $country)
     {

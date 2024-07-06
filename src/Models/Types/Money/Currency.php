@@ -6,7 +6,7 @@ use Somnambulist\Components\Models\AbstractMultiton;
 
 final class Currency extends AbstractMultiton
 {
-    protected function __construct(string $code, private readonly string $name)
+    protected function __construct(string $code, private string $name)
     {
         parent::__construct($code);
     }
