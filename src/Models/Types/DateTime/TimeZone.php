@@ -16,7 +16,7 @@ final readonly class TimeZone extends AbstractValueObject
         ;
     }
 
-    public static function create(string $tz = null): static
+    public static function create(?string $tz = null): static
     {
         return new static($tz ?? date_default_timezone_get());
     }

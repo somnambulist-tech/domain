@@ -15,6 +15,7 @@ use function sprintf;
 use function str_contains;
 use function str_ends_with;
 use function substr;
+use function Symfony\Component\String\u;
 
 abstract class AbstractEvent
 {
@@ -50,7 +51,7 @@ abstract class AbstractEvent
         return $this->name();
     }
 
-    public static function create(array $payload = [], array $context = [], Aggregate $aggregate = null): static
+    public static function create(array $payload = [], array $context = [], ?Aggregate $aggregate = null): static
     {
         return new static($payload, $context, $aggregate);
     }
@@ -94,7 +95,7 @@ abstract class AbstractEvent
             $class = substr($class, 0, -5);
         }
 
-        return Str::snake($class);
+        return u($class)->snake()->toString();
     }
 
     public function payload(): FrozenCollection
@@ -146,8 +147,8 @@ abstract class AbstractEvent
         $event->name  = $array['event']['name'];
 
         if (str_contains($event->name, '.')) {
-            $event->group = Str::beforeLast($event->name, '.');
-            $event->name  = Str::afterLast($event->name, '.');
+            $event->group = u($event->name)->beforeLast('.')->toString();
+            $event->name  = u($event->name)->afterLast('.')->toString();
         }
 
         return $event;

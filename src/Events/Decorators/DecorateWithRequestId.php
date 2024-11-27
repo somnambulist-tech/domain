@@ -10,7 +10,7 @@ class DecorateWithRequestId implements EventDecoratorInterface
 {
     private string $header = 'X-Request-Id';
 
-    public function __construct(private readonly RequestStack $requestStack, string $header = null)
+    public function __construct(private readonly RequestStack $requestStack, ?string $header = null)
     {
         if (!is_null($header)) {
             $this->header = $header;

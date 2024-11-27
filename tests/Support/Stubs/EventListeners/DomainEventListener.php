@@ -5,19 +5,20 @@ namespace Somnambulist\Components\Tests\Support\Stubs\EventListeners;
 use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Events\EventBus;
+use function Symfony\Component\String\u;
 
 class DomainEventListener implements EventBus
 {
     public function notify(AbstractEvent $event): void
     {
-        $method = 'on' . Str::studly($event->name());
+        $method = 'on' . u($event->name())->camel()->title()->toString();
 
         $this->{$method}($event);
     }
 
     public function afterCurrent(AbstractEvent $event): void
     {
-        $method = 'on' . $event->name();
+        $method = 'on' . u($event->name())->camel()->title()->toString();
 
         $this->{$method}($event);
     }

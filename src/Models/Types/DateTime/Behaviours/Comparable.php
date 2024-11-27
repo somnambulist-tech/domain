@@ -104,7 +104,7 @@ trait Comparable
      *
      * @return static
      */
-    public function min(DateTime $dt = null): static
+    public function min(?DateTime $dt = null): static
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -118,7 +118,7 @@ trait Comparable
      *
      * @return static
      */
-    public function minimum(DateTime $dt = null): static
+    public function minimum(?DateTime $dt = null): static
     {
         return $this->min($dt);
     }
@@ -130,7 +130,7 @@ trait Comparable
      *
      * @return static
      */
-    public function max(DateTime $dt = null): static
+    public function max(?DateTime $dt = null): static
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -144,7 +144,7 @@ trait Comparable
      *
      * @return static
      */
-    public function maximum(DateTime $dt = null): static
+    public function maximum(?DateTime $dt = null): static
     {
         return $this->max($dt);
     }
@@ -221,7 +221,7 @@ trait Comparable
         return static::create($this->year(), 12, 28, 0, 0, 0, $this->timezone())->weekOfYear() === 53;
     }
 
-    public function isSameAs(string $format, DateTime $dt = null): bool
+    public function isSameAs(string $format, ?DateTime $dt = null): bool
     {
         $dt = $dt ?: static::now($this->timezone());
 
@@ -233,7 +233,7 @@ trait Comparable
         return $this->isSameYear();
     }
 
-    public function isSameYear(DateTime $dt = null): bool
+    public function isSameYear(?DateTime $dt = null): bool
     {
         return $this->isSameAs('Y', $dt);
     }
@@ -243,7 +243,7 @@ trait Comparable
         return $this->isSameMonth();
     }
 
-    public function isSameMonth(DateTime $dt = null, bool $ofSameYear = false): bool
+    public function isSameMonth(?DateTime $dt = null, bool $ofSameYear = false): bool
     {
         $format = $ofSameYear ? 'Y-m' : 'm';
 

@@ -48,7 +48,7 @@ trait FindOrFail
      * @return object
      * @throws EntityNotFoundException
      */
-    public function findOneByOrFail(array $criteria, array $orderBy = null): object
+    public function findOneByOrFail(array $criteria, ?array $orderBy = null): object
     {
         if (null === $entity = $this->findOneBy($criteria, $orderBy)) {
             throw EntityNotFoundException::entityNotFound($this->getEntityName(), ...array_values($criteria));

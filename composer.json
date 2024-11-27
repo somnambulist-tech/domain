@@ -45,7 +45,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "beberlei/assert": "^3.3",
-        "pragmarx/ia-str": "^7.3",
+        "symfony/string": "^7.0|^6.4",
         "ramsey/uuid": "^4.7",
         "somnambulist/collection": "^5.5",
         "somnambulist/enumeration": "^1.0"

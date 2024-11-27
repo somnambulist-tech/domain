@@ -55,7 +55,7 @@ class EnumerationBridge extends Type
      *
      * @throws InvalidArgumentException|Exception
      */
-    public static function registerEnumType(string $name, callable $constructor, callable $serializer = null): void
+    public static function registerEnumType(string $name, callable $constructor, ?callable $serializer = null): void
     {
         if (static::hasType($name)) {
             return;

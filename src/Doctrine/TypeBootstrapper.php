@@ -41,7 +41,7 @@ final class TypeBootstrapper
         ]);
     }
 
-    public static function registerEnumerable(string $type, callable $constructor, callable $serializer = null): void
+    public static function registerEnumerable(string $type, callable $constructor, ?callable $serializer = null): void
     {
         EnumerationBridge::registerEnumType($type, $constructor, $serializer);
     }

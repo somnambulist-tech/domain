@@ -10,7 +10,7 @@ use Somnambulist\Components\Models\Types\DateTime\TimeZone;
 
 trait Factory
 {
-    public static function now($tz = null): static
+    public static function now(null|string|TimeZone $tz = null): static
     {
         return static::parse('now', $tz instanceof TimeZone ? $tz : TimeZone::create($tz));
     }
@@ -42,8 +42,8 @@ trait Factory
      *
      * @return static
      */
-    public static function create(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null,
-        int $second = null, TimeZone $tz = null): static
+    public static function create(?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null,
+        ?int $second = null, ?TimeZone $tz = null): static
     {
         [$nowYear, $nowMonth, $nowDay, $nowHour, $nowMin, $nowSec] = explode('-', date('Y-n-j-G-i-s', time()));
 
@@ -62,8 +62,8 @@ trait Factory
         );
     }
 
-    public static function createUtc(int $year = null, int $month = null, int $day = null, int $hour = null, int $minute = null,
-        int $second = null): static
+    public static function createUtc(?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null,
+        ?int $second = null): static
     {
         return static::create($year, $month, $day, $hour, $minute, $second, TimeZone::utc());
     }
@@ -78,7 +78,7 @@ trait Factory
      *
      * @return static
      */
-    public static function createFromDate(int $year, int $month, int $day, TimeZone $tz = null): static
+    public static function createFromDate(int $year, int $month, int $day, ?TimeZone $tz = null): static
     {
         return static::create($year, $month, $day, null, null, null, $tz);
     }
@@ -93,7 +93,7 @@ trait Factory
      *
      * @return static
      */
-    public static function createFromTime(int $hour, int $minute, int $second, TimeZone $tz = null): static
+    public static function createFromTime(int $hour, int $minute, int $second, ?TimeZone $tz = null): static
     {
         return static::create(null, null, null, $hour, $minute, $second, $tz);
     }

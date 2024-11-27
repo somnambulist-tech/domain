@@ -1,6 +1,18 @@
 Change Log
 ==========
 
+2024-11-27
+----------
+
+ * Fix PHP 8.4 deprecations
+ * Remove pragmarx/ia-str as a dependency in favour of symfony/string
+
+2024-07-06
+----------
+
+ * Make jobs and commands readonly
+ * Reverted readonly queries to keep support for includes and meta-data
+
 2024-07-06
 ----------
  
@@ -10,6 +22,8 @@ Change Log
  * Switch `AreaUnit` and `DistanceUnit` to native enum
  * Update to PHPUnit 11
  * Update tests to use attributes instead of docblocks
+ * Remove locator classes and behaviours due to types on Doctrine libraries
+ * Added AbstractAggregateRepository
 
 2024-06-22
 ----------

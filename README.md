@@ -16,9 +16,8 @@ It consists of:
  * Doctrine
    * Enumeration factories + Type bindings
    * Additional types / type overrides for the Doctrine Type system
-   * Abstract EntityLocator that extends EntityRepository
+   * Abstract Aggregate repository
    * Custom Postgres DQL functions
-   * Custom traits for EntityRepository
  * Models
    * Contracts - value object interface definitions
    * Types - a collection of value-objects, enumerations, and date helpers
@@ -39,7 +38,7 @@ It consists of:
 
 ### Requirements
 
- * PHP 8.1+
+ * PHP 8.3+
  * mb_string
  * bcmath
  * beberlei/assert

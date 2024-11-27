@@ -7,7 +7,7 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
-use IlluminateAgnostic\Str\Support\Str;
+use function Symfony\Component\String\u;
 
 /**
  * Postgres simple casting: CAST(<field>, '<type>') ::= <field>::<type>
@@ -26,7 +26,7 @@ class CastToFunction extends FunctionNode
 
         $parser->match(TokenType::T_COMMA);
 
-        $this->value = Str::ascii($parser->StringPrimary()->value);
+        $this->value = u($parser->StringPrimary()->value)->ascii();
 
         $casts = ['bool', 'date', 'float', 'int', 'text', 'time',];
 

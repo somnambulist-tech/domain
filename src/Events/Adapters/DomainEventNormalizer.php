@@ -8,6 +8,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use function class_exists;
 use function is_a;
+use function Symfony\Component\String\u;
 
 class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterface
 {
@@ -27,21 +28,21 @@ class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterfac
         ];
     }
 
-    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return
             (class_exists($type) && is_a($type, AbstractEvent::class, true))
             ||
-            (count($this->supportedEventPrefixes) > 0 && Str::startsWith($type, $this->supportedEventPrefixes))
+            (count($this->supportedEventPrefixes) > 0 && u($type)->startsWith($this->supportedEventPrefixes))
         ;
     }
 
-    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof AbstractEvent;
     }
 
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         return AbstractEvent::fromArray(
             $type,
@@ -49,7 +50,7 @@ class DomainEventNormalizer implements NormalizerInterface, DenormalizerInterfac
         );
     }
 
-    public function normalize(mixed $object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, ?string $format = null, array $context = []): array
     {
         return $object->toArray();
     }
