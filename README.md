@@ -52,6 +52,19 @@ Install using composer, or checkout / pull the files from github.com.
 
  * composer require somnambulist/domain
 
+### Upgrading from 5.X to 6.X
+
+From 6.0 PHP 8.3+ is required, additionally, with the move to Doctrine 3.0 there are substantial differences in how
+repositories are implemented. Instead of using custom repositories, an `AbstractAggregateRepository` has been added
+that directly calls into Doctrine EntityManager.
+
+`AbstractModelLocator` and `AbstractServiceModelLocator` have been removed as the addition of type-hints prevented the
+overriding of findBy etc. As these were helpers, they are no longer necessary.
+
+Most model types are now read-only. Several have been changed to native enums (`DistanceUnit`, `AreaUnit`).
+
+Commands and Jobs are now read-only classes. Queries are still writable to keep the meta-data and include support.
+
 ### Upgrading from 4.X to 5.X
 
 From 5.X this project will be re-namespaced to drop `Domain`. 4.X includes a `classmap.php` providing

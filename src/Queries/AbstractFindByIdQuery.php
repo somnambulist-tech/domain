@@ -4,7 +4,7 @@ namespace Somnambulist\Components\Queries;
 
 use Somnambulist\Components\Models\Types\Identity\AbstractIdentity;
 
-abstract readonly class AbstractFindByIdQuery extends AbstractQuery
+abstract class AbstractFindByIdQuery extends AbstractQuery
 {
     public function __construct(private AbstractIdentity $id)
     {
