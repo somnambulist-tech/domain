@@ -52,9 +52,9 @@ Install using composer, or checkout / pull the files from github.com.
 
  * composer require somnambulist/domain
 
-### Upgrading from 5.X to 6.X
+### Upgrading from 5.X to 7.X
 
-From 6.0 PHP 8.3+ is required, additionally, with the move to Doctrine 3.0 there are substantial differences in how
+From 7.0 PHP 8.3+ is required, additionally, with the move to Doctrine 3.0 there are substantial differences in how
 repositories are implemented. Instead of using custom repositories, an `AbstractAggregateRepository` has been added
 that directly calls into Doctrine EntityManager.
 
