@@ -1,6 +1,6 @@
 ## Enumerations
 
-Enumerations are provided via the eloquent/enumeration library (not be confused with Laravel Eloquent).
+Enumerations are provided via the somnambulist/enumeration library.
 An enumeration is essentially a typed constant where there is only ever one instance of that value.
 
 For example: HTTP verbs could be represented as an enumeration because there is never more than one
