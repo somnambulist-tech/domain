@@ -63,10 +63,8 @@ class ObjectDiff
                     continue;
                 }
 
-                $prop->setAccessible(true);
-
-                $mine   = $prop->getValue($a);
-                $theirs = $prop->getValue($b);
+                $mine   = EntityAccessor::get($a, $prop->name, $prop->class);
+                $theirs = EntityAccessor::get($b, $prop->name, $prop->class);
 
                 $this->testScalarValue($diff, $prop->getName(), $mine, $theirs);
                 $this->testIterableValue($diff, $prop->getName(), $mine, $theirs);

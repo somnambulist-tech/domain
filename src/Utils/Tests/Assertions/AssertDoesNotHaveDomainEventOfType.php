@@ -5,7 +5,7 @@ namespace Somnambulist\Components\Utils\Tests\Assertions;
 use Somnambulist\Components\Collection\MutableCollection;
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Models\AggregateRoot;
-use function get_class;
+use function get_debug_type;
 
 /**
  * Test Helper
@@ -23,6 +23,6 @@ trait AssertDoesNotHaveDomainEventOfType
         $events  = new MutableCollection($entity->releaseAndResetEvents());
         $matched = $events->filter(fn (AbstractEvent $evt) => $evt instanceof $event)->count();
 
-        $this->assertEquals(0, $matched, sprintf('"%s" raised "%s" events when none were expected', get_class($entity), $matched));
+        $this->assertEquals(0, $matched, sprintf('"%s" raised "%s" events when none were expected', get_debug_type($entity), $matched));
     }
 }

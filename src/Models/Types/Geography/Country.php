@@ -3,6 +3,7 @@
 namespace Somnambulist\Components\Models\Types\Geography;
 
 use Somnambulist\Components\Models\AbstractMultiton;
+use function get_debug_type;
 use function strtoupper;
 
 final class Country extends AbstractMultiton
@@ -45,7 +46,7 @@ final class Country extends AbstractMultiton
 
     public function equals(object $object): bool
     {
-        if (get_class($object) === get_class($this)) {
+        if (get_debug_type($object) === get_debug_type($this)) {
             return $object->code() === $this->code() && $object->name() === $this->name();
         }
 

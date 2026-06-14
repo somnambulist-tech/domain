@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Utils\Tests\Assertions;
 
 use Somnambulist\Components\Utils\EntityAccessor;
-use function get_class;
+use function get_debug_type;
 
 /**
  * Test Helper
@@ -24,14 +24,14 @@ trait AssertEntityHasPropertyWithValue
     {
         $this->assertTrue(
             EntityAccessor::has($entity, $property, $scope ?? $entity),
-            sprintf('Object of type "%s" does not have a property "%s"; do you need a custom scope?', get_class($entity), $property)
+            sprintf('Object of type "%s" does not have a property "%s"; do you need a custom scope?', get_debug_type($entity), $property)
         );
 
         $value = EntityAccessor::get($entity, $property, $scope ?? $entity);
 
         $this->assertEquals(
             $expected, $value,
-            sprintf('Object of type "%s" has a property "%s" but the value did not match the expected', get_class($entity), $property)
+            sprintf('Object of type "%s" has a property "%s" but the value did not match the expected', get_debug_type($entity), $property)
         );
     }
 }

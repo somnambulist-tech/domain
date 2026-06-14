@@ -17,7 +17,7 @@ class HasSelectColumnTest extends TestCase
     {
         $test = new class { use HasSelectColumn; };
 
-        $qb = new QueryBuilder($this->createMock(Connection::class));
+        $qb = new QueryBuilder($this->createStub(Connection::class));
         $qb->select('e.id', 'e.name')->from('Entity', 'e');
 
         $this->assertFalse($test->hasColumnInSelect($qb, 'e.updated_at'));

@@ -3,6 +3,7 @@
 namespace Somnambulist\Components\Models\Types\DateTime\Behaviours;
 
 use Somnambulist\Components\Models\Types\DateTime\DateTime;
+use function get_debug_type;
 
 /**
  * Based on Carbon\Carbon test setup methods.
@@ -11,7 +12,7 @@ trait Comparable
 {
     public function equals(object $object): bool
     {
-        if (get_class($object) !== get_class($this)) {
+        if (get_debug_type($object) !== get_debug_type($this)) {
             return false;
         }
 

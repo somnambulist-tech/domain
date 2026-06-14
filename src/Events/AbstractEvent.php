@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Components\Events;
 
-use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Collection\FrozenCollection;
 use Somnambulist\Components\Models\Types\Identity\Aggregate;
 use function array_merge;

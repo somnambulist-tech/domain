@@ -4,6 +4,7 @@ namespace Somnambulist\Components\Models;
 
 use Somnambulist\Components\Enumeration\AbstractEnumeration as BaseEnumeration;
 use Somnambulist\Components\Models\Contracts\ValueObject;
+use function get_debug_type;
 
 abstract class AbstractEnumeration extends BaseEnumeration implements ValueObject
 {
@@ -46,7 +47,7 @@ abstract class AbstractEnumeration extends BaseEnumeration implements ValueObjec
 
     public function equals(object $object): bool
     {
-        if (get_class($object) !== get_class($this)) {
+        if (get_debug_type($object) !== get_debug_type($this)) {
             return false;
         }
 

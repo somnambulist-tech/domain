@@ -17,7 +17,7 @@ class HasGroupByColumnTest extends TestCase
     {
         $test = new class { use HasGroupByColumn; };
 
-        $qb = new QueryBuilder($this->createMock(Connection::class));
+        $qb = new QueryBuilder($this->createStub(Connection::class));
         $qb->select('e.id, e.name')->from('Entity', 'e');
 
         $this->assertFalse($test->hasColumnInGroupBy($qb, 'e.id'));

@@ -9,7 +9,7 @@ instance of GET, POST, PUT, PATCH, DELETE, HEAD etc.
 The most useful feature of an enumeration is that it can only be one of the defined values so it can
 be safely type-hinted using the enumeration class name.
 
-For simple enums, use PHP 8.1 native enums. If you require extra properties, or have more complex needs,
+For simple enums, use PHP 8.1+ native enums. If you require extra properties, or have more complex needs,
 then you should use `AbstractMultiton` class (see Country type for example).
 
 ### Usage
@@ -78,7 +78,7 @@ final class Planet extends AbstractMultiton
         parent::__construct($key);
     }
 
-    protected static function initializeMembers()
+    protected static function initializeMembers(): void
     {
         new static($key, $name, $diameter, $mass, $distanceToSun);
     }

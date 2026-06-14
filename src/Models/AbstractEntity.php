@@ -3,7 +3,7 @@
 namespace Somnambulist\Components\Models;
 
 use Somnambulist\Components\Models\Contracts\CanTestEquality;
-use function get_class;
+use function get_debug_type;
 
 /**
  * Represents a child entity within an aggregate root.
@@ -32,7 +32,7 @@ abstract class AbstractEntity implements CanTestEquality
 
     public function equals(object $object): bool
     {
-        if (get_class($this) !== get_class($object)) {
+        if (get_debug_type($this) !== get_debug_type($object)) {
             return false;
         }
 

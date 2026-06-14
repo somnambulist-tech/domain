@@ -4,6 +4,7 @@ namespace Somnambulist\Components\Models;
 
 use Somnambulist\Components\Models\Contracts\ValueObject;
 use Somnambulist\Components\Utils\ObjectDiff;
+use function get_debug_type;
 
 /**
  * A value object implementation
@@ -25,7 +26,7 @@ abstract readonly class AbstractValueObject implements ValueObject
 
     public function equals(object $object): bool
     {
-        if (get_class($this) !== get_class($object)) {
+        if (get_debug_type($this) !== get_debug_type($object)) {
             return false;
         }
 

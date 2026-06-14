@@ -94,9 +94,7 @@ final class EntityAccessor
                     continue;
                 }
 
-                $prop->setAccessible(true);
-
-                $v = $prop->getValue($value);
+                $v = EntityAccessor::get($value, $prop->name, $prop->class);
 
                 if (is_object($v) && $recurseValues) {
                     $v = self::extract($v, $ignoreStatic, $recurseValues);

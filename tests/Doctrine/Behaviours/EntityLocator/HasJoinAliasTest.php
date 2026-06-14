@@ -17,7 +17,7 @@ class HasJoinAliasTest extends TestCase
     {
         $test = new class { use HasJoinAlias; };
 
-        $qb = new QueryBuilder($this->createMock(EntityManager::class));
+        $qb = new QueryBuilder($this->createStub(EntityManager::class));
         $qb->select('e')->from('Entity', 'e');
 
         $this->assertFalse($test->hasJoinAlias($qb, 'e'));

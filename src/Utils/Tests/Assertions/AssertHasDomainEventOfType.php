@@ -5,7 +5,7 @@ namespace Somnambulist\Components\Utils\Tests\Assertions;
 use Somnambulist\Components\Collection\MutableCollection;
 use Somnambulist\Components\Events\AbstractEvent;
 use Somnambulist\Components\Models\AggregateRoot;
-use function get_class;
+use function get_debug_type;
 use function sprintf;
 
 /**
@@ -28,12 +28,12 @@ trait AssertHasDomainEventOfType
         $matched = $events->filter(fn (AbstractEvent $evt) => $evt instanceof $event)->count();
 
         $this->assertGreaterThan(
-            0, $matched, sprintf('Expected at least one event of type "%s" from "%s" to be raised, none were', $event, get_class($entity))
+            0, $matched, sprintf('Expected at least one event of type "%s" from "%s" to be raised, none were', $event, get_debug_type($entity))
         );
 
         if (!is_null($count) && $count > 0) {
             $this->assertEquals(
-                $count, $matched, sprintf('Expected "%s" events to be raised from "%s", only "%s" were', $count, get_class($entity), $matched)
+                $count, $matched, sprintf('Expected "%s" events to be raised from "%s", only "%s" were', $count, get_debug_type($entity), $matched)
             );
         }
     }

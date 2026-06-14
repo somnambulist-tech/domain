@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" backupGlobals="false" colors="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.4/phpunit.xsd" backupGlobals="false" colors="true"
          bootstrap="tests/bootstrap.php" cacheDirectory=".phpunit.cache">
     <php>
         <ini name="error_reporting" value="-1"/>
         <ini name="memory_limit" value="256M"/>
         <env name="SHELL_VERBOSITY" value="-1"/>
-        <var name="DOCTRINE_DRIVER" value="pdo_sqlite"/>
-        <var name="DOCTRINE_MEMORY" value="1"/>
-        <var name="DOCTRINE_DATABASE" value=""/>
-        <var name="DOCTRINE_USER" value=""/>
-        <var name="DOCTRINE_PASSWORD" value=""/>
-        <var name="DOCTRINE_HOST" value=""/>
+        <env name="DOCTRINE_DRIVER" value="pdo_sqlite"/>
+        <env name="DOCTRINE_MEMORY" value="1"/>
+        <env name="DOCTRINE_DATABASE" value=""/>
+        <env name="DOCTRINE_USER" value=""/>
+        <env name="DOCTRINE_PASSWORD" value=""/>
+        <env name="DOCTRINE_HOST" value=""/>
         <env name="KERNEL_CLASS" value="Somnambulist\Components\Tests\Support\Kernel"/>
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
         <env name="MESSENGER_TRANSPORT_DSN" value="amqp://guest:guest@rabbitmq:5672/%2f" />
@@ -24,7 +24,7 @@
     </testsuites>
     <source>
         <include>
-            <directory suffix=".php">src/</directory>
+            <directory>src/</directory>
         </include>
         <exclude>
             <directory>tests</directory>

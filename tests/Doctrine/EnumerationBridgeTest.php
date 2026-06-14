@@ -4,13 +4,12 @@ namespace Somnambulist\Components\Tests\Doctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Types\TypeRegistry;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
-use ReflectionProperty;
 use Somnambulist\Components\Doctrine\Types\EnumerationBridge;
 use Somnambulist\Components\Tests\Support\Stubs\Enum\Action;
 use Somnambulist\Components\Tests\Support\Stubs\Enum\Gender;
@@ -19,11 +18,11 @@ use Somnambulist\Components\Tests\Support\Stubs\Helpers\Constructor;
 use Somnambulist\Components\Tests\Support\Stubs\Helpers\NullableConstructor;
 use Somnambulist\Components\Tests\Support\Stubs\Helpers\Serializer;
 use Somnambulist\Components\Tests\Support\Stubs\Types\MyType;
-use Somnambulist\Components\Utils\EntityAccessor;
 
 #[Group('doctrine')]
 #[Group('doctrine-behaviours')]
 #[Group('doctrine-behaviours-enum')]
+#[RunTestsInSeparateProcesses]
 class EnumerationBridgeTest extends TestCase
 {
     use ProphecyTrait;
@@ -33,17 +32,6 @@ class EnumerationBridgeTest extends TestCase
     public function setUp(): void
     {
         $this->platform = $this->prophesize(AbstractPlatform::class);
-
-        // Before every test, clean registered types
-        EntityAccessor::set(Type::getTypeRegistry(), 'instances', [], TypeRegistry::class);
-        EntityAccessor::set(Type::getTypeRegistry(), 'instancesReverseIndex', [], TypeRegistry::class);
-    }
-
-    public function tearDown(): void
-    {
-        $refProp = new ReflectionProperty(Type::class, 'typeRegistry');
-        $refProp->setAccessible(true);
-        $refProp->setValue(null, null);
     }
 
     public function testEnumTypesAreProperlyRegistered()

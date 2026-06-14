@@ -38,12 +38,12 @@ It consists of:
 
 ### Requirements
 
- * PHP 8.3+
+ * PHP 8.4+
  * mb_string
  * bcmath
  * beberlei/assert
- * eloquent/enumeration
  * somnambulist/collection
+ * somnambulist/enumeration
  * symfony/messenger for the Messenger bus implementations.
 
 ### Installation

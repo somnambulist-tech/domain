@@ -2,7 +2,6 @@
 
 namespace Somnambulist\Components\Events\Adapters;
 
-use IlluminateAgnostic\Str\Support\Str;
 use Somnambulist\Components\Events\AbstractEvent;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;

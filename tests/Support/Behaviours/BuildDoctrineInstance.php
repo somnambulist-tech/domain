@@ -21,12 +21,12 @@ trait BuildDoctrineInstance
     protected function setUp(): void
     {
         $conn = [
-            'driver'   => $GLOBALS['DOCTRINE_DRIVER'],
-            'memory'   => $GLOBALS['DOCTRINE_MEMORY'],
-            'dbname'   => $GLOBALS['DOCTRINE_DATABASE'],
-            'user'     => $GLOBALS['DOCTRINE_USER'],
-            'password' => $GLOBALS['DOCTRINE_PASSWORD'],
-            'host'     => $GLOBALS['DOCTRINE_HOST'],
+            'driver'   => $_ENV['DOCTRINE_DRIVER'],
+            'memory'   => $_ENV['DOCTRINE_MEMORY'],
+            'dbname'   => $_ENV['DOCTRINE_DATABASE'],
+            'user'     => $_ENV['DOCTRINE_USER'],
+            'password' => $_ENV['DOCTRINE_PASSWORD'],
+            'host'     => $_ENV['DOCTRINE_HOST'],
         ];
 
         $driver = new XmlDriver([
@@ -37,6 +37,7 @@ trait BuildDoctrineInstance
         $config->setProxyDir(sys_get_temp_dir());
         $config->setProxyNamespace('Somnambulist\Components\Tests\Doctrine\Proxies');
         $config->setMetadataDriverImpl($driver);
+        $config->enableNativeLazyObjects(true);
 
         TypeBootstrapper::registerEnumerations();
         TypeBootstrapper::registerTypes(TypeBootstrapper::$types);
@@ -53,7 +54,7 @@ trait BuildDoctrineInstance
             ]);
         } catch (Exception $e) {
             if (
-                $GLOBALS['DOCTRINE_DRIVER'] != 'pdo_mysql' ||
+                $_ENV['DOCTRINE_DRIVER'] != 'pdo_mysql' ||
                 !($e instanceof PDOException && str_contains($e->getMessage(), 'Base table or view already exists'))
             ) {
                 throw $e;
