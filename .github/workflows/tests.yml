@@ -34,7 +34,7 @@ jobs:
               run: composer validate
 
             - name: Composer install
-              run: composer install --prefer-dist --no-progress
+              run: composer install --prefer-dist --no-progress --ignore-platform-req=ext-amqp
 
             - name: Run PHPUnit
               run: vendor/bin/phpunit --exclude-group=amqp
